@@ -63,6 +63,15 @@ export default {
       description: '介绍转盘抽奖页面实现过程中转盘的绘制、旋转度数的计算方案及前端使用随机数模拟的效果。',
       date: '2016/12/07',
       routerName: 'working-canvas-turnTableDraw'
+    },
+    {
+      id: '7',
+      type: '读书笔记',
+      category: 'css',
+      title: '《CSS 揭秘》笔记之六：用户体验',
+      description: '此书第六章的内容。',
+      date: '2016/12/20',
+      routerName: 'learning-css-secrects-6'
     }
   ]
 }

@@ -517,6 +517,35 @@ div.text-effect-5 {
   color: white;
   text-shadow: 1px 1px black, 2px 2px black, 3px 3px black, 4px 4px black, 5px 5px black, 6px 6px black, 7px 7px black, 8px 8px black; }
 
+div.expand-hot-area > div {
+  width: 60px;
+  height: 60px;
+  background-color: #58a;
+  border-radius: 50%;
+  line-height: 60px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+  -moz-box-sizing: content-box;
+       box-sizing: content-box; }
+  div.expand-hot-area > div:hover {
+    background-color: #f96; }
+div.expand-hot-area.expand-1 > div {
+  border: 10px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.7) inset; }
+div.expand-hot-area.expand-2 > div {
+  position: relative; }
+  div.expand-hot-area.expand-2 > div:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px; }
+
 @media screen and (max-width: 402px) {
   div.exp > div {
     width: 280px; }

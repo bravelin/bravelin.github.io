@@ -533,6 +533,45 @@ div.text-effect-5{
   color: white;
   text-shadow: 1px 1px black, 2px 2px black, 3px 3px black, 4px 4px black, 5px 5px black, 6px 6px black, 7px 7px black, 8px 8px black;
 }
+
+div.expand-hot-area{
+  >div{
+    width: 60px;
+    height: 60px;
+    background-color: #58a;
+    border-radius: 50%;
+    line-height: 60px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.4s;
+    box-sizing: content-box;
+    &:hover{
+      background-color: #f96;
+    }
+  }
+
+  &.expand-1{
+    >div{
+      border:10px solid transparent;
+      background-clip: padding-box;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.7) inset;
+    }
+  }
+  &.expand-2{
+    >div{
+      position: relative;
+      &:before{
+        content: "";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        bottom: -10px;
+        left: -10px;
+      }
+    }
+  }
+}
 //////////////////////////////////////////////////////
 @media screen and (max-width: 402px){
   div.exp>div{
