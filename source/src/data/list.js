@@ -72,6 +72,24 @@ export default {
       description: '此书第六章的内容。',
       date: '2016/12/20',
       routerName: 'learning-css-secrects-6'
+    },
+    {
+      id: '8',
+      type: '读书笔记',
+      category: 'css',
+      title: '《CSS 揭秘》笔记之七：结构与布局',
+      description: '此书第七章的内容。',
+      date: '2017/01/10',
+      routerName: 'learning-css-secrects-7'
+    },
+    {
+      id: '9',
+      type: '工作总结',
+      category: 'js',
+      title: 'JavaScript中浮点数计算的问题',
+      description: '',
+      date: '2017/01/14',
+      routerName: ''
     }
   ]
 }

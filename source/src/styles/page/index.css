@@ -892,6 +892,18 @@ div.pop-modal {
   div.pop-modal.active {
     display: block; }
 
+div.auto-width > figure {
+  border: 1px solid #ccc;
+  max-width: 300px;
+  max-width: -webkit-min-content;
+  max-width: -moz-min-content;
+  max-width: min-content;
+  padding: 8px;
+  text-align: center;
+  margin: 0 auto; }
+  div.auto-width > figure > figcaption {
+    font-size: 14px; }
+
 @media screen and (max-width: 402px) {
   div.exp > div {
     width: 280px; }

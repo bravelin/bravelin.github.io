@@ -21,6 +21,7 @@ var pageRouterList = [
   'learning-css-secrects-4',
   'learning-css-secrects-5',
   'learning-css-secrects-6',
+  'learning-css-secrects-7',
   'working-canvas-turnTableDraw'
 ]  // 页面列表
 var pageRouterOption = []         // 构造router
