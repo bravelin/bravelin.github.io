@@ -546,6 +546,79 @@ div.expand-hot-area.expand-2 > div {
     bottom: -10px;
     left: -10px; }
 
+div.checkbox {
+  text-align: center; }
+  div.checkbox input[type="checkbox"] + label::before {
+    content: "\a0";
+    display: inline-block;
+    vertical-align: 0.1em;
+    width: 0.8em;
+    height: 0.8em;
+    margin-right: 0.4em;
+    border-radius: 0.2em;
+    background: silver;
+    text-indent: 0.15em;
+    line-height: 0.65;
+    cursor: pointer; }
+  div.checkbox input[type="checkbox"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0); }
+  div.checkbox input[type="checkbox"]:checked + label::before {
+    content: "\2713";
+    background: yellowgreen; }
+
+div.shadow-bg > button {
+  display: block;
+  width: 120px;
+  height: 56px;
+  line-height: 36px;
+  background: yellowgreen !important;
+  border-radius: 4px;
+  color: #fff;
+  margin: 0 auto !important;
+  -webkit-transition: background 0.3s ease-out;
+  transition: background 0.3s ease-out; }
+  div.shadow-bg > button:hover {
+    color: #f96 !important;
+    background: #f6f6ae !important; }
+
+div.content {
+  -webkit-transition: 0.6s -webkit-filter, -webkit-transform 0.6s ease-out;
+  transition: 0.6s -webkit-filter, -webkit-transform 0.6s ease-out;
+  transition: 0.6s filter, transform 0.6s ease-out;
+  transition: 0.6s filter, transform 0.6s ease-out, 0.6s -webkit-filter, -webkit-transform 0.6s ease-out; }
+  div.content.blur {
+    -webkit-filter: blur(4px);
+            filter: blur(4px);
+    -webkit-transform: scale(0.96, 0.96);
+            transform: scale(0.96, 0.96); }
+
+div.pop-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 991;
+  display: none; }
+  div.pop-modal > div {
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    border-radius: 4px;
+    line-height: 100px;
+    text-align: center;
+    color: #ff9966;
+    font-size: 22px;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+  div.pop-modal.active {
+    display: block; }
+
 @media screen and (max-width: 402px) {
   div.exp > div {
     width: 280px; }

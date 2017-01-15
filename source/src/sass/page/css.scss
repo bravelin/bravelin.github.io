@@ -572,6 +572,85 @@ div.expand-hot-area{
     }
   }
 }
+
+div.checkbox{
+  text-align: center;
+  input[type="checkbox"] + label::before{
+    content: "\a0";
+    display: inline-block;
+    vertical-align: 0.1em;
+    width: 0.8em;
+    height: 0.8em;
+    margin-right: 0.4em;
+    border-radius: 0.2em;
+    background: silver;
+    text-indent: 0.15em;
+    line-height: 0.65;
+    cursor: pointer;
+  }
+  input[type="checkbox"]{
+    position: absolute;
+    clip: rect(0,0,0,0);
+  }
+  input[type="checkbox"]:checked + label::before{
+    content: "\2713";
+    background: yellowgreen;
+  }
+}
+
+div.shadow-bg{
+  >button{
+    display: block;
+    width: 120px;
+    height: 56px;
+    line-height: 36px;
+    background: yellowgreen !important;
+    border-radius: 4px;
+    color: #fff;
+    margin: 0 auto !important;
+    transition: background 0.3s ease-out;
+    &:hover{
+      color: #f96 !important;
+      background: #f6f6ae !important;
+    }
+  }
+}
+
+div.content{
+  transition: 0.6s filter, transform 0.6s ease-out;
+  &.blur{
+    filter: blur(4px);
+    transform: scale(0.96,0.96);
+  }
+}
+
+div.pop-modal{
+  position: fixed;
+  top:0;
+  left: 0;
+  bottom:0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 991;
+  display: none;
+  >div{
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    border-radius: 4px;
+    line-height: 100px;
+    text-align: center;
+    color: #ff9966;
+    font-size: 22px;
+    transform: translate(-50%, -50%);
+  }
+  &.active{
+    display: block;
+  }
+}
 //////////////////////////////////////////////////////
 @media screen and (max-width: 402px){
   div.exp>div{
