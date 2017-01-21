@@ -62,7 +62,31 @@ li:first-child:nth-last-child(-n+4),li:first-child:nth-last-child(-n+4) ~ li {}<
   left: 50%;
   transform: translate(-50%, -50%);
 }</code></pre>
-
+      <p><strong>基于视口单位的方案：</strong>此方案只适应于在视口居中的场景。</p>
+      <p>视口单位1vw表示视口宽度的1%，1vh表示视口高度的1%。1vmin取1vh和1vw两者中的最小值，1vmax取1vh和1vw两者中的最大值。</p>
+      <p>下面样式可以使main元素居中：</p>
+      <pre><code>main {
+    width: 18em;
+    padding: 1em 1.5em;
+    margin: 50vh auto 0;
+    transform: translateY(-50%);
+  }</code></pre>
+      <p><strong>基于Flexbox的方案：</strong>设置父元素display: flex，待居中元素margin: auto即可。</p>
+      <h3 class="title">紧贴底部的页脚</h3>
+      <p><strong>使用视口+calc计算方案：</strong>设置中间内容区域的min-height为页面的高度减去头部和底部的高度。页面的整体结构如下：</p>
+      <pre><code>&lt;header&gt;&lt;/header&gt;&lt;main&gt;&lt;/main&gt;&lt;footer&gt;&lt;/footer&gt;&lt;/code&gt;</code></pre>
+      <p>如果header和footer的高度分别为2.5em和7em：</p>
+      <pre><code>main {
+  min-height: calc(100vh - 2.5em - 7em)
+  box-sizing: border-box;
+}</code></pre>
+      <p><strong>Flexbox的方案：</strong>body元素设置为display: flex，触发伸缩盒布局。内容区块的高度自动伸展并占满所有的可用空间。</p>
+      <pre><code>body{
+  display: flex,
+  flex-flow: column;
+  min-height: 100vh;
+}
+main{ flex: 1 }</code></pre>
     </div>
     <footer>2017年01月10日</footer>
   </div>
