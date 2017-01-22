@@ -904,6 +904,41 @@ div.auto-width > figure {
   div.auto-width > figure > figcaption {
     font-size: 14px; }
 
+@-webkit-keyframes bounce {
+  60%, 80%, to {
+    -webkit-transform: translateY(300px);
+            transform: translateY(300px);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out; }
+  70% {
+    -webkit-transform: translateY(200px);
+            transform: translateY(200px); }
+  90% {
+    -webkit-transform: translateY(250px);
+            transform: translateY(250px); } }
+
+@keyframes bounce {
+  60%, 80%, to {
+    -webkit-transform: translateY(300px);
+            transform: translateY(300px);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out; }
+  70% {
+    -webkit-transform: translateY(200px);
+            transform: translateY(200px); }
+  90% {
+    -webkit-transform: translateY(250px);
+            transform: translateY(250px); } }
+div.bounce {
+  height: 380px; }
+  div.bounce > div.ball {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #58a;
+    -webkit-animation: bounce 3s ease-in infinite;
+            animation: bounce 3s ease-in infinite; }
+
 @media screen and (max-width: 402px) {
   div.exp > div {
     width: 280px; }

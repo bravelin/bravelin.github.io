@@ -90,6 +90,15 @@ export default {
       description: '',
       date: '2017/01/14',
       routerName: ''
+    },
+    {
+      id: '10',
+      type: '读书笔记',
+      category: 'css',
+      title: '《CSS 揭秘》笔记之八：过渡与动画',
+      description: '此书第八章的内容。',
+      date: '2017/01/22',
+      routerName: 'learning-css-secrects-8'
     }
   ]
 }
