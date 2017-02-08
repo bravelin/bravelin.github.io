@@ -14,8 +14,8 @@
       <nav :class="{ fixedTop: isFixedTop }">
         <ul>
           <li><router-link :to="{ name: 'about' }">About Me</router-link></li>
-          <li><router-link :to="{ name: 'summary' }">Summary</router-link></li>
-          <li><router-link :to="{ name: 'notes' }">Notes</router-link></li>
+          <li><router-link :to="{ name: 'summary' }">Topics</router-link></li>
+          <li><router-link :to="{ name: 'notes' }">Articles</router-link></li>
           <li><router-link :to="{ name: 'home' }">Home</router-link></li>
         </ul>
       </nav>
@@ -28,8 +28,8 @@
     <nav class="side-menu" :class="{active: showSizeMenu}" @click="doClickSideMenuWrap($event)">
       <ul>
         <li><router-link :to="{ name: 'home' }">Home</router-link></li>
-        <li><router-link :to="{ name: 'notes' }">Notes</router-link></li>
-        <li><router-link :to="{ name: 'summary' }">Summary</router-link></li>
+        <li><router-link :to="{ name: 'notes' }">Articles</router-link></li>
+        <li><router-link :to="{ name: 'summary' }">Topics</router-link></li>
         <li><router-link :to="{ name: 'about' }">About Me</router-link></li>
       </ul>
     </nav>
