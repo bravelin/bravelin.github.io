@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page article">
     <h2 class="title">《CSS 揭秘》笔记之八：过渡与动画</h2>
     <div class="content">
       <h3 class="title">缓动效果</h3>

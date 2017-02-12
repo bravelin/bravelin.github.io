@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page article">
     <h2 class="title">《CSS 揭秘》笔记之二：背景与边框</h2>
     <div class="content">
       <h3 class="title">半透明边框</h3>

@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page article">
     <h2 class="title">《CSS 揭秘》笔记之一：前言</h2>
     <div class="content">
       <p>"十年来最重要的CSS图书，没有之一"。</p>

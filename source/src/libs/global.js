@@ -6,6 +6,8 @@ exports.Global = {
   showArticleNavMenu: false,
   prevArticle: '',
   nextArticle: '',
+  currPage: '',
+  currPageParams: '',
   setArticleNavMenu: function (routerName) {
     var that = this
     that.showArticleNavMenu = true

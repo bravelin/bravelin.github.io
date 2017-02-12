@@ -11,9 +11,10 @@ window['_g'] = Global
 var _global = Global
 var pageRouterList = [
   'home',
-  'notes',
-  'summary',
+  'articles',
+  'topics',
   'about',
+  'topicArticles',
   'working-project-gztjjweb',
   'learning-css-secrects-1',
   'learning-css-secrects-2',
@@ -23,7 +24,8 @@ var pageRouterList = [
   'learning-css-secrects-6',
   'learning-css-secrects-7',
   'learning-css-secrects-8',
-  'working-canvas-turnTableDraw'
+  'working-canvas-turnTableDraw',
+  'poetry-1'
 ]  // 页面列表
 var pageRouterOption = []         // 构造router
 
@@ -55,6 +57,8 @@ var router = new VueRouter({
 // 加载页面之前
 router.beforeEach(function (to, from, next) {
   _global.loading = true
+  _global.currPage = to.name
+  _global.currPageParams = to.query
   next()
 })
 // 加载页面之后

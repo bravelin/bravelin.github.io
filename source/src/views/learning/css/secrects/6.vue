@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page article">
     <h2 class="title">《CSS 揭秘》笔记之六：用户体验</h2>
     <div class="content" :class="{'blur': showPop }">
       <h3 class="title">选择合适的鼠标光标</h3>

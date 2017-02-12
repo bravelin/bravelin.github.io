@@ -2,9 +2,9 @@
 <div class="page">
   <ul class="article-list">
     <router-link tag="li" v-for="article in list" :to="{ name : article.routerName }">
+      <h4>{{ article.date }}</h4>
       <h3>{{ article.title }}</h3>
       <div>{{ article.description }}</div>
-      <div>【{{ article.type }}】{{ article.date }}</div>
     </router-link>
   </ul>
 </div>
@@ -18,18 +18,11 @@
       }
     },
     created: function () {
-      var that = this
-      var dataList = articleList.list
-      var tempList = []
-      for (var k = dataList.length - 1; k >= 0; k--) {
-        if (dataList[k].type == '工作总结') {
-          tempList.push(dataList[k])
-        }
-      }
-      tempList.sort(function (a, b) {
-        return a.date < b.date
+      var list = articleList.list
+      list.sort(function (a, b) {
+        return a.date < b.date ? 1 : -1
       })
-      that.list = tempList
+      this.list = list
     }
   }
 </script>

@@ -8,14 +8,14 @@
         <div class="logo"></div>
         <div class="title">
           <h1>linz blog</h1>
-          <h2>生命可以随心所欲，但不能随波逐流</h2>
+          <h2>Believe in yourself.</h2>
         </div>
       </div>
       <nav :class="{ fixedTop: isFixedTop }">
         <ul>
           <li><router-link :to="{ name: 'about' }">About Me</router-link></li>
-          <li><router-link :to="{ name: 'summary' }">Topics</router-link></li>
-          <li><router-link :to="{ name: 'notes' }">Articles</router-link></li>
+          <li><router-link :to="{ name: 'topics' }">Topics</router-link></li>
+          <li><router-link :to="{ name: 'articles' }">Articles</router-link></li>
           <li><router-link :to="{ name: 'home' }">Home</router-link></li>
         </ul>
       </nav>
@@ -28,8 +28,8 @@
     <nav class="side-menu" :class="{active: showSizeMenu}" @click="doClickSideMenuWrap($event)">
       <ul>
         <li><router-link :to="{ name: 'home' }">Home</router-link></li>
-        <li><router-link :to="{ name: 'notes' }">Articles</router-link></li>
-        <li><router-link :to="{ name: 'summary' }">Topics</router-link></li>
+        <li><router-link :to="{ name: 'articles' }">Articles</router-link></li>
+        <li><router-link :to="{ name: 'topics' }">Topics</router-link></li>
         <li><router-link :to="{ name: 'about' }">About Me</router-link></li>
       </ul>
     </nav>

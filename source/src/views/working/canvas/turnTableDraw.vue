@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page article">
     <h2 class="title">转盘抽奖的前端实现</h2>
     <div class="content">
       <p>转盘抽奖一般用于吸引用户，提升活跃度。上周应产品需求，实现了这个功能。下面的转盘使用随机数模拟中奖结果（可点击抽奖）：</p>
