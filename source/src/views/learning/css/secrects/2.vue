@@ -131,6 +131,17 @@
   }</code></pre>
     </div>
     <footer>2016年11月03日</footer>
+    <ul class="comments">
+      <li>
+        <div><span>2016-01-11 12:30:12</span>lin</div>
+        <div>你好！笔记之二：背景与边框笔记之二：背景与边框笔记之二：背景与边框笔记之二：背景与边框笔记之二：背景与边框笔记之二：背景与边框笔记之二：背景与边框笔记之二：背景与边框笔记之二：背景与边框</div>
+      </li>
+      <li>
+        <div>2016-01-11 12:30:12 lin</div>
+        <div>你好！</div>
+      </li>
+    </ul>
+    <div></div>
   </div>
 </template>
 <script>

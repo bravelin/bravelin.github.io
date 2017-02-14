@@ -278,6 +278,26 @@ div#app-tip {
     line-height: 60px;
     border-top: 1px solid #dbdbdb;
     padding: 0 20px; }
+  .page > ul.comments {
+    background: #f0f0f0;
+    padding: 10px 0; }
+    .page > ul.comments > li {
+      padding: 15px 20px;
+      background: #fafafa;
+      border-bottom: 1px dotted #dfdfdf; }
+      .page > ul.comments > li:last-child {
+        border-bottom-color: transparent; }
+      .page > ul.comments > li > div:nth-of-type(1) {
+        line-height: 1.5;
+        margin-bottom: 8px;
+        font-size: 15px; }
+        .page > ul.comments > li > div:nth-of-type(1) > span {
+          margin-right: 12px; }
+      .page > ul.comments > li > div:nth-of-type(2) {
+        line-height: 1.8;
+        border-radius: 4px;
+        padding: 8px;
+        background: #eee; }
 
 @media screen and (max-width: 720px) {
   .page {

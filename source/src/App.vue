@@ -36,7 +36,17 @@
     <nav class="article-nav-menu" v-show="global.showArticleNavMenu">
       <router-link class="back" title="前一篇" v-if="global.prevArticle" :to="{ name: global.prevArticle }"></router-link>
       <router-link class="next" title="后一篇" v-if="global.nextArticle" :to="{ name: global.nextArticle }"></router-link>
+      <a class="note" title="留言"></a>
     </nav>
+    <div class="note-wrap" :class="{ active : isShowNoteModal }">
+      <div>
+        <h3>留言<span @click=doCloseNoteModal()>X</span></h3>
+        <div class="content">
+
+        </div>
+        <div class='mask'><div><i></i><i></i><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -48,7 +58,8 @@
       return {
         global: Global,
         isFixedTop: false,
-        showSizeMenu: false
+        showSizeMenu: false,
+        isShowNoteModal: true
       }
     },
     components: {
@@ -66,6 +77,9 @@
       })
     },
     methods: {
+      doCloseNoteModal: function () {
+        this.isShowNoteModal = false
+      },
       doHandlerScroll: function () {
         var body = document.body
         this.isFixedTop = (body && body.scrollTop > 188)
