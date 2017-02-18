@@ -8,7 +8,7 @@
         <div class="logo"></div>
         <div class="title">
           <h1>linz blog</h1>
-          <h2>Believe in yourself.</h2>
+          <h2>你只管努力，剩下的交给时光。</h2>
         </div>
       </div>
       <nav :class="{ fixedTop: isFixedTop }">
@@ -36,15 +36,20 @@
     <nav class="article-nav-menu" v-show="global.showArticleNavMenu">
       <router-link class="back" title="前一篇" v-if="global.prevArticle" :to="{ name: global.prevArticle }"></router-link>
       <router-link class="next" title="后一篇" v-if="global.nextArticle" :to="{ name: global.nextArticle }"></router-link>
-      <a class="note" title="留言"></a>
+      <a class="note" title="留言" @click="doShowNoteModal()"></a>
     </nav>
-    <div class="note-wrap" :class="{ active : isShowNoteModal }">
+    <div class="note-wrap" ref="noteWrap">
       <div>
-        <h3>留言<span @click=doCloseNoteModal()>X</span></h3>
+        <h3>留言<span @click="doCloseNoteModal()">X</span></h3>
         <div class="content">
-
+          <div class="clear-fix"><label>您的姓名：</label><input type="text" placeholder="your name" maxlength="20"/></div>
+          <div class="clear-fix"><label>您想说的话：</label><textarea placeholder="message content" maxlength="2000"></textarea></div>
         </div>
-        <div class='mask'><div><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="footer">
+          <a class="ok" @click="doSubmitNoteContent()">提交</a>
+          <a class="cancel" @click="doCloseNoteModal()">取消</a>
+        </div>
+        <div class='page-mask'><div><i></i><i></i><i></i><i></i><i></i></div></div>
       </div>
     </div>
   </div>
@@ -58,8 +63,7 @@
       return {
         global: Global,
         isFixedTop: false,
-        showSizeMenu: false,
-        isShowNoteModal: true
+        showSizeMenu: false
       }
     },
     components: {
@@ -77,8 +81,19 @@
       })
     },
     methods: {
+      doShowNoteModal: function () {
+        var noteWrap = this.$refs.noteWrap
+        noteWrap.style.display = 'block'
+        setTimeout(function () {
+          noteWrap.classList.add('active')
+        }, 200)
+      },
       doCloseNoteModal: function () {
-        this.isShowNoteModal = false
+        var noteWrap = this.$refs.noteWrap
+        noteWrap.classList.remove('active')
+        setTimeout(function () {
+          noteWrap.style.display = 'none'
+        }, 600)
       },
       doHandlerScroll: function () {
         var body = document.body

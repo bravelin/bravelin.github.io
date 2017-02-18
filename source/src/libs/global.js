@@ -6,6 +6,7 @@ exports.Global = {
   showArticleNavMenu: false,
   prevArticle: '',
   nextArticle: '',
+  currArticleId: '',
   currPage: '',
   currPageParams: '',
   setArticleNavMenu: function (routerName) {
@@ -14,6 +15,7 @@ exports.Global = {
     var list = articleList.list
     for (var i = 0; i < list.length; i++) {
       if (list[i].routerName == routerName) {
+        that.currArticleId = list[i].id
         if (i > 0) {
           that.prevArticle = list[i - 1].routerName
         } else {

@@ -37,7 +37,6 @@ header{
     }
     >h2{
       line-height:38px;
-      font-style:italic;
       font-size:16px;
       color:#ddd;
     }
@@ -171,6 +170,7 @@ div.side-menu-icon{
 }
 
 .note-wrap{
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -182,13 +182,14 @@ div.side-menu-icon{
   overflow-y: auto;
   transition: opacity 0.25s ease-out;
   >div{
-    width:600px;
+    max-width:600px;
+    width: 96%;
     background-color: #fff;
     margin:3% auto 0;
     border-radius: 4px;
     box-shadow: 0 5px 15px rgba(0,0,0,.5);
-    transition: transform .3s ease-out;
-    transform: translate(0,-25%);
+    transition: transform .5s ease-out;
+    transform: translate(0,-30%);
     >h3{
       height:50px;
       line-height: 50px;
@@ -206,36 +207,30 @@ div.side-menu-icon{
         }
       }
     }
-    div.footer{
+    >div.footer{
       height:60px;
       border-top:1px solid #d9d9d9;
       text-align: right;
       line-height:60px;
-      &>a{
-        padding: 8px 22px;
-        border: 1px solid #ddd;
+      >a{
+        padding: 10px 18px;
         border-radius: 4px;
         cursor: pointer;
         margin-right:15px;
         @include transition(all 0.3s);
         &.cancel{
-          background-color: #fff;
+          background-color: #ddd;
           color: #999;
           &:hover{
-            background-color: #f9f9f9;
+            background-color: #aaa;
             color:#666;
-            border-color:#ddd;
           }
         }
         &.ok{
-          position: relative;
-          display: inline-block;
-          background-color: #003366;
+          background-color: rgb(23,87,157);
           color:#fff;
-          border-color: #003366;
           &:hover{
             background-color: #003366;
-            border-color: #003366;
           }
         }
       }
@@ -247,6 +242,33 @@ div.side-menu-icon{
         font-weight: bold;
         &.ok{
           color:#00aa00;
+        }
+      }
+    }
+    >div.content{
+      margin: 8px;
+      padding: 10px 15px;
+      background: #eee;
+      border-radius: 4px;
+      >div{
+        &:first-child{
+          margin-bottom: 8px;
+        }
+        >input,>textarea,>label{
+          float: left;
+        }
+        >label{
+          display: inline-block;
+          width: 120px;
+          text-align: right;
+          line-height: 32px;
+        }
+        >input,>textarea{
+          padding: 6px 8px;
+          width: 350px;
+        }
+        >textarea{
+          height: 90px;
         }
       }
     }
@@ -262,6 +284,10 @@ div.side-menu-icon{
       display: block;
     }
   }
+}
+
+.page-mask{
+
 }
 
 @media screen and (min-width: 1390px) {
@@ -313,6 +339,45 @@ div.side-menu-icon{
     >div.wrap{
       padding-left:4px;
       padding-right:4px;
+    }
+  }
+}
+
+// note wrap
+@media screen and (max-width: 585px){
+  .note-wrap{
+    >div{
+      >div.content{
+        >div{
+          >label{
+            width: 105px;
+          }
+          >input,>textarea{
+            width: calc(100% - 130px)
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px){
+  .note-wrap{
+    >div{
+      >div.content{
+        >div{
+          >label{
+            display: block;
+            text-align: left;
+            float: none;
+            width: 105px;
+          }
+          >input,>textarea{
+            float: none;
+            width: 95%;
+          }
+        }
+      }
     }
   }
 }

@@ -15,7 +15,7 @@ html, body {
   width: 100%;
   color: #817c7c;
   background-color: #f0f0f0;
-  font: 16px/1.5 "Helvetica Neue","Helvetica","Microsoft YaHei","WenQuanYi Micro Hei",Arial,sans-serif;
+  font: 16px/1.5 "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, sans-serif;
   overflow: auto;
   -webkit-font-smoothing: antialiased; }
 
@@ -43,9 +43,21 @@ input, textarea {
   font-size: inherit;
   color: inherit;
   outline: none;
-  border: 0;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; }
+  input:focus, textarea:focus {
+    border-color: #0099ff;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 153, 255, 0.6); }
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    font-style: italic;
+    color: #ddd; }
 
 select, option {
   font-family: inherit; }
@@ -1064,7 +1076,6 @@ header {
       color: #fff; }
     header div.title > h2 {
       line-height: 38px;
-      font-style: italic;
       font-size: 16px;
       color: #ddd; }
   header > nav {
@@ -1183,6 +1194,7 @@ div.side-menu-icon {
   opacity: 0.3; }
 
 .note-wrap {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -1195,17 +1207,18 @@ div.side-menu-icon {
   -webkit-transition: opacity 0.25s ease-out;
   transition: opacity 0.25s ease-out; }
   .note-wrap > div {
-    width: 600px;
+    max-width: 600px;
+    width: 96%;
     background-color: #fff;
     margin: 3% auto 0;
     border-radius: 4px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    -webkit-transition: -webkit-transform .3s ease-out;
-    transition: -webkit-transform .3s ease-out;
-    transition: transform .3s ease-out;
-    transition: transform .3s ease-out, -webkit-transform .3s ease-out;
-    -webkit-transform: translate(0, -25%);
-            transform: translate(0, -25%); }
+    -webkit-transition: -webkit-transform .5s ease-out;
+    transition: -webkit-transform .5s ease-out;
+    transition: transform .5s ease-out;
+    transition: transform .5s ease-out, -webkit-transform .5s ease-out;
+    -webkit-transform: translate(0, -30%);
+            transform: translate(0, -30%); }
     .note-wrap > div > h3 {
       height: 50px;
       line-height: 50px;
@@ -1220,43 +1233,56 @@ div.side-menu-icon {
         .note-wrap > div > h3 > span:hover {
           cursor: pointer;
           color: #eee; }
-    .note-wrap > div div.footer {
+    .note-wrap > div > div.footer {
       height: 60px;
       border-top: 1px solid #d9d9d9;
       text-align: right;
       line-height: 60px; }
-      .note-wrap > div div.footer > a {
-        padding: 8px 22px;
-        border: 1px solid #ddd;
+      .note-wrap > div > div.footer > a {
+        padding: 10px 18px;
         border-radius: 4px;
         cursor: pointer;
         margin-right: 15px;
         -webkit-transition: all 0.3s;
         transition: all 0.3s; }
-        .note-wrap > div div.footer > a.cancel {
-          background-color: #fff;
+        .note-wrap > div > div.footer > a.cancel {
+          background-color: #ddd;
           color: #999; }
-          .note-wrap > div div.footer > a.cancel:hover {
-            background-color: #f9f9f9;
-            color: #666;
-            border-color: #ddd; }
-        .note-wrap > div div.footer > a.ok {
-          position: relative;
-          display: inline-block;
-          background-color: #003366;
-          color: #fff;
-          border-color: #003366; }
-          .note-wrap > div div.footer > a.ok:hover {
-            background-color: #003366;
-            border-color: #003366; }
-      .note-wrap > div div.footer > span.tip {
+          .note-wrap > div > div.footer > a.cancel:hover {
+            background-color: #aaa;
+            color: #666; }
+        .note-wrap > div > div.footer > a.ok {
+          background-color: #17579d;
+          color: #fff; }
+          .note-wrap > div > div.footer > a.ok:hover {
+            background-color: #003366; }
+      .note-wrap > div > div.footer > span.tip {
         display: none;
         float: left;
         padding-left: 20px;
         color: #ff6666;
         font-weight: bold; }
-        .note-wrap > div div.footer > span.tip.ok {
+        .note-wrap > div > div.footer > span.tip.ok {
           color: #00aa00; }
+    .note-wrap > div > div.content {
+      margin: 8px;
+      padding: 10px 15px;
+      background: #eee;
+      border-radius: 4px; }
+      .note-wrap > div > div.content > div:first-child {
+        margin-bottom: 8px; }
+      .note-wrap > div > div.content > div > input, .note-wrap > div > div.content > div > textarea, .note-wrap > div > div.content > div > label {
+        float: left; }
+      .note-wrap > div > div.content > div > label {
+        display: inline-block;
+        width: 120px;
+        text-align: right;
+        line-height: 32px; }
+      .note-wrap > div > div.content > div > input, .note-wrap > div > div.content > div > textarea {
+        padding: 6px 8px;
+        width: 350px; }
+      .note-wrap > div > div.content > div > textarea {
+        height: 90px; }
   .note-wrap.active {
     opacity: 1; }
     .note-wrap.active > div {
@@ -1296,3 +1322,17 @@ div.side-menu-icon {
   header > div.wrap {
     padding-left: 4px;
     padding-right: 4px; } }
+@media screen and (max-width: 585px) {
+  .note-wrap > div > div.content > div > label {
+    width: 105px; }
+  .note-wrap > div > div.content > div > input, .note-wrap > div > div.content > div > textarea {
+    width: calc(100% - 130px); } }
+@media screen and (max-width: 450px) {
+  .note-wrap > div > div.content > div > label {
+    display: block;
+    text-align: left;
+    float: none;
+    width: 105px; }
+  .note-wrap > div > div.content > div > input, .note-wrap > div > div.content > div > textarea {
+    float: none;
+    width: 95%; } }

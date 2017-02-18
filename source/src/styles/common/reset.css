@@ -15,7 +15,7 @@ html, body {
   width: 100%;
   color: #817c7c;
   background-color: #f0f0f0;
-  font: 16px/1.5 "Helvetica Neue","Helvetica","Microsoft YaHei","WenQuanYi Micro Hei",Arial,sans-serif;
+  font: 16px/1.5 "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, sans-serif;
   overflow: auto;
   -webkit-font-smoothing: antialiased; }
 
@@ -43,9 +43,21 @@ input, textarea {
   font-size: inherit;
   color: inherit;
   outline: none;
-  border: 0;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; }
+  input:focus, textarea:focus {
+    border-color: #0099ff;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 153, 255, 0.6); }
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    font-style: italic;
+    color: #ddd; }
 
 select, option {
   font-family: inherit; }
