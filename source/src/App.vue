@@ -38,14 +38,14 @@
     <nav class="article-nav-menu" v-show="global.showArticleNavMenu">
       <router-link class="back" title="前一篇" v-if="global.prevArticle" :to="{ name: global.prevArticle }"></router-link>
       <router-link class="next" title="后一篇" v-if="global.nextArticle" :to="{ name: global.nextArticle }"></router-link>
-      <a class="note" title="留言" @click="doShowNoteModal()"></a>
+      <a class="note" title="留言" @click="doClickNoteBtn()"></a>
     </nav>
     <div class="note-wrap modal" ref="noteWrap">
       <div>
-        <h3>留言<span @click="doCloseNoteModal()">X</span></h3>
+        <h3>{{ isReply ? '回复@'+replyName : '留言' }}<span @click="doCloseNoteModal()">X</span></h3>
         <div class="content">
-          <div class="clear-fix"><label>您的称呼：</label><input ref='noteNameEl' v-model="noteName" type="text" placeholder="your name" maxlength="20"/></div>
-          <div class="clear-fix"><label>您想说的话：</label><textarea ref='noteContentEl' v-model="noteContent" placeholder="message content" maxlength="2000"></textarea></div>
+          <div class="clear-fix" v-show="!isReply"><label>您的称呼：</label><input ref='noteNameEl' v-model="noteName" type="text" placeholder="your name" maxlength="20"/></div>
+          <div class="clear-fix"><label>{{ isReply ? "回复的话" : "您想说的话" }}：</label><textarea ref='noteContentEl' v-model="noteContent" placeholder="message content" maxlength="2000"></textarea></div>
         </div>
         <div class="footer">
           <a class="ok" @click="doSubmitNoteContent()">提交</a>
@@ -68,7 +68,10 @@
         isFixedTop: false,
         showSizeMenu: false,
         noteName: '',
-        noteContent: ''
+        noteContent: '',
+        isReply: false,
+        replyName: '',
+        replyId: ''
       }
     },
     components: {
@@ -76,6 +79,7 @@
     },
     mounted: function () {
       var that = this
+
       that.$nextTick(function () {
         that.global.loading = true
         document.querySelector('header').style.opacity = 1
@@ -84,15 +88,32 @@
           that.doHandlerScroll()
         })
       })
+
+      eventHub.$on('pop-reply-modal', that.doPopReplyModal)
+    },
+    beforeDestroy: function () {
+      eventHub.$off('pop-reply-modal', this.doPopReplyModal)
     },
     methods: {
+      doPopReplyModal: function (replyObj) {
+        var that = this
+        that.isReply = true
+        that.replyName = replyObj.name
+        that.replyId = replyObj.id
+        that.doShowNoteModal()
+      },
+      doClickNoteBtn: function () {
+        var that = this
+        that.isReply = false
+        that.doShowNoteModal()
+      },
       doSubmitNoteContent: function () {
         var that = this
         var global = Global
         var noteName = that.noteName.trim()
         var noteContent = that.noteContent.trim()
         var noteWrapEl = that.$refs.noteWrap
-        if (noteName.length == 0) {
+        if (noteName.length == 0 && !that.isReply) {
           that.$refs.noteNameEl.focus()
           return
         }
@@ -107,18 +128,19 @@
         var now = (+new Date())
         var appKey = Global.sha(Global.appKey + now) + '.' + now
         that.$http.post('https://d.apicloud.com/mcm/api/comments', {
-          articleId: global.currArticleId,
-          userName: noteName,
+          articleId: that.isReply ? '' : global.currArticleId,
+          userName: that.isReply ? 'linz' : noteName,
           commentContent: noteContent,
-          articleName: global.currArticleName,
-          pageRouter: global.currPage
+          articleName: that.isReply ? '' : global.currArticleName,
+          pageRouter: that.isReply ? '' : global.currPage,
+          replyId: that.isReply ? that.replyId : ''
         }, {
           headers: {
             'X-APICloud-AppKey': appKey
           }
         }).then(function (res) {
           noteWrapEl.classList.remove('loading')
-          if (res.status == 200 && res.body.articleId) {
+          if (res.status == 200) {
             eventHub.$emit('refresh-comments')
             global.tipShow('提交成功！')
             that.doCloseNoteModal()
