@@ -14,9 +14,10 @@
       <nav :class="{ fixedTop: isFixedTop }">
         <ul>
           <li><router-link :to="{ name: 'about' }">About Me</router-link></li>
+          <li><router-link :to="{ name: 'comments' }">Comments</router-link></li>
           <li><router-link :to="{ name: 'topics' }">Topics</router-link></li>
           <li><router-link :to="{ name: 'articles' }">Articles</router-link></li>
-          <li><router-link :to="{ name: 'home' }">Home</router-link></li>
+          <!--<li><router-link :to="{ name: 'home' }">Home</router-link></li>-->
         </ul>
       </nav>
     </header>
@@ -27,9 +28,10 @@
     <div class="side-menu-icon" :class="{ fixedTop: isFixedTop }" @click="doClickMenuBtn($event)"></div>
     <nav class="side-menu" :class="{active: showSizeMenu}" @click="doClickSideMenuWrap($event)">
       <ul>
-        <li><router-link :to="{ name: 'home' }">Home</router-link></li>
+        <!--<li><router-link :to="{ name: 'home' }">Home</router-link></li>-->
         <li><router-link :to="{ name: 'articles' }">Articles</router-link></li>
         <li><router-link :to="{ name: 'topics' }">Topics</router-link></li>
+        <li><router-link :to="{ name: 'comments' }">Comments</router-link></li>
         <li><router-link :to="{ name: 'about' }">About Me</router-link></li>
       </ul>
     </nav>
@@ -38,12 +40,12 @@
       <router-link class="next" title="后一篇" v-if="global.nextArticle" :to="{ name: global.nextArticle }"></router-link>
       <a class="note" title="留言" @click="doShowNoteModal()"></a>
     </nav>
-    <div class="note-wrap" ref="noteWrap">
+    <div class="note-wrap modal" ref="noteWrap">
       <div>
         <h3>留言<span @click="doCloseNoteModal()">X</span></h3>
         <div class="content">
-          <div class="clear-fix"><label>您的姓名：</label><input type="text" placeholder="your name" maxlength="20"/></div>
-          <div class="clear-fix"><label>您想说的话：</label><textarea placeholder="message content" maxlength="2000"></textarea></div>
+          <div class="clear-fix"><label>您的称呼：</label><input ref='noteNameEl' v-model="noteName" type="text" placeholder="your name" maxlength="20"/></div>
+          <div class="clear-fix"><label>您想说的话：</label><textarea ref='noteContentEl' v-model="noteContent" placeholder="message content" maxlength="2000"></textarea></div>
         </div>
         <div class="footer">
           <a class="ok" @click="doSubmitNoteContent()">提交</a>
@@ -57,13 +59,16 @@
 <script>
   import Spinner from './components/spinner'
   import { Global } from './libs/global'
+  import { eventHub } from './libs/hub.js'
 
   module.exports = {
     data: function () {
       return {
         global: Global,
         isFixedTop: false,
-        showSizeMenu: false
+        showSizeMenu: false,
+        noteName: '',
+        noteContent: ''
       }
     },
     components: {
@@ -81,8 +86,55 @@
       })
     },
     methods: {
+      doSubmitNoteContent: function () {
+        var that = this
+        var global = Global
+        var noteName = that.noteName.trim()
+        var noteContent = that.noteContent.trim()
+        var noteWrapEl = that.$refs.noteWrap
+        if (noteName.length == 0) {
+          that.$refs.noteNameEl.focus()
+          return
+        }
+        if (noteContent.length == 0) {
+          that.$refs.noteContentEl.focus()
+          return
+        }
+        that.noteName = noteName
+        that.noteContent = noteContent
+        // console.log('提交...')
+        noteWrapEl.classList.add('loading')
+        var now = (+new Date())
+        var appKey = Global.sha(Global.appKey + now) + '.' + now
+        that.$http.post('https://d.apicloud.com/mcm/api/comments', {
+          articleId: global.currArticleId,
+          userName: noteName,
+          commentContent: noteContent,
+          articleName: global.currArticleName,
+          pageRouter: global.currPage
+        }, {
+          headers: {
+            'X-APICloud-AppKey': appKey
+          }
+        }).then(function (res) {
+          noteWrapEl.classList.remove('loading')
+          if (res.status == 200 && res.body.articleId) {
+            eventHub.$emit('refresh-comments')
+            global.tipShow('提交成功！')
+            that.doCloseNoteModal()
+          } else {
+            global.tipShow('提交失败！请稍后再试！')
+          }
+        }, function () {
+          noteWrapEl.classList.remove('loading')
+          global.tipShow('提交失败！请稍后再试！')
+        })
+      },
       doShowNoteModal: function () {
+        var that = this
         var noteWrap = this.$refs.noteWrap
+        that.noteName = ''
+        that.noteContent = ''
         noteWrap.style.display = 'block'
         setTimeout(function () {
           noteWrap.classList.add('active')

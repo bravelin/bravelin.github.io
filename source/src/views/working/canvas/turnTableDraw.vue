@@ -157,6 +157,7 @@ that.needRotateDuration = 0.75 * (deltDeg / 180)</code></pre>
       <pre><code>@transitionend="doHandlerRotateEnd()"</code></pre>
     </div>
     <footer>2016年12月07日</footer>
+    <comments></comments>
   </div>
 </template>
 <script>

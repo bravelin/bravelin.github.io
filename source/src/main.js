@@ -3,18 +3,30 @@
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import App from './app.vue'
 import { Global } from './libs/global'
 
 Vue.use(VueRouter)
+Vue.use(VueResource)
+Vue.http.options.emulateJSON = true
+Vue.http.headers.common['X-APICloud-AppId'] = 'A6931492233958'
+
+var Comments = require('./components/comments.vue')
+Vue.component('comments', Comments)
+var TimeFormatter = require('./filters/time-formatter')
+Vue.filter('timeFormatter', TimeFormatter)
+
 window['_g'] = Global
 var _global = Global
 var pageRouterList = [
-  'home',
+  // 'home',
   'articles',
   'topics',
+  'comments',
   'about',
   'topicArticles',
+  '404',
   'working-project-gztjjweb',
   'learning-css-secrects-1',
   'learning-css-secrects-2',
@@ -43,7 +55,11 @@ pageRouterList.forEach(function (pageName) {
 
 // 其他链接
 pageRouterOption.push({
-  path: '*', redirect: { name: 'home' }
+  path: '/', redirect: { name: 'articles' }
+})
+
+pageRouterOption.push({
+  path: '*', redirect: { name: '404' }
 })
 
 // 路由配置

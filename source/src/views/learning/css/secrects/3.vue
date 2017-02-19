@@ -181,6 +181,7 @@
       <p>使用SVG也可以实现饼图，但感觉有点麻烦。而且SVG的兼容性也不是很好。</p>
     </div>
     <footer>2016年11月08日</footer>
+    <comments></comments>
   </div>
 </template>
 <script>

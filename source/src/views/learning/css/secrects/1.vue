@@ -53,6 +53,7 @@
       <p><strong>合理使用预处理器。</strong></p>
     </div>
     <footer>2016年10月30日</footer>
+    <comments></comments>
   </div>
 </template>
 <script>

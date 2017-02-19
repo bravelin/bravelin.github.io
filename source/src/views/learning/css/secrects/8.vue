@@ -17,6 +17,7 @@
       <p><strong>cubic-bezier(x1, y1, x2, y2)</strong>允许我们自定义调速函数。四个参数代表两个控制锚点的坐标值。曲线的两个端点分别固定在(0,0)和(1,1)</p>
     </div>
     <footer>2017年01月22日</footer>
+    <comments></comments>
   </div>
 </template>
 <script>
