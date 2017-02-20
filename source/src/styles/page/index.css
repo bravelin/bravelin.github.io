@@ -261,7 +261,7 @@ div#app-tip {
         border-radius: 6px; }
       .page > ul.article-list > li > div:nth-of-type(1) {
         font-size: 18px;
-        line-height: 2;
+        line-height: 1.8;
         padding: 8px 0; }
       .page > ul.article-list > li:hover {
         -webkit-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.4));
@@ -324,7 +324,7 @@ div#app-tip {
         line-height: 1.8;
         border-radius: 4px;
         padding: 8px;
-        background: #eee; }
+        background: #e0e0e0; }
       .page > ul.comments > li > div:nth-of-type(4) {
         margin-top: 10px; }
       .page > ul.comments > li > div:nth-of-type(5) {
@@ -351,13 +351,19 @@ div#app-tip {
     .page > h2.title {
       padding-left: 12px; } }
 @media screen and (max-width: 530px) {
-  .page > ul.article-list > li {
-    padding: 15px 15px 7px; }
+  .page > ul.article-list {
+    padding-left: 35px; }
+    .page > ul.article-list > li {
+      padding: 15px 15px 7px; }
+      .page > ul.article-list > li:before {
+        left: -30px; }
   .page > div.content {
     padding-left: 15px;
     padding-right: 15px; }
     .page > div.content pre > code {
-      padding: 15px 24px; } }
+      padding: 15px 24px; }
+  .page > ul.comments > li {
+    padding: 12px; } }
 @media screen and (max-width: 402px) {
   .page > ul.article-list > li {
     padding: 12px 12px 6px; }
