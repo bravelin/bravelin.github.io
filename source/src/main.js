@@ -166,7 +166,18 @@ var pageRouterOption = [
         }
     },
     {
+        path: '/working/project/base',
+        name: 'working-project-base',
+        component: function (resolve) {
+            require(['./views/working/project/base.vue'], resolve)
+        }
+    },
+    {
         path: '/',
+        redirect: {name: 'articles'}
+    },
+    {
+        path: '/home',
         redirect: {name: 'articles'}
     },
     {
@@ -195,10 +206,12 @@ router.afterEach(function (to) {
     setTimeout(function () {
         _global.loading = false
     }, 500)
-    if (/^(home|css|canvas|about)$/.test(to.name)) {
+    if (/^(comments|home|topicArticles|topics|404|articles|about)$/.test(to.name)) {
         _global.showArticleNavMenu = false
         _global.nextArticle = ''
         _global.prevArticle = ''
+    } else {
+        _global.setArticleNavMenu(to.name)
     }
 })
 

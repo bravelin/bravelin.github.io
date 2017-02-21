@@ -81,8 +81,6 @@ box-shadow: 0 0 0 1px rgba(0,0,0,0.7) inset;</code></pre>
     </div>
 </template>
 <script>
-    import {Global} from '../../../../libs/global'
-
     module.exports = {
         data: function () {
             return {
@@ -98,7 +96,6 @@ box-shadow: 0 0 0 1px rgba(0,0,0,0.7) inset;</code></pre>
                     }
                 }
             })
-            Global.setArticleNavMenu('learning-css-secrects-6')
         },
         methods: {
             changePop: function (type) {

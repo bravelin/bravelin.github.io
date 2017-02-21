@@ -1,7 +1,7 @@
 export default {
     author: 'zhangjialin',
     list: [
-        {
+        /* {
             id: '0',
             type: '工作总结',
             category: 'css',
@@ -9,7 +9,7 @@ export default {
             description: '14年第一次接手网站项目，做的匆忙而粗糙。年初重构了整个网站，记录下重构的过程。',
             date: '2016/05/15',
             routerName: 'working-project-gztjjweb'
-        },
+        }, */
         {
             id: '1',
             type: '读书笔记',
@@ -91,15 +91,6 @@ export default {
             topicId: '0'
         },
         {
-            id: '9',
-            type: '工作总结',
-            category: 'js',
-            title: 'JavaScript中浮点数计算的问题',
-            description: '',
-            date: '2017/01/14',
-            routerName: ''
-        },
-        {
             id: '10',
             type: '读书笔记',
             category: 'css',
@@ -108,6 +99,16 @@ export default {
             date: '2017/01/22',
             routerName: 'learning-css-secrects-8',
             topicId: '0'
+        },
+        {
+            id: '11',
+            type: '技术基础',
+            category: 'js',
+            title: '前端基础开发环境的配置',
+            description: '',
+            date: '2017/02/15',
+            routerName: 'working-project-base',
+            topicId: ''
         }
     ]
 }

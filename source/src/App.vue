@@ -52,16 +52,16 @@
             </ul>
         </nav>
         <nav class="article-nav-menu" v-show="global.showArticleNavMenu">
-            <router-link class="back" title="前一篇" v-if="global.prevArticle"
-                         :to="{ name: global.prevArticle }"></router-link>
-            <router-link class="next" title="后一篇" v-if="global.nextArticle"
-                         :to="{ name: global.nextArticle }"></router-link>
+            <router-link class="back" title="前一篇" v-if="global.prevArticle" :to="{ name: global.prevArticle }"></router-link>
+            <router-link class="next" title="后一篇" v-if="global.nextArticle" :to="{ name: global.nextArticle }"></router-link>
             <a class="note" title="留言" @click="doClickNoteBtn()"></a>
         </nav>
+        <note></note>
     </div>
 </template>
 <script>
     import Spinner from './components/spinner'
+    import Note from './components/note'
     import {Global} from './libs/global'
     import {eventHub} from './libs/hub.js'
 
@@ -74,7 +74,8 @@
             }
         },
         components: {
-            spinner: Spinner
+            spinner: Spinner,
+            note: Note
         },
         mounted: function () {
             var that = this
@@ -90,9 +91,16 @@
         },
         methods: {
             doClickNoteBtn: function () {
-                var that = this
-                that.isReply = false
-                that.doShowNoteModal()
+                var global = Global
+
+                eventHub.$emit('pop-note-modal', {
+                    noteType: 'comment',
+                    replyId: '',
+                    replyName: '',
+                    articleId: global.currArticleId,
+                    articleName: global.currArticleName,
+                    pageName: global.currPage
+                })
             },
             doHandlerScroll: function () {
                 var body = document.body

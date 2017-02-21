@@ -1,10 +1,10 @@
 <template>
-    <ul class="comments" v-show="dataList.length>0">
+    <ul class="comments" :class="{ all : !queryArticle }" v-show="dataList.length>0">
         <li v-for="item in dataList" :key="item.id">
             <div>
                 <span>{{ item.createdAt | timeFormatter }}</span>{{ item.userName }}
                 <a v-if="showDelBtn" @click="doDelete(item.id)">删除</a>
-                <a class='reply' v-if="showReplyBtn && !item.reply" @click="doReply(item.id, item.userName)">回复</a>
+                <a class='reply' v-if="showReplyBtn && !item.reply" @click="doReply(item)">回复</a>
             </div>
             <div v-show="!queryArticle && item.articleName && item.pageRouter">在文章"
                 <router-link :to="{ name: item.pageRouter }">{{ item.articleName }}</router-link>
@@ -69,8 +69,15 @@
                     that.doTimerRefresh()
                 }, 20000)
             },
-            doReply: function (id, name) {
-                eventHub.$emit('pop-reply-modal', {id: id, name: name})
+            doReply: function (item) {
+                eventHub.$emit('pop-note-modal', {
+                    noteType: 'reply',
+                    replyId: item.id,
+                    replyName: item.userName,
+                    articleId: item.articleId,
+                    articleName: item.articleName,
+                    pageName: item.pageRouter
+                })
             },
             doDelete: function (id) {
                 eventHub.$emit('pop-confirm-del-modal', id)

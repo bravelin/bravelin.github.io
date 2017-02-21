@@ -1,4 +1,7 @@
 <style scope>
+  .encourage{
+    margin-top: 20px;
+  }
   .encourage>img{
     display: block;
     width: 96%;
@@ -20,7 +23,6 @@
       <p>业余喜欢历史、音乐，看起来一副永远不成熟的样子。</p>
       <p>不善言辞。</p>
       <p>博客是自己用Vue.js框架创建的，主要是想记录一些技术知识点，以提升自己的水平。页面布局与样式比较简单，然而其实也不必复杂。可以留言、评论。</p>
-      <p>头像出自动漫大师宫崎骏作品《悬崖上的金鱼公主》。</p>
       <figure class="encourage">
         <img src="../assets/2.jpg"/>
         <figcaption>心之何如，有似万丈迷津，遥亘千里，其中并无舟子可以渡人，除了自渡，他人爱莫能助。</figcaption>

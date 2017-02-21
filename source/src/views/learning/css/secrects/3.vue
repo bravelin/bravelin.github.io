@@ -224,8 +224,6 @@
     </div>
 </template>
 <script>
-    import {Global} from '../../../../libs/global'
-
     module.exports = {
         mounted: function () {
             this.$nextTick(function () {
@@ -236,7 +234,6 @@
                     }
                 }
             })
-            Global.setArticleNavMenu('learning-css-secrects-3')
         }
     }
 </script>

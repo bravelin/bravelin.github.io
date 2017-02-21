@@ -101,8 +101,6 @@ transition: 1s;
     </div>
 </template>
 <script>
-    import {Global} from '../../../../libs/global'
-
     module.exports = {
         mounted: function () {
             this.$nextTick(function () {
@@ -113,7 +111,6 @@ transition: 1s;
                     }
                 }
             })
-            Global.setArticleNavMenu('learning-css-secrects-5')
         }
     }
 </script>

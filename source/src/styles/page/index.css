@@ -330,6 +330,10 @@ div#app-tip {
       .page > ul.comments > li > div:nth-of-type(5) {
         position: relative;
         margin-left: 36px; }
+    .page > ul.comments.all > li {
+      border-bottom: 1px solid #dbdbdb; }
+      .page > ul.comments.all > li:last-child {
+        border-bottom-width: 0; }
 
 .page-404 {
   background: #fff;

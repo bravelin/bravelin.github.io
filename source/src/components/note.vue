@@ -1,14 +1,14 @@
 <template>
-    <div class="note-wrap modal" ref="noteWrap">
+    <div class="note-wrap modal" :class="{ loading: inSubmit }">
         <div>
-            <h3>{{ isReply ? '回复@'+replyName : '留言' }}<span @click="doCloseNoteModal()">X</span></h3>
+            <h3>{{ noteType=='reply' ? '回复@'+replyName : ( noteType=='note' ? '留言' : '评论') }}<span @click="doCloseNoteModal()">X</span></h3>
             <div class="content">
-                <div class="clear-fix" v-show="!isReply">
+                <div class="clear-fix" v-show="noteType!='reply'">
                     <label>您的称呼：</label>
                     <input ref='noteNameEl' v-model="noteName" type="text" placeholder="your name" maxlength="20"/>
                 </div>
                 <div class="clear-fix">
-                    <label>{{ isReply ? "回复的话" : "您想说的话" }}：</label>
+                    <label>{{ noteType=='reply' ? "回复的话" : "您想说的话" }}：</label>
                     <textarea ref='noteContentEl' v-model="noteContent" placeholder="message content" maxlength="2000"></textarea>
                 </div>
             </div>
@@ -31,32 +31,32 @@
             return {
                 noteName: '',
                 noteContent: '',
-                isReply: false,
+                noteType: 'note', // note 留言 reply 回复 comment 评论
                 replyName: '',
-                replyId: ''
-            }
-        },
-        props: {
-            queryArticle: {
-                type: Boolean,
-                required: false,
-                default: true
+                replyId: '',
+                articleId: '', // 评论的文章ID
+                articleName: '', // 评论的文章名
+                pageName: '', // 评论的页面（router）
+                inSubmit: false
             }
         },
         created: function () {
-            var that = this
-            eventHub.$on('pop-reply-modal', that.doPopReplyModal)
+            eventHub.$on('pop-note-modal', this.doHandlerPopModal)
         },
         beforeDestroy: function () {
-            var that = this
-            eventHub.$off('pop-reply-modal', this.doPopReplyModal)
+            eventHub.$off('pop-note-modal', this.doHandlerPopModal)
         },
         methods: {
-            doPopReplyModal: function (replyObj) {
+            doHandlerPopModal: function (noteObj) {
                 var that = this
-                that.isReply = true
-                that.replyName = replyObj.name
-                that.replyId = replyObj.id
+                that.noteType = noteObj.noteType
+                if (that.noteType == 'reply') {
+                    that.replyName = noteObj.replyName
+                    that.replyId = noteObj.replyId
+                }
+                that.articleId = noteObj.articleId || ''
+                that.articleName = noteObj.articleName || ''
+                that.pageName = noteObj.pageName || ''
                 that.doShowNoteModal()
             },
             doSubmitNoteContent: function () {
@@ -64,8 +64,8 @@
                 var global = Global
                 var noteName = that.noteName.trim()
                 var noteContent = that.noteContent.trim()
-                var noteWrapEl = that.$refs.noteWrap
-                if (noteName.length == 0 && !that.isReply) {
+
+                if (noteName.length == 0 && that.noteType != 'reply') {
                     that.$refs.noteNameEl.focus()
                     return
                 }
@@ -76,22 +76,27 @@
                 that.noteName = noteName
                 that.noteContent = noteContent
                 // console.log('提交...')
-                noteWrapEl.classList.add('loading')
+                that.inSubmit = true
                 var now = (+new Date())
                 var appKey = Global.sha(Global.appKey + now) + '.' + now
-                that.$http.post('https://d.apicloud.com/mcm/api/comments', {
-                    articleId: that.isReply ? '' : global.currArticleId,
-                    userName: that.isReply ? 'linz' : noteName,
+                var submitData = {
+                    articleId: that.articleId,
+                    userName: noteName,
                     commentContent: noteContent,
-                    articleName: that.isReply ? '' : global.currArticleName,
-                    pageRouter: that.isReply ? '' : global.currPage,
-                    replyId: that.isReply ? that.replyId : ''
-                }, {
+                    articleName: that.articleName,
+                    pageRouter: that.pageName,
+                    replyId: ''
+                }
+                if (that.noteType == 'reply') {
+                    submitData.replyId = that.replyId
+                    submitData.userName = 'linz'
+                }
+                that.$http.post('https://d.apicloud.com/mcm/api/comments', submitData, {
                     headers: {
                         'X-APICloud-AppKey': appKey
                     }
                 }).then(function (res) {
-                    noteWrapEl.classList.remove('loading')
+                    that.inSubmit = false
                     if (res.status == 200) {
                         eventHub.$emit('refresh-comments')
                         global.tipShow('提交成功！')
@@ -100,13 +105,13 @@
                         global.tipShow('提交失败！请稍后再试！')
                     }
                 }, function () {
-                    noteWrapEl.classList.remove('loading')
+                    that.inSubmit = false
                     global.tipShow('提交失败！请稍后再试！')
                 })
             },
             doShowNoteModal: function () {
                 var that = this
-                var noteWrap = this.$refs.noteWrap
+                var noteWrap = that.$el
                 that.noteName = ''
                 that.noteContent = ''
                 noteWrap.style.display = 'block'
@@ -115,7 +120,8 @@
                 }, 200)
             },
             doCloseNoteModal: function () {
-                var noteWrap = this.$refs.noteWrap
+                var that = this
+                var noteWrap = that.$el
                 noteWrap.classList.remove('active')
                 setTimeout(function () {
                     noteWrap.style.display = 'none'

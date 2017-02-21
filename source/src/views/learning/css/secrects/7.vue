@@ -98,8 +98,6 @@ main{ flex: 1 }</code></pre>
     </div>
 </template>
 <script>
-    import {Global} from '../../../../libs/global'
-
     module.exports = {
         mounted: function () {
             this.$nextTick(function () {
@@ -110,7 +108,6 @@ main{ flex: 1 }</code></pre>
                     }
                 }
             })
-            Global.setArticleNavMenu('learning-css-secrects-7')
         }
     }
 </script>

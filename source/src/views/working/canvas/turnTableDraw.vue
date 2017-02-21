@@ -197,7 +197,6 @@ that.needRotateDuration = 0.75 * (deltDeg / 180)</code></pre>
                 // 绘制转盘
                 that.drawWheel()
             })
-            Global.setArticleNavMenu('working-canvas-turnTableDraw')
         },
         methods: {
             drawWheel: function () {

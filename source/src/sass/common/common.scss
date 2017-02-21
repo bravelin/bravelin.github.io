@@ -314,6 +314,14 @@ div#app-tip{
         }
       }
     }
+    &.all{
+      >li{
+        border-bottom: 1px solid #dbdbdb;
+        &:last-child{
+          border-bottom-width:0;
+        }
+      }
+    }
   }
 }
 
