@@ -8,7 +8,8 @@ module.exports = {
   extends: 'standard',
   globals: {
     'hljs': true,
-    'alert': true
+    'alert': true,
+    'sessionStorage': true
   },
   // required to lint *.vue files
   plugins: [

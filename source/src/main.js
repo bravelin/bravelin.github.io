@@ -206,8 +206,8 @@ router.afterEach(function (to) {
     setTimeout(function () {
         _global.loading = false
     }, 500)
-    if (/^(comments|home|topicArticles|topics|404|articles|about)$/.test(to.name)) {
-        _global.showArticleNavMenu = false
+    if (/^(home|topicArticles|topics|404|articles|about)$/.test(to.name)) {
+        _global.showArticleNavMenu = (to.name == 'comments')
         _global.nextArticle = ''
         _global.prevArticle = ''
     } else {

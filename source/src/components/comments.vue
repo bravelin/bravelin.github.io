@@ -7,8 +7,7 @@
                 <a class='reply' v-if="showReplyBtn && !item.reply" @click="doReply(item)">回复</a>
             </div>
             <div v-show="!queryArticle && item.articleName && item.pageRouter">在文章"
-                <router-link :to="{ name: item.pageRouter }">{{ item.articleName }}</router-link>
-                "处留言：
+                <router-link :to="{ name: item.pageRouter }">{{ item.articleName }}</router-link>"处留言：
             </div>
             <div>{{ item.commentContent }}</div>
             <template v-if="item.reply">
@@ -48,8 +47,13 @@
             if (pageParams.reply == 'true') {
                 that.showReplyBtn = true
             }
-            console.log('showReplyBtn：' + that.showReplyBtn)
+            // console.log('showReplyBtn：' + that.showReplyBtn)
             if (!that.queryArticle) {
+                var cacheData = sessionStorage.getItem('all-comments')
+                if (cacheData) {
+                    cacheData = JSON.parse(cacheData)
+                    that.handlerData(cacheData)
+                }
                 that.refresh()
             }
             eventHub.$on('refresh-comments', that.refresh)
@@ -82,6 +86,35 @@
             doDelete: function (id) {
                 eventHub.$emit('pop-confirm-del-modal', id)
             },
+            handlerData: function (list) {
+                var that = this
+                var k
+                var dataList = []
+                var commentIndexObj = {}
+                var dataItem
+                var commentItem
+
+                for (k = list.length - 1; k >= 0; k--) {
+                    dataItem = list[k]
+                    if (!dataItem.replyId) {
+                        commentIndexObj[dataItem.id] = dataList.length
+                        dataList.push(dataItem)
+                    } else {
+                        commentItem = dataList[commentIndexObj[dataItem.replyId]]
+                        if (commentItem) {
+                            commentItem.reply = dataItem
+                        }
+                    }
+                }
+                dataList = dataList.reverse()
+                // console.log('dataList len：' + dataList.length)
+                // console.dir(dataList)
+                that.dataList = dataList
+                if (!that.hasStarted) {
+                    that.hasStarted = true
+                    // that.doTimerRefresh() // 定时刷新
+                }
+            },
             refresh: function () { // get data
                 var that = this
                 var now = (+new Date())
@@ -101,32 +134,10 @@
                     if (res.status == 200) {
                         // console.dir(res.body)
                         var list = res.body || []
-                        var k
-                        var dataList = []
-                        var commentIndexObj = {}
-                        var dataItem
-                        var commentItem
-
-                        for (k = list.length - 1; k >= 0; k--) {
-                            dataItem = list[k]
-                            if (!dataItem.replyId) {
-                                commentIndexObj[dataItem.id] = dataList.length
-                                dataList.push(dataItem)
-                            } else {
-                                commentItem = dataList[commentIndexObj[dataItem.replyId]]
-                                if (commentItem) {
-                                    commentItem.reply = dataItem
-                                }
-                            }
+                        if (!that.queryArticle) {
+                            sessionStorage.setItem('all-comments', JSON.stringify(list))
                         }
-                        dataList = dataList.reverse()
-                        // console.log('dataList len：' + dataList.length)
-                        // console.dir(dataList)
-                        that.dataList = dataList
-                        if (!that.hasStarted) {
-                            that.hasStarted = true
-                            // that.doTimerRefresh() // 定时刷新
-                        }
+                        that.handlerData(list)
                     }
                 })
             }

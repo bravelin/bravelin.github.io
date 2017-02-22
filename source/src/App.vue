@@ -92,15 +92,20 @@
         methods: {
             doClickNoteBtn: function () {
                 var global = Global
-
-                eventHub.$emit('pop-note-modal', {
+                var noteObj = {
                     noteType: 'comment',
                     replyId: '',
                     replyName: '',
                     articleId: global.currArticleId,
                     articleName: global.currArticleName,
                     pageName: global.currPage
-                })
+                }
+                if (global.currPage == 'comments') {
+                    noteObj.noteType = 'note'
+                    noteObj.articleId = ''
+                    noteObj.articleName = ''
+                }
+                eventHub.$emit('pop-note-modal', noteObj)
             },
             doHandlerScroll: function () {
                 var body = document.body
