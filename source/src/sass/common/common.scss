@@ -180,6 +180,17 @@ div#app-tip{
         padding:15px 36px;
       }
     }
+    &.article{
+      figure{
+        margin: 8px 0;
+        >img{
+          display: block;
+          margin: 0 auto;
+          width: 96%;
+          max-width: 800px;
+        }
+      }
+    }
   }
   >div.topic-title{
     line-height: 1.5;

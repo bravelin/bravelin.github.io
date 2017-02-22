@@ -223,6 +223,13 @@ div#app-tip {
       margin-top: 8px; }
       .page > div.content pre > code {
         padding: 15px 36px; }
+    .page > div.content.article figure {
+      margin: 8px 0; }
+      .page > div.content.article figure > img {
+        display: block;
+        margin: 0 auto;
+        width: 96%;
+        max-width: 800px; }
   .page > div.topic-title {
     line-height: 1.5;
     font-size: 28px;
