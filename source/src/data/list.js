@@ -108,7 +108,7 @@ export default {
             description: '',
             date: '2017/02/15',
             routerName: 'working-project-base',
-            topicId: ''
+            topicId: '主要记录安装完node.js和ruby之后sass的配置、淘宝cnpm以及gulp插件的安装。'
         }
     ]
 }

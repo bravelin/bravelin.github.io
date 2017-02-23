@@ -177,7 +177,8 @@ div#app-tip {
     .page > div.content p {
       margin-top: 8px;
       line-height: 2;
-      text-indent: 36px; }
+      text-indent: 36px;
+      word-wrap: break-word; }
       .page > div.content p em {
         font-weight: bold; }
       .page > div.content p strong {
