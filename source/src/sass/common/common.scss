@@ -177,6 +177,23 @@ div#app-tip{
     }
     pre{
       margin-top:8px;
+      &.inner{
+        margin-left: 32px;
+        margin-right: 32px;
+      }
+      &.black{
+        background: #333;
+        border-color: #333;
+        >code{
+          color: #fff;
+          span.hljs-selector-tag,span.hljs-string{
+            color: #fff;
+          }
+          span.hljs-symbol,span.hljs-built_in,span.hljs-keyword,span.hljs-attribute{
+            color: #f66;
+          }
+        }
+      }
       >code{
         padding:15px 36px;
       }
@@ -233,10 +250,12 @@ div#app-tip{
         color:#f96;
         background-color: #cfc;
         border-radius: 6px;
+        line-height: 1.4;
+        margin-bottom: 2px;
       }
       >div:nth-of-type(1){
         font-size: 18px;
-        line-height: 1.8;
+        line-height: 1.7;
         padding:8px 0;
       }
       &:hover{

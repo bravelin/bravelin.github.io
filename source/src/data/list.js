@@ -105,10 +105,10 @@ export default {
             type: '技术基础',
             category: 'js',
             title: '前端基础开发环境的配置',
-            description: '',
-            date: '2017/02/15',
+            description: '主要记录安装完node.js和ruby之后sass的配置、淘宝cnpm以及gulp插件的安装。',
+            date: '2016/05/15',
             routerName: 'working-project-base',
-            topicId: '主要记录安装完node.js和ruby之后sass的配置、淘宝cnpm以及gulp插件的安装。'
+            topicId: ''
         }
     ]
 }

@@ -5,7 +5,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import App from './app.vue'
-import {Global} from './libs/global'
+import { Global } from './libs/global'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
