@@ -33,7 +33,10 @@ exports.Global = {
                 break
             }
         }
-        eventHub.$emit('refresh-comments')
+
+        setTimeout(function () {
+            eventHub.$emit('refresh-comments')
+        }, 4000)
     },
     tipShow: function (content, time) {
         var _tip = this.tip

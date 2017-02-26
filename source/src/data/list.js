@@ -1,21 +1,12 @@
 export default {
     author: 'zhangjialin',
     list: [
-        /* {
-            id: '0',
-            type: '工作总结',
-            category: 'css',
-            title: '赣州统计信息网前端页面的重构',
-            description: '14年第一次接手网站项目，做的匆忙而粗糙。年初重构了整个网站，记录下重构的过程。',
-            date: '2016/05/15',
-            routerName: 'working-project-gztjjweb'
-        }, */
         {
             id: '1',
             type: '读书笔记',
             category: 'css',
             title: '《CSS 揭秘》笔记之一：前言',
-            description: '由W3C CSS工作组特邀专家、CSS语言设计者之一的Lea Verou撰写。被百姓网前段架构师誉之为\'十年来最重要的CSS图书，没有之一\'的一本进阶书。前言中主要是编程理念，特性检测与CSS编码技巧。',
+            description: '由W3C CSS工作组特邀专家、CSS语言设计者之一的Lea Verou撰写。\'十年来最重要的CSS图书，没有之一\'。前言中主要是编程理念，特性检测与CSS编码技巧。',
             date: '2016/10/30',
             routerName: 'learning-css-secrects-1',
             topicId: '0'
@@ -45,7 +36,7 @@ export default {
             type: '读书笔记',
             category: 'css',
             title: '《CSS 揭秘》笔记之四：视觉效果',
-            description: '此书第四章的内容。',
+            description: '此书第四章的内容。讲解单侧投影、不规则投影、染色效果和折角效果的实现。',
             date: '2016/11/20',
             routerName: 'learning-css-secrects-4',
             topicId: '0'
@@ -55,7 +46,7 @@ export default {
             type: '读书笔记',
             category: 'css',
             title: '《CSS 揭秘》笔记之五：字体排印',
-            description: '此书第五章的内容。',
+            description: '此书第五章的内容。讲解连字符断行、简洁的插入换行、文本斑马线、自定义下划线以及几种文字效果的实现。',
             date: '2016/12/05',
             routerName: 'learning-css-secrects-5',
             topicId: '0'
@@ -75,7 +66,7 @@ export default {
             type: '读书笔记',
             category: 'css',
             title: '《CSS 揭秘》笔记之六：用户体验',
-            description: '此书第六章的内容。',
+            description: '此书第六章的内容。主要内容是如何扩大点击区域、自定义复选框以及如何通过模糊弱化背景的实现。',
             date: '2016/12/20',
             routerName: 'learning-css-secrects-6',
             topicId: '0'
@@ -85,7 +76,7 @@ export default {
             type: '读书笔记',
             category: 'css',
             title: '《CSS 揭秘》笔记之七：结构与布局',
-            description: '此书第七章的内容。',
+            description: '此书第七章的内容。如何做到自适应内部元素、根据兄弟元素的数量来设置样式以及垂直居中是此章节的主题。',
             date: '2017/01/10',
             routerName: 'learning-css-secrects-7',
             topicId: '0'

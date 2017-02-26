@@ -132,7 +132,6 @@
                     params: {filter: JSON.stringify(filter)}
                 }).then(function (res) {
                     if (res.status == 200) {
-                        // console.dir(res.body)
                         var list = res.body || []
                         if (!that.queryArticle) {
                             sessionStorage.setItem('all-comments', JSON.stringify(list))
