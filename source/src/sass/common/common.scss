@@ -168,8 +168,8 @@ div#app-tip{
       color:#f96;
       font-size:26px;
       border-radius: 6px;
-      line-height: 2.4;
-      padding-left:18px;
+      line-height: 1.4;
+      padding:10px 18px;
       margin-top:20px;
       &:first-child{
         margin-top:0
@@ -401,8 +401,12 @@ div#app-tip{
       padding-left:15px;
       padding-right:15px;
       pre{
+        &.inner{
+          margin-left: 0;
+          margin-right: 0;
+        }
         >code{
-          padding:15px 24px;
+          padding:15px 18px;
         }
       }
     }

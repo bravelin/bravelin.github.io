@@ -2,6 +2,7 @@
     <div class="page article">
         <h2 class="title">前端基础开发环境的配置</h2>
         <div class="content article">
+            <p>以下安装和配置基于windows7 x64系统。</p>
             <h3 class="title">工具软件的安装</h3>
             <p><strong>1. 安装node.js</strong></p>
             <p>下载地址：<a href="https://nodejs.org/en/">https://nodejs.org/en/</a>，node -v 命令可以查看当前的版本：</p>
@@ -66,6 +67,7 @@ Sass 3.4.23 (Selective Steve)</code></pre>
             <p><strong>5. 全局安装node模块</strong></p>
             <p>默认的node模块是安装在项目目录下的，但这会导致每个项目下都需要node_modules目录及很多node模块文件，可以将这些模块安装在全局。</p>
             <p>在node.js的安装目录下新建两个文件夹：node_global和node_cache：</p>
+            <p>windows10操作系统对系统盘文件的操作有更严格的限制，可能会出现安装不了就全局node模块的问题，此时可以将这两个目录配置在其他磁盘。</p>
             <figure>
                 <img style="max-width: 800px;" src="../../../assets/work/base/10.png"/>
             </figure>
@@ -92,17 +94,18 @@ C:\Program Files\nodejs\node_cache</code></pre>
             <pre class="inner black center"><code>"/css/style.css"  =>  "/css/style.css?v=1d87bebe"
 "/js/script.js"  =>  "/js/script.js?v=28dnamka"</code></pre>
             <p>要达此目的需要修改gulp-rev和gulp-rev-collector。（版本不同，代码行数可能不一样）</p>
-            <p>① 打开文件：C:\Program Files\nodejs\node_global\node_modules\gulp-rev\index.js</p>
+            <p>① 打开文件：{ node_globa }\node_modules\gulp-rev\index.js</p>
             <p>第144行：manifest[originalFile] = revisionedFile;</p>
             <p>改为：manifest[originalFile] = originalFile + '?v=' + file.revHash;</p>
             <p>② 打开文件：</p>
-            <p>C:\Program Files\nodejs\node_global\node_modules\gulp-rev\node_modules\rev-path\index.js</p>
+            <p>{ node_globa }\node_modules\gulp-rev\node_modules\rev-path\index.js</p>
             <p>第10行：return filename + '-' + hash + ext;</p>
             <p>改为：return filename + ext;</p>
             <p>③ 打开文件：</p>
-            <p>C:\Program Files\nodejs\node_global\node_modules\gulp-rev-collector\index.js</p>
+            <p>{ node_globa }\node_modules\gulp-rev-collector\index.js</p>
             <p>第31行：path.basename(json[key]).replace(new RegExp( opts.revSuffix ), '' ) !== path.basename(key)</p>
             <p>改为：path.basename(json[key]).split('?')[0] !==  path.basename(key)</p>
+            <p>{ node_globa }是设置的全局node模块安装目录，如：C:\Program Files\nodejs\node_global。</p>
         </div>
         <footer>2016年05月15日</footer>
         <comments></comments>
