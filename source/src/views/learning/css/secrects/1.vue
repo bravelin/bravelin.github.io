@@ -3,6 +3,9 @@
         <h2 class="title">《CSS 揭秘》笔记之一：前言</h2>
         <div class="content">
             <p>"十年来最重要的CSS图书，没有之一"。</p>
+            <figure class="common">
+                <img style="max-width: 800px;" src="../../../../assets/exp/css-secrects/2.png"/>
+            </figure>
             <p>这本书的作者是W3C CSS工作组特邀专家、CSS语言设计者之一：<em>Lea Verou</em>。令人惊叹的是，这本书完全由HTML5写成，布局与排版由CSS渲染。此书在<a
                     href="https://book.douban.com/subject/26745943/">豆瓣</a>上的评分高达9.3，是一本诸多前端大师倾情推荐的好书。中文版由<a
                     href="https://github.com/cssmagic/blog/issues/54">CSS 魔法</a>翻译。</p>
@@ -48,7 +51,7 @@
             <p><strong>W3C并不产生标准。</strong>CSS规范由CSS工作组的成员来编写，大部分成员来自W3C会员公司。每项规范从最初启动到最终成熟，都会经过多个阶段。</p>
             <p>CSS1规范发表于1996年，两年之后，CSS2规范发布了。<strong>尽管"CSS3"这个名词非常流行，但实际上并没有在任何规范中定义过。</strong>CSS3指的是一个非正式的集合，它包括CSS规范第三版及一些版本号还是1的新规范。
             </p>
-            <h3 class="sub-title">CSS编码技巧：</h3>
+            <h3 class="title">CSS编码技巧：</h3>
             <p>
                 <strong>尽量减少重复的代码。</strong>当某些值相互依赖时，应该把它们的相互关系用代码表示出来。<strong>currentColor是一个特殊的颜色关键字，CSS中有史以来的第一个变量。</strong>减少重复多使用<strong>inherit关键字。</strong>
             </p>

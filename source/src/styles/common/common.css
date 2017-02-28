@@ -167,6 +167,13 @@ div#app-tip {
   max-width: 1280px; }
   .page.article {
     background-color: #fafafa; }
+    .page.article > div.content figure.common {
+      margin: 8px 0; }
+      .page.article > div.content figure.common > img {
+        display: block;
+        margin: 0 auto;
+        width: 96%;
+        max-width: 800px; }
   .page > h2.title {
     padding: 20px 24px;
     border-bottom: 1px solid #dbdbdb;
@@ -236,13 +243,6 @@ div#app-tip {
             color: #f66; }
       .page > div.content pre > code {
         padding: 15px 36px; }
-    .page > div.content.article figure {
-      margin: 8px 0; }
-      .page > div.content.article figure > img {
-        display: block;
-        margin: 0 auto;
-        width: 96%;
-        max-width: 800px; }
   .page > div.topic-title {
     line-height: 1.5;
     font-size: 28px;

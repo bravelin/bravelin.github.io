@@ -128,21 +128,21 @@ div.marching-ants>div{
 }
 /////////////////////////////////////////////////////3
 div.ellipse-1>div{
-  background-color: #bc6060;
+  background-color: #58a;
   border-radius: 155px / 60px;
 }
 div.ellipse-2>div{
-  background-color: #bc6060;
+  background-color: #58a;
   border-radius: 50% / 100% 100% 0 0;
 }
 div.ellipse-3>div{
-  width:200px;
-  background-color: #bc6060;
+  width:100px;
+  background-color: #58a;
   border-radius: 100% 0 0 100%/ 50%;
 }
 div.ellipse-4>div{
   width:200px;
-  background-color: #bc6060;
+  background-color: #58a;
   border-radius: 100% 0 0/ 100% 0 0;
 }
 div.paralle-1{
@@ -702,6 +702,9 @@ div.bounce{
   div.pie>div{
     height:220px;
     width:220px;
+  }
+  div.expand-hot-area>div{
+    width: 60px;
   }
 }
 @media screen and (max-width: 359px){

@@ -86,7 +86,7 @@ export default {
             type: '读书笔记',
             category: 'css',
             title: '《CSS 揭秘》笔记之八：过渡与动画',
-            description: '此书第八章的内容。',
+            description: '此书第八章的内容。（未完）',
             date: '2017/01/22',
             routerName: 'learning-css-secrects-8',
             topicId: '0'

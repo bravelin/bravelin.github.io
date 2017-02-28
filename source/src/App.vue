@@ -8,7 +8,7 @@
                 <div class="logo"></div>
                 <div class="title">
                     <h1>linz blog</h1>
-                    <h2>你只管努力，剩下的交给时光。</h2>
+                    <h2>年华易老，不忘初心。</h2>
                 </div>
             </div>
             <nav :class="{ fixedTop: isFixedTop }">
@@ -112,7 +112,7 @@
                 this.isFixedTop = (body && body.scrollTop > 188)
             },
             doClickSideMenuWrap: function (event) {
-                event.stopPropagation()
+                // event.stopPropagation()
             },
             doHideSideMenu: function () {
                 this.showSizeMenu = false

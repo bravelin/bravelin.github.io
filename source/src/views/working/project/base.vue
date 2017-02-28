@@ -1,7 +1,7 @@
 <template>
     <div class="page article">
         <h2 class="title">前端基础开发环境的配置</h2>
-        <div class="content article">
+        <div class="content">
             <p>以下安装和配置基于windows7 x64系统。</p>
             <h3 class="title">工具软件的安装</h3>
             <p><strong>1. 安装node.js</strong></p>
@@ -13,7 +13,7 @@ v6.9.5</code></pre>
             <p><a href="http://rj.baidu.com/soft/detail/22711.html?ald">http://rj.baidu.com/soft/detail/22711.html?ald</a></p>
             <p><a href="http://download.csdn.net/download/ml065787/9640336">http://download.csdn.net/download/ml065787/9640336</a></p>
             <p>安装的第二步，请勾选"Add Ruby executables to your PATH"：</p>
-            <figure>
+            <figure class="common">
                 <img style="max-width: 503px;" src="../../../assets/work/base/2.png"/>
             </figure>
             <p>ruby -v 命令可以查看当前的版本：</p>
@@ -26,7 +26,7 @@ ruby 2.3.1p112 (2016-04-26 revision 54768) [x64-mingw32]</code></pre>
             <p><strong>1. 更改Ruby的gem source</strong></p>
             <p>参考文档地址：<a href="http://gems.ruby-china.org/">http://gems.ruby-china.org/</a></p>
             <p>打开ruby命令行窗口：</p>
-            <figure>
+            <figure class="common">
                 <img style="max-width: 442px;" src="../../../assets/work/base/4.png"/>
             </figure>
             <p>执行以下命令：</p>
@@ -58,7 +58,7 @@ Sass 3.4.23 (Selective Steve)</code></pre>
             <p><strong>4. 淘宝npm镜像</strong></p>
             <p>参考文档地址：<a href="http://npm.taobao.org/">http://npm.taobao.org/</a></p>
             <p>打开node命令行窗口：</p>
-            <figure>
+            <figure class="common">
                 <img style="max-width: 410px;" src="../../../assets/work/base/9.png"/>
             </figure>
             <p>使用cnpm命令行工具代替npm：</p>
@@ -68,7 +68,7 @@ Sass 3.4.23 (Selective Steve)</code></pre>
             <p>默认的node模块是安装在项目目录下的，但这会导致每个项目下都需要node_modules目录及很多node模块文件，可以将这些模块安装在全局。</p>
             <p>在node.js的安装目录下新建两个文件夹：node_global和node_cache：</p>
             <p>windows10操作系统对系统盘文件的操作有更严格的限制，可能会出现安装不了就全局node模块的问题，此时可以将这两个目录配置在其他磁盘。</p>
-            <figure>
+            <figure class="common">
                 <img style="max-width: 800px;" src="../../../assets/work/base/10.png"/>
             </figure>
             <p>打开cmd命令行窗口执行如下两条命令：</p>

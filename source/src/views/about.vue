@@ -18,7 +18,7 @@
   <div class="page article">
     <h2 class="title">About Me</h2>
     <div class="content">
-      <p>一名普通的Programmer，2011年计算机科学与技术专业本科毕业。毕业之后接触过Flex，Java等技术，目前专注于Web前端开发。<p>
+      <p>一名普通的Programmer，2011年计算机科学与技术专业本科毕业。目前专注于Web前端开发。<p>
       <p>在北京工作过三年多，15年夏季来了深圳，就职于石豆软件。</p>
       <p>业余喜欢历史、音乐，看起来一副永远不成熟的样子。</p>
       <p>不善言辞。</p>
