@@ -100,6 +100,16 @@ export default {
             date: '2016/05/15',
             routerName: 'working-project-base',
             topicId: ''
+        },
+        {
+            id: '12',
+            type: '读书笔记',
+            category: 'es6',
+            title: '《ES6标准入门》笔记之一',
+            description: '',
+            date: '2017/03/08',
+            routerName: 'learning-es6-1',
+            topicId: '2'
         }
     ]
 }
