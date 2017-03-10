@@ -191,6 +191,8 @@ div#app-tip {
       .page > div.content p strong {
         color: #f60;
         font-weight: normal; }
+      .page > div.content p i {
+        color: #906; }
       .page > div.content p a {
         color: #17579d; }
         .page > div.content p a:hover {

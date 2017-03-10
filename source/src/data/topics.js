@@ -16,6 +16,14 @@ export default {
             title: 'Canvas应用',
             description: '',
             date: '2016/11/05'
+        },
+        {
+            id: '2',
+            type: '学习笔记',
+            category: 'es6',
+            title: 'ES6标准学习',
+            description: 'ES6标准入门学习笔记',
+            date: '2017/03/08'
         }
     ]
 }
