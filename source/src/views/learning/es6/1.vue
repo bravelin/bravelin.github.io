@@ -43,7 +43,7 @@ if (true) {
             constantize(obj[key])
         }
     })
-}<code></pre>
+}</code></pre>
             <p>ES6一共有6种声明变量的方法：var、function、let、const、import、class</p>
             <h3 class="title">跨模块常量</h3>
             <p>const声明的变量只在当前代码块有效，跨模块常量可以如下设置：</p>
@@ -72,7 +72,7 @@ console.log(B)</code></pre>
             this.$nextTick(function () {
                 var codes = document.querySelectorAll('code')
                 if (codes.length > 0) {
-                    for (var k = 0; k < codes.length; k++) {
+                    for (let k = 0; k < codes.length; k++) {
                         hljs.highlightBlock(codes[k])
                     }
                 }

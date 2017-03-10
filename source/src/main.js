@@ -180,6 +180,13 @@ var pageRouterOption = [
         }
     },
     {
+        path: '/learning/es6/2',
+        name: 'learning-es6-2',
+        component: function (resolve) {
+            require(['./views/learning/es6/2.vue'], resolve)
+        }
+    },
+    {
         path: '/',
         redirect: {name: 'articles'}
     },

@@ -105,10 +105,20 @@ export default {
             id: '12',
             type: '读书笔记',
             category: 'es6',
-            title: '《ES6标准入门》笔记之一',
-            description: '',
+            title: '《ES6标准入门》笔记之一：let与const命令',
+            description: 'let、const命令以及块级作用域概念。',
             date: '2017/03/08',
             routerName: 'learning-es6-1',
+            topicId: '2'
+        },
+        {
+            id: '13',
+            type: '读书笔记',
+            category: 'es6',
+            title: '《ES6标准入门》笔记之二',
+            description: '',
+            date: '2017/03/09',
+            routerName: 'learning-es6-2',
             topicId: '2'
         }
     ]
