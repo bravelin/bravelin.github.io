@@ -108,8 +108,9 @@
                 eventHub.$emit('pop-note-modal', noteObj)
             },
             doHandlerScroll: function () {
-                var body = document.body
-                this.isFixedTop = (body && body.scrollTop > 188)
+                var top = document.body.scrollTop || document.documentElement.scrollTop
+                console.log('body scrollTop' + top)
+                this.isFixedTop = top > 188
             },
             doClickSideMenuWrap: function (event) {
                 // event.stopPropagation()

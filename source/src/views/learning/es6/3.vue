@@ -30,6 +30,17 @@ s.codePointAt(2).toString(16) // 61，正确序号其实是1</code></pre>
 for(let ch of s){ console.log(ch.codePointAt(0).toString(16)) }</code></pre>
             <p>测试一个字符是由两个字节组成还是四个字节组成：</p>
             <pre><code>function is32Bit(c) { return c.codePointAt(0) > 0xffff }</code></pre>
+            <h3 class="title">String.fromCodePoint</h3>
+            <p>ES5的String.fromCharCode方法用于从码点返回对应字符，但这个方法不能识别32位的UTF-16字符。String.fromCodePoint方法则可以。在作用上，与codePointAt方法相反。</p>
+            <h3 class="title">字符串的遍历器接口</h3>
+            <p>ES6为字符串提供了遍历器接口，使字符串可以由for...of循环遍历。</p>
+            <pre><code>for(let codePoint of 'foo') { console.log(codePoint) }
+// 'f'
+// 'o'
+// 'o'</code></pre>
+            <p>这个遍历器的最大优点是可以识别大于0xFFFF的码点。</p>
+            <h3 class="title">at()</h3>
+            <p>ES5中的charAt方法返回字符串给定位置的字符，该方法不能识别大于0xffff的字符。at方法则可以识别。</p>
         </div>
         <footer>2017年03月11日</footer>
         <comments></comments>
