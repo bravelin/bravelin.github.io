@@ -116,9 +116,19 @@ export default {
             type: '读书笔记',
             category: 'es6',
             title: '《ES6标准入门》笔记之二：变量的解构赋值',
-            description: '',
+            description: '数组、对象、字符串、数值和布尔值的解构赋值及其用途',
             date: '2017/03/09',
             routerName: 'learning-es6-2',
+            topicId: '2'
+        },
+        {
+            id: '14',
+            type: '读书笔记',
+            category: 'es6',
+            title: '《ES6标准入门》笔记之三：字符串的扩展',
+            description: '',
+            date: '2017/03/11',
+            routerName: 'learning-es6-3',
             topicId: '2'
         }
     ]
