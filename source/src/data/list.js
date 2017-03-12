@@ -115,7 +115,7 @@ export default {
             id: '13',
             type: '读书笔记',
             category: 'es6',
-            title: '《ES6标准入门》笔记之二',
+            title: '《ES6标准入门》笔记之二：变量的解构赋值',
             description: '',
             date: '2017/03/09',
             routerName: 'learning-es6-2',
