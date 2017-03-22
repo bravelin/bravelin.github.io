@@ -41,6 +41,19 @@ for(let ch of s){ console.log(ch.codePointAt(0).toString(16)) }</code></pre>
             <p>这个遍历器的最大优点是可以识别大于0xFFFF的码点。</p>
             <h3 class="title">at()</h3>
             <p>ES5中的charAt方法返回字符串给定位置的字符，该方法不能识别大于0xffff的字符。at方法则可以识别。</p>
+            <h3 class="title">includes()、startsWidth()、endsWidth()</h3>
+            <p>除了indexOf()之外，es6提供的这3种方法也可以确定一个字符串是否包含在另外的一个字符串中。</p>
+            <p>includes()：返回布尔值，表示是否找到了参数字符串。</p>
+            <p>startsWidth()：返回布尔值，表示参数字符串是否在源字符串的头部。</p>
+            <p>endsWidth()：返回布尔值，表示参数字符串是否在源字符串的尾部。</p>
+            <p><strong>这3个方法都支持第二个参数n，表示开始搜索的位置。(endsWidth的n表示前n个字符)</strong></p>
+            <h3 class="title">repeat()</h3>
+            <p>repeat方法返回一个新的字符串，表示将原字符重复n次。（参数会被转成整数。）</p>
+            <h3 class="title">padStart()、padEnd()</h3>
+            <p>ES7推出了字符串补全功能，如果某个字符串未达到指定的长度，则在头部或者尾部补全之。</p>
+            <pre><code>'x'.padStart(5,'ab') // ababx
+'x'.padEnd(5,'ab') // xabab</code></pre>
+            <p>第一个参数指定字符串的最小长度，第二个参数（默认为空格）则是用来补全的字符串。</p>
         </div>
         <footer>2017年03月11日</footer>
         <comments></comments>
