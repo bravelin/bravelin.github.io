@@ -9,6 +9,10 @@ html, body, div, span, h1, h2, h3, h4, button, h5, h6, p, blockquote, a, pre, ci
   -moz-box-sizing: border-box;
        box-sizing: border-box; }
 
+sup {
+  vertical-align: super;
+  font-size: smaller; }
+
 html, body {
   margin: 0 auto;
   padding: 0;
