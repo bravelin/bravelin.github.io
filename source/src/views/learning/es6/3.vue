@@ -54,6 +54,67 @@ for(let ch of s){ console.log(ch.codePointAt(0).toString(16)) }</code></pre>
             <pre><code>'x'.padStart(5,'ab') // ababx
 'x'.padEnd(5,'ab') // xabab</code></pre>
             <p>第一个参数指定字符串的最小长度，第二个参数（默认为空格）则是用来补全的字符串。</p>
+            <h3 class="title">模板字符串</h3>
+            <p>模板字符串（template string）是增强版的字符串，使用反撇号（`：一般和~是同一个按键）标识。它可以当做普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量：</p>
+            <pre><code>`In JavaScript '\n' is a line-feed` // 普通字符串
+
+// 多行字符串，可以直接换行
+`In JavaScript this is
+    not legal`
+
+// 在字符串中嵌入变量
+var name = 'bob', time = 'today'
+`Hello ${name}, how are you ${time}` // Hello bob, how are you today</code></pre>
+            <p><strong>如果在模板字符串中使用反撇号，则前面需要使用反斜杠转义。</strong>如果使用模板字符串表示多行字符，则所有的缩进和空格都会保留在输出中。</p>
+            <p>在模板字符串中嵌入变量，需要写在<strong> ${} </strong>中。大括号内可以放入任意的JavaScript表达式（甚至调用函数），可以进行运算，以及引用对象的属性。</p>
+            <pre><code>var x = 1, y = 2
+`${x} + ${y} = ${ x+ y}`
+
+function fn() { return 'good luck!' }
+`foo ${fn()} boo` // foo good luck! boo</code></pre>
+            <p>如果大括号中的对象不是字符串，则会调用对象的toString()方法转为字符串。如果引用的对象没有声明，则报错。</p>
+            <h3 class="title">模板编译</h3>
+            <p>待编译的模板：</p>
+            <pre><code>var template = `
+&lt;ul&gt;
+    &lt;% for(var i = 0; i < data.length; i++) { %&gt;
+        &lt;li&gt;&lt;%= data[i] %&gt;&lt;/li&gt;
+    &lt;% } %&gt;
+&lt;/ul&gt;
+                `</code></pre>
+            <p>使用正则表达式将其转为JavaScript表达式字符串：</p>
+            <pre><code>var evalExpr = /<%=(.+?)%>/g
+var expr = /<%([\s\S]+?)%>/g
+template = template.replace(evalExpr, '`); \n echo( $1 ); \n echo(`').replace(expr, '`); \n $1 \n echo(`')
+template = 'echo(`' + template + '`)'</code></pre>
+            <p>处理之后的结果是：</p>
+            <pre><code>echo(`&lt;ul&gt;`);
+for(var i = 0; i < data.length; i++) {
+     echo(`&lt;li&gt;`);
+     echo(  data[i]  );
+     echo(`&lt;/li&gt;`);
+}
+echo(`&lt;/ul&gt;`)</code></pre>
+            <p>最终的脚本：</p>
+            <pre><code>var script = `(function parse(data){
+    var output = ''
+    function echo (html) { output += html }
+    ${ template }
+    return output
+})`</code></pre>
+            <h3 class="title">标签模板（tagged template）</h3>
+            <p>模板字符串可以紧跟在一个函数名的后面，该函数将被调用来处理这个模板字符串。</p>
+            <p><strong>标签模板其实不是模板，而是函数调用的一种形式。"标签"指的是函数，紧跟在后面的模板字符串就是它的参数。</strong></p>
+            <pre><code>var a = 5, b = 10
+tag `Hello ${ a + b } world ${ a * b }`
+
+function tag (stringArr, ...values) {}
+// 实际上是 tag (['Hello ', ' world', ''], 15, 50)</code></pre>
+            <p>tag函数的第一个参数是一个数组，该数组的成员是模板字符串中那些没有变量替换的部分。其他参数是模板字符串中各个变量被替换之后的值。</p>
+            <p>tag函数的第一个参数有一个raw属性，也指向一个数组。该数组的成员与此参数数组几乎完全一致。两者唯一的区别，是字符串里面的反斜杠被转义了。</p>
+            <h3 class="title">String.raw()</h3>
+            <p>通常用来充当模板字符串的处理函数，返回一个反斜线都被转义的字符串，对应于替换变量之后的模板字符串<strong>（好像不太对）</strong>：</p>
+            <pre><code>String.raw `Hi\n ${ 1 + 2 }` // Hi\\n 3，实际中chrome输出Hi\n 3</code></pre>
         </div>
         <footer>2017年03月11日</footer>
         <comments></comments>

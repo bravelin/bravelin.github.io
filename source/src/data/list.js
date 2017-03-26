@@ -130,6 +130,16 @@ export default {
             date: '2017/03/11',
             routerName: 'learning-es6-3',
             topicId: '2'
+        },
+        {
+            id: '15',
+            type: '读书笔记',
+            category: 'es6',
+            title: '《ES6标准入门》笔记之四：正则的扩展',
+            description: '',
+            date: '2017/03/13',
+            routerName: 'learning-es6-4',
+            topicId: '2'
         }
     ]
 }

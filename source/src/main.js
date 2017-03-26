@@ -194,6 +194,13 @@ var pageRouterOption = [
         }
     },
     {
+        path: '/learning/es6/4',
+        name: 'learning-es6-4',
+        component: function (resolve) {
+            require(['./views/learning/es6/4.vue'], resolve)
+        }
+    },
+    {
         path: '/',
         redirect: {name: 'articles'}
     },
@@ -216,10 +223,12 @@ var router = new VueRouter({
 // console.dir(router)
 
 // 加载页面之前
+var docBody = document.body
 router.beforeEach(function (to, from, next) {
     _global.loading = true
     _global.currPage = to.name
     _global.currPageParams = to.query
+    docBody.scrollTop = 0
     next()
 })
 // 加载页面之后
