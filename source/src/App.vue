@@ -109,7 +109,7 @@
             },
             doHandlerScroll: function () {
                 var top = document.body.scrollTop || document.documentElement.scrollTop
-                console.log('body scrollTop' + top)
+                // console.log('body scrollTop' + top)
                 this.isFixedTop = top > 188
             },
             doClickSideMenuWrap: function (event) {

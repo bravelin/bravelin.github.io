@@ -216,10 +216,12 @@ var router = new VueRouter({
 // console.dir(router)
 
 // 加载页面之前
+var docBody = document.body
 router.beforeEach(function (to, from, next) {
     _global.loading = true
     _global.currPage = to.name
     _global.currPageParams = to.query
+    docBody.scrollTop = 0
     next()
 })
 // 加载页面之后
