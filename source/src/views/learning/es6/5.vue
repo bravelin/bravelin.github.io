@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div class="page article">
         <h2 class="title">《ES6标准入门》笔记之五：数值的扩展</h2>
         <div class="content">
@@ -40,7 +40,20 @@ withinErrorMargin(0.1 + 0.2, 0.3) // true
 0.1+0.2 == 0.3 // false</code></pre>
             <h3 class="title">Number.isSafeInteger()</h3>
             <p>JS可以精确表示的整数范围是-2<sup>53</sup>~2<sup>53</sup>之间，超出这个范围无法精确表示。ES6新增了<strong>Number.MAX_SAFE_INTEGER</strong>和<strong>Number.MIN_SAFE_INTEGER</strong>两个常量，用来表示这个范围的上下限。</p>
-            <p>Number.isSafeInteger()用来判断一个整数是否位于这个范围之内。</p>
+            <p>Number.isSafeInteger()用来判断一个<strong>整数</strong>是否位于这个范围之内。</p>
+            <pre><code>Math.pow(2,53) // 9007199254740992
+Math.pow(2,53)+1 // 9007199254740992
+Math.pow(-2,53) // -9007199254740992
+Math.pow(-2,53)-1 // -9007199254740992
+
+Number.MAX_SAFE_INTEGER // 9007199254740991
+Number.MIN_SAFE_INTEGER // -9007199254740991</code></pre>
+            <pre><code>Number.isSafeInteger('a') // false
+Number.isSafeInteger(null) // false
+Number.isSafeInteger(NaN) // false
+Number.isSafeInteger(1.2) // false
+Number.isSafeInteger(1.0) // true</code></pre>
+            <h3 class="title">Math对象的扩展</h3>
         </div>
         <footer>2017年03月17日</footer>
         <comments></comments>

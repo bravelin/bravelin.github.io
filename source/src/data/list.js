@@ -126,7 +126,7 @@ export default {
             type: '读书笔记',
             category: 'es6',
             title: '《ES6标准入门》笔记之三：字符串的扩展',
-            description: '',
+            description: '字符的Unicode表示法、字符串的codePointAt()、includes()、startsWidth()、endsWidth()、repeat()、padStart()、padEnd()等方法以及模板字符串和标签模板。',
             date: '2017/03/11',
             routerName: 'learning-es6-3',
             topicId: '2'
@@ -136,7 +136,7 @@ export default {
             type: '读书笔记',
             category: 'es6',
             title: '《ES6标准入门》笔记之四：正则的扩展',
-            description: '',
+            description: 'ES6的正则支持新的构造函数，支持u修饰符、y修饰符，新增sticky属性、flags属性。',
             date: '2017/03/13',
             routerName: 'learning-es6-4',
             topicId: '2'
