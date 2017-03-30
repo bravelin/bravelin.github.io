@@ -54,6 +54,37 @@ Number.isSafeInteger(NaN) // false
 Number.isSafeInteger(1.2) // false
 Number.isSafeInteger(1.0) // true</code></pre>
             <h3 class="title">Math对象的扩展</h3>
+            <p>Math对象新增了17个与数学相关的静态方法。</p>
+            <p><strong>1、Math.trunc()</strong></p>
+            <p>用于获取一个数（如果不是数值，会先转换）的整数部分：</p>
+            <pre><code>Math.trunc(1.1) // 1
+Math.trunc(-1.1) // -1
+Math.trunc("-1.1") // -1</code></pre>
+            <p>等价于此方法：</p>
+            <pre><code>function (x) {
+    return x > 0 ? Math.floor(x) : Math.ceil(x)
+}</code></pre>
+            <p><strong>2、Math.sign()</strong></p>
+            <p>用于判断一个数是正数、负数、0：参数为正数，返回1；参数为负数，返回-1；参数为0，返回0，参数为-0，返回-0；其他值，返回NaN。</p>
+            <pre><code>Math.sign(11) // 1
+Math.sign(-11) // -1
+Math.sign(-0) // -0
+Math.sign(0) // 0
+Math.sign('A') // NaN</code></pre>
+            <p><strong>3、Math.cbrt()</strong></p>
+            <p>用于计算一个数（如果不是数值，会先转换）的立方根：</p>
+            <pre><code>Math.cbrt(2) // 1.2599210498948732</code></pre>
+            <p>等价于此方法：</p>
+            <pre><code>function (x) {
+    var y = Math.pow(Math.abs(x), 1/3)
+    return x > 0 ? y : -y
+}</code></pre>
+            <p><strong>4、Math.clz32()</strong></p>
+            <p>返回一个数的32位无符号整数形式有多少个前导0，函数名称来自"count leading zero bits in 32-bit binary representations of a number"</p>
+            <pre><code>Math.clz32(1) // 31
+Math.clz32(0) // 32
+Math.clz32(1 << 1) // 30</code></pre>
+            <p>对于小数，该方法只考虑整数部分。其他非数值参数会先转换成数值。</p>
         </div>
         <footer>2017年03月17日</footer>
         <comments></comments>
