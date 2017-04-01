@@ -146,7 +146,7 @@ export default {
             type: '读书笔记',
             category: 'es6',
             title: '《ES6标准入门》笔记之五：数值的扩展',
-            description: '',
+            description: '二进制和八进制表示法；Number对象新增的isFinite、isNaN、parseInt、parseFloat等方法和属性；Math对象新增的trunc、sign、cbrt等17个方法；指数运算符。',
             date: '2017/03/17',
             routerName: 'learning-es6-5',
             topicId: '2'

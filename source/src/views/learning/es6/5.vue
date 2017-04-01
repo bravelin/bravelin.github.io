@@ -85,6 +85,48 @@ Math.sign('A') // NaN</code></pre>
 Math.clz32(0) // 32
 Math.clz32(1 << 1) // 30</code></pre>
             <p>对于小数，该方法只考虑整数部分。其他非数值参数会先转换成数值。</p>
+            <p><strong>5、Math.imul()</strong></p>
+            <p>返回两个数以32位带符号整数形式相乘的结果（也是一个32位带符号整数）。</p>
+            <p>如果只考虑32位，大多数情况下，Math.imul(a * b)与a * b的结果是相同的（（a * b）|0）。超出32位的部分溢出。</p>
+            <pre><code>Math.imul(2, 4) // 8
+Math.imul(-2, -2) // 4
+Math.imul(0x7fffffff, 0x7fffffff) // 1</code></pre>
+            <p>之所以增加此方法，是因为JS有精度限制，超出2的53次方无法精确表示出来。Math.imul()可以返回正确的低位数值。</p>
+            <p><strong>6、Math.fround()</strong></p>
+            <p>返回一个数的单精度浮点数形式：</p>
+            <pre><code>Math.fround(1) // 1
+Math.fround(1.337) // 1.3370000123977661
+Math.fround(1.5) // 1.5</code></pre>
+            <p>对于整数，此方法返回同样的整数；区别在于那些无法使用64位二进制位表示精确表示的数，Math.fround()会返回最接近这个小数的单精度浮点数。</p>
+            <p><strong>7、Math.hypot()</strong></p>
+            <p>此方法返回所有参数（如果参数不是数值，会先转换）平方和的平方根：</p>
+            <pre><code>Math.hypot(3, 4) // 5
+Math.hypot(3, 4, 5) // 7.0710678118654755
+Math.hypot(-3) // 3</code></pre>
+            <p><strong>8、Math.expm1()</strong></p>
+            <p>等价于Math.exp(x) - 1，即e的x次方再减去1的结果。</p>
+            <pre><code>Math.expm1(1) // 1.718281828459045</code></pre>
+            <p><strong>9、Math.log1p()</strong></p>
+            <p>等价于Math.log(1+x)，即求x加1之和的自然对数。</p>
+            <pre><code>Math.log1p(Math.E-1) // 1</code></pre>
+            <p><strong>10、Math.log10()</strong></p>
+            <p>返回以10为底的x的对数。</p>
+            <pre><code>Math.log10(1000) // 3</code></pre>
+            <p><strong>11、Math.log2()</strong></p>
+            <p>返回以2为底的x的对数。</p>
+            <pre><code>Math.log2(1024) // 10</code></pre>
+            <p><strong>12、Math.sinh(x)</strong>：返回x的双曲正旋。</p>
+            <p><strong>13、Math.cosh(x)</strong>：返回x的双曲余旋。</p>
+            <p><strong>14、Math.tanh(x)</strong>：返回x的双曲正切。</p>
+            <p><strong>15、Math.asinh(x)</strong>：返回x的反双曲正旋。</p>
+            <p><strong>16、Math.acosh(x)</strong>：返回x的反双曲余旋。</p>
+            <p><strong>17、Math.atanh(x)</strong>：返回x的反双曲正切。</p>
+            <h3 class="title">指数运算符</h3>
+            <p>ES7里面新增的一个运算符（**）</p>
+            <pre><code>2 ** 4 // 16</code></pre>
+            <p>与等号结合，形成一个新的赋值运算符：（**=）</p>
+            <pre><code>let b = 3
+b **= 3 // 27</code></pre>
         </div>
         <footer>2017年03月17日</footer>
         <comments></comments>
