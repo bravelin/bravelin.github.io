@@ -38,7 +38,7 @@
             <h3 class="title">染色效果</h3>
             <p><strong>基于滤镜的方案：</strong>sepia()滤镜会给图片增加一种降饱和度的橙黄色效果；saturate()滤镜可以提升每个像素的饱和度；hue-rotate()滤镜可以将每个像素的色相以指定的度数进行偏移。
             </p>
-            <div class="exp filter-2"><img src="../../../../assets/header.jpg"/></div>
+            <div class="exp filter-2"><img src="/static/assets/header.jpg"/></div>
             <pre><code>filter: sepia(1) saturate(4) hue-rotate(295deg);
   transition: 0.5s filter;
   &:hover{
@@ -58,7 +58,7 @@
     }
   }</code></pre>
             <div class="exp filter-3">
-                <div><img src="../../../../assets/header.jpg"/></div>
+                <div><img src="/static/assets/header.jpg"/></div>
             </div>
             <p>另外一种方式，是将图片当做div的背景。</p>
             <pre><code>width: 150px;
@@ -67,7 +67,7 @@
   background-color: hsl(335, 100%, 50%);
   background-blend-mode: luminosity;
   transition: .5s background-color;
-  background-image: url("../../assets/header.jpg");
+  background-image: url("/static/assets/header.jpg");
   &:hover{
     background-color: transparent;
   }</code></pre>

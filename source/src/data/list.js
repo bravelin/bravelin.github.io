@@ -150,6 +150,16 @@ export default {
             date: '2017/03/17',
             routerName: 'learning-es6-5',
             topicId: '2'
+        },
+        {
+            id: '17',
+            type: '读书笔记',
+            category: 'es6',
+            title: '《ES6标准入门》笔记之六：数组的扩展',
+            description: '',
+            date: '2017/03/21',
+            routerName: 'learning-es6-6',
+            topicId: '2'
         }
     ]
 }

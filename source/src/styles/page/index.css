@@ -450,7 +450,7 @@ div.multiple-border-outline > div {
 
 div.bg {
   height: 160px;
-  background: url("../../assets/exp/css-secrects/1.png") no-repeat bottom right #e1d5d8; }
+  background: url("/static/assets/exp/css-secrects/1.png") no-repeat bottom right #e1d5d8; }
 
 div.bg-position {
   background-position: right 20px bottom 10px; }
@@ -800,7 +800,7 @@ div.filter-4 > div {
   background-blend-mode: luminosity;
   -webkit-transition: .5s background-color;
   transition: .5s background-color;
-  background-image: url("../../assets/header.jpg"); }
+  background-image: url("/static/assets/header.jpg"); }
   div.filter-4 > div:hover {
     background-color: transparent; }
 
@@ -1122,7 +1122,7 @@ div.turn-table-draw > div {
 header {
   position: relative;
   height: 188px;
-  background: url("../../assets/header-bg.jpg");
+  background: url("/static/assets/header-bg.jpg");
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
   opacity: 0; }
@@ -1140,7 +1140,7 @@ header {
     border: 2px solid #ddd;
     float: left;
     background-size: 100% 100%;
-    background-image: url("../../assets/header.jpg");
+    background-image: url("/static/assets/header.jpg");
     background-repeat: no-repeat; }
   header div.title {
     width: 265px;
@@ -1227,7 +1227,7 @@ div.side-menu-icon {
   width: 30px;
   height: 28px;
   padding: 4px;
-  background: url("../../assets/menu.png") 4px 4px no-repeat;
+  background: url("/static/assets/menu.png") 4px 4px no-repeat;
   cursor: pointer; }
   div.side-menu-icon.fixedTop {
     border: 1px solid #e0e0e0;
@@ -1246,7 +1246,7 @@ div.side-menu-icon {
     width: 40px;
     height: 40px;
     border-radius: 4px;
-    background: rgba(23, 87, 157, 0.8) url("../../assets/back.png") 13px 13px no-repeat;
+    background: rgba(23, 87, 157, 0.8) url("/static/assets/back.png") 13px 13px no-repeat;
     cursor: pointer;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     -webkit-transition: 0.3s background-color;
@@ -1259,7 +1259,7 @@ div.side-menu-icon {
       -webkit-transform: rotate(180deg);
               transform: rotate(180deg); }
     .article-nav-menu > a.note {
-      background-image: url("../../assets/edit.png"); }
+      background-image: url("/static/assets/edit.png"); }
 
 .fade-enter-active, .fade-leave-active {
   -webkit-transition: opacity 0.3s ease-out, -webkit-transform 0.3s ease-out;

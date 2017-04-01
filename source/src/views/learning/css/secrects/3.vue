@@ -62,7 +62,7 @@
             <h3 class="title">菱形图片</h3>
             <p><strong>基于变形的方案：旋转并放大1.42倍。</strong>如果不放大将成八角形。</p>
             <div class="exp diamond-1">
-                <div><img src="../../../../assets/header.jpg"/></div>
+                <div><img src="/static/assets/header.jpg"/></div>
             </div>
             <pre><code>div{
     width:150px;
@@ -77,7 +77,7 @@
   }</code></pre>
             <p><strong>裁切路径方案。</strong>如果处理的是一张非正方形的图片，上面的方法就会有问题。<strong>clip-path</strong>允许将元素裁剪成任何形状，并支持动画。只是浏览器的支持程度有限。
             </p>
-            <div class="exp diamond-2"><img src="../../../../assets/header.jpg"/></div>
+            <div class="exp diamond-2"><img src="/static/assets/header.jpg"/></div>
             <pre><code>img{
     width:150px;
     height:150px;
@@ -135,7 +135,7 @@
   background: #58a;
   background-clip: padding-box;</code></pre>
             <p><strong>使用clip-path实现切角效果（适应于元素背景是图片的情况下）：</strong></p>
-            <div class="exp cuttingAngle-6"><img src="../../../../assets/header.jpg"/></div>
+            <div class="exp cuttingAngle-6"><img src="/static/assets/header.jpg"/></div>
             <pre><code>clip-path: polygon(20px 0,calc(100% - 20px) 0,100% 20px,100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px, 20px 0);</code></pre>
             <h3 class="title">梯形标签页</h3>
             <p>使用3D旋转+伪元素模拟出梯形效果：（对元素使用了3D变形之后，其内部的变形效应几乎是不可逆转的）</p>

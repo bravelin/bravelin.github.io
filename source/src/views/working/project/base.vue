@@ -14,7 +14,7 @@ v6.9.5</code></pre>
             <p><a href="http://download.csdn.net/download/ml065787/9640336">http://download.csdn.net/download/ml065787/9640336</a></p>
             <p>安装的第二步，请勾选"Add Ruby executables to your PATH"：</p>
             <figure class="common">
-                <img style="max-width: 503px;" src="../../../assets/work/base/2.png"/>
+                <img style="max-width: 503px;" src="/static/assets/work/base/2.png"/>
             </figure>
             <p>ruby -v 命令可以查看当前的版本：</p>
             <pre class="inner black"><code>$ ruby -v
@@ -27,7 +27,7 @@ ruby 2.3.1p112 (2016-04-26 revision 54768) [x64-mingw32]</code></pre>
             <p>参考文档地址：<a href="http://gems.ruby-china.org/">http://gems.ruby-china.org/</a></p>
             <p>打开ruby命令行窗口：</p>
             <figure class="common">
-                <img style="max-width: 442px;" src="../../../assets/work/base/4.png"/>
+                <img style="max-width: 442px;" src="/static/assets/work/base/4.png"/>
             </figure>
             <p>执行以下命令：</p>
             <pre class="inner black"><code>$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/</code></pre>
@@ -59,7 +59,7 @@ Sass 3.4.23 (Selective Steve)</code></pre>
             <p>参考文档地址：<a href="http://npm.taobao.org/">http://npm.taobao.org/</a></p>
             <p>打开node命令行窗口：</p>
             <figure class="common">
-                <img style="max-width: 410px;" src="../../../assets/work/base/9.png"/>
+                <img style="max-width: 410px;" src="/static/assets/work/base/9.png"/>
             </figure>
             <p>使用cnpm命令行工具代替npm：</p>
             <pre class="inner black"><code>$ npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
@@ -69,7 +69,7 @@ Sass 3.4.23 (Selective Steve)</code></pre>
             <p>在node.js的安装目录下新建两个文件夹：node_global和node_cache：</p>
             <p>windows10操作系统对系统盘文件的操作有更严格的限制，可能会出现安装不了就全局node模块的问题，此时可以将这两个目录配置在其他磁盘。</p>
             <figure class="common">
-                <img style="max-width: 800px;" src="../../../assets/work/base/10.png"/>
+                <img style="max-width: 800px;" src="/static/assets/work/base/10.png"/>
             </figure>
             <p>打开cmd命令行窗口执行如下两条命令：</p>
             <pre class="inner black"><code>$ npm config set prefix 'C:\Program Files\nodejs\node_global'

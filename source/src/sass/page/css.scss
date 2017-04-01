@@ -37,7 +37,7 @@ div.multiple-border-outline>div{
 }
 div.bg{
   height:160px;
-  background: url("../../assets/exp/css-secrects/1.png") no-repeat bottom right rgb(225,213,216);
+  background: url("/static/assets/exp/css-secrects/1.png") no-repeat bottom right rgb(225,213,216);
 }
 div.bg-position{
   background-position: right 20px bottom 10px;
@@ -383,7 +383,7 @@ div.filter-4{
     background-color: hsl(335, 100%, 50%);
     background-blend-mode: luminosity;
     transition: .5s background-color;
-    background-image: url("../../assets/header.jpg");
+    background-image: url("/static/assets/header.jpg");
     &:hover{
       background-color: transparent;
     }

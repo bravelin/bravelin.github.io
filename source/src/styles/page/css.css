@@ -34,7 +34,7 @@ div.multiple-border-outline > div {
 
 div.bg {
   height: 160px;
-  background: url("../../assets/exp/css-secrects/1.png") no-repeat bottom right #e1d5d8; }
+  background: url("/static/assets/exp/css-secrects/1.png") no-repeat bottom right #e1d5d8; }
 
 div.bg-position {
   background-position: right 20px bottom 10px; }
@@ -384,7 +384,7 @@ div.filter-4 > div {
   background-blend-mode: luminosity;
   -webkit-transition: .5s background-color;
   transition: .5s background-color;
-  background-image: url("../../assets/header.jpg"); }
+  background-image: url("/static/assets/header.jpg"); }
   div.filter-4 > div:hover {
     background-color: transparent; }
 
