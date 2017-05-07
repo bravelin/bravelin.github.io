@@ -156,7 +156,7 @@ export default {
             type: '读书笔记',
             category: 'es6',
             title: '《ES6标准入门》笔记之六：数组的扩展',
-            description: '',
+            description: 'Array.from()、Array.of()方法以及数组实例的copyWithin()、find()、findIndex()、fill()、entries()、keys()、values()、includes()等方法的介绍。',
             date: '2017/03/21',
             routerName: 'learning-es6-6',
             topicId: '2'
@@ -170,6 +170,16 @@ export default {
             date: '2016/08/11',
             routerName: 'working-project-git',
             topicId: ''
+        },
+        {
+            id: '19',
+            type: '读书笔记',
+            category: 'es6',
+            title: '《ES6标准入门》笔记之七：函数的扩展',
+            description: '',
+            date: '2017/05/07',
+            routerName: 'learning-es6-7',
+            topicId: '2'
         }
     ]
 }
