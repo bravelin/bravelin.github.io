@@ -40,7 +40,30 @@ add(2, 3, 6) // 11</code></pre>
             <h3 class="title">扩展运算符</h3>
             <p>扩展运算符是三个点（...），好比rest参数的逆运算，将一个数组转为用逗号分隔的参数序列。</p>
             <pre><code>console.log(...[1, 2, 3]) // 1 2 3</code></pre>
-            <p>该运算符主要用于函数调用。</p>
+            <p>该运算符主要用于函数调用：</p>
+            <pre><code>function push (array, ...items) {
+    array.push(...items)
+}
+function add (x, y) { return x + y }
+var nums = [4, 38]
+add(...nums) // 42</code></pre>
+            <p>由于扩展运算符可以展开数组，因此不再需要apply方法将数组转为函数参数序列了。</p>
+            <pre><code>// ES5的写法
+function f(x, y, z) {}
+var args = [1, 2, 3]
+f.apply(null, args)
+
+// ES6的写法
+f(...args)</code></pre>
+            <p>扩展运算符提供了数组合并的新写法：</p>
+            <pre><code>// ES5的写法
+[1, 2].concat(more)
+// ES6的写法
+[1, 2, ...more]</code></pre>
+            <p>与解构赋值结合起来可以生成数组：</p>
+            <pre><code>const [first, ...rest] = [1, 2, 3, 4, 5, 6]
+first // 1
+rest // [2, 3, 4, 5, 6]</code></pre>
         </div>
         <footer>2017年05月07日</footer>
         <comments></comments>
