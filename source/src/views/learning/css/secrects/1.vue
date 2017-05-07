@@ -51,7 +51,7 @@
             <p><strong>W3C并不产生标准。</strong>CSS规范由CSS工作组的成员来编写，大部分成员来自W3C会员公司。每项规范从最初启动到最终成熟，都会经过多个阶段。</p>
             <p>CSS1规范发表于1996年，两年之后，CSS2规范发布了。<strong>尽管"CSS3"这个名词非常流行，但实际上并没有在任何规范中定义过。</strong>CSS3指的是一个非正式的集合，它包括CSS规范第三版及一些版本号还是1的新规范。
             </p>
-            <h3 class="title">CSS编码技巧：</h3>
+            <h3 class="title">CSS编码技巧</h3>
             <p>
                 <strong>尽量减少重复的代码。</strong>当某些值相互依赖时，应该把它们的相互关系用代码表示出来。<strong>currentColor是一个特殊的颜色关键字，CSS中有史以来的第一个变量。</strong>减少重复多使用<strong>inherit关键字。</strong>
             </p>

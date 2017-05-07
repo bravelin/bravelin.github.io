@@ -218,7 +218,7 @@ router.beforeEach(function (to, from, next) {
 router.afterEach(function (to) {
     setTimeout(function () {
         _global.loading = false
-    }, 300)
+    }, 250)
     if (/^(home|topicArticles|topics|404|articles|about)$/.test(to.name)) {
         _global.showArticleNavMenu = (to.name == 'comments')
         _global.nextArticle = ''
