@@ -160,6 +160,16 @@ export default {
             date: '2017/03/21',
             routerName: 'learning-es6-6',
             topicId: '2'
+        },
+        {
+            id: '18',
+            type: '技术基础',
+            category: 'git',
+            title: 'Git的常用命令',
+            description: '记录下Git的常用命令',
+            date: '2016/08/11',
+            routerName: 'working-project-git',
+            topicId: ''
         }
     ]
 }

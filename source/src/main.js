@@ -11,47 +11,11 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.http.options.emulateJSON = true
 Vue.http.headers.common['X-APICloud-AppId'] = 'A6931492233958'
-
-var Comments = require('./components/comments.vue')
-Vue.component('comments', Comments)
-var TimeFormatter = require('./filters/time-formatter')
-Vue.filter('timeFormatter', TimeFormatter)
+Vue.component('comments', require('./components/comments.vue'))
+Vue.filter('timeFormatter', require('./filters/time-formatter'))
 
 window['_g'] = Global
 var _global = Global
-/* var pageRouterList = [
- // 'home',
- 'articles',
- 'topics',
- 'comments',
- 'about',
- 'topicArticles',
- '404',
- 'working-project-gztjjweb',
- 'learning-css-secrects-1',
- 'learning-css-secrects-2',
- 'learning-css-secrects-3',
- 'learning-css-secrects-4',
- 'learning-css-secrects-5',
- 'learning-css-secrects-6',
- 'learning-css-secrects-7',
- 'learning-css-secrects-8',
- 'working-canvas-turnTableDraw'
- ]  // 页面列表
- var pageRouterOption = []         // 构造router
-
- function RouterOption (name) {
- this.path = '/' + name.replace(/-/g, '/')
- this.name = name
- this.component = function (resolve) {
- require(['./views/' + name.replace(/-/g, '/') + '.vue'], resolve)
- }
- }
-
- pageRouterList.forEach(function (pageName) {
- pageRouterOption.push(new RouterOption(pageName))
- }) */
-
 var pageRouterOption = [
     {
         path: '/articles',
@@ -100,6 +64,13 @@ var pageRouterOption = [
         name: 'working-project-gztjjweb',
         component: function (resolve) {
             require(['./views/working/project/gztjjweb.vue'], resolve)
+        }
+    },
+    {
+        path: '/working/project/git',
+        name: 'working-project-git',
+        component: function (resolve) {
+            require(['./views/working/project/git.vue'], resolve)
         }
     },
     {
@@ -237,12 +208,10 @@ var router = new VueRouter({
 // console.dir(router)
 
 // 加载页面之前
-var docBody = document.body
 router.beforeEach(function (to, from, next) {
     _global.loading = true
     _global.currPage = to.name
     _global.currPageParams = to.query
-    docBody.scrollTop = 0
     next()
 })
 // 加载页面之后

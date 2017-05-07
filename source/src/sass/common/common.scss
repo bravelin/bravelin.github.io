@@ -103,9 +103,10 @@ div#app-tip{
 .page{
   width:96%;
   margin:20px auto 0;
-  max-width: 1280px;
+  max-width: 1600px;
   &.article{
-    background-color: #fafafa;
+    background-color: #f8f8f8;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2), 0 0 30px rgba(10,10,0,.1) inset;
     >div.content{
       figure.common{
         margin: 8px 0;
@@ -178,7 +179,7 @@ div#app-tip{
       margin-top:15px;
     }
     h3.title{
-      background-color: #cfc;
+      background-color: #e0e0e0;
       color:#f96;
       font-size:26px;
       border-radius: 6px;
@@ -224,7 +225,7 @@ div#app-tip{
   >ul.article-list{
     position: relative;
     padding:0 0 0 40px;
-    background-color: #f0f0f0;
+    background-color: #e0e0e0;
     &:before{
       content: "";
       position: absolute;
@@ -251,7 +252,7 @@ div#app-tip{
         padding:8px;
         font-size:24px;
         color:#f96;
-        background-color: #cfc;
+        background-color: #eee;
         border-radius: 6px;
         line-height: 1.4;
         margin-bottom: 2px;
@@ -294,7 +295,7 @@ div#app-tip{
     padding: 0 20px;
   }
   >ul.comments{
-    background: #f0f0f0;
+    background: #fafafa;
     padding: 10px 0;
     >li{
       padding: 15px 20px;
