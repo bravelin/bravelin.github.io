@@ -64,6 +64,39 @@ f(...args)</code></pre>
             <pre><code>const [first, ...rest] = [1, 2, 3, 4, 5, 6]
 first // 1
 rest // [2, 3, 4, 5, 6]</code></pre>
+            <p><strong>如果将扩展运算符用于数组赋值，只能放在参数的最后一位，否则报错。</strong></p>
+            <p>扩展运算符还可以将字符串转为真正的数组（并且能够正确识别32位的unicode字符）：</p>
+            <pre><code>[..."hello"] // ["h", "e", "l", "l", "o"]</code></pre>
+            <p>返回正确的字符串长度可以这样求得：</p>
+            <pre><code>function len (str) { return [...str].length }</code></pre>
+            <p>凡是涉及操作32位的Unicode字符都有这个问题，因此，最好都用扩展运算符改写：</p>
+            <pre><code>let str = 'x\uD83D\uDE80y'
+str.split('').reverse().join('') // error
+[...str].reverse().join('') // good</code></pre>
+            <p>任何类似数组的对象都可以使用扩展运算符转为真正的数组：</p>
+            <pre><code>var nodeList = document.querySelectorAll("div")
+var array = [...nodeList]</code></pre>
+            <p><strong>扩展运算符内部调用的是数据结构的Iterator接口，因此只要具有Iterator接口的对象，都可以使用扩展运算符。</strong>比如Map、Set、Generator函数。</p>
+            <pre><code>let map = new Map([ [1, 'one'], [2, 'two'], [3, 'three'] ])
+let arr = [...map.keys()] // [1, 2, 3]
+
+var go = function* () {
+    yield 1;
+    yield 2;
+    yield 3
+}
+[...go()] // [1, 2, 3]</code></pre>
+            <h3 class="title">name属性</h3>
+            <p>函数的name属性会返回该函数的名称。</p>
+            <p>如果将一个具名函数赋值给一个变量，name属性返回这个具名函数原本的名字。</p>
+            <pre><code>const bar = function abc() { }
+bar.name // "abc"</code></pre>
+            <p>Function构造函数返回的函数实例，name属性的值为：anonymous</p>
+            <pre><code>(new Function).name // "anonymous"</code></pre>
+            <p>bind返回的函数，name属性值会加上bound的前缀：</p>
+            <pre><code>function foo () {}
+foo.bind({}).name // "bound foo"</code></pre>
+            <h3 class="title">箭头函数</h3>
         </div>
         <footer>2017年05月07日</footer>
         <comments></comments>

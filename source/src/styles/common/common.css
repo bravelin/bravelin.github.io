@@ -236,7 +236,8 @@ div#app-tip {
       .page > div.content h3.title:first-child {
         margin-top: 0; }
     .page > div.content pre {
-      margin-top: 8px; }
+      margin-top: 6px;
+      margin-bottom: 4px; }
       .page > div.content pre.inner {
         margin-left: 32px;
         margin-right: 32px; }
