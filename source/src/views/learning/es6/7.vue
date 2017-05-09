@@ -97,6 +97,22 @@ bar.name // "abc"</code></pre>
             <pre><code>function foo () {}
 foo.bind({}).name // "bound foo"</code></pre>
             <h3 class="title">箭头函数</h3>
+            <p>使用箭头定义函数：</p>
+            <pre><code>var f = v => v
+var f = () => v
+var sum = (v1, v2) => { v1 = v1 * 2; return v1 + v2 }</code></pre>
+            <p>需要注意的地方：</p>
+            <p><strong>1、函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象；</strong></p>
+            <p><strong>2、不可以当做构造函数；</strong></p>
+            <p><strong>3、不可以使用arguments对象，该对象在函数体内不存在；可以使用rest参数代替；</strong></p>
+            <p><strong>4、不可以使用yield命令，因此箭头函数不能用作Generator函数；</strong></p>
+            <h3 class="title">函数的绑定</h3>
+            <p>ES7提出函数绑定运算符（::），用来取代call、apply、bind的调用。该运算符自动将左边的对象作为上下文环境（this对象）绑定到右边的函数上。</p>
+            <pre><code>foo::bar // 等同于 bar.bind(foo)
+foo::bar(...arguments) // 等同于 bar.apply(foo, arguments)</code></pre>
+            <p>如果双冒号左边为空，右边是一个对象的方法，则等于将该方法绑定在该对象上。</p>
+            <pre><code>var method = obj::obj.foo // 等同于 var method = ::obj.foo
+let log = ::console.log // 等同于 var log = console.log.bind(console)</code></pre>
         </div>
         <footer>2017年05月07日</footer>
         <comments></comments>

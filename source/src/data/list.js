@@ -180,6 +180,16 @@ export default {
             date: '2017/05/07',
             routerName: 'learning-es6-7',
             topicId: '2'
+        },
+        {
+            id: '20',
+            type: '读书笔记',
+            category: 'es6',
+            title: '《ES6标准入门》笔记之八：对象的扩展',
+            description: '',
+            date: '2017/05/09',
+            routerName: 'learning-es6-8',
+            topicId: '2'
         }
     ]
 }
