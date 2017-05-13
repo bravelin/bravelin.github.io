@@ -199,6 +199,13 @@ var pageRouterOption = [
             require(['./views/learning/es6/8.vue'], resolve)
         }
     },
+    {
+        path: '/learning/es6/9',
+        name: 'learning-es6-9',
+        component: function (resolve) {
+            require(['./views/learning/es6/9.vue'], resolve)
+        }
+    },
     /** ********************************************************
      * * canvas
      ***********************************************************/

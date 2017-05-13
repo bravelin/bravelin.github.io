@@ -200,6 +200,16 @@ export default {
             date: '2016/06/08',
             routerName: 'learning-canvas-1',
             topicId: '3'
+        },
+        {
+            id: '22',
+            type: '读书笔记',
+            category: 'es6',
+            title: '《ES6标准入门》笔记之九：Symbol',
+            description: '',
+            date: '2017/05/13',
+            routerName: 'learning-es6-9',
+            topicId: '2'
         }
     ]
 }
