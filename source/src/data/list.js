@@ -190,6 +190,16 @@ export default {
             date: '2017/05/09',
             routerName: 'learning-es6-8',
             topicId: '2'
+        },
+        {
+            id: '21',
+            type: '读书笔记',
+            category: 'canvas',
+            title: 'Canvas学习笔记之一：基础知识',
+            description: '',
+            date: '2016/06/08',
+            routerName: 'learning-canvas-1',
+            topicId: '3'
         }
     ]
 }

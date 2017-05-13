@@ -119,16 +119,8 @@ let log = ::console.log // 等同于 var log = console.log.bind(console)</code><
     </div>
 </template>
 <script>
+    import Page from '../../page'
     module.exports = {
-        mounted: function () {
-            this.$nextTick(function () {
-                var codes = document.querySelectorAll('code')
-                if (codes.length > 0) {
-                    for (let k = 0; k < codes.length; k++) {
-                        hljs.highlightBlock(codes[k])
-                    }
-                }
-            })
-        }
+        extends: Page
     }
 </script>

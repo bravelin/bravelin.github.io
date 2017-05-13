@@ -199,6 +199,16 @@ var pageRouterOption = [
             require(['./views/learning/es6/8.vue'], resolve)
         }
     },
+    /** ********************************************************
+     * * canvas
+     ***********************************************************/
+    {
+        path: '/learning/canvas/1',
+        name: 'learning-canvas-1',
+        component: function (resolve) {
+            require(['./views/learning/canvas/1.vue'], resolve)
+        }
+    },
     {
         path: '/',
         redirect: {name: 'articles'}

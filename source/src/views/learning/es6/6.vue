@@ -84,16 +84,8 @@ var a2 = [for(i of a1) i*2] // [2, 4, 6, 8]</code></pre>
     </div>
 </template>
 <script>
+    import Page from '../../page'
     module.exports = {
-        mounted: function () {
-            this.$nextTick(function () {
-                var codes = document.querySelectorAll('code')
-                if (codes.length > 0) {
-                    for (let k = 0; k < codes.length; k++) {
-                        hljs.highlightBlock(codes[k])
-                    }
-                }
-            })
-        }
+        extends: Page
     }
 </script>

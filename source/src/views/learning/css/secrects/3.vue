@@ -224,16 +224,8 @@
     </div>
 </template>
 <script>
+    import Page from '../../../page'
     module.exports = {
-        mounted: function () {
-            this.$nextTick(function () {
-                var codes = document.querySelectorAll('code')
-                if (codes.length > 0) {
-                    for (var k = 0; k < codes.length; k++) {
-                        hljs.highlightBlock(codes[k])
-                    }
-                }
-            })
-        }
+        extends: Page
     }
 </script>

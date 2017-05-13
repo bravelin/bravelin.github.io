@@ -24,6 +24,14 @@ export default {
             title: 'ES6标准学习',
             description: 'ES6标准入门学习笔记',
             date: '2017/03/08'
+        },
+        {
+            id: '3',
+            type: '学习笔记',
+            category: 'canvas',
+            title: 'canvas学习',
+            description: 'html5 canvas核心技术一书学习笔记',
+            date: '2016/06/08'
         }
     ]
 }
