@@ -34,8 +34,21 @@ var bar = Symbol('bar')
 obj[foo] = '222'
 obj[bar] = '333'
 Object.getOwnPropertyNames(obj) // ["a"]
-Object.getOwnPropertySymbols(obj) // [Symbol(foo), Symbol(bar)]</code></pre>
+Object.getOwnPropertySymbols(obj) // [Symbol(foo), Symbol(bar)]
+Reflect.ownKeys(obj) // ["a", Symbol(foo), Symbol(bar)]</code></pre>
             <p>另外一个新的API：<strong>Reflect.ownKeys</strong>方法可以返回所有类型的键名（包括了Symbol键名）。</p>
+            <h3 class="title">Symbol.for()、Symbol.keyFor()</h3>
+            <p>Symbol.for()接受一个字符串作为参数，搜索是否有以此参数作为名称的Symbol值。如果有，则返回这个Symbol值，否则新建并返回一个以该字符串作为名称的Symbol值。</p>
+            <pre><code>let s1 = Symbol.for('foo')
+let s2 = Symbol.for('foo')
+s1 === s2 // true</code></pre>
+            <p><strong>Symbol.for()与Symbol()都会生成新的Symbol，区别在于前者会被登记在全局环境中供搜索，而后者不会。</strong>Symbol.for()不会每次都返回新的Symbol值，而是会先检查给定的key是否存在，如果不存在才会返回新的值。</p>
+            <p>Symbol.keyFor()方法返回一个已登记的Symbol类型值的key。</p>
+            <pre><code>var s1 = Symbol.for('foo')
+Symbol.keyFor(s1) // 'foo'
+var s2 = Symbol()
+Symbol.keyFor(s2) // undefined</code></pre>
+            <p><strong>Symbol.for为Symbol值登记的名字是全局环境的，在不同的iframe后者service worker中可以取到相同的值。</strong></p>
         </div>
         <footer>2017年05月13日</footer>
         <comments></comments>

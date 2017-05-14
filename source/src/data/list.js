@@ -210,6 +210,16 @@ export default {
             date: '2017/05/13',
             routerName: 'learning-es6-9',
             topicId: '2'
+        },
+        {
+            id: '23',
+            type: '读书笔记',
+            category: 'es6',
+            title: '《ES6标准入门》笔记之十：Proxy和Reflect',
+            description: '',
+            date: '2017/05/14',
+            routerName: 'learning-es6-10',
+            topicId: '2'
         }
     ]
 }
