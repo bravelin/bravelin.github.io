@@ -311,13 +311,14 @@ div#app-tip {
         content: "";
         position: absolute; }
       .page > ul.article-list > li:after {
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         left: -7px;
         top: 25px;
         background: #fff;
         -webkit-transform: rotate(45deg);
-                transform: rotate(45deg); }
+                transform: rotate(45deg);
+        border-radius: 4px; }
       .page > ul.article-list > li:before {
         width: 16px;
         height: 16px;
