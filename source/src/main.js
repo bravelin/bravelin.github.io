@@ -67,6 +67,13 @@ var pageRouterOption = [
         }
     },
     {
+        path: '/working/ubuntu/1',
+        name: 'working-ubuntu-1',
+        component: function (resolve) {
+            require(['./views/working/ubuntu/1.vue'], resolve)
+        }
+    },
+    {
         path: '/working/project/git',
         name: 'working-project-git',
         component: function (resolve) {

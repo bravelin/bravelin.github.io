@@ -210,16 +210,26 @@ export default {
             date: '2017/05/13',
             routerName: 'learning-es6-9',
             topicId: '2'
-        },
-        {
-            id: '23',
-            type: '读书笔记',
-            category: 'es6',
-            title: '《ES6标准入门》笔记之十：Proxy和Reflect',
-            description: '',
-            date: '2017/05/14',
-            routerName: 'learning-es6-10',
-            topicId: '2'
         }
+        // {
+        //     id: '23',
+        //     type: '读书笔记',
+        //     category: 'es6',
+        //     title: '《ES6标准入门》笔记之十：Proxy和Reflect',
+        //     description: '',
+        //     date: '2017/05/14',
+        //     routerName: 'learning-es6-10',
+        //     topicId: '2'
+        // }
+        // {
+        //     id: '24',
+        //     type: '工作总结',
+        //     category: 'ubuntu',
+        //     title: 'ubuntu使用摘要',
+        //     description: '',
+        //     date: '2016/06/02',
+        //     routerName: 'working-ubuntu-1',
+        //     topicId: ''
+        // }
     ]
 }
