@@ -74,6 +74,13 @@ var pageRouterOption = [
         }
     },
     {
+        path: '/working/atom/1',
+        name: 'working-atom-1',
+        component: function (resolve) {
+            require(['./views/working/atom/1.vue'], resolve)
+        }
+    },
+    {
         path: '/working/project/git',
         name: 'working-project-git',
         component: function (resolve) {
@@ -218,6 +225,13 @@ var pageRouterOption = [
         name: 'learning-es6-10',
         component: function (resolve) {
             require(['./views/learning/es6/10.vue'], resolve)
+        }
+    },
+    {
+        path: '/learning/es6/11',
+        name: 'learning-es6-11',
+        component: function (resolve) {
+            require(['./views/learning/es6/11.vue'], resolve)
         }
     },
     /** ********************************************************

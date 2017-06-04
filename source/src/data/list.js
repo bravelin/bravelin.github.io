@@ -220,7 +220,27 @@ export default {
             date: '2017/05/14',
             routerName: 'learning-es6-10',
             topicId: '2'
+        },
+        {
+            id: '26',
+            type: '读书笔记',
+            category: 'es6',
+            title: '《ES6标准入门》笔记之十一：二进制数组',
+            description: '',
+            date: '2017/05/18',
+            routerName: 'learning-es6-11',
+            topicId: '2'
         }
+        // {
+        //     id: '25',
+        //     type: '随笔记事',
+        //     category: 'ide atom',
+        //     title: 'ATOM的使用',
+        //     description: '',
+        //     date: '2017/06/03',
+        //     routerName: 'working-atom-1',
+        //     topicId: ''
+        // }
         // {
         //     id: '24',
         //     type: '工作总结',
