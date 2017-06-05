@@ -50,7 +50,7 @@ ArrayBuffer.isView(v) // true</code></pre>
             <p><strong>2、TypedArray数组的成员是连续的，不会有空位；</strong></p>
             <p><strong>3、TypedArray数组成员的默认值是0.</strong></p>
             <p><strong>4、TypedArray数组只是一层视图，本身不储存数据。</strong></p>
-            <p>构造函数原型：TypedArray(buffer, byteOffset=0, length?)：第一个参数必须，指向底层ArrayBuffer对象；第二个可选，视图开始的字节序号，默认为0；第三个可选，视图包含的数据个数，默认到内存区域结尾。</p>
+            <p>构造函数原型：<strong>TypedArray(buffer, byteOffset=0, length?)</strong>：第一个参数必须，指向底层ArrayBuffer对象；第二个可选，视图开始的字节序号，默认为0；第三个可选，视图包含的数据个数，默认到内存区域结尾。</p>
             <p>注意，byteOffset必须与所要建立的数据类型一致，否则会报错：</p>
             <pre><code>var buf = new ArrayBuffer(32)
 var v = new Int16Array(buf, 1) // ERROR</code></pre>
@@ -64,6 +64,46 @@ var y = new Int8Array(x)</code></pre>
             <pre><code>var x = new Int8Array([1, 1])
 var y = new Int8Array(x.buffer)</code></pre>
             <p><strong>TypedArray(arrayLikeObj)</strong>：构造函数的参数也可以是一个普通数组，直接生成TypedArray实例。此时会重新开辟内存区域。</p>
+            <p><strong>字节序</strong>：指的是数值在内存中的表示方式：</p>
+            <pre><code>var buf = new ArrayBuffer(16)
+var int32View = new Int32Array(buf)
+for (var i = 0; i &lt; int32View.length; i++) {
+    int32View[i] = i * 2
+}
+console.log(int32View) // 0 2 4 6
+var int16View = new Int16Array(buf)
+console.log(int16View) // 0 0 2 0 4 0 6 0</code></pre>
+            <p>x86体系的计算机都采用<strong>小端字节序（litter endian），相对重要的字节（高字节）排在后面，不重要的字节（低字节）排在前面。大端字节序列则相反。TypedArray内部也采用小端字节序列读写。DataView对象可以设定字节序列。</strong></p>
+            <p>下面的方法可以判断当前视图是否是小端字节序，还是大端字节序：</p>
+            <pre><code>const BIG_ENDIAN = Symbol('BIG_ENDINA')
+const LITTER_ENDINA = Symbol('LITTER_ENDINA')
+function getPlatformEndianness() {
+    let arr32 = Uint32Array.of(0x12345678)
+    let arr8 = new Uint8Array(arr32.buffer)
+    switch ((arr8[0]*0x1000000) + (arr8[1]*0x10000) + (arr8[2]*0x100)+(arr8[3])) {
+        case 0x12345678: return BIG_ENDIAN;
+        case 0x78563412: return LITTER_ENDINA;
+        default: throw new Error('Unknow endianness')
+    }
+}</code></pre>
+            <p>每一种TypedArray视图，都有一个BYTES_PER_ELEMENT属性，表示这种数据类型占据的字节数：</p>
+            <pre><code>Int8Array.BYTES_PER_ELEMENT // 1
+Float64Array.BYTES_PER_ELEMENT // 8</code></pre>
+            <p>ArrayBuffer与字符串的相互转换：（前提是字符串的编码方法是确定的，比如UTF-16）</p>
+            <pre><code>// ArrayBuffer转为字符串
+function ab2str(buf) {
+    return String.fromCharCode.apply(null, new Uint16Array(buf))
+}
+// 字符串转为ArrayBuffer
+function str2ab(str) {
+    var buf = new ArrayBuffer(str.length * 2)
+    var bufView = new Uint16Array(buf)
+    for(var i = 0; i &lt; str.length; i++) {
+        bufView[i] = str.charCodeAt(i)
+    }
+    return buf
+}</code></pre>
+            <p></p>
         </div>
         <footer>2017年05月18日</footer>
         <comments></comments>
