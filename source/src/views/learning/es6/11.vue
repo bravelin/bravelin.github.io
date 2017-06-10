@@ -103,7 +103,21 @@ function str2ab(str) {
     }
     return buf
 }</code></pre>
-            <p></p>
+            <p><strong>正向溢出(overflow)</strong>：输入值大于当前数据类型的最大值时，最后得到的值是当前数据类型的最小值加上余值，再减去1；<strong>负向溢出(underflow)</strong>：输入值小于当前数据类型的最小值时，当前数据类型的最大值减去余值，再加上1。</p>
+            <pre><code>var uint8 = new Uint8Array(1)
+uint8[0] = 256 // 0
+uint8[0] = -1 // 255
+var int8 = new Int8Array(1)
+int8[0] = 128 // -128
+int8[0] = -129 // 127</code></pre>
+            <p><strong>Uint8ClampedArray</strong>视图的溢出与上面的规则不同，正向溢出都等于255，负向溢出都等于0：</p>
+            <pre><code>var uint8c = new Uint8ClampedArray(1)
+uint8c[0] = 256 // 255
+uint8c[0] = -1 // 0</code></pre>
+            <p><strong>TypedArray.prototype.buffer</strong>：返回整段内存区域对应的ArrayBuffer对象。</p>
+            <p><strong>TypedArray.prototype.byteLength</strong>：返回数组占据的内存长度。</p>
+            <p><strong>TypedArray.prototype.length</strong>：返回数组的成员数目。</p>
+            <p><strong>TypedArray.prototype.byteOffset</strong>：返回数组从底层ArrayBuffer对象的哪个字节开始。</p>
         </div>
         <footer>2017年05月18日</footer>
         <comments></comments>
