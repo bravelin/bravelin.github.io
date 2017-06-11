@@ -118,6 +118,52 @@ uint8c[0] = -1 // 0</code></pre>
             <p><strong>TypedArray.prototype.byteLength</strong>：返回数组占据的内存长度。</p>
             <p><strong>TypedArray.prototype.length</strong>：返回数组的成员数目。</p>
             <p><strong>TypedArray.prototype.byteOffset</strong>：返回数组从底层ArrayBuffer对象的哪个字节开始。</p>
+            <p><strong>TypedArray.prototype.set()</strong>：用于复制数组（普通数组或者TypedArray数组）,将一段内存完全复制到另外一段内存,可以指定从哪个位置开始复制。</p>
+            <pre><code>var a = new Uint8Array(8)
+var b = new Uint8Array(10)
+b.set(a, 2) // 从a[2]开始</code></pre>
+            <p><strong>TypedArray.prototype.subarray()</strong>：对于TypedArray的一部分再建立一个新的视图，第1个参数是起始的字节序号，第2个参数是结束成员序号（不包含）：</p>
+            <pre><code>var a = new Uint8Array(8)
+var b = a.subarray(2,3)
+b.byteLength // 1</code></pre>
+            <p><strong>TypedArray.prototype.slice()</strong>：返回一个指定位置的新的TypedArray实例，支持负值：</p>
+            <pre><code>let uint8 = Uint8Array.of(1,2,3)
+uint8.slice(-1) // [3]</code></pre>
+            <p><strong>TypedArray.of()</strong>：静态方法，用于将参数转为一个TypedArray实例。</p>
+            <pre><code>Float32Array.of(0.1,0.2,3)</code></pre>
+            <p>TypedArray的构造方法：</p>
+            <pre><code>let a1 = new Uint8Array([1,2,3])
+let a2 = new Uint8Array.of(1,2,3)
+let a3 = new Uint8Array(3)
+a3[0] = 1
+a3[1] = 2
+a3[2] = 3</code></pre>
+            <p><strong>TypedArray.from()</strong>：接受一个可遍历的结构（比如数组）作为参数，返回一个基于此结构的TypedArray实例。</p>
+            <pre><code>Uint16Array.from([0,1,2])</code></pre>
+            <p>还可以将一种TypedArray转为另外一种：</p>
+            <pre><code>var uint16 = Uint16Array.from(Uint8Array.of(1,2,3))</code></pre>
+            <p>还可以接受一个函数作为第二个参数，对每个元素进行遍历：</p>
+            <pre><code>Int16Array.from(Int8Array.of(1,2,3), x => 2*x) // [2,4,6]</code></pre>
+            <h3 class="title">复合视图</h3>
+            <p>视图的构造函数可以指定起始位置和长度，所以在同一段内存中可以依次存放不同类型的数据：</p>
+            <pre><code>var buf = new ArrayBuffer(24)
+var idView = new Uint32Array(buf,0,1) // 字节0~3：1个32位无符号整数
+var userNameView = new Uint8Array(buf,4,16) // 字节4~19：16个8位无符号整数
+var amountView = new Float32Array(buf, 20, 1) // 字节20~23:1个32位浮点数</code></pre>
+            <h3 class="title">DataView视图</h3>
+            <p>DataView支持设定字节序，接受一个ArrayBuffer对象作为参数生成视图。</p>
+            <pre><code>var buf = new ArrayBuffer(32)
+var dv = new DateView(buf, 2, 4) // 支持设定起始位置和长度</code></pre>
+            <p>DataView实例的<strong>buffer、byteLength、byteOffset</strong>属性与TypedArray含义一致。</p>
+            <p>DataView实例提供以下8个方法读取内存：<strong>getInt8、getUint8、getInt16、getUint16、getInt32、getUint32、getFloat32、getFloat64</strong>，方法的参数是一个字节序号，表示读取的起始位置：</p>
+            <pre><code>var buf = new ArrayBuffer(32)
+var dv = new DataView(buf)
+var v1 = dv.getUint8(0) // 从第0个字节读取一个uint8
+var v2 = dv.getUint16(1) // 从第1个字节读取一个uint16</code></pre>
+            <p>如果一次读取两个或者两个以上的字节，则必须明确数据的储存方式，是小端序列还是大端序列（默认），如果是小端序列，第2个参数需要设定为true：</p>
+            <pre><code>var v3 = dv.getUint8(4, true)</code></pre>
+            <p>DataView提供以下8个方法写入内存：<strong>setUint8、setInt8、setUint16、setInt16、setInt32、setUint32、setFloat32、setFloat64</strong>，接受3个参数，第1个参数表示写入的位置，第2个参数是写入的数据，第3个参数表面数据的储存方式（大小端）：</p>
+            <pre><code>dv.setUint32(0, 32, true)</code></pre>
         </div>
         <footer>2017年05月18日</footer>
         <comments></comments>
