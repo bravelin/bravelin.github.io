@@ -245,6 +245,13 @@ var pageRouterOption = [
         }
     },
     {
+        path: '/learning/canvas/2',
+        name: 'learning-canvas-2',
+        component: function (resolve) {
+            require(['./views/learning/canvas/2.vue'], resolve)
+        }
+    },
+    {
         path: '/',
         redirect: {name: 'articles'}
     },

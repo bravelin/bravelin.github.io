@@ -230,6 +230,16 @@ export default {
             date: '2017/05/18',
             routerName: 'learning-es6-11',
             topicId: '2'
+        },
+        {
+            id: '27',
+            type: '读书笔记',
+            category: 'canvas',
+            title: 'Canvas学习笔记之二：绘制',
+            description: '',
+            date: '2016/06/15',
+            routerName: 'learning-canvas-2',
+            topicId: '3'
         }
         // {
         //     id: '25',
