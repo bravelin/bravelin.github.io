@@ -362,7 +362,8 @@ div.side-menu-icon{
 
 @media screen and (min-width: 1390px) {
   .article-nav-menu{
-    right:calc((100% - 1280px) / 2 - 50px )
+    // right:calc((100% - 1280px) / 2 - 50px )
+    right: 20px;
   }
 }
 

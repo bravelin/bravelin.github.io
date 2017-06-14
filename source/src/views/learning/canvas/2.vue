@@ -7,8 +7,8 @@
         padding-bottom: 5px !important;
     }
     .gradient>canvas{
-        width: 290px;
-        height: 290px;
+        width: 250px;
+        height: 250px;
         border: 1px solid #e0e0e0;
         margin-bottom: 15px;
     }
@@ -35,16 +35,16 @@ fillRect(double x, double y, double w, double h)</code></pre>
             <p>Canvas支持线性（linear）渐变与放射（radial）渐变。</p>
             <p>线性渐变通过调用<strong>createLinearGradient()</strong>方法创建，需要向该方法传入两个点的坐标，两点之间的连线就是canvas建立线性渐变效果的依据，该方法会返回CanvasGradient实例。可以添加颜色停止点设置渐变色。</p>
             <div class="exp gradient">
-                <canvas ref="c1" width="290" height="290"></canvas>
-                <canvas ref="c2" width="290" height="290"></canvas>
-                <canvas ref="c3" width="290" height="290"></canvas>
-                <canvas ref="c4" width="290" height="290"></canvas>
+                <canvas ref="c1" width="250" height="250"></canvas>
+                <canvas ref="c2" width="250" height="250"></canvas>
+                <canvas ref="c3" width="250" height="250"></canvas>
+                <canvas ref="c4" width="250" height="250"></canvas>
             </div>
             <pre><code>initLinearGradient () {
     let that = this
     let refs = that.$refs
-    let w = 290
-    let h = 290
+    let w = 250
+    let h = 250
     that.drawLinearGradient(refs.c1, {x0: 0, y0: 0, x1: w, y1: 0})
     that.drawLinearGradient(refs.c2, {x0: 0, y0: 0, x1: 0, y1: h})
     that.drawLinearGradient(refs.c3, {x0: 0, y0: 0, x1: w, y1: h})
@@ -79,6 +79,24 @@ context.fillStyle = gradient
 context.fillRect(0, 0, el.width, el.height)</code></pre>
         <p><strong>放射渐变的填充范围仅局限于两个圆形所定义的圆锥区域，不会使用最后一个渐变色填充剩余区域。</strong></p>
         <h3 class="title">图案填充</h3>
+        <p>Canavs允许使用图案对图形和文本进行填充，图案元素可以是这3种：<strong>Image元素、Video元素、canvas元素。</strong></p>
+        <p>使用createPattern(patternObj, repeatTypeString)方法创建图案，patternObj指的是图案元素，repeatTypeString指的是图案的重复方式："repeat"、"repeat-x"、"repeat-y"以及"no-repeat"4种方式。</p>
+        <h3 class="title">阴影</h3>
+        <p>阴影效果通过如下4个属性值设置：</p>
+        <ol>
+            <li>1、shadowColor：CSS3格式的颜色，默认值：rgba(0,0,0,0)；</li>
+            <li>2、shadowOffsetX：阴影的水平像素偏移；</li>
+            <li>3、shadowOffsetY：阴影的垂直像素偏移；</li>
+            <li>4、shadowBlur：一个与像素无关的值，该值被用于高斯模糊方程之中。</li>
+        </ol>
+        <h3 class="title">路径、描边与填充</h3>
+        <p>strokeRect()和fillRect()是Canavs中仅有的两个可以立即绘制图形的方法，其他方法都是基于路径的。<strong>不论一个路径是否开放或者封闭，都可以进行填充。</strong>与路径有关的方法：</p>
+        <ol>
+            <li>1、<strong>beginPath()</strong>：将当前路径下的子路径都清除，以此重置当前路径；</li>
+            <li>2、<strong>closePath()</strong>：显式地封闭某段开放路径；</li>
+            <li>3、<strong>fill()</strong>：填充；</li>
+            <li>4、<strong>stroke()</strong>：描边；</li>
+        </ol>
         </div>
         <footer>2016年06月15日</footer>
         <comments></comments>
@@ -102,8 +120,8 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
             initLinearGradient () {
                 let that = this
                 let refs = that.$refs
-                let w = 290
-                let h = 290
+                let w = 250
+                let h = 250
                 that.drawLinearGradient(refs.c1, {x0: 0, y0: 0, x1: w, y1: 0})
                 that.drawLinearGradient(refs.c2, {x0: 0, y0: 0, x1: 0, y1: h})
                 that.drawLinearGradient(refs.c3, {x0: 0, y0: 0, x1: w, y1: h})

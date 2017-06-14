@@ -128,6 +128,16 @@ div#app-tip{
   >div.content{
     font-size:18px;
     padding:15px 20px;
+    ol,ul{
+        li{
+            text-indent: 36px;
+            line-height: 1.8;
+        }
+    }
+    strong{
+      color:#f66;
+      //font-weight: normal;
+    }
     p{
       margin-top:8px;
       line-height: 2;
@@ -135,10 +145,6 @@ div#app-tip{
       word-wrap: break-word;
       em{
         font-weight: bold;
-      }
-      strong{
-        color:#f60;
-        font-weight: normal;
       }
       i{
         color: #906;
