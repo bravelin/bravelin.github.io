@@ -1,16 +1,24 @@
 <style scope>
-    .gradient{
+    .exp{
         display: flex;
         align-items: center;
+        justify-content: center;
+    }
+    .gradient{
         justify-content: space-around;
         flex-wrap: wrap;
         padding-bottom: 5px !important;
     }
-    .gradient>canvas{
+    canvas{
         width: 250px;
-        height: 250px;
+        height: 250px !important;
         border: 1px solid #e0e0e0;
+    }
+    .gradient>canvas{
         margin-bottom: 15px;
+    }
+    .grid>canvas{
+        width: 90%;
     }
 </style>
 <template>
@@ -96,7 +104,84 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
             <li>2、<strong>closePath()</strong>：显式地封闭某段开放路径；</li>
             <li>3、<strong>fill()</strong>：填充；</li>
             <li>4、<strong>stroke()</strong>：描边；</li>
+            <li>5、<strong>rect(x,y,w,h)</strong>：添加矩形子路径，逆时针方向创建；</li>
+            <li>6、<strong>arc(centerX,centerY,radius,startAngle,endAngle)</strong>：添加圆弧子路径</li>
         </ol>
+        <p>填充路径是使用<strong>非零环绕原则</strong>：从区域内部画一条足够长的线段，与路径的顺时针部分相交则加1，逆时针部分相交则-1，如果最终值为0则不填充该区域，否则填充。</p>
+        <p>绘制圆环：</p>
+        <div class="exp circle">
+            <canvas ref="c6" width="250" height="250"></canvas>
+        </div>
+        <pre><code>drawTwoCircle () {
+    let that = this
+    let el = that.$refs.c6
+    let context = el.getContext('2d')
+    let w = el.width
+    let h = el.height
+    context.fillStyle = 'rgba(0,0,0,0.5)'
+    context.shadowColor = 'rgba(0,0,0,0.8)'
+    context.shadowOffsetX = 8
+    context.shadowOffsetY = 8
+    context.shadowBlur = 20
+    context.arc(w / 2, h / 2, 100, 0, 2 * Math.PI, true)
+    context.arc(w / 2, h / 2, 70, 0, 2 * Math.PI, false)
+    context.fill()
+}</code></pre>
+        <h3 class="title">线段</h3>
+        <p>主要有两个API：<strong>moveTo(x,y)</strong>和<strong>lineTo(x,y)</strong>。<strong>如果要绘制一像素的线条，需要将其绘制在某两个像素之间的那个像素中。</strong></p>
+        <p>网格的绘制：</p>
+        <div class="exp grid" ref="grid">
+            <canvas ref="c7" width="250" height="250"></canvas>
+        </div>
+        <pre><code>drawGrid () {
+    let that = this
+    let el = that.$refs.c7
+    let context = el.getContext('2d')
+    let w = el.width
+    let h = el.height
+    let stepX = 10
+    let stepY = 10
+
+    context.clearRect(0, 0, w, h)
+    context.strokeStyle = '#e0e0e0'
+    context.lineWidth = 0.5
+    for (let i = stepX + 0.5; i < w; i += stepX) {
+        context.beginPath()
+        context.moveTo(i, 0)
+        context.lineTo(i, h)
+        context.stroke()
+    }
+
+    for (let j = stepY + 0.5; j < h; j += stepY) {
+        context.beginPath()
+        context.moveTo(0, j)
+        context.lineTo(w, j)
+        context.stroke()
+    }
+}</code></pre>
+            <p>虚线的绘制：</p>
+            <div class="exp grid"><canvas ref="c8" width="250" height="250"></canvas></div>
+            <pre><code>drawDashedLine () {
+    let that = this
+    let el = that.$refs.c8
+    let context = el.getContext('2d')
+    let w = el.width
+    let h = el.height
+    let startPoint = {x: 15, y: 15}
+    let endPoint = {x: w - 20, y: h - 30}
+    let deltX = endPoint.x - startPoint.x
+    let deltY = endPoint.y - startPoint.y
+    let dashLen = 4
+    let num = Math.floor(Math.sqrt(deltX * deltX + deltY * deltY) / dashLen)
+
+    context.beginPath()
+    context.strokeStyle = 'rgba(0,0,0,0.8)'
+    context.lineWidth = 1
+    for (let i = 0; i < num; i++) {
+        context[i % 2 == 0 ? 'moveTo' : 'lineTo'](startPoint.x + (deltX / num) * i, startPoint.y + (deltY / num) * i)
+    }
+    context.stroke()
+}</code></pre>
         </div>
         <footer>2016年06月15日</footer>
         <comments></comments>
@@ -110,7 +195,10 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
             let that = this
             that.$nextTick(() => {
                 that.initLinearGradient() // 绘制线性渐变
-                that.initRadialGradient() // 绘制线性渐变
+                that.initRadialGradient() // 绘制放射渐变
+                that.drawTwoCircle() // 绘制圆环
+                that.initGrid() // 绘制网格
+                that.drawDashedLine() // 绘制虚线
             })
         },
         methods: {
@@ -155,6 +243,87 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
                 gradient.addColorStop(1, 'yellow')
                 context.fillStyle = gradient
                 context.fillRect(0, 0, el.width, el.height)
+            },
+            /**
+            * 绘制圆环
+            */
+            drawTwoCircle () {
+                let that = this
+                let el = that.$refs.c6
+                let context = el.getContext('2d')
+                let w = el.width
+                let h = el.height
+                context.fillStyle = 'rgba(0,0,0,0.5)'
+                context.shadowColor = 'rgba(0,0,0,0.8)'
+                context.shadowOffsetX = 8
+                context.shadowOffsetY = 8
+                context.shadowBlur = 20
+                context.arc(w / 2, h / 2, 100, 0, 2 * Math.PI, true)
+                context.arc(w / 2, h / 2, 70, 0, 2 * Math.PI, false)
+                context.fill()
+            },
+            /**
+             * 绘制网格
+             */
+            initGrid () {
+                let that = this
+                let c7 = that.$refs.c7
+                let c8 = that.$refs.c8
+                let box = that.$refs.grid
+                let rect = box.getBoundingClientRect()
+                let w = (rect.right - rect.left) * 0.9
+                c7.setAttribute('width', w)
+                c8.setAttribute('width', w)
+                that.drawGrid(c7)
+                that.drawGrid(c8)
+            },
+            drawGrid (el) {
+                let context = el.getContext('2d')
+                let w = el.width
+                let h = el.height
+                let stepX = 10
+                let stepY = 10
+
+                context.clearRect(0, 0, w, h)
+                context.strokeStyle = '#e0e0e0'
+                context.lineWidth = 0.5
+                for (let i = stepX + 0.5; i < w; i += stepX) {
+                    context.beginPath()
+                    context.moveTo(i, 0)
+                    context.lineTo(i, h)
+                    context.stroke()
+                }
+
+                for (let j = stepY + 0.5; j < h; j += stepY) {
+                    context.beginPath()
+                    context.moveTo(0, j)
+                    context.lineTo(w, j)
+                    context.stroke()
+                }
+            },
+            /**
+             * 绘制虚线
+             */
+            drawDashedLine () {
+                let that = this
+                let el = that.$refs.c8
+                let context = el.getContext('2d')
+                let w = el.width
+                let h = el.height
+                let startPoint = {x: 15, y: 15}
+                let endPoint = {x: w - 20, y: h - 30}
+                let deltX = endPoint.x - startPoint.x
+                let deltY = endPoint.y - startPoint.y
+                let dashLen = 4
+                let num = Math.floor(Math.sqrt(deltX * deltX + deltY * deltY) / dashLen)
+
+                context.beginPath()
+                context.strokeStyle = 'rgba(0,0,0,0.8)'
+                context.lineWidth = 1
+                for (let i = 0; i < num; i++) {
+                    context[i % 2 == 0 ? 'moveTo' : 'lineTo'](startPoint.x + (deltX / num) * i, startPoint.y + (deltY / num) * i)
+                }
+                context.stroke()
             }
         }
     }
