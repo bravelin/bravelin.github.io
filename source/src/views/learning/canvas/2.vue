@@ -78,11 +78,8 @@ drawLinearGradient (el, pos) {
 let w = el.width
 let h = el.height
 let gradient = context.createRadialGradient(w / 2, h, 1, w / 2, 0, 128)
-gradient.addColorStop(0, 'blue')
-gradient.addColorStop(0.25, 'white')
-gradient.addColorStop(0.5, 'purple')
-gradient.addColorStop(0.75, 'red')
-gradient.addColorStop(1, 'yellow')
+gradient.addColorStop(0, '#333')
+gradient.addColorStop(1, '#fff')
 context.fillStyle = gradient
 context.fillRect(0, 0, el.width, el.height)</code></pre>
         <p><strong>放射渐变的填充范围仅局限于两个圆形所定义的圆锥区域，不会使用最后一个渐变色填充剩余区域。</strong></p>
@@ -105,7 +102,7 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
             <li>3、<strong>fill()</strong>：填充；</li>
             <li>4、<strong>stroke()</strong>：描边；</li>
             <li>5、<strong>rect(x,y,w,h)</strong>：添加矩形子路径，逆时针方向创建；</li>
-            <li>6、<strong>arc(centerX,centerY,radius,startAngle,endAngle)</strong>：添加圆弧子路径</li>
+            <li>6、<strong>arc(centerX,centerY,radius,startAngle,endAngle,counterClockwise)</strong>：添加圆弧子路径，counterClockwise默认为false(顺时针)，设置为true则逆时针。</li>
         </ol>
         <p>填充路径是使用<strong>非零环绕原则</strong>：从区域内部画一条足够长的线段，与路径的顺时针部分相交则加1，逆时针部分相交则-1，如果最终值为0则不填充该区域，否则填充。</p>
         <p>绘制圆环：</p>
@@ -182,6 +179,10 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
     }
     context.stroke()
 }</code></pre>
+        <p>lineCap的取值：butt、round、square，默认为butt，控制线段端点的绘制。</p>
+        <p>lineJoin的取值：round、bevel、miter，默认值为miter，控制线段的连接点的绘制。</p>
+        <p>miterLimit：斜接线长度与二分之一线宽的比值，如果斜接线的长度超过了此值，浏览器将以bevel的方式绘制线段的连接点。</p>
+        <h3 class="title">圆弧与圆形</h3>
         </div>
         <footer>2016年06月15日</footer>
         <comments></comments>
@@ -218,11 +219,8 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
             drawLinearGradient (el, pos) {
                 let context = el.getContext('2d')
                 let gradient = context.createLinearGradient(pos.x0, pos.y0, pos.x1, pos.y1)
-                gradient.addColorStop(0, 'blue')
-                gradient.addColorStop(0.25, 'white')
-                gradient.addColorStop(0.5, 'purple')
-                gradient.addColorStop(0.75, 'red')
-                gradient.addColorStop(1, 'yellow')
+                gradient.addColorStop(0, '#333')
+                gradient.addColorStop(1, '#fff')
                 context.fillStyle = gradient
                 context.fillRect(0, 0, el.width, el.height)
             },
