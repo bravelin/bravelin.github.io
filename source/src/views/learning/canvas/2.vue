@@ -18,7 +18,7 @@
         margin-bottom: 15px;
     }
     .grid>canvas{
-        width: 90%;
+        width: 95%;
     }
 </style>
 <template>
@@ -179,10 +179,39 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
     }
     context.stroke()
 }</code></pre>
-        <p>lineCap的取值：butt、round、square，默认为butt，控制线段端点的绘制。</p>
-        <p>lineJoin的取值：round、bevel、miter，默认值为miter，控制线段的连接点的绘制。</p>
-        <p>miterLimit：斜接线长度与二分之一线宽的比值，如果斜接线的长度超过了此值，浏览器将以bevel的方式绘制线段的连接点。</p>
-        <h3 class="title">圆弧与圆形</h3>
+            <p>lineCap的取值：butt、round、square，默认为butt，控制线段端点的绘制。</p>
+            <p>lineJoin的取值：round、bevel、miter，默认值为miter，控制线段的连接点的绘制。</p>
+            <p>miterLimit：斜接线长度与二分之一线宽的比值，如果斜接线的长度超过了此值，浏览器将以bevel的方式绘制线段的连接点。</p>
+            <h3 class="title">圆弧与圆形</h3>
+            <p>arc()方法所绘制可能不仅仅是圆弧，如果当前路径有子路径的话，浏览器会将子路径的终点与圆弧的起点用线段连接起来。</p>
+            <p>另外一个用于创建圆弧路径的方法是arcTo(x1,y1,x2,y2,radius)，参数分别代表两个点及半径，此圆弧与当前点到第一个点(x1,y1)，的连线相切，并且与(x1,y1)到(x2,y2)的连线也相切。</p>
+            <p>圆角矩形的绘制：</p>
+            <div class="exp grid" ref="grid">
+                <canvas ref="c9" width="250" height="250"></canvas>
+            </div>
+            <pre><code>drawRoundedRect () {
+    let that = this
+    let el = that.$refs.c9
+    let context = el.getContext('2d')
+    let w = Math.floor(el.width * 0.9)
+    let h = Math.floor(el.height * 0.9)
+    let startX = (el.width - w) / 2
+    let startY = (el.height - h) / 2
+    let radius = 20
+    let endX = startX + w
+    let endY = startY + h
+    context.strokeStyle = 'rgba(0,0,0,0.5)'
+    context.fillStyle = 'rgba(0,0,0,0.3)'
+    context.lineWidth = 1
+    context.beginPath()
+    context.moveTo(startX + radius, startY)
+    context.arcTo(endX, startY, endX, startY + radius, radius)
+    context.arcTo(endX, endY, endX - radius, endY, radius)
+    context.arcTo(startX, endY, startX, endY - radius, radius)
+    context.arcTo(startX, startY, startX + radius, startY, radius)
+    context.stroke()
+    context.fill()
+}</code></pre>
         </div>
         <footer>2016年06月15日</footer>
         <comments></comments>
@@ -200,6 +229,7 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
                 that.drawTwoCircle() // 绘制圆环
                 that.initGrid() // 绘制网格
                 that.drawDashedLine() // 绘制虚线
+                that.drawRoundedRect() // 绘制圆角矩形
             })
         },
         methods: {
@@ -265,15 +295,19 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
              */
             initGrid () {
                 let that = this
-                let c7 = that.$refs.c7
-                let c8 = that.$refs.c8
-                let box = that.$refs.grid
+                let refs = that.$refs
+                let c7 = refs.c7
+                let c8 = refs.c8
+                let c9 = refs.c9
+                let box = refs.grid
                 let rect = box.getBoundingClientRect()
-                let w = (rect.right - rect.left) * 0.9
+                let w = (rect.right - rect.left) * 0.95
                 c7.setAttribute('width', w)
                 c8.setAttribute('width', w)
+                c9.setAttribute('width', w)
                 that.drawGrid(c7)
                 that.drawGrid(c8)
+                that.drawGrid(c9)
             },
             drawGrid (el) {
                 let context = el.getContext('2d')
@@ -322,6 +356,32 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
                     context[i % 2 == 0 ? 'moveTo' : 'lineTo'](startPoint.x + (deltX / num) * i, startPoint.y + (deltY / num) * i)
                 }
                 context.stroke()
+            },
+            /**
+             * 绘制圆角矩形
+             */
+            drawRoundedRect () {
+                let that = this
+                let el = that.$refs.c9
+                let context = el.getContext('2d')
+                let w = Math.floor(el.width * 0.9)
+                let h = Math.floor(el.height * 0.9)
+                let startX = (el.width - w) / 2
+                let startY = (el.height - h) / 2
+                let radius = 20
+                let endX = startX + w
+                let endY = startY + h
+                context.strokeStyle = 'rgba(0,0,0,0.5)'
+                context.fillStyle = 'rgba(0,0,0,0.3)'
+                context.lineWidth = 1
+                context.beginPath()
+                context.moveTo(startX + radius, startY)
+                context.arcTo(endX, startY, endX, startY + radius, radius)
+                context.arcTo(endX, endY, endX - radius, endY, radius)
+                context.arcTo(startX, endY, startX, endY - radius, radius)
+                context.arcTo(startX, startY, startX + radius, startY, radius)
+                context.stroke()
+                context.fill()
             }
         }
     }
