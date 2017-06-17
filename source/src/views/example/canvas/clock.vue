@@ -13,14 +13,12 @@
 </style>
 <template>
     <div class="page article">
+        <iframe style="display:none" frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=2&id=25638325&auto=1&height=66"></iframe>
         <h2 class="title">Canvas绘制的时钟</h2>
         <div class="content">
             <div class="exp" ref="grid">
                 <canvas ref="clock" width="400" height="400"></canvas>
             </div>
-            <audio src="http://14.215.93.19/m10.music.126.net/20170617182319/c3db8e0f31aac0e3305e9e535d57de62/ymusic/d40f/58d8/0bfc/4c77347a6a0232fede6ea0e022d10433.mp3?wshc_tag=0&wsts_tag=5944fd3b&wsid_tag=7923b496&wsiphost=ipdbm" autoplay="true">
-
-            </audio>
             <h3 class="title">The Code</h3>
             <p>data定义：</p>
             <pre><code>data () {

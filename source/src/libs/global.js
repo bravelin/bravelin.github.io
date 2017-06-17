@@ -53,7 +53,7 @@ exports.Global = {
     },
     shareConfig: function (title, imgUrl) {
         document.title = title
-        document.querySelector('#_share_image').src = imgUrl
+        // document.querySelector('#_share_image').src = imgUrl
     },
 
     /* eslint-disable */
