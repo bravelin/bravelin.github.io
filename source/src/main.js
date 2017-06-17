@@ -257,6 +257,10 @@ var pageRouterOption = [
     {
         path: '/example/canvas/clock',
         name: 'example-canvas-clock',
+        meta: {
+            shareTitle: '嘀嗒嘀嗒......',
+            shareImg: '/static/assets/clock.png'
+        },
         component: function (resolve) {
             require(['./views/example/canvas/clock.vue'], resolve)
         }
@@ -303,6 +307,11 @@ router.afterEach(function (to) {
         _global.currArticleName = ''
     } else {
         _global.setArticleNavMenu(to.name)
+    }
+    if (to.meta && to.meta.shareTitle && to.meta.shareImg) {
+        _global.shareConfig('linz blog：' + to.meta.shareTitle, to.meta.shareImg)
+    } else {
+        _global.shareConfig(_global.shareTitle, _global.shareImg)
     }
 })
 

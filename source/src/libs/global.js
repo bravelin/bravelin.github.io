@@ -12,6 +12,8 @@ exports.Global = {
     currPage: '',
     currPageParams: '',
     appKey: 'A6931492233958' + 'UZ' + '861E0A3C-95CD-E681-E0CA-E70127FFECE7' + 'UZ',
+    shareTitle: 'linz blog',
+    shareImg: '/static/assets/header.jpg',
     setArticleNavMenu: function (routerName) {
         var that = this
         that.showArticleNavMenu = true
@@ -48,6 +50,10 @@ exports.Global = {
         setTimeout(function () {
             _tip.classList.remove('active')
         }, (time || 3000))
+    },
+    shareConfig: function (title, imgUrl) {
+        document.title = title
+        document.querySelector('#_share_image').src = imgUrl
     },
 
     /* eslint-disable */
