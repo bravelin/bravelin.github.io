@@ -240,6 +240,16 @@ export default {
             date: '2016/06/15',
             routerName: 'learning-canvas-2',
             topicId: '3'
+        },
+        {
+            id: '28',
+            type: '例子',
+            category: 'canvas',
+            title: 'Canvas绘制的时钟',
+            description: '',
+            date: '2017/06/17',
+            routerName: 'example-canvas-clock',
+            topicId: ''
         }
         // {
         //     id: '25',

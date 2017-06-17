@@ -251,6 +251,16 @@ var pageRouterOption = [
             require(['./views/learning/canvas/2.vue'], resolve)
         }
     },
+    /**********************************************************
+    **canvas例子
+    **********************************************************/
+    {
+        path: '/example/canvas/clock',
+        name: 'example-canvas-clock',
+        component: function (resolve) {
+            require(['./views/example/canvas/clock.vue'], resolve)
+        }
+    },
     {
         path: '/',
         redirect: {name: 'articles'}
