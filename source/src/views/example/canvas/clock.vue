@@ -5,7 +5,7 @@
         justify-content: center;
     }
     canvas{
-        height: 400px !important;
+        height: 400px;
         width: 400px;
         background: #fff;
         border-radius: 10px;
