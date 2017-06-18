@@ -1,10 +1,10 @@
-<style scope>
+<style scoped>
     .exp{
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    canvas{
+    div.exp>canvas.clock{
         height: 400px;
         width: 400px;
         background: #fff;
@@ -17,7 +17,7 @@
         <h2 class="title">Canvas绘制的时钟</h2>
         <div class="content">
             <div class="exp" ref="grid">
-                <canvas ref="clock" width="400" height="400"></canvas>
+                <canvas ref="clock" width="400" height="400" class="clock"></canvas>
             </div>
             <h3 class="title">The Code</h3>
             <p>data定义：</p>

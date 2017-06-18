@@ -1,4 +1,4 @@
-<style scope>
+<style scoped>
     .exp{
         display: flex;
         align-items: center;
