@@ -266,6 +266,17 @@ var pageRouterOption = [
         }
     },
     {
+        path: '/example/canvas/rose',
+        name: 'example-canvas-rose',
+        meta: {
+            shareTitle: '玫瑰曲线',
+            shareImg: '/static/assets/clock.png'
+        },
+        component: function (resolve) {
+            require(['./views/example/canvas/rose.vue'], resolve)
+        }
+    },
+    {
         path: '/',
         redirect: {name: 'articles'}
     },
