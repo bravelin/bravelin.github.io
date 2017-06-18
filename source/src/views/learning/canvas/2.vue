@@ -212,6 +212,49 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
     context.stroke()
     context.fill()
 }</code></pre>
+            <h3 class="title">贝塞尔曲线</h3>
+            <p>分为<strong>平方贝塞尔曲线</strong>（由两个锚点和一个控制点）和<strong>立方贝塞尔曲线</strong>（两个锚点以及两个控制点）。</p>
+            <p>平方贝塞尔曲线使用quadraticCurveTo方法绘制，接受四个参数，分别表示控制点和锚点的X、Y坐标。所绘制的曲线，会将锚点与当前路径中最后一个点连接起来。</p>
+            <p>使用贝赛尔曲线绘制圆角：</p>
+            <div class="exp grid">
+                <canvas ref="c10" width="250" height="250"></canvas>
+            </div>
+            <pre><code>drawArrow () {
+    let that = this
+    let el = that.$refs.c10
+    let context = el.getContext('2d')
+    let margin = 30
+    let w = el.width
+    let h = el.height
+    context.strokeStyle = 'rgba(0,0,0,0.5)'
+    context.fillStyle = 'rgba(0,0,0,0.3)'
+    context.beginPath()
+    context.moveTo(w - margin, margin * 2)
+    context.lineTo(w - margin, h - margin * 2)
+    context.quadraticCurveTo(w - margin, h - margin, w - margin * 2, h - margin)
+    context.lineTo(margin + 80, h / 2 + margin)
+    context.quadraticCurveTo(50, h / 2, margin + 80, h / 2 - margin)
+    context.lineTo(w - margin * 2, margin)
+    context.quadraticCurveTo(w - margin, margin, w - margin, margin * 2)
+    context.fill()
+    context.stroke()
+}</code></pre>
+            <h3 class="title">坐标系的变换</h3>
+            <p>Canvas中平移、旋转、缩放坐标系的方法：</p>
+            <ol>
+                <li>1、<strong>rotate(angle)</strong>：按照给定的角度旋转坐标系；</li>
+                <li>2、<strong>scale(x, y)</strong>：在X、Y方向上按照设定的数值来缩放坐标系；</li>
+                <li>3、<strong>translate(x, y)</strong>：在X、Y方向上平移坐标系。</li>
+            </ol>
+            <p><strong>水平镜像变换：scale(-1, 1)；垂直镜像变换：scale(1, -1)。</strong></p>
+            <p>操作变换矩阵的方法：<strong>transform(a,b,c,d,e,f)</strong>（在当前的变换矩阵之上叠加运用变换效果）和<strong>setTransform(a,b,c,d,e,f)</strong>（重置当前的变换矩阵）。两者可以实现上面三种变换方法无法实现的变换，比如错切。</p>
+            <p>坐标(x, y)绕原点旋转angle角度之后的坐标(x', y')计算如下：</p>
+            <pre><code>x' = x * cos(angle) - y * sin(angle)
+y' = y * cos(angle) + y * sin(angle)</code></pre>
+            <p>矩阵变换有下面的方程式：</p>
+            <pre><code>x' = a * x + c * y + e
+y' = b * x + d * y + f</code></pre>
+            <h3 class="title">剪辑区域</h3>
         </div>
         <footer>2016年06月15日</footer>
         <comments></comments>
@@ -230,6 +273,7 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
                 that.initGrid() // 绘制网格
                 that.drawDashedLine() // 绘制虚线
                 that.drawRoundedRect() // 绘制圆角矩形
+                that.drawArrow() // 绘制箭头形状
             })
         },
         methods: {
@@ -299,15 +343,18 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
                 let c7 = refs.c7
                 let c8 = refs.c8
                 let c9 = refs.c9
+                let c10 = refs.c10
                 let box = refs.grid
                 let rect = box.getBoundingClientRect()
                 let w = (rect.right - rect.left) * 0.95
                 c7.setAttribute('width', w)
                 c8.setAttribute('width', w)
                 c9.setAttribute('width', w)
+                c10.setAttribute('width', w)
                 that.drawGrid(c7)
                 that.drawGrid(c8)
                 that.drawGrid(c9)
+                that.drawGrid(c10)
             },
             drawGrid (el) {
                 let context = el.getContext('2d')
@@ -382,6 +429,29 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
                 context.arcTo(startX, startY, startX + radius, startY, radius)
                 context.stroke()
                 context.fill()
+            },
+            /**
+            * 绘制箭头形状
+            */
+            drawArrow () {
+                let that = this
+                let el = that.$refs.c10
+                let context = el.getContext('2d')
+                let margin = 30
+                let w = el.width
+                let h = el.height
+                context.strokeStyle = 'rgba(0,0,0,0.5)'
+                context.fillStyle = 'rgba(0,0,0,0.3)'
+                context.beginPath()
+                context.moveTo(w - margin, margin * 2)
+                context.lineTo(w - margin, h - margin * 2)
+                context.quadraticCurveTo(w - margin, h - margin, w - margin * 2, h - margin)
+                context.lineTo(margin + 80, h / 2 + margin)
+                context.quadraticCurveTo(50, h / 2, margin + 80, h / 2 - margin)
+                context.lineTo(w - margin * 2, margin)
+                context.quadraticCurveTo(w - margin, margin, w - margin, margin * 2)
+                context.fill()
+                context.stroke()
             }
         }
     }
