@@ -13,6 +13,7 @@
         width: 250px;
         height: 250px !important;
         border: 1px solid #e0e0e0;
+        border-radius: 4px;
     }
     .gradient>canvas{
         margin-bottom: 15px;
@@ -232,8 +233,8 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
     context.moveTo(w - margin, margin * 2)
     context.lineTo(w - margin, h - margin * 2)
     context.quadraticCurveTo(w - margin, h - margin, w - margin * 2, h - margin)
-    context.lineTo(margin + 80, h / 2 + margin)
-    context.quadraticCurveTo(50, h / 2, margin + 80, h / 2 - margin)
+    context.lineTo(w - 250, h / 2 + margin)
+    context.quadraticCurveTo(w - 300, h / 2, w - 250, h / 2 - margin)
     context.lineTo(w - margin * 2, margin)
     context.quadraticCurveTo(w - margin, margin, w - margin, margin * 2)
     context.fill()
@@ -255,6 +256,73 @@ y' = y * cos(angle) + y * sin(angle)</code></pre>
             <pre><code>x' = a * x + c * y + e
 y' = b * x + d * y + f</code></pre>
             <h3 class="title">剪辑区域</h3>
+            <p>由路径定义的一块区域，浏览器会将所有的绘图操作都限制在本区域内。默认情况下剪辑区域就是整个Canvas，除非创建路径并调用clip()方法显式地设置剪辑区域。</p>
+            <p>利用剪辑区域实现的伸缩式动画：</p>
+            <div class="exp clip">
+                <canvas ref="c11" width="280" height="280" style="width:280px;height:280px !important;"></canvas>
+            </div>
+            <pre><code>drawClipAni () {
+    let that = this
+    let context = that.$refs.c11.getContext('2d')
+    let w = context.canvas.width
+    let h = context.canvas.height
+    let radius = w / 2
+    let direction = -1
+
+    setInterval(function () {
+        context.fillStyle = '#333333'
+        context.fillRect(0, 0, w, h)
+        if (direction == -1) {
+            radius -= w / 100
+            if (radius > 0) {
+                that.drawAni(radius)
+            } else {
+                direction = 1
+            }
+        } else {
+            radius += w / 100
+            if (radius < w / 2) {
+                that.drawAni(radius)
+            } else {
+                direction = -1
+            }
+        }
+    }, 50)
+},
+drawClipText () {
+    let that = this
+    let context = that.$refs.c11.getContext('2d')
+    let w = context.canvas.width
+    let h = context.canvas.height
+    context.save()
+    context.font = 'normal 70px 微软雅黑'
+    context.lineWidth = 4
+    context.shadowColor = 'rgba(100,100,150,0.8)'
+    context.shadowOffsetX = 5
+    context.shadowOffsetY = 5
+    context.shadowBlur = 10
+
+    context.fillStyle = '#ff6666'
+    context.textAlign = 'center'
+    context.textBaseline = 'middle'
+    context.fillText('Canvas', w / 2, h / 2)
+    context.restore()
+},
+drawAni (radius) {
+    let that = this
+    let context = that.$refs.c11.getContext('2d')
+    let w = context.canvas.width
+    let h = context.canvas.height
+
+    context.save()
+    context.beginPath()
+    context.arc(w / 2, h / 2, radius, 0, 2 * Math.PI, true)
+    context.clip()
+    context.fillStyle = '#dddddd'
+    context.fillRect(0, 0, w, h)
+    that.drawClipText()
+    context.restore()
+}</code></pre>
         </div>
         <footer>2016年06月15日</footer>
         <comments></comments>
@@ -274,6 +342,7 @@ y' = b * x + d * y + f</code></pre>
                 that.drawDashedLine() // 绘制虚线
                 that.drawRoundedRect() // 绘制圆角矩形
                 that.drawArrow() // 绘制箭头形状
+                that.drawClipAni() // 绘制伸缩式动画
             })
         },
         methods: {
@@ -446,12 +515,77 @@ y' = b * x + d * y + f</code></pre>
                 context.moveTo(w - margin, margin * 2)
                 context.lineTo(w - margin, h - margin * 2)
                 context.quadraticCurveTo(w - margin, h - margin, w - margin * 2, h - margin)
-                context.lineTo(margin + 80, h / 2 + margin)
-                context.quadraticCurveTo(50, h / 2, margin + 80, h / 2 - margin)
+                context.lineTo(w - 250, h / 2 + margin)
+                context.quadraticCurveTo(w - 300, h / 2, w - 250, h / 2 - margin)
                 context.lineTo(w - margin * 2, margin)
                 context.quadraticCurveTo(w - margin, margin, w - margin, margin * 2)
                 context.fill()
                 context.stroke()
+            },
+            /**
+            * 剪辑区域示例
+            */
+            drawClipAni () {
+                let that = this
+                let context = that.$refs.c11.getContext('2d')
+                let w = context.canvas.width
+                let h = context.canvas.height
+                let radius = w / 2
+                let direction = -1
+
+                setInterval(function () {
+                    context.fillStyle = '#999999'
+                    context.fillRect(0, 0, w, h)
+                    if (direction == -1) {
+                        radius -= w / 100
+                        if (radius > 0) {
+                            that.drawAni(radius)
+                        } else {
+                            direction = 1
+                        }
+                    } else {
+                        radius += w / 100
+                        if (radius < w / 2) {
+                            that.drawAni(radius)
+                        } else {
+                            direction = -1
+                        }
+                    }
+                }, 50)
+            },
+            drawClipText () {
+                let that = this
+                let context = that.$refs.c11.getContext('2d')
+                let w = context.canvas.width
+                let h = context.canvas.height
+                context.save()
+                context.font = 'normal 70px 微软雅黑'
+                context.lineWidth = 4
+                context.shadowColor = 'rgba(100,100,150,0.8)'
+                context.shadowOffsetX = 5
+                context.shadowOffsetY = 5
+                context.shadowBlur = 10
+
+                context.fillStyle = '#ff6666'
+                context.textAlign = 'center'
+                context.textBaseline = 'middle'
+                context.fillText('Canvas', w / 2, h / 2)
+                context.restore()
+            },
+            drawAni (radius) {
+                let that = this
+                let context = that.$refs.c11.getContext('2d')
+                let w = context.canvas.width
+                let h = context.canvas.height
+
+                context.save()
+                context.beginPath()
+                context.arc(w / 2, h / 2, radius, 0, 2 * Math.PI, true)
+                context.clip()
+                context.fillStyle = '#dddddd'
+                context.fillRect(0, 0, w, h)
+                that.drawClipText()
+                context.restore()
             }
         }
     }
