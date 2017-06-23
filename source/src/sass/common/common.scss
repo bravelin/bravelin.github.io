@@ -474,3 +474,26 @@ div#app-tip{
     }
   }
 }
+
+@media print {
+    body{
+        >div:nth-of-type(2){
+            div.page{
+                width: 100%;
+                margin: 0;
+                >footer,>h2.title{
+                    display: none;
+                }
+                div.content{
+                    padding: 0;
+                }
+            }
+            nav.article-nav-menu,>header{
+                display: none;
+            }
+        }
+        footer{
+            display: none;
+        }
+    }
+}

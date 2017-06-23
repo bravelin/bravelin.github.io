@@ -94,3 +94,7 @@ pre {
 .clear-fix:after {
   clear: both;
 }
+
+body{
+    -webkit-print-color-adjust: exact
+}

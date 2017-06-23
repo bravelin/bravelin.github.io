@@ -1,0 +1,112 @@
+@import "../common/mixin.scss";
+.resume-page{
+    background-color: #fff !important;
+}
+.resume {
+    font-size: 15px !important;
+    .top{
+        background: #ddd;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        >div,>ul{
+            float: left;
+        }
+        .left{
+            width: 370px;
+            padding:20px 0 20px 90px;
+            background: #efefef;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            h2{
+                font-size: 25px;
+                margin-bottom: 10px;
+            }
+            div{
+                line-height: 2;
+            }
+        }
+        .right{
+            width:345px;
+            padding: 18px 0 0 10px;
+            li{
+                padding-left: 15px;
+                list-style-type: none;
+                line-height: 2.0;
+                span{
+                    margin-right: 30px;
+                }
+            }
+        }
+    }
+    .zone{
+        .left, .right{
+            float: left;
+        }
+        .left{
+            width: 105px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+        }
+        .right{
+            // width: 611px;
+            width: calc(100% - 105px);
+            position: relative;
+            padding:22px 0 6px 28px;
+            &:before,&:after{
+                content: "";
+                display: block;
+                position: absolute;
+            }
+            &:after{
+                // width: 586px;
+                left: 25px;
+                height: 2px;
+                top: 10px;
+                right: 0;
+                background: #666;
+            }
+            &:before{
+                width: 10px;
+                height: 10px;
+                border: 3px solid #666;
+                top: 3px;
+                left: 10px;
+                border-radius: 50%;
+            }
+            ul{
+                li{
+                    line-height: 1.8;
+                    list-style-type: none;
+                    padding-left: 0;
+                    text-indent: 0;
+                    strong{
+                        color: #817C7C;
+                        margin-left: -8px;
+                    }
+                    p{
+                        margin-top: 0;
+                    }
+                }
+                &.list{
+                    margin-left: -15px;
+                    li{
+                        position: relative;
+                        padding-left: 15px;
+                        margin-bottom: 4px;
+                        &:before{
+                            position: absolute;
+                            content: "";
+                            width: 5px;
+                            height: 5px;
+                            left: 3px;
+                            top: 11px;
+                            border-radius: 50%;
+                            background-color: #817c7c;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -46,6 +46,13 @@ var pageRouterOption = [
         }
     },
     {
+        path: '/resume',
+        name: 'resume',
+        component: function (resolve) {
+            require(['./views/resume.vue'], resolve)
+        }
+    },
+    {
         path: '/topicArticles',
         name: 'topicArticles',
         component: function (resolve) {
