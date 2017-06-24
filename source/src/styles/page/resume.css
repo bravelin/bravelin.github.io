@@ -10,7 +10,7 @@
     .resume .top > div, .resume .top > ul {
       float: left; }
     .resume .top .left {
-      width: 370px;
+      width: 50%;
       padding: 20px 0 20px 90px;
       background: #efefef;
       border-top-left-radius: 4px;
@@ -21,7 +21,7 @@
       .resume .top .left div {
         line-height: 2; }
     .resume .top .right {
-      width: 345px;
+      width: 50%;
       padding: 18px 0 0 10px; }
       .resume .top .right li {
         padding-left: 15px;
@@ -32,12 +32,12 @@
   .resume .zone .left, .resume .zone .right {
     float: left; }
   .resume .zone .left {
-    width: 105px;
+    width: 95px;
     font-size: 18px;
     font-weight: bold;
     text-align: right; }
   .resume .zone .right {
-    width: calc(100% - 105px);
+    width: calc(100% - 95px);
     position: relative;
     padding: 22px 0 6px 28px; }
     .resume .zone .right:before, .resume .zone .right:after {
@@ -68,7 +68,7 @@
       .resume .zone .right ul li p {
         margin-top: 0; }
     .resume .zone .right ul.list {
-      margin-left: -15px; }
+      margin-left: -3px; }
       .resume .zone .right ul.list li {
         position: relative;
         padding-left: 15px;
@@ -82,3 +82,17 @@
           top: 11px;
           border-radius: 50%;
           background-color: #817c7c; }
+
+@media screen and (max-width: 720px) {
+  .resume .top .left {
+    width: 100%;
+    padding-left: 60px;
+    border-top-right-radius: 4px; }
+  .resume .top .right {
+    width: 100%;
+    padding-bottom: 15px; } }
+@media screen and (max-width: 640px) {
+  .resume .zone .right ul, .resume .zone .right ul.list {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: -100px; } }
