@@ -6,15 +6,16 @@
         border-collapse:collapse;
     }
     thead td{
-        font-weight: bold;
+        //font-weight: bold;
         background: #f0f0f0;
     }
     td{
-        padding: 8px 0;
+        padding: 8px 2px;
         text-align: center;
         border-right: 1px solid #e0e0e0;
         border-bottom: 1px solid #e0e0e0;
         vertical-align: middle;
+        font-size: 14px;
     }
     tr>td:last-child{
         border-right:none;
@@ -31,12 +32,12 @@
         <table>
             <thead>
                 <tr>
-                    <td style="width:35%">院校</td>
-                    <td style="width:13%">2016</td>
-                    <td style="width:13%">2015</td>
-                    <td style="width:13%">2014</td>
-                    <td style="width:13%">2013</td>
-                    <td style="width:13%">2012</td>
+                    <td style="width:27.5%">院校</td>
+                    <td style="width:14.5%">2016</td>
+                    <td style="width:14.5%">2015</td>
+                    <td style="width:14.5%">2014</td>
+                    <td style="width:14.5%">2013</td>
+                    <td style="width:14.5%">2012</td>
                 </tr>
             </thead>
             <tbody>
