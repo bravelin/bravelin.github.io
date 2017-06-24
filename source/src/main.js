@@ -53,6 +53,13 @@ var pageRouterOption = [
         }
     },
     {
+        path: '/score',
+        name: 'score',
+        component: function (resolve) {
+            require(['./views/other/score.vue'], resolve)
+        }
+    },
+    {
         path: '/topicArticles',
         name: 'topicArticles',
         component: function (resolve) {
