@@ -101,10 +101,21 @@
                     <li><strong>【开发周期】</strong>2015.09 至今</li>
                     <li><strong>【项目描述】</strong>小摩豆致力于健康养身行业提供Sass服务，为水疗足浴会所提供拓客锁客的工具。主要包括微信公众号 "9358" 平台以及PC端的后台管理系统、技师端和管理者端的APP。
                         <p>公众号 "9358" 前端页面之前是基于原生JS开发的一个简易单页模式框架构建，今年六月份已使用vue.js框架重构完毕并上线，体验有所提升；PC端的会所后台管理系统页面则是基于国内avalon.js框架构建的单页应用。</p>
-                        <p>项目中的亮点是集成了环信即时通讯SDK，成功构建了切合项目需求的聊天应用。</p>
+                        <p>项目中的亮点是集成了环信即时通讯SDK，成功构建了契合项目需求的聊天应用。</p>
                     </li>
                     <li><strong>【项目职责】</strong>担任小组长，负责Web系统页面框架的搭建、页面整体结构的规划和实现、公共样式与公共组件的实现、编码规范的约定以及为小组成员分配开发任务、解决技术难题和具体需求的实现。</li>
                     <li><strong>【项目经验】</strong>小摩豆是移动互联网项目，在项目的开始阶段就参与进来了。主要经验是掌握和使用了Web前端流行的一些技术，如gulp、sass、spa单页模式、vue.js框架、es6、webpack打包工具等。对于其他技术，依然在不断学习中。</li>
+                </ul>
+            </div>
+        </div>
+        <div class="zone clear-fix">
+            <div class="left">项目经历E</div>
+            <div class="right">
+                <ul>
+                    <li><strong>【项目名称】</strong>GitHub个人主页</li>
+                    <li><strong>【开发周期】</strong>2016.05 至 2016.07</li>
+                    <li><strong>【项目描述】</strong>GitHub Pages为个人主页的搭建提供了免费的平台，是一个比较理想的撰写技术博客的环境。个人的主页：<a href="https://bravelin.github.io" target="_blank">https://bravelin.github.io</a>是使用Vue.js构建的一个比较简单的单页模式应用。可以在线看到代码的运行效果。</li>
+                    <li><strong>【项目经验】</strong>页面的布局与样式都是自己设计并且实现的；完美匹配PC端与移动端的屏幕。（备注：这份简历也是通过页面写的，然后通过Chrome的打印，另存为pdf格式：<a href="https://bravelin.github.io/#/resume" target="_blank">https://bravelin.github.io/#/resume</a>）</li>
                 </ul>
             </div>
         </div>
