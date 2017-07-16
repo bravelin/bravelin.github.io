@@ -5,7 +5,7 @@
     <div @click="doHideSideMenu()">
         <header>
             <div class="wrap">
-                <div class="logo"></div>
+                <router-link class="logo" :to="{name: 'about'}" tag="div"></router-link>
                 <div class="title">
                     <h1>linz blog</h1>
                     <h2>年华易老，不忘初心。</h2>

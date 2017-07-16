@@ -24,6 +24,7 @@ header{
     border-radius: 50%;
     border:2px solid #ddd;
     float:left;
+    cursor: pointer;
     @include img("/static/assets/header.jpg",100% 100%)
   }
   div.title{

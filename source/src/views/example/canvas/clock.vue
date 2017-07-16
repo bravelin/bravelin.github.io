@@ -409,7 +409,7 @@
                 context.lineWidth = 1
                 context.textAlign = 'center'
                 context.textBaseline = 'middle'
-                context.font = '12px 微软雅黑 normal'
+                context.font = 'normal 12px 微软雅黑'
                 for (let i = 0; i < 48; i++) {
                     currTickLen = (i % 4 == 0 ? hourTickRadius : minTickRadius)
                     context.lineWidth = (i % 4 == 0 ? 2 : 1)
@@ -472,7 +472,7 @@
                 context.stroke()
 
                 let timeStr = (hour < 10 ? '0' + hour : hour) + ' : ' + (min < 10 ? '0' + min : min) + ' : ' + (second < 10 ? '0' + second : second)
-                context.font = '14px 微软雅黑 normal'
+                context.font = 'normal 14px 微软雅黑'
                 context.textAlign = 'center'
                 context.textBaseline = 'middle'
                 context.strokeStyle = 'rgba(0,0,0,0.5)'

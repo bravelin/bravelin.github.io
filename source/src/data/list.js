@@ -221,6 +221,26 @@ export default {
             routerName: 'learning-es6-10',
             topicId: '2'
         },
+        // {
+        //     id: '25',
+        //     type: '随笔记事',
+        //     category: 'ide atom',
+        //     title: 'ATOM的使用',
+        //     description: '',
+        //     date: '2017/06/03',
+        //     routerName: 'working-atom-1',
+        //     topicId: ''
+        // }
+        // {
+        //     id: '24',
+        //     type: '工作总结',
+        //     category: 'ubuntu',
+        //     title: 'ubuntu使用摘要',
+        //     description: '',
+        //     date: '2016/06/02',
+        //     routerName: 'working-ubuntu-1',
+        //     topicId: ''
+        // }
         {
             id: '26',
             type: '读书笔记',
@@ -250,7 +270,7 @@ export default {
             date: '2017/06/17',
             routerName: 'example-canvas-clock',
             topicId: '1'
-        }
+        },
         // {
         //     id: '29',
         //     type: '例子',
@@ -261,25 +281,15 @@ export default {
         //     routerName: 'example-canvas-rose',
         //     topicId: '1'
         // }
-        // {
-        //     id: '25',
-        //     type: '随笔记事',
-        //     category: 'ide atom',
-        //     title: 'ATOM的使用',
-        //     description: '',
-        //     date: '2017/06/03',
-        //     routerName: 'working-atom-1',
-        //     topicId: ''
-        // }
-        // {
-        //     id: '24',
-        //     type: '工作总结',
-        //     category: 'ubuntu',
-        //     title: 'ubuntu使用摘要',
-        //     description: '',
-        //     date: '2016/06/02',
-        //     routerName: 'working-ubuntu-1',
-        //     topicId: ''
-        // }
+        {
+            id: '30',
+            type: '读书笔记',
+            category: 'canvas',
+            title: 'Canvas学习笔记之三：文本',
+            description: '',
+            date: '2016/06/25',
+            routerName: 'learning-canvas-3',
+            topicId: '3'
+        }
     ]
 }

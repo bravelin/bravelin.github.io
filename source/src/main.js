@@ -265,6 +265,13 @@ var pageRouterOption = [
             require(['./views/learning/canvas/2.vue'], resolve)
         }
     },
+    {
+        path: '/learning/canvas/3',
+        name: 'learning-canvas-3',
+        component: function (resolve) {
+            require(['./views/learning/canvas/3.vue'], resolve)
+        }
+    },
     /**********************************************************
     **canvas例子
     **********************************************************/

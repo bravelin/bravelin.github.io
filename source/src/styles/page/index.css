@@ -1270,6 +1270,7 @@ header {
     border-radius: 50%;
     border: 2px solid #ddd;
     float: left;
+    cursor: pointer;
     background-size: 100% 100%;
     background-image: url("/static/assets/header.jpg");
     background-repeat: no-repeat; }
