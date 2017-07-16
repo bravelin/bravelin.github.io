@@ -29,7 +29,8 @@
         ringInnerRadius: 150, // 内圆环半径
         ringOuterRadius: 170, // 外圆环半径
         hourTickLen: 10, // 大刻度长度
-        minTickLen: 5 // 小刻度长度
+        minTickLen: 5, // 小刻度长度
+        lastTime: 0 // 上次的时间
     }
 }</code></pre>
         <p>初始化部分：</p>
@@ -54,11 +55,13 @@
         <p>绘制整个时钟的方法：</p>
         <pre><code>drawClock () {
     let that = this
-    that.drawGrid() // 网格
-    that.drawCentroid() // 中心点
-    that.drawRing() // 圆环
-    that.drawTicks() // 刻度
-    that.drawPoints() // 指针及文本
+    if (parseInt(that.lastTime / 1000) != parseInt((+new Date()) / 1000)) {
+        that.drawGrid()
+        that.drawCentroid()
+        that.drawRing()
+        that.drawTicks()
+        that.drawPoints()
+    }
 }</code></pre>
         <p>随着时间重绘：</p>
         <pre><code>startTimer () {
@@ -196,6 +199,7 @@
     let minEngle = -(pi / 2) + (2 * pi / 60) * min
     let secondPointLen = 115
     let secondEngle = -(pi / 2) + (2 * pi / 60) * second
+    that.lastTime = currDate.getTime()
     context.save()
     context.lineCap = 'round'
     context.strokeStyle = 'rgba(0,0,0,0.5)'
@@ -253,7 +257,8 @@
                 ringInnerRadius: 150, // 内圆环半径
                 ringOuterRadius: 170, // 外圆环半径
                 hourTickLen: 10, // 大刻度长度
-                minTickLen: 5 // 小刻度长度
+                minTickLen: 5, // 小刻度长度
+                lastTime: 0
             }
         },
         mounted () {
@@ -300,11 +305,13 @@
              */
             drawClock () {
                 let that = this
-                that.drawGrid()
-                that.drawCentroid()
-                that.drawRing()
-                that.drawTicks()
-                that.drawPoints()
+                if (parseInt(that.lastTime / 1000) != parseInt((+new Date()) / 1000)) {
+                    that.drawGrid()
+                    that.drawCentroid()
+                    that.drawRing()
+                    that.drawTicks()
+                    that.drawPoints()
+                }
             },
             /**
              * 绘制网格
@@ -442,6 +449,7 @@
                 let minEngle = -(pi / 2) + (2 * pi / 60) * min
                 let secondPointLen = 115
                 let secondEngle = -(pi / 2) + (2 * pi / 60) * second
+                that.lastTime = currDate.getTime()
                 context.save()
                 context.lineCap = 'round'
                 context.strokeStyle = 'rgba(0,0,0,0.5)'
