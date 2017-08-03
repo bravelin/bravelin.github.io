@@ -271,16 +271,16 @@ export default {
             routerName: 'example-canvas-clock',
             topicId: '1'
         },
-        // {
-        //     id: '29',
-        //     type: '例子',
-        //     category: 'canvas',
-        //     title: 'Canvas绘制的玫瑰曲线',
-        //     description: '',
-        //     date: '2017/06/18',
-        //     routerName: 'example-canvas-rose',
-        //     topicId: '1'
-        // }
+        {
+            id: '29',
+            type: '例子',
+            category: 'canvas',
+            title: 'Canvas绘制的玫瑰曲线',
+            description: '',
+            date: '2017/06/18',
+            routerName: 'example-canvas-rose',
+            topicId: '1'
+        },
         {
             id: '30',
             type: '读书笔记',

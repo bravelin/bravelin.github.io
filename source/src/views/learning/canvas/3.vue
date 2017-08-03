@@ -17,15 +17,10 @@
         <div class="content">
             <h3 class="title">概述</h3>
             <p>Canvas绘图环境提供的与文本有关的方法：</p>
-            <ul>
-                <li><strong>strokeText(text, x, y, maxWidth)</strong>：文本的描边；</li>
-                <li><strong>fillText(text, x, y, maxWidth)</strong>：文本的填充；</li>
-                <li><strong>measureText(text)</strong>：计算文本所占据的宽度。</li>
-            </ul>
-            <p>与文本有关的属性：</p>
-            <ul>
-                <li><strong>font</strong>、<strong>textAlign</strong>、<strong>textBaseline</strong></li>
-            </ul>
+            <p><strong>1、strokeText(text, x, y, maxWidth)</strong>：文本的描边；</p>
+            <p><strong>2、fillText(text, x, y, maxWidth)</strong>：文本的填充；</p>
+            <p><strong>3、measureText(text)</strong>：计算文本所占据的宽度。</p>
+            <p>与文本有关的属性：<strong>font</strong>、<strong>textAlign</strong>、<strong>textBaseline</strong></p>
             <h3 class="title">文本的描边与填充</h3>
             <p>文本的描边（带阴影）：</p>
             <div class="exp">
@@ -67,14 +62,12 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
             <p><strong>strokeText()和fillText()方法可以通过可选的第四参数来指定文本的最大宽度。</strong></p>
             <h3 class="title">字型属性font设置</h3>
             <p>font的各个分量：</p>
-            <ul>
-                <li><strong>font-style</strong>：可取值normal、italic（斜体字）、oblique（倾斜的字）</li>
-                <li><strong>font-variant</strong>：可取值normal、small-caps（设置小型大写字母显示，所有小写字母均会被转换为大写，但是字体会显的略小一点）</li>
-                <li><strong>font-weight</strong>：可取值normal、bold、bolder、lighter、100、200、300...900（normal相当于数值400，bold相当于数值700）</li>
-                <li><strong>font-size</strong>：可取值xx-small、x-small、medium、large、x-large、xx-large、smaller、larger、length与%</li>
-                <li><strong>line-height</strong>：浏览器强制设置为normal</li>
-                <li><strong>font-family</strong>：字体名称</li>
-            </ul>
+            <p><strong>1、font-style</strong>：可取值normal、italic（斜体字）、oblique（倾斜的字）</p>
+            <p><strong>2、font-variant</strong>：可取值normal、small-caps（设置小型大写字母显示，所有小写字母均会被转换为大写，但是字体会显的略小一点）</p>
+            <p><strong>3、font-weight</strong>：可取值normal、bold、bolder、lighter、100、200、300...900（normal相当于数值400，bold相当于数值700）</p>
+            <p><strong>4、font-size</strong>：可取值xx-small、x-small、medium、large、x-large、xx-large、smaller、larger、length与%</p>
+            <p><strong>5、line-height</strong>：浏览器强制设置为normal</p>
+            <p><strong>6、font-family</strong>：字体名称</p>
         </div>
         <footer>2016年06月25日</footer>
         <comments></comments>
