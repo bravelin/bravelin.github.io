@@ -12,14 +12,14 @@
 <script>
     import articleList from '../data/list'
     module.exports = {
-        data: function () {
+        data () {
             return {
                 list: []
             }
         },
-        created: function () {
+        created () {
             var list = articleList.list
-            list.sort(function (a, b) {
+            list.sort((a, b) => {
                 return a.date < b.date ? 1 : -1
             })
             this.list = list

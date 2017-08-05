@@ -16,13 +16,13 @@
     import topics from '../data/topics'
 
     module.exports = {
-        data: function () {
+        data () {
             return {
                 topicName: '',
                 list: []
             }
         },
-        created: function () {
+        created () {
             var articles = articleList.list
             var list = []
             var i = 0
@@ -40,7 +40,7 @@
                     list.push(articles[i])
                 }
             }
-            list.sort(function (a, b) {
+            list.sort((a, b) => {
                 return a.date < b.date ? 1 : -1
             })
             this.list = list

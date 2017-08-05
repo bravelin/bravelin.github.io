@@ -22,7 +22,7 @@
     import {eventHub} from '../libs/hub'
 
     export default {
-        data: function () {
+        data () {
             return {
                 dataList: [],
                 timer: null,
@@ -38,7 +38,7 @@
                 default: true
             }
         },
-        created: function () {
+        created () {
             var that = this
             var pageParams = Global.currPageParams
             if (pageParams.del == 'true') {
@@ -58,7 +58,7 @@
             }
             eventHub.$on('refresh-comments', that.refresh)
         },
-        beforeDestroy: function () {
+        beforeDestroy () {
             var that = this
             eventHub.$off('refresh-comments', that.refresh)
             if (that.timer) {
@@ -66,14 +66,14 @@
             }
         },
         methods: {
-            doTimerRefresh: function () {
+            doTimerRefresh () {
                 var that = this
-                that.timer = setTimeout(function () {
+                that.timer = setTimeout(() => {
                     that.refresh()
                     that.doTimerRefresh()
                 }, 20000)
             },
-            doReply: function (item) {
+            doReply (item) {
                 eventHub.$emit('pop-note-modal', {
                     noteType: 'reply',
                     replyId: item.id,
@@ -83,10 +83,10 @@
                     pageName: item.pageRouter
                 })
             },
-            doDelete: function (id) {
+            doDelete (id) {
                 eventHub.$emit('pop-confirm-del-modal', id)
             },
-            handlerData: function (list) {
+            handlerData (list) {
                 var that = this
                 var k
                 var dataList = []
@@ -115,7 +115,7 @@
                     // that.doTimerRefresh() // 定时刷新
                 }
             },
-            refresh: function () { // get data
+            refresh () { // get data
                 var that = this
                 var now = (+new Date())
                 var global = Global
@@ -130,7 +130,7 @@
                         'X-APICloud-AppKey': appKey
                     },
                     params: {filter: JSON.stringify(filter)}
-                }).then(function (res) {
+                }).then((res) => {
                     if (res.status == 200) {
                         var list = res.body || []
                         if (!that.queryArticle) {

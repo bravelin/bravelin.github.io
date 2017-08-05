@@ -66,8 +66,8 @@
 </template>
 <script>
     module.exports = {
-        mounted: function () {
-            this.$nextTick(function () {
+        mounted () {
+            this.$nextTick(() => {
                 var codes = document.querySelectorAll('code')
                 if (codes.length > 0) {
                     for (var k = 0; k < codes.length; k++) {
@@ -77,7 +77,7 @@
             })
         },
         methods: {
-            testProperty: function (property) {
+            testProperty (property) {
                 var root = document.documentElement
                 if (property in root.style) {
                     alert('true')
@@ -85,7 +85,7 @@
                 }
                 alert('false')
             },
-            testValue: function (value, property) {
+            testValue (value, property) {
                 var dummy = document.createElement('p')
                 dummy.style[property] = value
 

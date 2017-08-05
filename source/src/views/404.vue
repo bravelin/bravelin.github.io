@@ -8,19 +8,19 @@
 </template>
 <script>
     module.exports = {
-        data: function () {
+        data () {
             return {
                 timer: null,
                 count: 5
             }
         },
-        created: function () {
+        created () {
             this.doCount()
         },
         methods: {
-            doCount: function () {
+            doCount () {
                 var that = this
-                that.timer = setTimeout(function () {
+                that.timer = setTimeout(() => {
                     if (that.count > 0) {
                         that.count--
                         that.doCount()
@@ -30,7 +30,7 @@
                 }, 1000)
             }
         },
-        beforeDestroy: function () {
+        beforeDestroy () {
             if (this.timer) {
                 clearTimeout(this.timer)
             }

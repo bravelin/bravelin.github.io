@@ -23,20 +23,20 @@
     import {Global} from '../libs/global'
 
     module.exports = {
-        data: function () {
+        data () {
             return {
                 allComments: true,
                 delCommentId: ''
             }
         },
-        created: function () {
+        created () {
             eventHub.$on('pop-confirm-del-modal', this.doShowConfirmModal)
         },
-        beforeDestroy: function () {
+        beforeDestroy () {
             eventHub.$off('pop-confirm-del-modal', this.doShowConfirmModal)
         },
         methods: {
-            doDel: function () {
+            doDel () {
                 var that = this
                 var now = (+new Date())
                 var global = Global
@@ -45,7 +45,7 @@
                     headers: {
                         'X-APICloud-AppKey': appKey
                     }
-                }).then(function (res) {
+                }).then((res) => {
                     if (res.status == 200) {
                         eventHub.$emit('refresh-comments')
                         global.tipShow('删除成功！')
@@ -53,19 +53,19 @@
                     }
                 })
             },
-            doShowConfirmModal: function (commentId) {
+            doShowConfirmModal (commentId) {
                 this.delCommentId = commentId
                 console.log('commentId：' + commentId)
                 var confirmModal = this.$refs.confirmModal
                 confirmModal.style.display = 'block'
-                setTimeout(function () {
+                setTimeout(() => {
                     confirmModal.classList.add('active')
                 }, 200)
             },
-            doCloseConfirmModal: function () {
+            doCloseConfirmModal () {
                 var confirmModal = this.$refs.confirmModal
                 confirmModal.classList.remove('active')
-                setTimeout(function () {
+                setTimeout(() => {
                     confirmModal.style.display = 'none'
                 }, 600)
             }

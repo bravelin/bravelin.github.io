@@ -27,7 +27,7 @@
     import { eventHub } from '../libs/hub'
 
     export default {
-        data: function () {
+        data () {
             return {
                 noteName: '',
                 noteContent: '',
@@ -40,14 +40,14 @@
                 inSubmit: false
             }
         },
-        created: function () {
+        created () {
             eventHub.$on('pop-note-modal', this.doHandlerPopModal)
         },
-        beforeDestroy: function () {
+        beforeDestroy () {
             eventHub.$off('pop-note-modal', this.doHandlerPopModal)
         },
         methods: {
-            doHandlerPopModal: function (noteObj) {
+            doHandlerPopModal (noteObj) {
                 var that = this
                 that.noteType = noteObj.noteType
                 if (that.noteType == 'reply') {
@@ -59,7 +59,7 @@
                 that.pageName = noteObj.pageName || ''
                 that.doShowNoteModal()
             },
-            doSubmitNoteContent: function () {
+            doSubmitNoteContent () {
                 var that = this
                 var global = Global
                 var noteName = that.noteName.trim()
@@ -95,7 +95,7 @@
                     headers: {
                         'X-APICloud-AppKey': appKey
                     }
-                }).then(function (res) {
+                }).then((res) => {
                     that.inSubmit = false
                     if (res.status == 200) {
                         eventHub.$emit('refresh-comments')
@@ -109,21 +109,21 @@
                     global.tipShow('提交失败！请稍后再试！')
                 })
             },
-            doShowNoteModal: function () {
+            doShowNoteModal () {
                 var that = this
                 var noteWrap = that.$el
                 that.noteName = ''
                 that.noteContent = ''
                 noteWrap.style.display = 'block'
-                setTimeout(function () {
+                setTimeout(() => {
                     noteWrap.classList.add('active')
                 }, 200)
             },
-            doCloseNoteModal: function () {
+            doCloseNoteModal () {
                 var that = this
                 var noteWrap = that.$el
                 noteWrap.classList.remove('active')
-                setTimeout(function () {
+                setTimeout(() => {
                     noteWrap.style.display = 'none'
                 }, 600)
             }

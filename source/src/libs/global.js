@@ -14,7 +14,7 @@ exports.Global = {
     appKey: 'A6931492233958' + 'UZ' + '861E0A3C-95CD-E681-E0CA-E70127FFECE7' + 'UZ',
     shareTitle: 'linz blog',
     shareImg: '/static/assets/header.jpg',
-    setArticleNavMenu: function (routerName) {
+    setArticleNavMenu (routerName) {
         var that = this
         that.showArticleNavMenu = true
         var list = articleList.list
@@ -36,28 +36,28 @@ exports.Global = {
             }
         }
 
-        setTimeout(function () {
+        setTimeout(() => {
             eventHub.$emit('refresh-comments')
         }, 4000)
     },
-    tipShow: function (content, time) {
+    tipShow (content, time) {
         var _tip = this.tip
         if (!_tip) {
             _tip = this.tip = document.querySelector('#app-tip')
         }
         _tip.children[0].innerHTML = content
         _tip.classList.add('active')
-        setTimeout(function () {
+        setTimeout(() => {
             _tip.classList.remove('active')
         }, (time || 3000))
     },
-    shareConfig: function (title, imgUrl) {
+    shareConfig (title, imgUrl) {
         document.title = title
         // document.querySelector('#_share_image').src = imgUrl
     },
 
     /* eslint-disable */
-    sha: function (msg) {
+    sha (msg) {
         function rotate_left(n, s) {
             var t4 = (n << s) | (n >>> (32 - s))
             return t4

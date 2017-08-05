@@ -66,7 +66,7 @@
     import {eventHub} from './libs/hub.js'
 
     module.exports = {
-        data: function () {
+        data () {
             return {
                 global: Global,
                 isFixedTop: false,
@@ -77,20 +77,19 @@
             spinner: Spinner,
             note: Note
         },
-        mounted: function () {
+        mounted () {
             var that = this
-
-            that.$nextTick(function () {
+            that.$nextTick(() => {
                 that.global.loading = true
                 document.querySelector('header').style.opacity = 1
                 document.querySelector('body>footer').style.opacity = 1
-                window.addEventListener('scroll', function () {
+                window.addEventListener('scroll', () => {
                     that.doHandlerScroll()
                 })
             })
         },
         methods: {
-            doClickNoteBtn: function () {
+            doClickNoteBtn () {
                 var global = Global
                 var noteObj = {
                     noteType: 'comment',
@@ -107,18 +106,18 @@
                 }
                 eventHub.$emit('pop-note-modal', noteObj)
             },
-            doHandlerScroll: function () {
-                var top = document.body.scrollTop || document.documentElement.scrollTop
-                // console.log('body scrollTop' + top)
+            doHandlerScroll () {
+                var doc = document
+                var top = doc.body.scrollTop || doc.documentElement.scrollTop
                 this.isFixedTop = top > 188
             },
-            doClickSideMenuWrap: function (event) {
+            doClickSideMenuWrap (event) {
                 // event.stopPropagation()
             },
-            doHideSideMenu: function () {
+            doHideSideMenu () {
                 this.showSizeMenu = false
             },
-            doClickMenuBtn: function (event) {
+            doClickMenuBtn (event) {
                 this.showSizeMenu = !this.showSizeMenu
                 event.stopPropagation()
             }
