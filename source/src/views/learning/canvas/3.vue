@@ -6,9 +6,12 @@
     }
     canvas{
         width: 300px;
-        height: 150px !important;
+        height: 150px;
         border: 1px solid #e0e0e0;
         border-radius: 4px;
+    }
+    canvas.circle{
+        height: 300px;
     }
 </style>
 <template>
@@ -67,7 +70,46 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
             <p><strong>3、font-weight</strong>：可取值normal、bold、bolder、lighter、100、200、300...900（normal相当于数值400，bold相当于数值700）</p>
             <p><strong>4、font-size</strong>：可取值xx-small、x-small、medium、large、x-large、xx-large、smaller、larger、length与%</p>
             <p><strong>5、line-height</strong>：浏览器强制设置为normal</p>
-            <p><strong>6、font-family</strong>：字体名称</p>
+            <p><strong>6、font-family</strong>：字体集名称</p>
+            <h3 class="title">文本的定位</h3>
+            <p><strong>textAlign可以取的值有：start、center、end、left、right</strong>，当canvas元素的dir属性是ltr时，left的效果与start相同，right的效果与end一致；当canvas元素的dir属性是rtl时，left的效果与end相同，right的效果与start一致。</p>
+            <p><strong>textBaseline可以取的值有：top、bottom、middle、alphabetic、ideographic、hanging</strong>，默认属性是alphabetic。</p>
+            <p><strong>measureText(str)</strong>：此方法可以度量文本的宽度。虽然是不够精确的。</p>
+            <h3 class="title">在圆弧周围绘制文本</h3>
+            <div class="exp">
+                <canvas class="circle" ref="c4" width="300" height="300"></canvas>
+            </div>
+            <pre><code>drawCircleText () {
+    let that = this
+    let el = that.$refs.c4
+    let context = el.getContext('2d')
+    let w = el.width
+    let h = el.height
+    let centerX = w / 2
+    let centerY = h / 2
+
+    context.fillStyle = '#f96'
+    context.strokeStyle = '#f96'
+    context.font = '36px 微软雅黑'
+
+    let textStr = 'around the circle clockwise '
+    let radius = w / 2 - 40
+    let angleDelt = (2 * Math.PI) / textStr.length
+    let currAngle = 0
+    let currChar = ''
+
+    for (let k = 0; k < textStr.length; k++) {
+        currChar = textStr.charAt(k)
+        currAngle = -k * angleDelt
+        context.save()
+        context.beginPath()
+        context.translate(centerX + Math.cos(currAngle) * radius, centerY - Math.sin(currAngle) * radius)
+        context.rotate(Math.PI / 2 - currAngle)
+        context.fillText(currChar, 0, 0)
+        context.strokeText(currChar, 0, 0)
+        context.restore()
+    }
+}</code></pre>
         </div>
         <footer>2016年06月25日</footer>
         <comments></comments>
@@ -83,6 +125,7 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
                 that.drawStrokedText()
                 that.drawFilledText()
                 that.drawStrokedFilledText()
+                that.drawCircleText()
             })
         },
         methods: {
@@ -102,7 +145,6 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
                 context.shadowOffsetX = 5
                 context.shadowOffsetY = 5
                 context.shadowBlur = 8
-
                 context.strokeText('HTML5', w / 2, h / 2)
             },
             drawFilledText () {
@@ -144,6 +186,37 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
 
                 context.strokeText('HTML5', w / 2, h / 2)
                 context.fillText('HTML5', w / 2, h / 2)
+            },
+            drawCircleText () {
+                let that = this
+                let el = that.$refs.c4
+                let context = el.getContext('2d')
+                let w = el.width
+                let h = el.height
+                let centerX = w / 2
+                let centerY = h / 2
+
+                context.fillStyle = '#f96'
+                context.strokeStyle = '#f96'
+                context.font = '36px 微软雅黑'
+
+                let textStr = 'around the circle clockwise '
+                let radius = w / 2 - 40
+                let angleDelt = (2 * Math.PI) / textStr.length
+                let currAngle = 0
+                let currChar = ''
+
+                for (let k = 0; k < textStr.length; k++) {
+                    currChar = textStr.charAt(k)
+                    currAngle = -k * angleDelt
+                    context.save()
+                    context.beginPath()
+                    context.translate(centerX + Math.cos(currAngle) * radius, centerY - Math.sin(currAngle) * radius)
+                    context.rotate(Math.PI / 2 - currAngle)
+                    context.fillText(currChar, 0, 0)
+                    context.strokeText(currChar, 0, 0)
+                    context.restore()
+                }
             }
         }
     }
