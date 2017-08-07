@@ -290,6 +290,16 @@ export default {
             date: '2016/06/25',
             routerName: 'learning-canvas-3',
             topicId: '3'
+        },
+        {
+            id: '31',
+            type: '读书笔记',
+            category: 'canvas',
+            title: 'Canvas学习笔记之四：图像与视频',
+            description: '',
+            date: '2016/06/30',
+            routerName: 'learning-canvas-4',
+            topicId: '3'
         }
     ]
 }
