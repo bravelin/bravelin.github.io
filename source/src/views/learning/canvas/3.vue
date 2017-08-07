@@ -90,17 +90,19 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
 
     context.fillStyle = '#f96'
     context.strokeStyle = '#f96'
-    context.font = '36px 微软雅黑'
+    context.font = '32px 微软雅黑'
+    context.textAlign = 'center'
+    context.textBaseline = 'middle'
 
-    let textStr = 'around the circle clockwise '
-    let radius = w / 2 - 40
+    let textStr = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ'
+    let radius = w / 2 - 22
     let angleDelt = (2 * Math.PI) / textStr.length
     let currAngle = 0
     let currChar = ''
 
     for (let k = 0; k < textStr.length; k++) {
         currChar = textStr.charAt(k)
-        currAngle = -k * angleDelt
+        currAngle = (0.5 - k) * angleDelt
         context.save()
         context.beginPath()
         context.translate(centerX + Math.cos(currAngle) * radius, centerY - Math.sin(currAngle) * radius)
@@ -198,17 +200,19 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
 
                 context.fillStyle = '#f96'
                 context.strokeStyle = '#f96'
-                context.font = '36px 微软雅黑'
+                context.font = '32px 微软雅黑'
+                context.textAlign = 'center'
+                context.textBaseline = 'middle'
 
-                let textStr = 'around the circle clockwise '
-                let radius = w / 2 - 40
+                let textStr = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ'
+                let radius = w / 2 - 22
                 let angleDelt = (2 * Math.PI) / textStr.length
                 let currAngle = 0
                 let currChar = ''
 
                 for (let k = 0; k < textStr.length; k++) {
                     currChar = textStr.charAt(k)
-                    currAngle = -k * angleDelt
+                    currAngle = (0.5 - k) * angleDelt
                     context.save()
                     context.beginPath()
                     context.translate(centerX + Math.cos(currAngle) * radius, centerY - Math.sin(currAngle) * radius)
