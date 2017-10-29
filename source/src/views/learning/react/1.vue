@@ -1,0 +1,47 @@
+<template>
+    <div class="page article">
+        <h2 class="title">React学习笔记之一：初入React世界</h2>
+        <div class="content">
+            <h3 class="title">React简介</h3>
+            <p>React是Facebook在2013年开源的JavaScript库。React将用户界面抽象成一个个组件，开发者通过组合这些组件来构建功能丰富的页面。React并不是完整的MVC/MVVM框架，专注于提供清晰的简洁的视图层解决方案。</p>
+            <p><strong>Virtual DOM</strong>：在前端开发中，性能消耗最大的就是DOM操作。React将真实DOM树转换成JavaScript对象树。在每次数据更新之后，重新计算Virtual DOM，并和上一次的Virtual DOM做对比，对发生变化的部分做批量更新。（也可以使用<strong>shouldComponentUpdate</strong>生命周期回调，减少不必要的对比过程，保证性能。）</p>
+            <h3 class="title">JSX语法</h3>
+            <p>JSX将HTML语法直接加入到JavaScript代码中，再通过翻译器转换到纯JavaScript后由浏览器执行。JSX并不是强制需要的，只是让组件的结构更直观。</p>
+            <p><strong>定义标签时，只允许被一个标签包裹</strong>：最外层只能有一个标签。</p>
+            <p><strong>标签一定要闭合</strong>：所有标签都必须闭合，自闭合标签img等也要遵循同样规则，可以根据是否有子组件来决定闭合方式。</p>
+            <p><strong>标签首字母小写对应DOM元素；首字母大写对应自定义组件元素。</strong></p>
+            <p><strong>可以通过命名空间的方式使用组件元素</strong>，以解决组件同名冲突的问题：</p>
+            <pre><code>const App = () => {
+    &lt;MUI.RaisedButton label='default' /&gt;
+}</code></pre>
+            <p><strong>在一个组件的子元素位置使用注释需要用{}包起来</strong>：</p>
+            <pre><code>const App = {
+    &lt;Nav&gt;
+        { /* 节点注释 */ }
+        &lt;Person
+            /* 多行
+                注释 */
+        name = '--'
+        /&gt;
+    &lt;/Nav&gt;
+}</code></pre>
+            <p><strong>DOM元素属性class转换成className；for转换成htmlFor</strong>，在JavaScript中这两个是关键词。</p>
+            <p><strong>在写自定义属性的时候，都由标准写法改为小驼峰写法。</strong></p>
+            <p><strong>可以使用ES6的新语法展开属性：</strong></p>
+            <pre><code>const data = { name: 'foo', value: 'bar' }
+const component = &lt;Component name = {data.name} value={data.value} /&gt;
+// es6展开
+const component = &lt;Component {...data} /&gt;</code></pre>
+            <p><strong>在JSX中往DOM元素传入自定义属性，需要使用data-前缀，不然不会渲染</strong>，自定义组件元素则支持任意属性。</p>
+            <h3 class="title">React组件</h3>
+        </div>
+        <footer>2017年10月29日</footer>
+        <comments></comments>
+    </div>
+</template>
+<script>
+    import Page from '../../page'
+    module.exports = {
+        extends: Page
+    }
+</script>

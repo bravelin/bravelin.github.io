@@ -300,6 +300,16 @@ export default {
             date: '2016/06/30',
             routerName: 'learning-canvas-4',
             topicId: '3'
+        },
+        {
+            id: '32',
+            type: '读书笔记',
+            category: 'react',
+            title: 'React学习笔记之一：初入React世界',
+            description: '',
+            date: '2017/10/29',
+            routerName: 'learning-react-1',
+            topicId: '4'
         }
     ]
 }
