@@ -34,6 +34,44 @@ const component = &lt;Component name = {data.name} value={data.value} /&gt;
 const component = &lt;Component {...data} /&gt;</code></pre>
             <p><strong>在JSX中往DOM元素传入自定义属性，需要使用data-前缀，不然不会渲染</strong>，自定义组件元素则支持任意属性。</p>
             <h3 class="title">React组件</h3>
+            <p>React组件由组件的构建方式、组件内部的属性状态和生命周期方法组成。React的组件构建有3种方法：</p>
+            <p><strong>1、React.createClass</strong>：比较传统，也是兼容性最好的一种方法。</p>
+            <pre><code>const Button = React.createClass({
+    getDefaultProps () {
+        return { color: 'red', text: 'ok' }
+    },
+    render () {
+        const { color, text } = this.props
+        return (
+            &lt;button className={ `btn btn-${color}` }&gt;&lt;em&gt;{ text }&lt;/em&gt;&lt;/buttom&gt;
+        )
+    }
+})</code></pre>
+            <p>在应用中调用几次Button，就会创建几次Button实例。</p>
+            <p><strong>2、ES6 classes</strong>：通过ES6标准的类语法的方式来构建。</p>
+            <pre><code>import React, { Component } from 'react'
+    class Button extends Component {
+        constructor(props) {
+            super(props)
+        };
+        static defaultProps = {
+            color: 'red', text: 'ok'
+        };
+        render () {
+            const { color, text } = this.props
+            return (
+                &lt;button className={ `btn btn-${color}` }&gt;&lt;em&gt;{ text }&lt;/em&gt;&lt;/button&gt;
+            )
+        }
+}</code></pre>
+            <p>与createClass的方式一样，调用类实现的组件会创建实例对象。</p>
+            <p><strong>3、无状态函数</strong>：不存在state，也没有生命周期方法。始终保持一个实例，避免了不必要的检查和内存分配。</p>
+            <pre><code>function Button({ color = 'red', text = 'ok' }) {
+    return (
+        &lt;button className=`{ btn btn-${color} }`&gt;&lt;em&gt;{ text }&lt;/em&gt;&lt;/button&gt;
+    )
+}</code></pre>
+            <h3 class="title">React数据流</h3>
         </div>
         <footer>2017年10月29日</footer>
         <comments></comments>
