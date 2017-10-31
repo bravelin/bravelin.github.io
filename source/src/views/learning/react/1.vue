@@ -72,6 +72,13 @@ const component = &lt;Component {...data} /&gt;</code></pre>
     )
 }</code></pre>
             <h3 class="title">React数据流</h3>
+            <p><strong>如果顶层组件初始化props，那么React会向下遍历整棵组件树，重新尝试渲染所有的相关子组件。而state只关心每个组件自己内部的状态，这些状态只能在组件内改变。</strong></p>
+            <p>当使用内置的setState方法时，组件会尝试重新渲染。setState是异步方法，一个生命周期内的所有setState方法会合并操作。</p>
+            <p><strong>props本身是不可变的</strong>，组件的props一定来自于默认属性或者通过父组件的传递。</p>
+            <p>propTypes用于规范props的类型与必需的状态。</p>
+            <h3 class="title">React生命周期</h3>
+            <p>生命周期泛指自然界和人类社会中各种客官事物的阶段性变化及其规律。</p>
+            
         </div>
         <footer>2017年10月29日</footer>
         <comments></comments>
