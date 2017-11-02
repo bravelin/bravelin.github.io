@@ -101,6 +101,19 @@ class App extends Component {
 }</code></pre>
             <p>在componentDidMount方法中执行setState，组件会再次更新，但会在初始化过程渲染两次组件。</p>
             <p>组件的卸载只有<strong>componentWillUnmount</strong>这个卸载之前的方法，可以在里面执行一些清理，如事件回收和清除定时器。</p>
+            <p><strong>数据更新过程</strong>指的是父组件向下传递props或者组件自身执行setState方法时发生的一系列更新动作。</p>
+            <pre><code>import React, { Component, PropTypes } from 'react'
+class App extends Component {
+    comonentWillReceiveProps (nextProps) { // this.setState({}) }
+    shouldComponentUpdate (nextProps, nextState) { return true }
+    componentWillUpdate (nextProps, nextState) { ... }
+    componentDidUpdate (prevProps, prevState) { ... }
+    render () { return &lt;div&gt;Hello World&lt;/div&gt; }
+}</code></pre>
+            <p><strong>如果组件自身的state更新了，会依次执行shouldComponentUpdate、componentWillUpdate、render、componentDidUpdate。</strong></p>
+            <p>shouldComponentUpdate是一个特别的方法，可以在此增加必要的判断方法，当返回false时，不再向下执行生命周期方法。</p>
+            <p>无状态组件没有生命周期方法，意味着也没有shouldComponentUpdate。渲染到该类组件时，每次都会重新渲染。</p>
+            <p><strong>不能再componentWillUpdate中执行setState。如果组件是由父组件更新props引起更新的，会在shouldComponentUpdate方法之前执行componentWillReceiveProps。</strong></p>
         </div>
         <footer>2017年10月29日</footer>
         <comments></comments>
