@@ -78,7 +78,29 @@ const component = &lt;Component {...data} /&gt;</code></pre>
             <p>propTypes用于规范props的类型与必需的状态。</p>
             <h3 class="title">React生命周期</h3>
             <p>生命周期泛指自然界和人类社会中各种客官事物的阶段性变化及其规律。</p>
-            
+            <p><strong>componentWillMount</strong>会在render方法执行之前执行，<strong>componentDidMount</strong>则在render方法之后执行。分别代表了渲染前后的时刻。</p>
+            <p>在componentWillMount中执行setState方法，组件会更新state，但组件只渲染一次，在这里执行是无意义的。可以在constructor里面放入this.state赋值。</p>
+            <p>初始化组件模板代码：</p>
+            <pre><code>import React, { Component, PropTypes } from 'react'
+class App extends Component {
+    static propTypes = { ... }
+    static defaultProps = { ... }
+    constructor (props) {
+        super(props)
+        this.state = { ... }
+    }
+    componentWillMount () {
+        // ...
+    }
+    componentDidMount () {
+        // ...
+    }
+    render () {
+        return &lt;div&gt;Hello World!&lt;/div&gt;
+    }
+}</code></pre>
+            <p>在componentDidMount方法中执行setState，组件会再次更新，但会在初始化过程渲染两次组件。</p>
+            <p>组件的卸载只有<strong>componentWillUnmount</strong>这个卸载之前的方法，可以在里面执行一些清理，如事件回收和清除定时器。</p>
         </div>
         <footer>2017年10月29日</footer>
         <comments></comments>
