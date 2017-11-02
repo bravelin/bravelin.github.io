@@ -32,6 +32,14 @@ export default {
             title: 'canvas学习',
             description: 'html5 canvas核心技术一书学习笔记',
             date: '2016/06/08'
+        },
+        {
+            id: '4',
+            type: '学习笔记',
+            category: 'react',
+            title: 'react学习',
+            description: '深入React技术栈一书学习笔记',
+            date: '2017/10/29'
         }
     ]
 }

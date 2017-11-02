@@ -303,13 +303,13 @@ export default {
         },
         {
             id: '32',
-            type: '旅行笔记',
-            category: '',
-            title: '汕头行记',
+            type: '读书笔记',
+            category: 'react',
+            title: 'React学习笔记之一：初入React世界',
             description: '',
-            date: '2017/08/30',
-            routerName: 'other-tour',
-            topicId: ''
+            date: '2017/10/29',
+            routerName: 'learning-react-1',
+            topicId: '4'
         }
     ]
 }
