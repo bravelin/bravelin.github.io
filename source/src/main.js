@@ -305,6 +305,17 @@ var pageRouterOption = [
         }
     },
     {
+        path: '/other/tour',
+        name: 'other-tour',
+        meta: {
+            shareTitle: '汕头行',
+            shareImg: '/static/assets/clock.png'
+        },
+        component: function (resolve) {
+            require(['./views/other/tour.vue'], resolve)
+        }
+    },
+    {
         path: '/',
         redirect: {name: 'articles'}
     },

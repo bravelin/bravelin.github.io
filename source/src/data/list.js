@@ -300,6 +300,16 @@ export default {
             date: '2016/06/30',
             routerName: 'learning-canvas-4',
             topicId: '3'
+        },
+        {
+            id: '32',
+            type: '旅行笔记',
+            category: '',
+            title: '汕头行记',
+            description: '',
+            date: '2017/08/30',
+            routerName: 'other-tour',
+            topicId: ''
         }
     ]
 }
