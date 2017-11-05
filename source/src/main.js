@@ -20,231 +20,231 @@ var pageRouterOption = [
     {
         path: '/articles',
         name: 'articles',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/articles.vue'], resolve)
         }
     },
     {
         path: '/topics',
         name: 'topics',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/topics.vue'], resolve)
         }
     },
     {
         path: '/comments',
         name: 'comments',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/comments.vue'], resolve)
         }
     },
     {
         path: '/about',
         name: 'about',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/about.vue'], resolve)
         }
     },
     {
         path: '/resume',
         name: 'resume',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/resume.vue'], resolve)
         }
     },
     {
         path: '/score',
         name: 'score',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/other/score.vue'], resolve)
         }
     },
     {
         path: '/topicArticles',
         name: 'topicArticles',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/topicArticles.vue'], resolve)
         }
     },
     {
         path: '/404',
         name: '404',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/404.vue'], resolve)
         }
     },
     {
         path: '/working/project/gztjjweb',
         name: 'working-project-gztjjweb',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/working/project/gztjjweb.vue'], resolve)
         }
     },
     {
         path: '/working/ubuntu/1',
         name: 'working-ubuntu-1',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/working/ubuntu/1.vue'], resolve)
         }
     },
     {
         path: '/working/atom/1',
         name: 'working-atom-1',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/working/atom/1.vue'], resolve)
         }
     },
     {
         path: '/working/project/git',
         name: 'working-project-git',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/working/project/git.vue'], resolve)
         }
     },
     {
         path: '/learning/css/secrects/1',
         name: 'learning-css-secrects-1',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/css/secrects/1.vue'], resolve)
         }
     },
     {
         path: '/learning/css/secrects/2',
         name: 'learning-css-secrects-2',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/css/secrects/2.vue'], resolve)
         }
     },
     {
         path: '/learning/css/secrects/3',
         name: 'learning-css-secrects-3',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/css/secrects/3.vue'], resolve)
         }
     },
     {
         path: '/learning/css/secrects/4',
         name: 'learning-css-secrects-4',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/css/secrects/4.vue'], resolve)
         }
     },
     {
         path: '/learning/css/secrects/5',
         name: 'learning-css-secrects-5',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/css/secrects/5.vue'], resolve)
         }
     },
     {
         path: '/learning/css/secrects/6',
         name: 'learning-css-secrects-6',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/css/secrects/6.vue'], resolve)
         }
     },
     {
         path: '/learning/css/secrects/7',
         name: 'learning-css-secrects-7',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/css/secrects/7.vue'], resolve)
         }
     },
     {
         path: '/learning/css/secrects/8',
         name: 'learning-css-secrects-8',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/css/secrects/8.vue'], resolve)
         }
     },
     {
         path: '/working/canvas/turnTableDraw',
         name: 'working-canvas-turnTableDraw',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/working/canvas/turnTableDraw.vue'], resolve)
         }
     },
     {
         path: '/working/project/base',
         name: 'working-project-base',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/working/project/base.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/1',
         name: 'learning-es6-1',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/1.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/2',
         name: 'learning-es6-2',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/2.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/3',
         name: 'learning-es6-3',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/3.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/4',
         name: 'learning-es6-4',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/4.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/5',
         name: 'learning-es6-5',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/5.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/6',
         name: 'learning-es6-6',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/6.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/7',
         name: 'learning-es6-7',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/7.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/8',
         name: 'learning-es6-8',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/8.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/9',
         name: 'learning-es6-9',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/9.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/10',
         name: 'learning-es6-10',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/10.vue'], resolve)
         }
     },
     {
         path: '/learning/es6/11',
         name: 'learning-es6-11',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/es6/11.vue'], resolve)
         }
     },
@@ -254,28 +254,28 @@ var pageRouterOption = [
     {
         path: '/learning/canvas/1',
         name: 'learning-canvas-1',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/canvas/1.vue'], resolve)
         }
     },
     {
         path: '/learning/canvas/2',
         name: 'learning-canvas-2',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/canvas/2.vue'], resolve)
         }
     },
     {
         path: '/learning/canvas/3',
         name: 'learning-canvas-3',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/canvas/3.vue'], resolve)
         }
     },
     {
         path: '/learning/canvas/4',
         name: 'learning-canvas-4',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/canvas/4.vue'], resolve)
         }
     },
@@ -285,8 +285,15 @@ var pageRouterOption = [
     {
         path: '/learning/react/1',
         name: 'learning-react-1',
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/learning/react/1.vue'], resolve)
+        }
+    },
+    {
+        path: '/learning/react/2',
+        name: 'learning-react-2',
+        component (resolve) {
+            require(['./views/learning/react/2.vue'], resolve)
         }
     },
     /**********************************************************
@@ -299,7 +306,7 @@ var pageRouterOption = [
             shareTitle: '嘀嗒嘀嗒......',
             shareImg: '/static/assets/clock.png'
         },
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/example/canvas/clock.vue'], resolve)
         }
     },
@@ -310,7 +317,7 @@ var pageRouterOption = [
             shareTitle: '玫瑰曲线',
             shareImg: '/static/assets/clock.png'
         },
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/example/canvas/rose.vue'], resolve)
         }
     },
@@ -321,7 +328,7 @@ var pageRouterOption = [
             shareTitle: '汕头行',
             shareImg: '/static/assets/clock.png'
         },
-        component: function (resolve) {
+        component (resolve) {
             require(['./views/other/tour.vue'], resolve)
         }
     },

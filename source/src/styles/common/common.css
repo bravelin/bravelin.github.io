@@ -194,12 +194,18 @@ div#app-tip {
       line-height: 1.8;
       word-wrap: break-word; }
     .page > div.content strong {
-      color: #f66; }
+      color: #f66;
+      font-weight: normal; }
     .page > div.content p {
       margin-top: 8px;
       line-height: 2;
       text-indent: 36px;
-      word-wrap: break-word; }
+      word-wrap: break-word;
+      word-break: break-all;
+      -webkit-hyphens: auto;
+         -moz-hyphens: auto;
+          -ms-hyphens: auto;
+              hyphens: auto; }
       .page > div.content p em {
         font-weight: bold; }
       .page > div.content p i {
@@ -244,7 +250,7 @@ div#app-tip {
         margin-top: 0; }
     .page > div.content pre {
       margin-top: 10px;
-      margin-bottom: 8px; }
+      margin-bottom: 10px; }
       .page > div.content pre.inner {
         margin-left: 32px;
         margin-right: 32px; }

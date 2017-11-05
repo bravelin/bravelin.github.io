@@ -310,6 +310,16 @@ export default {
             date: '2017/10/29',
             routerName: 'learning-react-1',
             topicId: '4'
+        },
+        {
+            id: '33',
+            type: '读书笔记',
+            category: 'react',
+            title: 'React学习笔记之二：漫谈React',
+            description: '',
+            date: '2017/11/05',
+            routerName: 'learning-react-2',
+            topicId: '4'
         }
     ]
 }

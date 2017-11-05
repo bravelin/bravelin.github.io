@@ -137,13 +137,15 @@ div#app-tip{
     }
     strong{
       color:#f66;
-      //font-weight: normal;
+      font-weight: normal;
     }
     p{
       margin-top:8px;
       line-height: 2;
       text-indent: 36px;
       word-wrap: break-word;
+      word-break: break-all;
+      hyphens: auto;
       em{
         font-weight: bold;
       }
@@ -202,7 +204,7 @@ div#app-tip{
     }
     pre{
       margin-top:10px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       &.inner{
         margin-left: 32px;
         margin-right: 32px;

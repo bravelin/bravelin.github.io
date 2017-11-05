@@ -134,7 +134,28 @@ class App extends Component {
 ReactComponent render(ReactElement element, DOMElement container, [function callback])</code></pre>
             <p><strong>当组件在初次渲染之后再次更新，React不会把整个组件重新渲染一次，而是会使用高效的DOM diff算法做更新。</strong></p>
             <p><strong>unstable_renderSubtreeIntoContainer</strong>方法的作用是更新组件到传入的DOM节点上。</p>
-
+            <p><strong>refs</strong>是React组件一个特殊的prop，可以附加到任何一个组件上。<strong>组件在创建时会新建一个该组件的实例，而refs就指向这个实例。</strong>它可以是一个回调函数，这个回调函数会在组件被挂载之后立即执行：</p>
+            <pre><code>render () {
+    return &lt;input type='text' ref={ (ref)=> this.myTextInput=ref } /&gt;
+}</code></pre>
+            <p>refs同样支持字符串，对于DOM操作，不仅可以使用findDOMNode获得组件的DOM，还可以使用refs获取组件内部的DOM。</p>
+            <pre><code>import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+class App extends Component {
+    componentDidMount () {
+        // myComp是Comp的实例，因此需要用findDOMNode转换为相应的DOM
+        const myComp = this.refs.myComp
+        const myCompDom = ReactDOM.findDOMNode(myComp)
+    }
+    render () {
+        return &lt;div&gt;&lt;Comp ref='myComp' /&gt;&lt;/div&gt;
+    }
+}</code></pre>
+            <p><strong>要获取一个React组件的引用，可以使用this获取当前的React组件，使用refs获取子组件。</strong></p>
+            <p><strong>DOMNode.contains(node)</strong>：DOM的原生方法，可以判断一个节点是否被包含。</p>
+            <pre><code>var node = document.querySelector('#app-tip')
+var body = document.querySelector('body')
+body.contains(node) // true</code></pre>
         </div>
         <footer>2017年10月29日</footer>
         <comments></comments>
