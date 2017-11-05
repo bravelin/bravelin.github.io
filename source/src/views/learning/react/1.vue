@@ -113,7 +113,28 @@ class App extends Component {
             <p><strong>如果组件自身的state更新了，会依次执行shouldComponentUpdate、componentWillUpdate、render、componentDidUpdate。</strong></p>
             <p>shouldComponentUpdate是一个特别的方法，可以在此增加必要的判断方法，当返回false时，不再向下执行生命周期方法。</p>
             <p>无状态组件没有生命周期方法，意味着也没有shouldComponentUpdate。渲染到该类组件时，每次都会重新渲染。</p>
-            <p><strong>不能再componentWillUpdate中执行setState。如果组件是由父组件更新props引起更新的，会在shouldComponentUpdate方法之前执行componentWillReceiveProps。</strong></p>
+            <p><strong>不能在componentWillUpdate中执行setState。如果组件是由父组件更新props引起更新的，会在shouldComponentUpdate方法之前执行componentWillReceiveProps。</strong></p>
+            <h3 class="title">React与DOM</h3>
+            <p>ReactDOM的API非常少，只有<strong>findDOMNode、unmountComponentAtNode以及render</strong>。</p>
+            <p>DOM被真正添加到HTML中的生命周期方法只有componentDidMount和componentDidUpdate。React提供了两种获取DOM元素的方法，其一：</p>
+            <pre><code>DOMElement findDOMNode(ReactComponent component)
+
+// 在当前的组件加载完时获取DOM
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+class App extends Component {
+    componentDidMount () {
+        const dom = ReactDOM.findDOMNode(this)
+    }
+    render () {}
+}</code></pre>
+            <p>涉及复杂的操作，可以使用原生DOM API。</p>
+            <p>要将React的Virtual DOM渲染到浏览器当中，需要使用render方法：</p>
+            <pre><code>// 将元素挂载到container中
+ReactComponent render(ReactElement element, DOMElement container, [function callback])</code></pre>
+            <p><strong>当组件在初次渲染之后再次更新，React不会把整个组件重新渲染一次，而是会使用高效的DOM diff算法做更新。</strong></p>
+            <p><strong>unstable_renderSubtreeIntoContainer</strong>方法的作用是更新组件到传入的DOM节点上。</p>
+
         </div>
         <footer>2017年10月29日</footer>
         <comments></comments>
