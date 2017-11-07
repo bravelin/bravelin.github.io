@@ -18,8 +18,8 @@ window['_g'] = Global
 var _global = Global
 var pageRouterOption = [
     {
-        path: '/articles',
-        name: 'articles',
+        path: '/home',
+        name: 'home',
         component (resolve) {
             require(['./views/articles.vue'], resolve)
         }
@@ -334,11 +334,11 @@ var pageRouterOption = [
     },
     {
         path: '/',
-        redirect: {name: 'articles'}
+        redirect: {name: 'home'}
     },
     {
-        path: '/home',
-        redirect: {name: 'articles'}
+        path: '/articles',
+        redirect: {name: 'home'}
     },
     {
         path: '*',
