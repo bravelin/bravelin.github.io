@@ -44,6 +44,58 @@
             return &lt;button onClick={ this.handClick }&gt;Test&lt;/button&gt;
         }
     }</code></pre>
+                <p>在React中使用DOM原生事件时，<strong>一定要在组件卸载时手动移除，否则很可能出现内存泄漏的问题。尽量避免在React中混用合成事件和原生DOM事件。</strong></p>
+                <p>React的合成事件只是原生DOM事件系统的一个子集，<strong>并没有实现事件捕获，仅仅支持事件冒泡机制。</strong></p>
+                <h3 class="title">表单</h3>
+                <p>文本框的应用：</p>
+                <pre><code>import React, { Component } from 'react'
+    class App extends Component {
+        constructor (props) {
+            super(props)
+            this.handleInputChange = this.handleInputChange.bind(this)
+            this.handleTextareaChange = this.handleTextareaChange.bind(this)
+            this.state = {
+                inputValue: '',
+                textareaValue: ''
+            }
+        }
+        handleInputChange (e) { // 同步值
+            this.setState({
+                inputValue: e.target.value
+            })
+        }
+        handleTextareaChange (e) {
+            this.setState({
+                textareaValue: e.target.value
+            })
+        }
+        render () {
+            const { inputValue, textareaValue } = this.state
+            return (
+                &lt;div&gt;
+                    &lt;input type="text" value={ inputValue } onChange={ this.handleInputChange }/&gt;
+                    &lt;textarea value={ textareaValue } onChange={ this.handleTextareaChange }/&gt;
+                &lt;/div&gt;
+            )
+        }
+    }</code></pre>
+            <p>每当表单的状态发生改变时，都会将表单对应的值写入到state中，这种组件称之为<strong>受控组件</strong>。在受控组件中，组件渲染出的状态与它的value或checked属性相对应。受控组件更新state的流程：</p>
+            <p>1、可以在初始state中设置表单的默认值；</p>
+            <p>2、对表单增加onChange事件监听；</p>
+            <p>3、事件处理器通过合成事件e拿到改变之后的状态，并更新应用的state；</p>
+            <p>4、setState触发视图的重新渲染，完成表单组件的更新。</p>
+            <p>可以在执行最后一步的setState之前，对表单值进行清洗和校验：</p>
+            <pre><code>handleChange (e) {
+    this.setState({
+        value: e.target.value.substring(0, 10).toUpperCase()
+    })
+}</code></pre>
+            <p>如果一个表单组件没有value（checked）props，可称之为<strong>非受控组件</strong>。因为其值不受state或者props控制，通常需要为其添加ref prop来访问渲染之后的DOM元素。在React中不提倡使用非受控组件。</p>
+            <p>表单组件的三个状态属性：</p>
+            <p><strong>value</strong>：type为text的input、textarea、select组件；</p>
+            <p><strong>checked</strong>：type为radio或者checkbox的组件；</p>
+            <p><strong>selected</strong>：作用于select组件下的option，React并不建议使用这种方式定义select组件的状态。</p>
+            <h3 class="title">样式处理</h3>
         </div>
         <footer>2017年11月05日</footer>
         <comments></comments>

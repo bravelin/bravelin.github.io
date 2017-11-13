@@ -38,7 +38,7 @@
             <ul>
                 <!--<li><router-link :to="{ name: 'home' }">Home</router-link></li>-->
                 <li>
-                    <router-link :to="{ name: 'articles' }">Articles</router-link>
+                    <router-link :to="{ name: 'home' }">Home</router-link>
                 </li>
                 <li>
                     <router-link :to="{ name: 'topics' }">Topics</router-link>
