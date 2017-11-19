@@ -332,6 +332,11 @@ drawAni (radius) {
     import Page from '../../page'
     module.exports = {
         extends: Page,
+        data () {
+            return {
+                drawClipAniTimer: null
+            }
+        },
         mounted () {
             let that = this
             that.$nextTick(() => {
@@ -533,7 +538,7 @@ drawAni (radius) {
                 let radius = w / 2
                 let direction = -1
 
-                setInterval(function () {
+                that.drawClipAniTimer = setInterval(function () {
                     context.fillStyle = '#999999'
                     context.fillRect(0, 0, w, h)
                     if (direction == -1) {
@@ -586,6 +591,12 @@ drawAni (radius) {
                 context.fillRect(0, 0, w, h)
                 that.drawClipText()
                 context.restore()
+            }
+        },
+        beforeDestroy () {
+            let that = this
+            if (that.drawClipAniTimer) {
+                window.clearInterval(that.drawClipAniTimer)
             }
         }
     }

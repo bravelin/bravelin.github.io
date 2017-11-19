@@ -96,6 +96,93 @@
             <p><strong>checked</strong>：type为radio或者checkbox的组件；</p>
             <p><strong>selected</strong>：作用于select组件下的option，React并不建议使用这种方式定义select组件的状态。</p>
             <h3 class="title">样式处理</h3>
+            <p>在React中添加样式需要设置className prop，行内样式则使用style prop来设置。</p>
+            <pre><code>const style = {
+    color: 'white',
+    backgroundImage: `url(${ imgUrl })`,
+    WebkitTransition: 'all', // 会转换成 -webkit-transition
+    msTransition: 'all' // ms是唯一使用小写的浏览器前缀
+}
+const component = &lt;Component style={ style } /&gt;</code></pre>
+            <p>当设置width和height之类的与大小有关的样式时，大部分会以像素为单位，React自动对这样的属性添加px：</p>
+            <pre><code>const style = { height: 10 }</code></pre>
+            <p>在React中一般使用classnames库来操作类：</p>
+            <pre><code>import React, { Component } from 'react'
+import classNames from 'classnames'
+class Button extends Component {
+    render () {
+        const btnCls = classNames({
+            'btn': true,
+            'btn-pressed': this.state.isPressed,
+            'btn-over': this.state.isHover
+        })
+        return &lt;button className={ btnCls }&gt;ok&lt;/button&gt;
+    }
+}</code></pre>
+            <h3 class="title">组件间通信</h3>
+            <p><strong>1、父组件向子组件通信：</strong>父组件通过props向子组件传递需要的信息。</p>
+            <p><strong>2、子组件向父组件通信：</strong>有两种方法，利用<strong>回调函数</strong>或者<strong>自定义事件机制（较复杂一点）</strong></p>
+            <p>回调的例子：</p>
+            <pre><code>import React, { Component } from 'react'
+// 子组件ListItem
+class ListItem extends Component {
+    static defaultProps = { text: '', checked: false }
+    render () {
+        return ( // checked状态没有放到state里面，onChange 回调父组件的处理方法
+            &lt;li&gt;
+                &lt;input type="checkbox" checked={ this.props.checked } onChange={ this.props.onChange }/&gt;
+                &lt;span&gt;{ this.props.text }&lt;/span&gt;
+            &lt;/li&gt;
+        )
+    }
+}
+
+// 父组件List
+class List extends Component {
+    static defaultProps = { list: [], handleItemChange: () => {} }
+    constructor (props) {
+        super(props)
+        this.state = {
+            list: this.props.list.map(entry => { text: entry.text, checked: entry.checked })
+        }
+    }
+    onItemChange (item) {
+        const { list } = this.state
+        this.setState({
+            list: list.map(entry => {
+                text: entry.text,
+                checked: item.text == entry.text ? !entry.checked : entry.checked 
+            })
+        })
+        this.props.handleItemChange(entry) // List的父组件回调
+    }
+    render () {
+        return (
+            &lt;ul&gt;
+                { this.state.list.map((entry, index) => (
+                    &lt;ListItem key={`list-${index}`} value={ entry.text } checked={ entry.checked } onChange={ this.onItemChange.bind(this, entry) }/&gt;
+                ))}
+            &lt;/ul&gt;
+        )
+    }
+}
+</code></pre>
+            <p><strong>3、跨级组件通信</strong>：层层传递太冗余。可以利用全局的context，但并不推荐使用。</p>
+            <p><strong>4、没有嵌套关系的组件通信</strong>：利用自定义事件机制，需要注意的是，<strong>在componentDidMount中订阅事件，在componentWillUnmount事件中取消订阅的事件。</strong></p>
+            <p>对于React来说，EventEmitter只需要单例就可以了：</p>
+            <pre><code>import { EventEmitter } from 'events'
+export default new EventEmitter</code></pre>
+            <p>各组件就可以使用上面的EventEmitter实例了，与Vue类似：</p>
+            <pre><code>onItemChange (item) {
+    const { list } = this.state
+    this.setState({
+        list: list.map(entry => {
+            text: entry.text,
+            checked: item.text == entry.text ? !entry.checked : entry.checked 
+        })
+    })
+    emitter.emitEvent('ItemChange', entry) // 事件名称和数据
+}</code></pre>
         </div>
         <footer>2017年11月05日</footer>
         <comments></comments>
