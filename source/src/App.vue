@@ -2,7 +2,8 @@
     @import './sass/page/index.scss';
 </style>
 <template>
-    <div @click="doHideSideMenu()">
+    <div @click="doHideSideMenu()" class="app-wrap">
+        <sky></sky>
         <header>
             <div class="wrap">
                 <router-link class="logo" :to="{name: 'about'}" tag="div"></router-link>
@@ -25,7 +26,6 @@
                     <li>
                         <router-link :to="{ name: 'home' }">Home</router-link>
                     </li>
-                    <!--<li><router-link :to="{ name: 'home' }">Home</router-link></li>-->
                 </ul>
             </nav>
         </header>
@@ -36,7 +36,6 @@
         <div class="side-menu-icon" :class="{ fixedTop: isFixedTop }" @click="doClickMenuBtn($event)"></div>
         <nav class="side-menu" :class="{active: showSizeMenu}" @click="doClickSideMenuWrap($event)">
             <ul>
-                <!--<li><router-link :to="{ name: 'home' }">Home</router-link></li>-->
                 <li>
                     <router-link :to="{ name: 'home' }">Home</router-link>
                 </li>
@@ -61,6 +60,7 @@
 </template>
 <script>
     import Spinner from './components/spinner'
+    import Sky from './components/sky'
     import Note from './components/note'
     import Global from './libs/global'
     import eventHub from './libs/hub.js'
@@ -75,7 +75,8 @@
         },
         components: {
             spinner: Spinner,
-            note: Note
+            note: Note,
+            sky: Sky
         },
         mounted () {
             var that = this

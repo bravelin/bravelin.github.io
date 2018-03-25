@@ -2,11 +2,19 @@
 @import "./css.scss";
 @import "./canvas.scss";
 @import "./resume.scss";
-
+.app-wrap{
+  position: relative;
+  z-index: 0;
+}
+.sky-bg{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 header{
   position: relative;
   height: 188px;
-  background: url('./assets/header-bg.jpg');
   transition: opacity 0.3s;
   opacity: 0;
   >div.wrap,>nav>ul{

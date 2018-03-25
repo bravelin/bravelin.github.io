@@ -4,6 +4,7 @@
 <script>
     export default {
         mounted () {
+            console.log('222222222222222')
             this.$nextTick(() => {
                 var codes = document.querySelectorAll('code')
                 if (codes.length > 0) {

@@ -10,25 +10,19 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/api': {
-        // target: 'http://192.168.1.19:8051/spa-manager/api',
-        // target: 'http://192.168.1.92:8989/spa-manager/api',
-        // target: 'http://localhost:8051/spa-manager/api',
-        // target: 'http://test.xiaomodo.com/spa-manager/api',
-        // target: 'http://192.168.1.100:9880/spa-manager/api',      // 100服务器接口
-        target: 'http://spa.93wifi.com/spa-manager/api',            // 外网接口
-        // target: 'http://192.168.2.93:8080/spa-manager/api',
-        changeOrigin: true,
-        pathRewrite: {
-            '^/api': ''
-        }
-      }
-    },
+    // proxyTable: {
+    //   '/api': {
+    //    target: 'http://192.168.2.93:8080/spa-manager/api',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //         '^/api': ''
+    //     }
+    //   }
+    // },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8083, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

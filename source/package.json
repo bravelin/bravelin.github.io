@@ -1,8 +1,8 @@
 {
-  "name": "spa",
-  "version": "3.0.0",
+  "name": "linblog",
+  "version": "2.0.0",
   "description": "A Vue.js project",
-  "author": "web@xiaomodo.com",
+  "author": "jialin2013@qq.com",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

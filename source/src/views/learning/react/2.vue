@@ -191,6 +191,9 @@ export default new EventEmitter</code></pre>
 <script>
     import Page from '../../page'
     export default {
+        components: {
+            Page
+        },
         extends: Page
     }
 </script>
