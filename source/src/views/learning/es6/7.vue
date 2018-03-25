@@ -120,7 +120,7 @@ let log = ::console.log // 等同于 var log = console.log.bind(console)</code><
 </template>
 <script>
     import Page from '../../page'
-    module.exports = {
+    export default {
         extends: Page
     }
 </script>

@@ -1,5 +1,5 @@
-<style>
-    @import './styles/page/index.css';
+<style lang="sass">
+    @import './sass/page/index.scss';
 </style>
 <template>
     <div @click="doHideSideMenu()">
@@ -62,10 +62,10 @@
 <script>
     import Spinner from './components/spinner'
     import Note from './components/note'
-    import {Global} from './libs/global'
-    import {eventHub} from './libs/hub.js'
+    import Global from './libs/global'
+    import eventHub from './libs/hub.js'
 
-    module.exports = {
+    export default {
         data () {
             return {
                 global: Global,

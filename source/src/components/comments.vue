@@ -18,8 +18,8 @@
     </ul>
 </template>
 <script>
-    import {Global} from '../libs/global'
-    import {eventHub} from '../libs/hub'
+    import Global from '../libs/global'
+    import eventHub from '../libs/hub'
 
     export default {
         data () {

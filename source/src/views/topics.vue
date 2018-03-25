@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <ul class="article-list">
-            <router-link tag="li" v-for="topic in list" :to="{ name : 'topicArticles', query: { id: topic.id } }">
+            <router-link tag="li" v-for="topic in list" :to="{ name : 'topicArticles', query: { id: topic.id } }" :key="topic.id">
                 <h4>{{ topic.date }}</h4>
                 <h3>{{ topic.title }}</h3>
                 <div>{{ topic.description }}</div>
@@ -11,7 +11,7 @@
 </template>
 <script>
     import topics from '../data/topics'
-    module.exports = {
+    export default {
         data () {
             return {
                 list: []

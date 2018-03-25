@@ -113,7 +113,7 @@ C:\Program Files\nodejs\node_cache</code></pre>
 </template>
 <script>
     import Page from '../../page'
-    module.exports = {
+    export default {
         extends: Page
     }
 </script>

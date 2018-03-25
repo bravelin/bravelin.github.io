@@ -2,7 +2,7 @@
     <div class="page">
         <div class="topic-title">topic：{{ topicName }}</div>
         <ul class="article-list">
-            <router-link tag="li" v-for="article in list" :to="{ name : article.routerName }">
+            <router-link tag="li" v-for="article in list" :to="{ name : article.routerName }" :key="article.id">
                 <h4>{{ article.date }}</h4>
                 <h3>{{ article.title }}</h3>
                 <div>{{ article.description }}</div>
@@ -11,11 +11,11 @@
     </div>
 </template>
 <script>
-    import {Global} from '../libs/global'
+    import Global from '../libs/global'
     import articleList from '../data/list'
     import topics from '../data/topics'
 
-    module.exports = {
+    export default {
         data () {
             return {
                 topicName: '',

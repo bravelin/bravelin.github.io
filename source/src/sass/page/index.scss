@@ -6,7 +6,7 @@
 header{
   position: relative;
   height: 188px;
-  background: url('/static/assets/header-bg.jpg');
+  background: url('./assets/header-bg.jpg');
   transition: opacity 0.3s;
   opacity: 0;
   >div.wrap,>nav>ul{
@@ -25,7 +25,7 @@ header{
     border:2px solid #ddd;
     float:left;
     cursor: pointer;
-    @include img("/static/assets/header.jpg",100% 100%)
+    @include img("./assets/header.jpg",100% 100%)
   }
   div.title{
     width:265px;
@@ -124,7 +124,7 @@ div.side-menu-icon{
   width:30px;
   height:28px;
   padding:4px;
-  background: url("/static/assets/menu.png") 4px 4px no-repeat ;
+  background: url("./assets/menu.png") 4px 4px no-repeat ;
   cursor: pointer;
   &.fixedTop{
     border:1px solid #e0e0e0;
@@ -145,7 +145,7 @@ div.side-menu-icon{
     width:40px;
     height:40px;
     border-radius: 4px;
-    background: rgba(23,87,157,.8) url("/static/assets/back.png") 13px 13px no-repeat;
+    background: rgba(23,87,157,.8) url("./assets/back.png") 13px 13px no-repeat;
     cursor: pointer;
     box-shadow: 0 0 8px rgba(0,0,0,0.4);
     transition: 0.3s background-color;
@@ -159,7 +159,7 @@ div.side-menu-icon{
       transform: rotate(180deg);
     }
     &.note{
-      background-image: url("/static/assets/edit.png");
+      background-image: url("./assets/edit.png");
     }
   }
 }

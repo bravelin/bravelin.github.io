@@ -100,7 +100,7 @@ drawRoseLine (a, b, m, n) {
 </template>
 <script>
     import Page from '../../page'
-    module.exports = {
+    export default {
         extends: Page,
         data () {
             return {

@@ -81,7 +81,7 @@ box-shadow: 0 0 0 1px rgba(0,0,0,0.7) inset;</code></pre>
     </div>
 </template>
 <script>
-    module.exports = {
+    export default {
         data: function () {
             return {
                 showPop: false

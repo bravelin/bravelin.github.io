@@ -1,7 +1,2 @@
 import Vue from 'vue'
-
-/**
- *  event hub
- * */
-
-exports.eventHub = new Vue()
+export default new Vue()

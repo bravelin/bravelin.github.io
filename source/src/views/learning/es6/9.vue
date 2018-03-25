@@ -56,7 +56,7 @@ Symbol.keyFor(s2) // undefined</code></pre>
 </template>
 <script>
     import Page from '../../page'
-    module.exports = {
+    export default {
         extends: Page
     }
 </script>

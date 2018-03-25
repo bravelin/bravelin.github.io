@@ -171,7 +171,7 @@ var v2 = dv.getUint16(1) // 从第1个字节读取一个uint16</code></pre>
 </template>
 <script>
     import Page from '../../page'
-    module.exports = {
+    export default {
         extends: Page
     }
 </script>

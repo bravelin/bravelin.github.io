@@ -166,9 +166,9 @@ that.needRotateDuration = 0.75 * (deltDeg / 180)</code></pre>
     </div>
 </template>
 <script>
-    import {Global} from '../../../libs/global'
+    import Global from '../../../libs/global'
 
-    module.exports = {
+    export default {
         data: function () {
             return {
                 currRotateDeg: 0, // 当前旋转的度数

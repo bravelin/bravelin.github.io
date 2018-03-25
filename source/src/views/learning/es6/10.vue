@@ -35,7 +35,7 @@
 </template>
 <script>
     import Page from '../../page'
-    module.exports = {
+    export default {
         extends: Page
     }
 </script>

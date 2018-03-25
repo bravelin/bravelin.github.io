@@ -190,7 +190,7 @@ export default new EventEmitter</code></pre>
 </template>
 <script>
     import Page from '../../page'
-    module.exports = {
+    export default {
         extends: Page
     }
 </script>

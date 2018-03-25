@@ -119,7 +119,7 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
 </template>
 <script>
     import Page from '../../page'
-    module.exports = {
+    export default {
         extends: Page,
         mounted () {
             let that = this

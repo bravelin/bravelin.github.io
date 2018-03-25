@@ -1,5 +1,5 @@
 <style>
-    @import '../styles/components/spinner.css';
+    @import '../sass/components/spinner.scss';
 </style>
 <template>
     <div class="spinner-wrap">

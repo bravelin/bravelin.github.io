@@ -19,10 +19,10 @@
     </div>
 </template>
 <script>
-    import {eventHub} from '../libs/hub'
-    import {Global} from '../libs/global'
+    import eventHub from '../libs/hub'
+    import Global from '../libs/global'
 
-    module.exports = {
+    export default {
         data () {
             return {
                 allComments: true,

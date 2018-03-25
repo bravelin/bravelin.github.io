@@ -106,7 +106,7 @@ for(let [key, value] of map) { console.log(key + ' is ' +value) }</code></pre>
 </template>
 <script>
     import Page from '../../page'
-    module.exports = {
+    export default {
         extends: Page
     }
 </script>

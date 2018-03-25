@@ -1,7 +1,7 @@
 import articleList from '../data/list'
-import {eventHub} from './hub.js'
+import eventHub from './hub.js'
 
-exports.Global = {
+export default {
     loading: false,
     tip: null,
     showArticleNavMenu: false,

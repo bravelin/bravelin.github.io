@@ -85,7 +85,7 @@ var a2 = [for(i of a1) i*2] // [2, 4, 6, 8]</code></pre>
 </template>
 <script>
     import Page from '../../page'
-    module.exports = {
+    export default {
         extends: Page
     }
 </script>

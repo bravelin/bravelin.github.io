@@ -2,7 +2,7 @@
     <div></div>
 </template>
 <script>
-    module.exports = {
+    export default {
         mounted () {
             this.$nextTick(() => {
                 var codes = document.querySelectorAll('code')
