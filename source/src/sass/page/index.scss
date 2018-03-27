@@ -19,7 +19,7 @@ header{
   opacity: 0;
   >div.wrap,>nav>ul{
     width:96%;
-    max-width: 1600px;
+    max-width: 1300px;
     margin:0 auto;
   }
   >div.wrap{
@@ -84,13 +84,15 @@ header{
 }
 
 footer{
+  position: relative;
   text-align: center;
   font-size:16px;
   line-height:40px;
-  color:#817c7c;
+  color:#ccc;
+  z-index: 2;
   transition: opacity 0.3s;
   >a{
-    color:#817c7c;
+    color:#fff;
     &:hover{
       color:#f60;
       text-decoration: underline;

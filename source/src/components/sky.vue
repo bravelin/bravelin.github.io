@@ -29,7 +29,7 @@
                 let w = that.w = el.width = window.innerWidth
                 let h = that.h = el.height = window.innerHeight
                 let hue = that.hue = 217
-                let maxStars = 1200
+                let maxStars = 1000
                 let canvas2 = document.createElement('canvas')
                 let ctx2 = canvas2.getContext('2d')
                 canvas2.width = 100
