@@ -10,14 +10,14 @@
             <p>在React组件中，每个方法的上下文都会指向该组件的实例，<strong>即自动绑定this为当前组件。</strong>在使用ES6 classes或者纯函数时，这种自动绑定就不复存在了，需要<strong>手动绑定</strong>：</p>
             <p><strong>1、bind方法：</strong></p>
             <pre><code>import React, { Component } from 'react'
-    class App extends Component {
-        handClick(e, arg) {
-            console.log(e, arg)
-        }
-        render() {
-            return &lt;button onClick={ this.handClick.bind(this, 'test') }&gt;Test&lt;/button&gt;
-        }
-    }</code></pre>
+class App extends Component {
+    handClick(e, arg) {
+        console.log(e, arg)
+    }
+    render() {
+        return &lt;button onClick={ this.handClick.bind(this, 'test') }&gt;Test&lt;/button&gt;
+    }
+}</code></pre>
             <p>如果方法只绑定而不传参，可以使用<strong>双冒号语法</strong>：</p>
             <pre><code>&lt;button onClick={ ::this.handClick }&gt;Test&lt;/button&gt;</code></pre>
             <p><strong>2、在constructor中声明绑定：</strong></p>

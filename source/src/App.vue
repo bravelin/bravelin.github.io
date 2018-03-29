@@ -3,7 +3,7 @@
 </style>
 <template>
     <div @click="doHideSideMenu()" class="app-wrap">
-        <sky></sky>
+        <!-- <sky></sky> -->
         <header>
             <div class="wrap">
                 <router-link class="logo" :to="{name: 'about'}" tag="div"></router-link>
@@ -60,7 +60,7 @@
 </template>
 <script>
     import Spinner from './components/spinner'
-    import Sky from './components/sky'
+    // import Sky from './components/sky'
     import Note from './components/note'
     import Global from './libs/global'
     import eventHub from './libs/hub.js'
@@ -75,8 +75,8 @@
         },
         components: {
             spinner: Spinner,
-            note: Note,
-            sky: Sky
+            note: Note
+            // sky: Sky
         },
         mounted () {
             var that = this

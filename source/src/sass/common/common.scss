@@ -120,7 +120,7 @@ div#app-tip{
     }
   }
   >h2.title{
-    padding:24px 24px;
+    padding:20px 24px;
     border-bottom:1px solid #dbdbdb;
     font-size:32px;
     font-weight: bold;
@@ -140,8 +140,8 @@ div#app-tip{
       font-weight: normal;
     }
     p{
-      margin-top:8px;
-      line-height: 2;
+      margin-top:10px;
+      line-height: 1.8;
       text-indent: 36px;
       word-wrap: break-word;
       word-break: break-all;
@@ -189,24 +189,32 @@ div#app-tip{
       margin-top:15px;
     }
     h3.title{
-      background-color: #e0e0e0;
-      color:#f96;
-      font-size:28px;
-      border-radius: 6px;
+      font-size:22px;
       line-height: 1.5;
-      padding:10px 18px;
+      padding:5px 0px;
       margin-top:20px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       font-weight: bold;
+      border-bottom: 1px dashed #eee;
       &:first-child{
         margin-top:0
+      }
+      &:before{
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        vertical-align: middle;
+        margin-right: 10px;
+        margin-top: -4px;
+        background-color: #817c7c;
       }
     }
     pre{
       margin-top:10px;
       margin-bottom: 10px;
       >code{
-        padding:15px 36px;
+        padding:12px;
       }
     }
   }
@@ -406,6 +414,8 @@ div#app-tip{
       padding-left:15px;
       padding-right:15px;
       pre{
+        margin-left: 0;
+        margin-right: 0;
         &.inner{
           margin-left: 0;
           margin-right: 0;
