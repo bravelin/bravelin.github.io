@@ -53,16 +53,13 @@ export default {
     },
     shareConfig (title, imgUrl) {
         document.title = title
-        // document.querySelector('#_share_image').src = imgUrl
     },
-
     /* eslint-disable */
     sha (msg) {
         function rotate_left(n, s) {
             var t4 = (n << s) | (n >>> (32 - s))
             return t4
         }
-
         function lsb_hex(val) {
             var str = ''
             var i
@@ -76,7 +73,6 @@ export default {
             }
             return str
         }
-
         function cvt_hex(val) {
             var str = ''
             var i
@@ -88,8 +84,6 @@ export default {
             }
             return str
         }
-
-
         function Utf8Encode(string) {
             string = string.replace(/\r\n/g, '\n')
             var utftext = ''
@@ -115,7 +109,6 @@ export default {
 
             return utftext
         }
-
         var blockstart
         var i
         var j
@@ -133,15 +126,12 @@ export default {
         var temp
 
         msg = Utf8Encode(msg)
-
         var msg_len = msg.length
-
         var word_array = new Array()
         for (i = 0; i < msg_len - 3; i += 4) {
             j = msg.charCodeAt(i) << 24 | msg.charCodeAt(i + 1) << 16 | msg.charCodeAt(i + 2) << 8 | msg.charCodeAt(i + 3)
             word_array.push(j)
         }
-
         switch (msg_len % 4) {
             case 0:
                 i = 0x080000000
@@ -160,9 +150,7 @@ export default {
         }
 
         word_array.push(i)
-
         while ((word_array.length % 16) != 14) word_array.push(0)
-
         word_array.push(msg_len >>> 29)
         word_array.push((msg_len << 3) & 0x0ffffffff)
 

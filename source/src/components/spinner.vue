@@ -1,4 +1,4 @@
-<style>
+<style lang="sass">
     @import '../sass/components/spinner.scss';
 </style>
 <template>

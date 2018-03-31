@@ -22,63 +22,63 @@ class App extends Component {
             <pre><code>&lt;button onClick={ ::this.handClick }&gt;Test&lt;/button&gt;</code></pre>
             <p><strong>2、在constructor中声明绑定：</strong></p>
             <pre><code>import React, { Component } from 'react'
-    class App extends Component {
-        constructor (props) {
-            super(props)
-            this.handClick = this.handClick.bind(this)
-        }
-        handClick(e, arg) {
-            console.log(e, arg)
-        }
-        render() {
-            return &lt;button onClick={ this.handClick }&gt;Test&lt;/button&gt;
-        }
-    }</code></pre>
+class App extends Component {
+    constructor (props) {
+        super(props)
+        this.handClick = this.handClick.bind(this)
+    }
+    handClick(e, arg) {
+        console.log(e, arg)
+    }
+    render() {
+        return &lt;button onClick={ this.handClick }&gt;Test&lt;/button&gt;
+    }
+}</code></pre>
                 <p><strong>3、箭头函数：</strong>箭头函数自动绑定了定义此函数作用域的this，因此不必再对其使用bind方法：</p>
                 <pre><code>import React, { Component } from 'react'
-    class App extends Component {
-        const handClick = (e) => {
-            console.log(e, arg)
-        }
-        render() {
-            return &lt;button onClick={ this.handClick }&gt;Test&lt;/button&gt;
-        }
-    }</code></pre>
+class App extends Component {
+    const handClick = (e) => {
+        console.log(e, arg)
+    }
+    render() {
+        return &lt;button onClick={ this.handClick }&gt;Test&lt;/button&gt;
+    }
+}</code></pre>
                 <p>在React中使用DOM原生事件时，<strong>一定要在组件卸载时手动移除，否则很可能出现内存泄漏的问题。尽量避免在React中混用合成事件和原生DOM事件。</strong></p>
                 <p>React的合成事件只是原生DOM事件系统的一个子集，<strong>并没有实现事件捕获，仅仅支持事件冒泡机制。</strong></p>
                 <h3 class="title">表单</h3>
                 <p>文本框的应用：</p>
                 <pre><code>import React, { Component } from 'react'
-    class App extends Component {
-        constructor (props) {
-            super(props)
-            this.handleInputChange = this.handleInputChange.bind(this)
-            this.handleTextareaChange = this.handleTextareaChange.bind(this)
-            this.state = {
-                inputValue: '',
-                textareaValue: ''
-            }
+class App extends Component {
+    constructor (props) {
+        super(props)
+        this.handleInputChange = this.handleInputChange.bind(this)
+        this.handleTextareaChange = this.handleTextareaChange.bind(this)
+        this.state = {
+            inputValue: '',
+            textareaValue: ''
         }
-        handleInputChange (e) { // 同步值
-            this.setState({
-                inputValue: e.target.value
-            })
-        }
-        handleTextareaChange (e) {
-            this.setState({
-                textareaValue: e.target.value
-            })
-        }
-        render () {
-            const { inputValue, textareaValue } = this.state
-            return (
-                &lt;div&gt;
-                    &lt;input type="text" value={ inputValue } onChange={ this.handleInputChange }/&gt;
-                    &lt;textarea value={ textareaValue } onChange={ this.handleTextareaChange }/&gt;
-                &lt;/div&gt;
-            )
-        }
-    }</code></pre>
+    }
+    handleInputChange (e) { // 同步值
+        this.setState({
+            inputValue: e.target.value
+        })
+    }
+    handleTextareaChange (e) {
+        this.setState({
+            textareaValue: e.target.value
+        })
+    }
+    render () {
+        const { inputValue, textareaValue } = this.state
+        return (
+            &lt;div&gt;
+                &lt;input type="text" value={ inputValue } onChange={ this.handleInputChange }/&gt;
+                &lt;textarea value={ textareaValue } onChange={ this.handleTextareaChange }/&gt;
+            &lt;/div&gt;
+        )
+    }
+}</code></pre>
             <p>每当表单的状态发生改变时，都会将表单对应的值写入到state中，这种组件称之为<strong>受控组件</strong>。在受控组件中，组件渲染出的状态与它的value或checked属性相对应。受控组件更新state的流程：</p>
             <p>1、可以在初始state中设置表单的默认值；</p>
             <p>2、对表单增加onChange事件监听；</p>
@@ -186,6 +186,10 @@ export default new EventEmitter</code></pre>
         </div>
         <footer>2017年11月05日</footer>
         <comments></comments>
+        <div class="article-catalog">
+            <div>文章目录</div>
+            <ul><li v-for="(item, itemIndex) in catalog"><a :href="'#' + item.id">{{ itemIndex + 1 }}. {{ item.text }}</a></li></ul>
+        </div>
     </div>
 </template>
 <script>

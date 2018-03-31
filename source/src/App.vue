@@ -3,8 +3,7 @@
 </style>
 <template>
     <div @click="doHideSideMenu()" class="app-wrap">
-        <!-- <sky></sky> -->
-        <header>
+        <header style="display:none">
             <div class="wrap">
                 <router-link class="logo" :to="{name: 'about'}" tag="div"></router-link>
                 <div class="title">
@@ -14,18 +13,10 @@
             </div>
             <nav :class="{ fixedTop: isFixedTop }">
                 <ul>
-                    <li>
-                        <router-link :to="{ name: 'about' }">About Me</router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{ name: 'comments' }">Comments</router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{ name: 'topics' }">Topics</router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{ name: 'home' }">Home</router-link>
-                    </li>
+                    <li><router-link :to="{ name: 'about' }">About Me</router-link></li>
+                    <li><router-link :to="{ name: 'comments' }">Comments</router-link></li>
+                    <li><router-link :to="{ name: 'topics' }">Topics</router-link></li>
+                    <li><router-link :to="{ name: 'home' }">Home</router-link></li>
                 </ul>
             </nav>
         </header>
@@ -36,18 +27,10 @@
         <div class="side-menu-icon" :class="{ fixedTop: isFixedTop }" @click="doClickMenuBtn($event)"></div>
         <nav class="side-menu" :class="{active: showSizeMenu}" @click="doClickSideMenuWrap($event)">
             <ul>
-                <li>
-                    <router-link :to="{ name: 'home' }">Home</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'topics' }">Topics</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'comments' }">Comments</router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'about' }">About Me</router-link>
-                </li>
+                <li><router-link :to="{ name: 'home' }">Home</router-link></li>
+                <li><router-link :to="{ name: 'topics' }">Topics</router-link></li>
+                <li><router-link :to="{ name: 'comments' }">Comments</router-link></li>
+                <li><router-link :to="{ name: 'about' }">About Me</router-link></li>
             </ul>
         </nav>
         <nav class="article-nav-menu" v-show="global.showArticleNavMenu">
@@ -60,7 +43,6 @@
 </template>
 <script>
     import Spinner from './components/spinner'
-    // import Sky from './components/sky'
     import Note from './components/note'
     import Global from './libs/global'
     import eventHub from './libs/hub.js'
@@ -76,7 +58,6 @@
         components: {
             spinner: Spinner,
             note: Note
-            // sky: Sky
         },
         mounted () {
             var that = this
