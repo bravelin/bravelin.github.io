@@ -170,6 +170,7 @@
         </div>
         <footer>2016年11月03日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

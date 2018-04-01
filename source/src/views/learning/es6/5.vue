@@ -130,6 +130,7 @@ b **= 3 // 27</code></pre>
         </div>
         <footer>2017年03月17日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

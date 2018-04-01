@@ -64,6 +64,7 @@ console.log(B)</code></pre>
         </div>
         <footer>2017年03月08日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

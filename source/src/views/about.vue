@@ -13,9 +13,16 @@
     font-style: italic;
     text-align: center;
   }
+  .page.article{
+    background: none;
+  }
+  h2.title, div.content, footer{
+    background: #fff;
+  }
 </style>
 <template>
-  <div class="page article">
+  <div class="page article home-page">
+    <banner></banner>
     <h2 class="title">About Me</h2>
     <div class="content">
       <p>一名普通的Programmer，2011年计算机科学与技术专业本科毕业。目前专注于Web前端开发。<p>
@@ -32,3 +39,11 @@
     <footer>2016年05月10日</footer>
   </div>
 </template>
+<script>
+import banner from '@/views/banner'
+export default {
+    components: {
+        banner
+    }
+}
+</script>

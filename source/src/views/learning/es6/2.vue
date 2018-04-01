@@ -102,6 +102,7 @@ for(let [key, value] of map) { console.log(key + ' is ' +value) }</code></pre>
         </div>
         <footer>2017年03月09日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

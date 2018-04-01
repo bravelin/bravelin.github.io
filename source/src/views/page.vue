@@ -2,11 +2,16 @@
     <div></div>
 </template>
 <script>
+    import Global from '@/libs/global'
+    import Catalog from '@/components/catalog'
     export default {
         data () {
             return {
                 catalog: []
             }
+        },
+        components: {
+            Catalog
         },
         created () {
             let that = this
@@ -27,22 +32,36 @@
                     that.catalog = catalogList.forEach((item, index) => {
                         sectionId = 'section' + random + '-' + index
                         item.setAttribute('id', sectionId)
-                        list.push({ text: item.innerHTML, id: sectionId, el: item })
+                        list.push({ text: item.innerHTML, id: sectionId, el: item, active: false })
                     })
                     that.catalog = list
-                    console.log('that.catalog：', that.catalog)
+                    if (list.length > 0) {
+                        Global.hasCatalog = true
+                    }
+                    // console.log('that.catalog：', that.catalog)
                 }
             })
         },
         methods: {
             doHandlerScroll () {
                 const that = this
-                const doc = document
-                const top = doc.body.scrollTop || doc.documentElement.scrollTop
-                console.log('top')
+                let i = that.catalog.length - 1
+                let el
+                let activeIndex
+                for (; i >= 0; i--) {
+                    el = that.catalog[i].el
+                    if (el.getBoundingClientRect().top < 10) {
+                        activeIndex = i
+                        break
+                    }
+                }
+                that.catalog = that.catalog.map((item, index) => {
+                    item.active = (index == activeIndex)
+                    return item
+                })
             }
         },
-        beforeDestoryed () {
+        beforeDestroy () {
             window.removeEventListener('scroll', this.doHandlerScroll)
         }
     }

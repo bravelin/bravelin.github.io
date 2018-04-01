@@ -81,6 +81,7 @@ var a2 = [for(i of a1) i*2] // [2, 4, 6, 8]</code></pre>
         </div>
         <footer>2017年03月21日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

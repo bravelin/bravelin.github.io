@@ -242,6 +242,7 @@
         </div>
         <footer>2017年06月17日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

@@ -14,6 +14,7 @@
         </div>
         <footer>2016年08月11日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

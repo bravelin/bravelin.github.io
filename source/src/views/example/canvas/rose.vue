@@ -96,6 +96,7 @@ drawRoseLine (a, b, m, n) {
         </div>
         <footer>2017年06月18日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

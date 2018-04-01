@@ -98,6 +98,7 @@ transition: 1s;
         </div>
         <footer>2016年12月05日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

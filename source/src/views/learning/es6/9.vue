@@ -52,6 +52,7 @@ Symbol.keyFor(s2) // undefined</code></pre>
         </div>
         <footer>2017年05月13日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

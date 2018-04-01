@@ -95,6 +95,7 @@ main{ flex: 1 }</code></pre>
         </div>
         <footer>2017年01月10日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

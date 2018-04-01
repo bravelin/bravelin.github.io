@@ -109,6 +109,7 @@ C:\Program Files\nodejs\node_cache</code></pre>
         </div>
         <footer>2016年05月15日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

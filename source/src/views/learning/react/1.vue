@@ -159,6 +159,7 @@ body.contains(node) // true</code></pre>
         </div>
         <footer>2017年10月29日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

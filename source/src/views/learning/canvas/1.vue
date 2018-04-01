@@ -52,6 +52,7 @@ uniteVector.y = vector.y / magnitude</code></pre>
         </div>
         <footer>2016年06月08日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

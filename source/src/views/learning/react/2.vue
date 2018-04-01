@@ -186,10 +186,7 @@ export default new EventEmitter</code></pre>
         </div>
         <footer>2017年11月05日</footer>
         <comments></comments>
-        <div class="article-catalog">
-            <div>文章目录</div>
-            <ul><li v-for="(item, itemIndex) in catalog"><a :href="'#' + item.id">{{ itemIndex + 1 }}. {{ item.text }}</a></li></ul>
-        </div>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

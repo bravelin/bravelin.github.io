@@ -107,6 +107,7 @@ let n = { ...z } // { a: 3, b: 4 }</code></pre>
         </div>
         <footer>2017年05月09日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

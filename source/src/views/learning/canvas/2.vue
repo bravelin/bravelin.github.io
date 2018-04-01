@@ -326,6 +326,7 @@ drawAni (radius) {
         </div>
         <footer>2016年06月15日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

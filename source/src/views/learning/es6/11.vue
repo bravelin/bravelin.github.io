@@ -167,6 +167,7 @@ var v2 = dv.getUint16(1) // 从第1个字节读取一个uint16</code></pre>
         </div>
         <footer>2017年05月18日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

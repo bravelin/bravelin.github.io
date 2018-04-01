@@ -102,11 +102,11 @@ div#app-tip{
 
 .page{
   width:96%;
-  margin:20px auto 0;
+  margin:5px auto 0;
   max-width: 1300px;
   &.article{
     background-color: #fff;
-    // box-shadow: 0 0 30px rgba(10,10,0,.3) inset;
+    box-shadow: 0 0 12px rgba(10,10,0,.2);
     >div.content{
       figure.common{
         margin: 8px 0;
@@ -229,71 +229,39 @@ div#app-tip{
   }
   >ul.article-list{
     position: relative;
-    padding:0 0 0 40px;
+    padding-top: 8px;
+    padding-bottom: 4px;
     // background-color: #e0e0e0;
-    &:before{
-      content: "";
-      position: absolute;
-      top: 25px;
-      bottom:0;
-      width:4px;
-      left:12px;
-      background: #fff;
-    }
     >li{
       position: relative;
-      padding:20px 20px 10px;
-      margin-bottom:25px;
+      padding:10px 14px;
+      margin-bottom:15px;
       background-color: #fff;
       cursor: pointer;
       border-radius: 6px;
-      filter: drop-shadow(0px 0px 4px rgba(250,0,0,0));
-      transform: translateY(0px);
-      transition: transform 0.4s ease-out, filter 0.5s;
+      transition: all 0.4s ease-out;
       &:last-child{
         margin-bottom: 10px;
       }
       >h4{
         margin-bottom: 2px;
+        font-size: 14px;
+        color: #999;
+        border-bottom: 1px dashed #e0e0e0;
       }
       >h3{
-        padding:8px;
-        font-size:24px;
-        color:#f96;
-        background-color: #eee;
-        border-radius: 6px;
+        padding:8px 0 4px;
+        font-size:20px;
         line-height: 1.4;
         margin-bottom: 2px;
       }
       >div:nth-of-type(1){
-        font-size: 18px;
+        font-size: 15px;
         line-height: 1.7;
-        padding:8px 0;
+        color: #999;
       }
       &:hover{
-        filter: drop-shadow(0px 0px 4px rgba(250,0,0,0.5));
-        transform: translateY(-3px);
-      }
-      &:before,&:after{
-        content: "";
-        position: absolute;
-      }
-      &:after{
-        width: 16px;
-        height: 16px;
-        left: -7px;
-        top: 25px;
-        background: #fff;
-        transform: rotate(45deg);
-        border-radius: 4px;
-      }
-      &:before{
-        width: 16px;
-        height: 16px;
-        left: -34px;
-        top:25px;
-        background: #f96;
-        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(233, 0, 0, 0.5);
       }
     }
   }
@@ -373,7 +341,7 @@ div#app-tip{
     top: 0;
     right: 0;
     width: 240px;
-    background: #c9c9c9;
+    background: #ccc;
     bottom: 0;
     padding-top: 20px;
     z-index: 5;
@@ -393,12 +361,15 @@ div#app-tip{
       transition: all 0.3s ease-out;
       cursor: pointer;
       &:hover{
-        color: rgb(23, 87, 157);
-        border-bottom-color: rgb(23, 87, 157);
+        color: #666;
+        border-bottom-color: #666;
       }
       &.active{
         color: #f66;
         border-bottom-color: #f66;
+        >a{
+          font-weight: bold;
+        }
       }
     }
   }
@@ -435,16 +406,36 @@ div#app-tip{
 }
 
 @media screen and (max-width: 530px){
+  .app-wrap.has-catalog{
+    padding-right: 0 !important;
+  }
   .page{
-    >ul.article-list{
-      padding-left: 35px;
-      >li{
-        padding:15px 15px 7px;
-        &:before{
-          left: -30px;
+    &.home-page{
+      padding-left: 0;
+      div.left-banner{
+        height: 240px;
+        position: static;
+        width: 100%;
+        transform: translateX(0);
+        box-shadow: none;
+        margin-bottom: 5px;
+        >div:nth-of-type(1){
+          height: 35%;
+        }
+        >div:nth-of-type(3){
+          display: none;
+        }
+        .info{
+          >div:nth-of-type(3){
+            margin-top: -5px;
+          }
         }
       }
     }
+    .article-catalog{
+      display: none;
+    }
+    
     >div.content{
       padding-left:15px;
       padding-right:15px;
@@ -470,11 +461,6 @@ div#app-tip{
 
 @media screen and (max-width: 402px){
   .page{
-    >ul.article-list{
-      >li{
-        padding:12px 12px 6px;
-      }
-    }
     >div.content{
       padding-left:10px;
       padding-right:10px;
@@ -489,11 +475,6 @@ div#app-tip{
 
 @media screen and (max-width: 359px) {
   .page{
-    >ul.article-list{
-      >li{
-        padding:10px 10px 5px;
-      }
-    }
     >div.content{
       padding-left:6px;
       padding-right:6px;

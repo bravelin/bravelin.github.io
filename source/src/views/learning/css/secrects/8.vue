@@ -21,6 +21,7 @@
         </div>
         <footer>2017年01月22日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

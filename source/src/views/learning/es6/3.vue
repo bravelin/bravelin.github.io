@@ -118,6 +118,7 @@ function tag (stringArr, ...values) {}
         </div>
         <footer>2017年03月11日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

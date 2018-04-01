@@ -116,6 +116,7 @@ let log = ::console.log // 等同于 var log = console.log.bind(console)</code><
         </div>
         <footer>2017年05月07日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>

@@ -348,6 +348,7 @@ router.beforeEach(function (to, from, next) {
 })
 // 加载页面之后
 router.afterEach(function (to) {
+    _global.hasCatalog = false
     setTimeout(function () {
         _global.loading = false
     }, 250)
@@ -360,6 +361,7 @@ router.afterEach(function (to) {
     } else {
         _global.setArticleNavMenu(to.name)
     }
+    _global.showFooter = !/^(home|about)$/.test(to.name)
     if (to.meta && to.meta.shareTitle && to.meta.shareImg) {
         _global.shareConfig('linz blog：' + to.meta.shareTitle, to.meta.shareImg)
     } else {
