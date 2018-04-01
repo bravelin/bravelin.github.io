@@ -419,6 +419,7 @@ div#app-tip{
         transform: translateX(0);
         box-shadow: none;
         margin-bottom: 5px;
+        background: linear-gradient(to bottom, rgb(23,87,157) 42%, #373277 42%) ;
         >div:nth-of-type(1){
           height: 35%;
         }
