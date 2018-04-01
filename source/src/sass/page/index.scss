@@ -257,13 +257,13 @@ footer{
     top: 0;
     bottom: 0;
     width: 285px;
-    background: #fff;
+    background: linear-gradient(to bottom, rgb(23,87,157) 30%, #373277 30%) ;
     transform: translateX(-300px);
     box-shadow: 3px 0 10px rgba(0,0,0,0.2);
+    color: #fff;
     >div{
       &:nth-of-type(1){
         height: 28%;
-        background: rgba(23,87,157,.8);
       }
       &:nth-of-type(2){
         display: flex;
@@ -338,46 +338,9 @@ footer{
 }
 
 @media screen and (max-width: 530px){
-  header{
-    height:143px;
-    >nav{
-      display: none;
-    }
-    >div.wrap{
-      width:98%;
-    }
-  }
-}
-
-@media screen and (max-width: 402px){
-  header{
-    div.title{
-      margin-left:6px;
-      width:245px;
-      >h2{
-        font-size:15px;
-      }
-    }
-    >div.wrap{
-      padding-left:6px;
-      padding-right:6px;
-    }
-  }
-}
-
-@media screen and (max-width: 359px) {
-  header {
-    div.title {
-      margin-left:4px;
-      width:210px;
-      >h2{
-        font-size:13px;
-      }
-    }
-    >div.wrap{
-      padding-left:4px;
-      padding-right:4px;
-    }
+  .page > div.content p{
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
