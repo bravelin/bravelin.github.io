@@ -8,6 +8,7 @@ import router from './router'
 import Comment from './components/comments.vue'
 import TimeFormatter from './filters/time-formatter'
 
+Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.http.options.emulateJSON = true
 Vue.http.headers.common['X-APICloud-AppId'] = 'A6931492233958'
