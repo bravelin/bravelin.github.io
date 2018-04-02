@@ -689,6 +689,12 @@ div.bounce{
   }
 }
 //////////////////////////////////////////////////////
+@media screen and (max-width: 530px){
+  div.exp{
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
 @media screen and (max-width: 402px){
   div.exp>div{
     width:280px;
