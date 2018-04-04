@@ -351,6 +351,7 @@ router.afterEach(function (to) {
     _global.hasCatalog = false
     setTimeout(function () {
         _global.loading = false
+        window.scrollTo(0, sessionStorage.getItem(_global.currPage) || 0)
     }, 250)
     if (/^(home|topicArticles|topics|404|articles|about)$/.test(to.name)) {
         _global.showArticleNavMenu = (to.name == 'comments')
@@ -363,7 +364,7 @@ router.afterEach(function (to) {
     }
     _global.showFooter = !/^(home|about)$/.test(to.name)
     if (to.meta && to.meta.shareTitle && to.meta.shareImg) {
-        _global.shareConfig('linz blog：' + to.meta.shareTitle, to.meta.shareImg)
+        _global.shareConfig('Lin\'s Notes：' + to.meta.shareTitle, to.meta.shareImg)
     } else {
         _global.shareConfig(_global.shareTitle, _global.shareImg)
     }

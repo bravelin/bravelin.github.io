@@ -12,7 +12,7 @@ export default {
     currPage: '',
     currPageParams: '',
     appKey: 'A6931492233958' + 'UZ' + '861E0A3C-95CD-E681-E0CA-E70127FFECE7' + 'UZ',
-    shareTitle: 'linz blog',
+    shareTitle: 'Lin\'s Notes',
     shareImg: '/static/assets/header.jpg',
     hasCatalog: false, // 是否存在目录
     showFooter: false,

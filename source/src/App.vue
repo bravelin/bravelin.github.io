@@ -64,7 +64,7 @@
             doHandlerScroll () {
                 var doc = document
                 var top = doc.body.scrollTop || doc.documentElement.scrollTop
-                this.isFixedTop = top > 188
+                sessionStorage.setItem(Global.currPage, top)
             }
         }
     }
