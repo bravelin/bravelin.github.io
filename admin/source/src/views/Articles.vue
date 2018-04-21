@@ -34,6 +34,7 @@
                             <td>{{ statusObj[item.status] }}</td>
                             <td class="ope-btns">
                                 <a v-if="item.status != 'online'" class="tool-btn-delete" @click="doDel(item)">删除</a>
+                                <a v-if="item.status != 'online'" class="tool-btn-detail" @click="doEdit(item)">修改</a>
                                 <a v-if="item.status != 'online'" class="tool-btn-online" @click="doChangeStatus(item, 'online')">发布</a>
                                 <a v-if="item.status == 'online'" class="tool-btn-downline" @click="doChangeStatus(item, 'downline')">下线</a>
                             </td>
@@ -110,6 +111,7 @@
                 isShowAddModal: false,
                 addModalCommitTip: '',
                 addForm: {
+                    id: '',
                     title: '',
                     type: '',
                     category: '',
@@ -231,9 +233,22 @@
                     that.queryDataList()
                 })
             },
+            doEdit (item) {
+                const that = this
+                const addForm = that.addForm
+                addForm.id = item.id
+                addForm.title = item.title
+                addForm.type = item.type
+                addForm.category = item.category
+                addForm.description = item.description
+                addForm.date = item.date
+                addForm.routerName = item.routerName
+                that.isShowAddModal = true
+            },
             doAdd () {
                 const that = this
                 const addForm = that.addForm
+                addForm.id = ''
                 addForm.title = ''
                 addForm.type = ''
                 addForm.category = ''
@@ -252,28 +267,52 @@
                 addForm.date = addForm.date.trim()
                 addForm.routerName = addForm.routerName.trim()
                 loading(true)
-                fetch({
-                    url: 'https://d.apicloud.com/mcm/api/articles',
-                    method: 'post',
-                    data: {
-                        title: addForm.title,
-                        type: addForm.type,
-                        category: addForm.category,
-                        description: addForm.description,
-                        date: addForm.date,
-                        routerName: addForm.routerName,
-                        status: 'draft'
-                    }
-                }).then((res) => {
-                    if (res.id) {
-                        that.isShowAddModal = false
-                        that.queryDataList()
-                        tipShow('添加成功！', true)
-                    } else {
-                        that.addModalCommitTip = res.error.message || '添加失败！'
-                    }
-                    loading(false)
-                })
+                if (!addForm.id) {
+                    fetch({
+                        url: 'https://d.apicloud.com/mcm/api/articles',
+                        method: 'post',
+                        data: {
+                            title: addForm.title,
+                            type: addForm.type,
+                            category: addForm.category,
+                            description: addForm.description,
+                            date: addForm.date,
+                            routerName: addForm.routerName,
+                            status: 'draft'
+                        }
+                    }).then((res) => {
+                        if (res.id) {
+                            that.isShowAddModal = false
+                            that.queryDataList()
+                            tipShow('添加成功！', true)
+                        } else {
+                            that.addModalCommitTip = res.error.message || '添加失败！'
+                        }
+                        loading(false)
+                    })
+                } else {
+                    fetch({
+                        url: `https://d.apicloud.com/mcm/api/articles/${addForm.id}`,
+                        method: 'PUT',
+                        data: {
+                            title: addForm.title,
+                            type: addForm.type,
+                            category: addForm.category,
+                            description: addForm.description,
+                            date: addForm.date,
+                            routerName: addForm.routerName
+                        }
+                    }).then((res) => {
+                        if (res.id) {
+                            that.isShowAddModal = false
+                            that.queryDataList()
+                            tipShow('修改成功！', true)
+                        } else {
+                            that.addModalCommitTip = res.error.message || '修改失败！'
+                        }
+                        loading(false)
+                    })
+                }
             }
         }
     }
