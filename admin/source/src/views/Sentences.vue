@@ -2,119 +2,243 @@
     @import '../sass/views/sentences.scss';
 </style>
 <template>
-    <div class="app-page" id="sentences-page">
+    <div class="app-page" id="sentences-page" :class="{ 'pagination-page' : totalPage>1 }">
         <div class="panel">
-            <div class="panel-title"><h3>编辑文章</h3><button @click="doBack" class="back-btn">返回</button><button @click="doSave">保存</button></div>
+            <div class="panel-title"><h3>短语列表</h3><button @click="doAdd" class="add-btn">添加</button></div>
+            <TabMenu :list="menus" :active-id="activeMenuId" @switch="doSwitchMenu"></TabMenu>
+            <SearchInput placeholderText="输入关键字" @submit="queryDataList()" :search-key.sync="searchKey"></SearchInput>
             <div class="panel-content">
-                <div class="article-title"><label>文章标题：</label><input placeholder="请输入文章标题" maxlength="100" type="text" v-model="articleTitle" ref="title"/></div>
-                <div class="article-title"><label>图片链接：</label><input placeholder="请输入图片链接" maxlength="1000" type="text" v-model="imgUrl" ref="imgUrl"/></div>
-                <div class="article-title"><label>文章描述：</label><textarea placeholder="请输入文章的描述" maxlength="2000" type="text" v-model="desc" ref="desc"/></textarea></div>
-                 
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="width:5%">序号</th>
+                            <th style="width:35%">内容</th>
+                            <th style="width:12%">来源</th>
+                            <th style="width:15%">添加时间</th>
+                            <th style="width:10%">状态</th>
+                            <th style="width:15%">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody v-if="dataList.length > 0">
+                        <tr v-for="(item, index) in dataList" :key="item.id">
+                            <td>{{ (index + 1) + (page - 1) * pageSize }}</td>
+                            <td>{{ item.content }}</td>
+                            <td>{{ item.origin }}</td>
+                           <td>{{ item.updatedAt | DateTimeFilter }}</td>
+                            <td>{{ statusObj[item.status] }}</td>
+                            <td class="ope-btns">
+                                <a v-if="item.status != 'online'" class="tool-btn-delete" @click="doDel(item)">删除</a>
+                                <a v-if="item.status != 'online'" class="tool-btn-online" @click="doChangeStatus(item, 'online')">发布</a>
+                                <a v-if="item.status == 'online'" class="tool-btn-downline" @click="doChangeStatus(item, 'downline')">下线</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody class="data-table-null-data" v-if="dataList.length == 0"><tr><td colspan="6"></td></tr></tbody>
+                </table>
             </div>
         </div>
+        <Pagination :curr="page" :total="totalPage" @switch="doSwitchPage"></Pagination>
+        <Modal title="添加" class="add-modal" :is-show.sync="isShowAddModal" :tip.sync="addModalCommitTip" @commit="doAddModalCommit()">
+            <div class="modal-form form">
+                <div class="form-item">
+                    <label>内容：</label>
+                    <textarea type="text" placeholder="请输入内容" v-model="addForm.content" maxlength="900" ref="contentInput"></textarea>
+                </div>
+                <div class="form-item">
+                    <label>来源：</label>
+                    <input type="text" placeholder="请输入来源" v-model="addForm.origin" maxlength="150" ref="typeInput"/>
+                </div>
+            </div>
+        </Modal>
+
+        <Modal title="账号删除确认" :is-show.sync="isShowDelConfirmModal" :is-show-close-btn="false" @commit="doCommitDel">
+            <div class="modal-confirm">确认要删除这条短语？</div>
+        </Modal>
     </div>
 </template>
 
 <script>
     import loading from '@/utils/loading'
+    import Modal from '@/components/common/Modal'
+    import TabMenu from '@/components/common/TabMenu/TabMenu'
     import fetch from '@/utils/fetch'
     import tipShow from '@/utils/tipShow'
+    import SearchInput from '@/components/common/SearchInput'
+    import Pagination from '@/components/common/Pagination'
+    import DateTimeFilter from '@/filters/dateTimeFilter'
 
     export default {
         name: 'sentences',
+        components: {
+            Modal, SearchInput, Pagination, TabMenu
+        },
+        filters: {
+            DateTimeFilter
+        },
         data () {
             return {
-                articleId: '',
-                articleTitle: '',
-                articleContent: '',
-                imgUrl: '',
-                desc: ''
+                menus: [{ label: '全部', id: 'all' }, { label: '草稿', id: 'draft' }, { label: '已发布', id: 'online' }, { label: '已下线', id: 'downline' }],
+                activeMenuId: 'all',
+                statusObj: {
+                    draft: '草稿',
+                    online: '已发布',
+                    downline: '已下线'
+                },
+                searchKey: '',
+                dataList: [],
+                page: 1,
+                totalPage: 0,
+                pageSize: 20,
+                isShowAddModal: false,
+                addModalCommitTip: '',
+                addForm: {
+                    content: '',
+                    origin: ''
+                },
+                isShowDelConfirmModal: false,
+                delTitle: '',
+                delId: ''
             }
         },
         created () {
             const that = this
-            that.articleId = that.$store.state.currRouter.query.id || ''
-            fetch({
-                url: 'https://d.apicloud.com/mcm/api/news/{newsId}',
-                params: {
-                    newsId: that.articleId
-                }
-            }).then(res => {
-                that.articleTitle = res.title
-                that.articleContent = res.content
-                that.imgUrl = res.imgUrl
-                that.desc = res.desc
-                loading(false)
-            })
+            const query = that.$store.state.currRouter.query
+            that.activeMenuId = query.status || 'all'
+            that.page = query.page || 1
+            that.searchKey = query.key ? decodeURIComponent(query.key) : ''
+            that.queryDataList()
+            loading(false)
         },
         methods: {
-            doSave () {
-                const that = this
-                let title = that.articleTitle.trim()
-                let imgUrl = that.imgUrl.trim()
-                let desc = that.desc.trim()
-                let content = that.$refs.ue.getUEContent()
-                if (!title) {
-                    tipShow('请输入文章标题！')
-                    that.$refs.title.focus()
-                    return
-                }
-                // if (!imgUrl) {
-                //     tipShow('请输入图片链接！')
-                //     that.$refs.imgUrl.focus()
-                //     return
-                // }
-                // if (!desc) {
-                //     tipShow('请输入文章描述！')
-                //     that.$refs.desc.focus()
-                //     return
-                // }
-                if (that.articleId) { // 编辑的情况下
-                    fetch({
-                        url: 'https://d.apicloud.com/mcm/api/news/{newsId}',
-                        method: 'put',
-                        params: {
-                            newsId: that.articleId
-                        },
-                        data: {
-                            '$set': {
-                                content: content,
-                                title: title,
-                                imgUrl: imgUrl,
-                                desc: desc
-                            }
-                        }
-                    }).then(() => {
-                        tipShow('保存成功！')
-                        loading(false)
-                        setTimeout(() => {
-                            that.$router.back()
-                        }, 1000)
-                    })
-                } else { // 添加文章
-                    fetch({
-                        url: 'https://d.apicloud.com/mcm/api/news',
-                        method: 'post',
-                        data: {
-                            title: title,
-                            content: content,
-                            author: that.$store.state.userName,
-                            status: 'draft',
-                            viewCount: 0,
-                            imgUrl: imgUrl,
-                            desc: desc
-                        }
-                    }).then(() => {
-                        tipShow('保存成功！')
-                        loading(false)
-                        setTimeout(() => {
-                            that.$router.back()
-                        }, 1000)
-                    })
+            doSwitchMenu (menuId) {
+                let that = this
+                if (that.activeMenuId != menuId) {
+                    that.activeMenuId = menuId
+                    that.queryDataList(1)
                 }
             },
-            doBack () {
-                this.$router.back()
+            doSwitchPage (page) {
+                this.queryDataList(page)
+            },
+            queryDataList (page) {
+                const that = this
+                page = page || that.page
+                let searchKey = that.searchKey.trim()
+                let filter = {
+                    fields: {
+                    },
+                    limit: that.pageSize,
+                    where: {},
+                    skip: (page - 1) * that.pageSize,
+                    order: 'createdAt DESC'
+                }
+                // 求总的页数的请求filter
+                let totalPageFilter = {
+                    fields: {
+                        id: true
+                    },
+                    limit: 10000,
+                    where: {}
+                }
+                if (that.activeMenuId != 'all') {
+                    filter.where.status = that.activeMenuId
+                    totalPageFilter.where.status = that.activeMenuId
+                }
+                if (searchKey) {
+                    filter.where.content = { 'like': searchKey }
+                    totalPageFilter.where.content = { 'like': searchKey }
+                }
+                that.$router.replace({ name: 'sentences', query: { status: that.activeMenuId, key: encodeURIComponent(that.searchKey), page: page } })
+                // 查询总页数
+                fetch({
+                    url: 'https://d.apicloud.com/mcm/api/sentences',
+                    params: { filter: JSON.stringify(totalPageFilter) }
+                }).then(data => {
+                    that.totalPage = Math.ceil(data.length / that.pageSize)
+                })
+                // 查询当页数据
+                fetch({
+                    url: 'https://d.apicloud.com/mcm/api/sentences',
+                    params: { filter: JSON.stringify(filter) }
+                }).then(res => {
+                    that.dataList = res || []
+                    that.page = page
+                    loading(false)
+                })
+            },
+            doDel (u) {
+                const that = this
+                that.delTitle = u.content
+                that.delId = u.id
+                that.isShowDelConfirmModal = true
+            },
+            doCommitDel () {
+                const that = this
+                loading(true)
+                fetch({
+                    url: 'https://d.apicloud.com/mcm/api/sentences/{id}',
+                    method: 'DELETE',
+                    params: {
+                        id: that.delId
+                    }
+                }).then(() => {
+                    tipShow('删除成功！')
+                    loading(false)
+                    that.queryDataList()
+                    that.isShowDelConfirmModal = false
+                })
+            },
+            doChangeStatus (item, ope) {
+                const that = this
+                loading(true)
+                fetch({
+                    url: 'https://d.apicloud.com/mcm/api/sentences/{id}',
+                    method: 'put',
+                    params: {
+                        id: item.id
+                    },
+                    data: {
+                        '$set': {
+                            status: ope
+                        }
+                    }
+                }).then(() => {
+                    tipShow('操作成功！')
+                    loading(false)
+                    that.queryDataList()
+                })
+            },
+            doAdd () {
+                const that = this
+                const addForm = that.addForm
+                addForm.content = ''
+                addForm.origin = ''
+                that.isShowAddModal = true
+            },
+            doAddModalCommit () {
+                const that = this
+                const addForm = that.addForm
+                addForm.content = addForm.content.trim()
+                addForm.origin = addForm.origin.trim()
+                loading(true)
+                fetch({
+                    url: 'https://d.apicloud.com/mcm/api/sentences',
+                    method: 'post',
+                    data: {
+                        content: addForm.content,
+                        origin: addForm.origin,
+                        status: 'draft'
+                    }
+                }).then((res) => {
+                    if (res.id) {
+                        that.isShowAddModal = false
+                        that.queryDataList()
+                        tipShow('添加成功！', true)
+                    } else {
+                        that.addModalCommitTip = res.error.message || '添加失败！'
+                    }
+                    loading(false)
+                })
             }
         }
     }
