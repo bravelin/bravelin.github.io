@@ -36,6 +36,7 @@
         },
         created () {
             Global.getArticles()
+            Global.getSentences()
         },
         mounted () {
             var that = this

@@ -18,6 +18,20 @@ export default {
     hasCatalog: false, // 是否存在目录
     showFooter: false,
     articleList: [],
+    sentenceList: [],
+    getSentences () {
+        const that = this
+        let filter = { where: { status: 'online' }, limit: 1000, order: 'createdAt DESC' }
+        let now = (+new Date())
+        let appKey = that.sha(that.appKey + now) + '.' + now
+        Vue.http.get('https://d.apicloud.com/mcm/api/sentences', {
+            params: { filter: JSON.stringify(filter) },
+            headers: { 'X-APICloud-AppKey': appKey }
+        }).then(res => {
+            res = res.body
+            that.sentenceList.push(...res)
+        })
+    },
     getArticles () {
         const that = this
         let filter = { where: { status: 'online' }, limit: 1000 }
