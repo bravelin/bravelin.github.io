@@ -34,6 +34,9 @@
             spinner: Spinner,
             note: Note
         },
+        created () {
+            Global.getArticles()
+        },
         mounted () {
             var that = this
             that.$nextTick(() => {
