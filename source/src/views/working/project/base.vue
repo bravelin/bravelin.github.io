@@ -14,7 +14,7 @@ v6.9.5</code></pre>
             <p><a href="http://download.csdn.net/download/ml065787/9640336">http://download.csdn.net/download/ml065787/9640336</a></p>
             <p>安装的第二步，请勾选"Add Ruby executables to your PATH"：</p>
             <figure class="common">
-                <img style="max-width: 503px;" src="/static/assets/work/base/2.png"/>
+                <img style="max-width: 503px;" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/48fbdd3060550124842523c056b07fc5.png"/>
             </figure>
             <p>ruby -v 命令可以查看当前的版本：</p>
             <pre class="inner black"><code>$ ruby -v
@@ -27,7 +27,7 @@ ruby 2.3.1p112 (2016-04-26 revision 54768) [x64-mingw32]</code></pre>
             <p>参考文档地址：<a href="http://gems.ruby-china.org/">http://gems.ruby-china.org/</a></p>
             <p>打开ruby命令行窗口：</p>
             <figure class="common">
-                <img style="max-width: 442px;" src="/static/assets/work/base/4.png"/>
+                <img style="max-width: 442px;" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/89486cfc78a3b3960142329881463c28.png"/>
             </figure>
             <p>执行以下命令：</p>
             <pre class="inner black"><code>$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/</code></pre>
@@ -59,7 +59,7 @@ Sass 3.4.23 (Selective Steve)</code></pre>
             <p>参考文档地址：<a href="http://npm.taobao.org/">http://npm.taobao.org/</a></p>
             <p>打开node命令行窗口：</p>
             <figure class="common">
-                <img style="max-width: 410px;" src="/static/assets/work/base/9.png"/>
+                <img style="max-width: 410px;" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/f85ceaa9c18e5b8731c1b9e34fc84562.png"/>
             </figure>
             <p>使用cnpm命令行工具代替npm：</p>
             <pre class="inner black"><code>$ npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
@@ -69,7 +69,7 @@ Sass 3.4.23 (Selective Steve)</code></pre>
             <p>在node.js的安装目录下新建两个文件夹：node_global和node_cache：</p>
             <p>windows10操作系统对系统盘文件的操作有更严格的限制，可能会出现安装不了就全局node模块的问题，此时可以将这两个目录配置在其他磁盘。</p>
             <figure class="common">
-                <img style="max-width: 800px;" src="/static/assets/work/base/10.png"/>
+                <img style="max-width: 800px;" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/281ae33793335b01171614d9f752a635.png"/>
             </figure>
             <p>打开cmd命令行窗口执行如下两条命令：</p>
             <pre class="inner black"><code>$ npm config set prefix 'C:\Program Files\nodejs\node_global'
