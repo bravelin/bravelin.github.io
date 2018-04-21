@@ -14,7 +14,7 @@
             <router-link class="home" title="主页" :to="{ name: 'home' }"></router-link>
         </nav>
         <note></note>
-        <footer v-show="global.showFooter">© 2018 zhangjialin</footer>
+        <footer v-show="global.showFooter" class="page-footer">© 2018 zhangjialin</footer>
     </div>
 </template>
 <script>
@@ -67,7 +67,7 @@
             doHandlerScroll () {
                 var doc = document
                 var top = doc.body.scrollTop || doc.documentElement.scrollTop
-                this.isFixedTop = top > 188
+                sessionStorage.setItem(Global.currPage, top)
             }
         }
     }

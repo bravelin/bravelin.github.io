@@ -13,7 +13,7 @@ export default {
     currPage: '',
     currPageParams: '',
     appKey: Config.appId + 'UZ' + Config.appKey + 'UZ',
-    shareTitle: 'linz blog',
+    shareTitle: 'lin\'s Notes',
     shareImg: '/static/assets/header.jpg',
     hasCatalog: false, // 是否存在目录
     showFooter: false,
