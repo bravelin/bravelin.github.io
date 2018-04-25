@@ -10,8 +10,7 @@
 v6.9.5</code></pre>
             <p><strong>2. 安装ruby</strong></p>
             <p>下载地址：<a href="https://rubyinstaller.org/downloads/">https://rubyinstaller.org/downloads/</a>，访问很慢，可以从下面这两个地址下载：</p>
-            <p><a href="http://rj.baidu.com/soft/detail/22711.html?ald">http://rj.baidu.com/soft/detail/22711.html?ald</a></p>
-            <p><a href="http://download.csdn.net/download/ml065787/9640336">http://download.csdn.net/download/ml065787/9640336</a></p>
+            <p><a href="http://rj.baidu.com/soft/detail/22711.html?ald" target="_blank" style="margin-right: 15px">http://rj.baidu.com/soft/detail/22711.html?ald</a><a target="_blank" href="http://download.csdn.net/download/ml065787/9640336">http://download.csdn.net/download/ml065787/9640336</a></p>
             <p>安装的第二步，请勾选"Add Ruby executables to your PATH"：</p>
             <figure class="common">
                 <img style="max-width: 503px;" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/48fbdd3060550124842523c056b07fc5.png"/>
@@ -19,9 +18,10 @@ v6.9.5</code></pre>
             <p>ruby -v 命令可以查看当前的版本：</p>
             <pre class="inner black"><code>$ ruby -v
 ruby 2.3.1p112 (2016-04-26 revision 54768) [x64-mingw32]</code></pre>
-            <p><strong>3. 安装WebStorm或者Sublime</strong></p>
-            <p>WebStorm下载地址：<a href="http://www.jetbrains.com/webstorm/">http://www.jetbrains.com/webstorm</a></p>
-            <p>Sublime下载地址：<a href="http://www.sublimetext.com">http://www.sublimetext.com</a></p>
+            <p><strong>3. 安装IDE，WebStorm、Sublime或者VSCode（推荐）</strong></p>
+            <p>WebStorm下载地址：<a href="http://www.jetbrains.com/webstorm/" target="_blank">http://www.jetbrains.com/webstorm</a></p>
+            <p>Sublime下载地址：<a href="http://www.sublimetext.com" target="_blank">http://www.sublimetext.com</a></p>
+            <p>VSCode下载地址：<a href="https://code.visualstudio.com" target="_blank">https://code.visualstudio.com</a></p>
             <h3 class="title">配置和修改</h3>
             <p><strong>1. 更改Ruby的gem source</strong></p>
             <p>参考文档地址：<a href="http://gems.ruby-china.org/">http://gems.ruby-china.org/</a></p>
