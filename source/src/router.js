@@ -3,9 +3,8 @@ import VueRouter from 'vue-router'
 import Global from './libs/global'
 
 Vue.use(VueRouter)
-window['_g'] = Global
-var _global = Global
-var pageRouterOption = [
+const _global = Global
+let pageRouterOption = [
     {
         path: '/home',
         name: 'home',
