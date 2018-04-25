@@ -34,7 +34,7 @@
       <p>功能比较单一，一方面是想记录一些技术知识点，另一方面则是记录逝去时光中的人和事以及所感所想。</p>
       <p>可以留言、评论。</p>
       <figure class="encourage">
-        <img src="/static/assets/2.jpg"/>
+        <img src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/fce52cf3b9920b7d165cfd2ac6949a81.jpg"/>
         <figcaption>心之何如，有似万丈迷津，遥亘千里，其中并无舟子可以渡人，除了自渡，他人爱莫能助。</figcaption>
       </figure>
     </div>

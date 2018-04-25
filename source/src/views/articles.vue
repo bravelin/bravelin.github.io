@@ -11,23 +11,16 @@
     </div>
 </template>
 <script>
-    import articleList from '../data/list'
     import banner from '@/views/banner'
+    import global from '@/libs/global'
     export default {
         components: {
             banner
         },
         data () {
             return {
-                list: []
+                list: global.articleList
             }
-        },
-        created () {
-            var list = articleList.list
-            list.sort((a, b) => {
-                return a.date < b.date ? 1 : -1
-            })
-            this.list = list
         }
     }
 </script>

@@ -1,0 +1,23 @@
+.scroll-num-wrap {
+    display: flex;
+    height: 80px;
+    margin-top: 20px;
+    margin-left: 20px;
+    line-height: 80px;
+    text-align: center;
+    margin-right: 15px;
+}
+.scroll-number-item {
+    position: relative;
+    height: 100%;
+    width: 40px;
+    overflow: hidden;
+    >ul{
+        width: 100%;
+        transform: translateY(0);
+        transition: transform 0.5s ease-out;
+        li{
+            font-size: 60px;
+        }
+    }
+}

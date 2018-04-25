@@ -1,5 +1,6 @@
-import articleList from '../data/list'
 import eventHub from './hub.js'
+import Config from './config'
+import Vue from 'vue'
 
 export default {
     loading: false,
@@ -11,16 +12,47 @@ export default {
     currArticleName: '',
     currPage: '',
     currPageParams: '',
-    appKey: 'A6931492233958' + 'UZ' + '861E0A3C-95CD-E681-E0CA-E70127FFECE7' + 'UZ',
-    shareTitle: 'Lin\'s Notes',
+    appKey: Config.appId + 'UZ' + Config.appKey + 'UZ',
+    shareTitle: 'lin\'s Notes',
     shareImg: '/static/assets/header.jpg',
     hasCatalog: false, // 是否存在目录
     showFooter: false,
+    articleList: [],
+    sentenceList: [],
+    getSentences () {
+        const that = this
+        let filter = { where: { status: 'online' }, limit: 1000, order: 'createdAt DESC' }
+        let now = (+new Date())
+        let appKey = that.sha(that.appKey + now) + '.' + now
+        Vue.http.get('https://d.apicloud.com/mcm/api/sentences', {
+            params: { filter: JSON.stringify(filter) },
+            headers: { 'X-APICloud-AppKey': appKey }
+        }).then(res => {
+            res = res.body
+            that.sentenceList.push(...res)
+        })
+    },
+    getArticles () {
+        const that = this
+        let filter = { where: { status: 'online' }, limit: 1000 }
+        let now = (+new Date())
+        let appKey = that.sha(that.appKey + now) + '.' + now
+        Vue.http.get('https://d.apicloud.com/mcm/api/articles', {
+            params: { filter: JSON.stringify(filter) },
+            headers: { 'X-APICloud-AppKey': appKey }
+        }).then(res => {
+            res = res.body
+            res.sort(function (a, b) {
+                return a.date > b.date ? -1 : 1
+            })
+            that.articleList.push(...res)
+        })
+    },
     setArticleNavMenu (routerName) {
-        var that = this
+        const that = this
         that.showArticleNavMenu = true
-        var list = articleList.list
-        for (var i = 0; i < list.length; i++) {
+        let list = that.articleList
+        for (let i = 0; i < list.length; i++) {
             if (list[i].routerName == routerName) {
                 that.currArticleId = list[i].id
                 that.currArticleName = list[i].title
@@ -43,7 +75,7 @@ export default {
         }, 4000)
     },
     tipShow (content, time) {
-        var _tip = this.tip
+        let _tip = this.tip
         if (!_tip) {
             _tip = this.tip = document.querySelector('#app-tip')
         }

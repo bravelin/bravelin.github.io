@@ -41,6 +41,13 @@ let pageRouterOption = [
         }
     },
     {
+        path: '/sentences',
+        name: 'sentences',
+        component (resolve) {
+            require(['./views/sentences.vue'], resolve)
+        }
+    },
+    {
         path: '/score',
         name: 'score',
         component (resolve) {
@@ -361,7 +368,7 @@ router.afterEach(function (to) {
     } else {
         _global.setArticleNavMenu(to.name)
     }
-    _global.showFooter = !/^(home|about)$/.test(to.name)
+    _global.showFooter = !/^(home|about|sentences)$/.test(to.name)
     if (to.meta && to.meta.shareTitle && to.meta.shareImg) {
         _global.shareConfig('Lin\'s Notes：' + to.meta.shareTitle, to.meta.shareImg)
     } else {

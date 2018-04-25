@@ -129,7 +129,7 @@
                     headers: {
                         'X-APICloud-AppKey': appKey
                     },
-                    params: {filter: JSON.stringify(filter)}
+                    params: { filter: JSON.stringify(filter) }
                 }).then((res) => {
                     if (res.status == 200) {
                         var list = res.body || []

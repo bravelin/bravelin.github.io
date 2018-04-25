@@ -34,6 +34,10 @@
             spinner: Spinner,
             note: Note
         },
+        created () {
+            Global.getArticles()
+            Global.getSentences()
+        },
         mounted () {
             var that = this
             that.$nextTick(() => {

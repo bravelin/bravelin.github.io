@@ -1,0 +1,161 @@
+#case-page{
+    position: relative;
+    width: 100%;
+    @media screen and (min-width:900px) {
+        .container{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .item-banner{
+            .item-img{
+                width: 100%;
+                height: 460px;
+                background-image: url("../assets/images/case/banner.png")
+            }
+        }
+        div.item-case{
+            background-color: #fff;
+            padding-top: 50px;
+            position: relative;
+            >div.item-container{
+                >div.item-content{
+                    border: 1px solid #e0e0e0;
+                    &.active{
+                        border: 1px solid #2c81ff;
+                    }
+                    >div{
+                        display: inline-block;
+                        text-align: center;
+                        vertical-align: top;
+                    }
+                    >.item-left{
+                        width: 325px;
+                        height: 245px;
+                        >div{
+                            text-align: left;
+                            background-color: #f2f3f7;
+                            padding: 0 30px;
+                            height: 100%;
+                            >div{
+                                color: #999999;
+                                &:nth-of-type(1){
+                                    color: #333333;
+                                    font-size: 18px;
+                                    line-height: 55px;
+                                    padding-top: 25px;
+                                    position: relative;
+                                    >span{
+                                        background-color: #3284ff;
+                                        width: 2px;
+                                        height: 17px;
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                    }
+                                }
+                            }
+                        }
+                        >img{
+                            width: 325px;
+                            height: 245px;
+                        }
+                    }
+                    >.item-center{
+                        width: 540px;
+                        padding: 0 50px;
+                        background-color: #fff;
+                        >.title{
+                            font-size: 22px;
+                            color: #333333;
+                            line-height: 60px;
+                            margin-top: 20px;
+                        }
+                        >.describe{
+                            font-size: 14px;
+                            text-align: left;
+                            color: #999999;
+                            >span{
+                                font-size: 18px;
+                                color: #333333;
+                            }
+                        }
+                        >div{
+                            &:nth-of-type(3){
+                                padding-top: 30px;
+                                >div{
+                                    padding: 5px 42px;
+                                    border: 1px solid #e0e0e0;
+                                    display: inline-block;
+                                    color: #999999;
+                                    >span{
+                                        font-size: 18px;
+                                        color: #333333;
+                                    }
+                                    &:nth-of-type(1){
+                                        margin-right: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    >.item-right{
+                        width: 324px;
+                        height: 245px;
+                        >div{
+                            text-align: left;
+                            background-color: #f2f3f7;
+                            padding: 0 30px;
+                            height: 100%;
+                            >div{
+                                color: #999999;
+                                &:nth-of-type(1){
+                                    color: #333333;
+                                    font-size: 18px;
+                                    line-height: 55px;
+                                    padding-top: 25px;
+                                    position: relative;
+                                    >span{
+                                        background-color: #3284ff;
+                                        width: 2px;
+                                        height: 17px;
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                    }
+                                }
+                            }
+                        }
+                        >img{
+                            width: 325px;
+                            height: 100%;
+                        }
+                    }
+                }
+                >div.item-detail{
+                    text-align: right;
+                    color: #3284ff;
+                    font-size: 20px;
+                    padding-right: 40px;
+                    text-decoration: underline;
+                    position: relative;
+                    line-height: 55px;
+                    cursor: pointer;
+                    &:after{
+                        content: "";
+                        width: 10px;
+                        height: 10px;
+                        display: inline-block;
+                        border-left: 2px solid #3687ff;
+                        border-bottom: 2px solid #3687ff;
+                        transform: rotate(-135deg);
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -6px;
+                        right: 23px;
+                    }
+                }
+            }
+            >.pagination {
+                padding: 80px 0;
+            }
+        }
+    }
+}
