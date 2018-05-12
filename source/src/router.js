@@ -185,7 +185,7 @@ router.afterEach(function (to) {
         _global.loading = false
         window.scrollTo(0, sessionStorage.getItem(_global.currPage) || 0)
     }, 250)
-    if (/^(home|topicArticles|topics|404|articles|about)$/.test(to.name)) {
+    if (/^(home|sentences|404|articles|about)$/.test(to.name)) {
         _global.showArticleNavMenu = (to.name == 'comments')
         _global.nextArticle = ''
         _global.prevArticle = ''

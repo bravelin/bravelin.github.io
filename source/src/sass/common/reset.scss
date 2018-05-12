@@ -96,5 +96,16 @@ pre {
 }
 
 body{
-    -webkit-print-color-adjust: exact
+  -webkit-print-color-adjust: exact
+}
+
+::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+  background-color: rgba(204,204,204,.5);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgba(#373277, 0.5);
+  border-radius: 8px;
 }

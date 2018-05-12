@@ -207,7 +207,7 @@ var fromCharCode = String.fromCharCode;</code></pre>
     }
     return strPixelRow
 }</code></pre>
-            <p>这样修改即可修复此问题。</p>
+            <p>如此修改即可修复图片翻转问题。</p>
         </div>
         <footer>2018年05月12日</footer>
         <comments></comments>
