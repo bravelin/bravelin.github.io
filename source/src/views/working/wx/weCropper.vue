@@ -18,77 +18,77 @@
             <p>touchStart、touchMove、touchEnd这3个事件的绑定发现是必须要的。</p>
             <p>基本用法：</p>
             <pre><code>import WeCropper from '@/libs/we-cropper'
-    const device = wx.getSystemInfoSync() // 获取设备信息
-    const deviceWidth = device.windowWidth // 示例为一个与屏幕等宽的正方形裁剪框
-    const deviceHeight = device.windowHeight - 50
+const device = wx.getSystemInfoSync() // 获取设备信息
+const deviceWidth = device.windowWidth // 示例为一个与屏幕等宽的正方形裁剪框
+const deviceHeight = device.windowHeight - 50
 
-    export default {
-        data () {
-            return {
-                height: deviceHeight,
-                wecropper: null, // 裁剪实例
-                cropperOption: {
-                    id: 'cropper',
-                    width: deviceWidth,  // 画布宽度
-                    height: deviceHeight, // 画布高度
-                    scale: 2.5, // 最大缩放倍数
-                    zoom: 8, // 缩放系数
-                    cut: {
-                        x: (deviceWidth - 300) / 2, // 裁剪框x轴起点
-                        y: (deviceHeight - 300) / 2, // 裁剪框y轴期起点
-                        width: 300, // 裁剪框宽度
-                        height: 300 // 裁剪框高度
-                    }
+export default {
+    data () {
+        return {
+            height: deviceHeight,
+            wecropper: null, // 裁剪实例
+            cropperOption: {
+                id: 'cropper',
+                width: deviceWidth,  // 画布宽度
+                height: deviceHeight, // 画布高度
+                scale: 2.5, // 最大缩放倍数
+                zoom: 8, // 缩放系数
+                cut: {
+                    x: (deviceWidth - 300) / 2, // 裁剪框x轴起点
+                    y: (deviceHeight - 300) / 2, // 裁剪框y轴期起点
+                    width: 300, // 裁剪框宽度
+                    height: 300 // 裁剪框高度
                 }
             }
-        },
-        onLoad (option) {
-            const that = this
-            let ratio = 1
-            let w = 300
-            let h = ratio * 300
-            let cutOpt = { // 此处可以调整裁剪框
-                x: (deviceWidth - w) / 2,
-                y: (deviceHeight - h) / 2,
-                width: w,
-                height: h
-            }
-            that.cropperOption.cut = cutOpt
-            if (option.src) { // 传入要裁剪图片的地址
-                that.cropperOption.src = option.src
-                that.wecropper = new WeCropper(that.cropperOption).on('beforeImageLoad', (ctx) => {
-                    wx.showToast({ title: '上传中', icon: 'loading' })
-                }).on('imageLoad', (ctx) => {
-                    wx.hideToast()
-                }).updateCanvas()
-            }
-        },
-        methods: {
-            touchStart (e) {
-                this.wecropper.touchStart(e.mp)
-            },
-            touchMove (e) {
-                this.wecropper.touchMove(e.mp)
-            },
-            touchEnd (e) {
-                this.wecropper.touchEnd(e.mp)
-            },
-            doCancel () { // 返回
-                wx.navigateBack()
-            },
-            doCommit () { // 提交
-                const that = this
-                that.wecropper.getCropperBase64(data => {
-                    ...... // that.doUpload(), 获取到图片的base64编码，做上传处理
-                })
-            }
         }
-    }</code></pre>
+    },
+    onLoad (option) {
+        const that = this
+        let ratio = 1
+        let w = 300
+        let h = ratio * 300
+        let cutOpt = { // 此处可以调整裁剪框
+            x: (deviceWidth - w) / 2,
+            y: (deviceHeight - h) / 2,
+            width: w,
+            height: h
+        }
+        that.cropperOption.cut = cutOpt
+        if (option.src) { // 传入要裁剪图片的地址
+            that.cropperOption.src = option.src
+            that.wecropper = new WeCropper(that.cropperOption).on('beforeImageLoad', (ctx) => {
+                wx.showToast({ title: '上传中', icon: 'loading' })
+            }).on('imageLoad', (ctx) => {
+                wx.hideToast()
+            }).updateCanvas()
+        }
+    },
+    methods: {
+        touchStart (e) {
+            this.wecropper.touchStart(e.mp)
+        },
+        touchMove (e) {
+            this.wecropper.touchMove(e.mp)
+        },
+        touchEnd (e) {
+            this.wecropper.touchEnd(e.mp)
+        },
+        doCancel () { // 返回
+            wx.navigateBack()
+        },
+        doCommit () { // 提交
+            const that = this
+            that.wecropper.getCropperBase64(data => {
+                ...... // that.doUpload(), 获取到图片的base64编码，做上传处理
+            })
+        }
+    }
+}</code></pre>
             <p>小程序的页面效果：</p>
             <figure class="common">
                 <img style="max-width: 420px;" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/dfcab4f8b2bc77f95e6a2b27ce0f38c9.png"/>
             </figure>
-            <h3 class="title">修复在IOS中图片翻转的问题：</h3>
+            <h3 class="title">修复在IOS中翻转问题</h3>
             <p>在苹果手机中获取base64编码之后保存的图片是翻转的：</p>
             <figure class="common">
                 <img style="max-width: 420px;" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/66fc0ca5556509efc0d8fe9ad2d18d81.jpg"/>
