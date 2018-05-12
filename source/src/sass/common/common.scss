@@ -379,6 +379,10 @@ div#app-tip{
 .page-404{
   background: #fff;
   padding: 110px 0 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   >p{
     text-align: center;
     &:nth-of-type(1){
