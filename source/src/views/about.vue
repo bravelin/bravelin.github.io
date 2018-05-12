@@ -15,6 +15,7 @@
   }
   .page.article{
     background: none;
+    overflow-y: hidden;
   }
   h2.title, div.content, footer{
     background: #fff;
