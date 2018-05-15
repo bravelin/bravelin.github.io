@@ -333,6 +333,9 @@ footer{
       transition: all 0.3s ease-out;
       &.active, &:hover{
         border-color: lighten(#373277, 25%);
+        &:before{
+          opacity: 1;
+        }
       }
       &:last-child{
         margin-right: 0;
@@ -343,6 +346,8 @@ footer{
         width: 26px;
         height: 26px;
         background-size: 100% 100%;
+        opacity: 0.6;
+        transition: opacity 0.3s ease-out;
       }
       &.article{
         &:before{
