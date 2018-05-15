@@ -246,7 +246,7 @@ div#app-tip{
       >h4{
         margin-bottom: 2px;
         font-size: 14px;
-        color: #999;
+        color: darken(#999, 10%);
         border-bottom: 1px dashed #e0e0e0;
       }
       >h3{
@@ -258,7 +258,7 @@ div#app-tip{
       >div:nth-of-type(1){
         font-size: 15px;
         line-height: 1.7;
-        color: #999;
+        color: darken(#999, 15%);
       }
       &:hover{
         box-shadow: 0 0 15px rgba(233, 0, 0, 0.5);

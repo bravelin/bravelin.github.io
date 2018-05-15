@@ -321,18 +321,18 @@ footer{
     display: flex;
     margin-top: 40px;
     li{
-      width: 60px;
-      height: 60px;
+      width: 48px;
+      height: 48px;
       border: 1px solid lighten(#373277, 10%);
       border-radius: 50%;
       justify-content: center;
       display: flex;
-      margin-right: 15px;
+      margin-right: 14px;
       align-items: center;
       cursor: pointer;
       transition: all 0.3s ease-out;
       &.active, &:hover{
-        border-color: lighten(#373277, 20%);
+        border-color: lighten(#373277, 25%);
       }
       &:last-child{
         margin-right: 0;
@@ -340,8 +340,8 @@ footer{
       &:before{
         content: "";
         display: block;
-        width: 32px;
-        height: 32px;
+        width: 26px;
+        height: 26px;
         background-size: 100% 100%;
       }
       &.article{
@@ -357,6 +357,11 @@ footer{
       &.about{
         &:before{
           background-image: url('./assets/about.png');
+        }
+      }
+      &.collect{
+        &:before{
+          background-image: url('./assets/collect.png');
         }
       }
     }

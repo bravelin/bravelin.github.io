@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Global from './libs/global'
 
 Vue.use(VueRouter)
-const _global = Global
+const global = Global
 let pageRouterOption = [
     { // 首页
         path: '/home', name: 'home', component (resolve) { require(['./views/articles.vue'], resolve) }
@@ -20,6 +20,9 @@ let pageRouterOption = [
     { // 闲言碎语
         path: '/sentences', name: 'sentences', component (resolve) { require(['./views/sentences.vue'], resolve) }
     },
+    { // 收藏
+        path: '/collect', name: 'collect', component (resolve) { require(['./views/collect.vue'], resolve) }
+    },
     { // 为翔第报考查询的分数与人数
         path: '/score', name: 'score', component (resolve) { require(['./views/other/score.vue'], resolve) }
     },
@@ -27,10 +30,10 @@ let pageRouterOption = [
         path: '/404', name: '404', component (resolve) { require(['./views/404.vue'], resolve) }
     },
     {
-        path: '/', redirect: { name: 'home' }
+        path: '/articles', redirect: { name: 'home' }
     },
     {
-        path: '/articles', redirect: { name: 'home' }
+        path: '/', redirect: { name: 'home' }
     },
     {
         path: '*', redirect: { name: '404' }
@@ -165,40 +168,40 @@ let pageRouterOption = [
 ]
 
 // 路由配置
-var router = new VueRouter({
+const router = new VueRouter({
     linkActiveClass: 'active',
     routes: pageRouterOption
 })
 
 // 加载页面之前
-router.beforeEach(function (to, from, next) {
-    _global.loading = true
-    _global.currPage = to.name
-    _global.currPageParams = to.query
+router.beforeEach((to, from, next) => {
+    global.loading = true
+    global.currPage = to.name
+    global.currPageParams = to.query
     next()
 })
 
 // 加载页面之后
-router.afterEach(function (to) {
-    _global.hasCatalog = false
-    setTimeout(function () {
-        _global.loading = false
-        window.scrollTo(0, sessionStorage.getItem(_global.currPage) || 0)
+router.afterEach(to => {
+    global.hasCatalog = false
+    setTimeout(() => {
+        global.loading = false
+        window.scrollTo(0, sessionStorage.getItem(global.currPage) || 0)
     }, 250)
-    if (/^(home|sentences|404|articles|about)$/.test(to.name)) {
-        _global.showArticleNavMenu = (to.name == 'comments')
-        _global.nextArticle = ''
-        _global.prevArticle = ''
-        _global.currArticleId = ''
-        _global.currArticleName = ''
+    if (/^(home|sentences|404|articles|collect|about)$/.test(to.name)) {
+        global.showArticleNavMenu = (to.name == 'comments')
+        global.nextArticle = ''
+        global.prevArticle = ''
+        global.currArticleId = ''
+        global.currArticleName = ''
     } else {
-        _global.setArticleNavMenu(to.name)
+        global.setArticleNavMenu(to.name)
     }
-    _global.showFooter = !/^(home|about|sentences)$/.test(to.name)
+    global.showFooter = !/^(home|about|sentences|collect)$/.test(to.name)
     if (to.meta && to.meta.shareTitle && to.meta.shareImg) {
-        _global.shareConfig('Lin\'s Notes：' + to.meta.shareTitle, to.meta.shareImg)
+        global.shareConfig('Lin\'s Notes：' + to.meta.shareTitle, to.meta.shareImg)
     } else {
-        _global.shareConfig(_global.shareTitle, _global.shareImg)
+        global.shareConfig(global.shareTitle, global.shareImg)
     }
 })
 

@@ -8,6 +8,7 @@
             <ul class="banner-menus">
                 <router-link class="article" tag="li" :to="{ name: 'home' }"></router-link>
                 <router-link class="sentence" tag="li" :to="{ name: 'sentences' }"></router-link>
+                <router-link class="collect" tag="li" :to="{ name: 'collect' }"></router-link>
                 <router-link class="about" tag="li" :to="{ name: 'about' }"></router-link>
             </ul>
         </div>
