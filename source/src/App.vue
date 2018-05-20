@@ -14,7 +14,6 @@
             <router-link class="home" title="主页" :to="{ name: 'home' }"></router-link>
         </nav>
         <note></note>
-        <footer v-show="global.showFooter" class="page-footer">© 2018 zhangjialin</footer>
     </div>
 </template>
 <script>
@@ -39,7 +38,7 @@
             Global.getSentences()
         },
         mounted () {
-            var that = this
+            let that = this
             that.$nextTick(() => {
                 that.global.loading = true
                 window.addEventListener('scroll', () => {
@@ -49,8 +48,8 @@
         },
         methods: {
             doClickNoteBtn () {
-                var global = Global
-                var noteObj = {
+                const global = Global
+                let noteObj = {
                     noteType: 'comment',
                     replyId: '',
                     replyName: '',
@@ -66,8 +65,8 @@
                 eventHub.$emit('pop-note-modal', noteObj)
             },
             doHandlerScroll () {
-                var doc = document
-                var top = doc.body.scrollTop || doc.documentElement.scrollTop
+                const doc = document
+                const top = doc.body.scrollTop || doc.documentElement.scrollTop
                 sessionStorage.setItem(Global.currPage, top)
             }
         }

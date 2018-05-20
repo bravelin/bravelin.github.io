@@ -37,10 +37,10 @@
         },
         methods: {
             doDel () {
-                var that = this
-                var now = (+new Date())
-                var global = Global
-                var appKey = global.sha(global.appKey + now) + '.' + now
+                const that = this
+                const now = (+new Date())
+                const global = Global
+                const appKey = global.sha(global.appKey + now) + '.' + now
                 that.$http.delete('https://d.apicloud.com/mcm/api/comments/' + that.delCommentId, {
                     headers: {
                         'X-APICloud-AppKey': appKey
@@ -56,14 +56,14 @@
             doShowConfirmModal (commentId) {
                 this.delCommentId = commentId
                 console.log('commentId：' + commentId)
-                var confirmModal = this.$refs.confirmModal
+                let confirmModal = this.$refs.confirmModal
                 confirmModal.style.display = 'block'
                 setTimeout(() => {
                     confirmModal.classList.add('active')
                 }, 200)
             },
             doCloseConfirmModal () {
-                var confirmModal = this.$refs.confirmModal
+                let confirmModal = this.$refs.confirmModal
                 confirmModal.classList.remove('active')
                 setTimeout(() => {
                     confirmModal.style.display = 'none'

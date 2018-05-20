@@ -5,7 +5,7 @@
             <li v-for="item in list" :key="item.id">
                 <h4>{{ item.updatedAt | TimeFilter }}</h4>
                 <h3>{{ item.content }}</h3>
-                <div v-if="item.origin">出自：{{ item.origin }}</div>
+                <div>出自：{{ item.origin || 'lin' }}</div>
             </li>
         </ul>
     </div>

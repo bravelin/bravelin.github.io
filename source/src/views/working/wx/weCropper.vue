@@ -1,8 +1,8 @@
 <template>
     <div class="page article">
-        <h2 class="title">mpvue中使用WeCropper实现小程序中的图片裁剪</h2>
+        <h2 class="title">MpVue中使用WeCropper实现小程序中的图片裁剪</h2>
         <div class="content">
-            <h3 class="title">在mpvue中使用</h3>
+            <h3 class="title">在mpvue框架中使用</h3>
             <p>we-cropper——一款灵活小巧的canvas图片裁剪器，github地址：<a target="_blank" href="https://github.com/we-plugin/we-cropper">https://github.com/we-plugin/we-cropper</a>。</p>
             <p>mpvue中可以通过npm install的方式引入到项目中，它封装了一个mpvue-cropper.vue组件可供使用。然而因为它提供的getCropperBase64方法在IOS中会导致图片翻转的严重问题。因此直接引入其源码文件we-cropper.js并修改。</p>
             <p>裁剪页面template结构：</p>

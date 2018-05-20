@@ -6,5 +6,6 @@
     "editor.letterSpacing": 1,
     "extensions.ignoreRecommendations": true,
     "typescript.check.npmIsInstalled": false,
-    "editor.tabSize": 8
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false
 }

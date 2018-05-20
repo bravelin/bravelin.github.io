@@ -18,8 +18,7 @@
             }
         },
         created () {
-            console.dir(articleList)
-            var list = articleList.list
+            let list = articleList.list
             list.sort((a, b) => {
                 return a.date < b.date ? 1 : -1
             })
