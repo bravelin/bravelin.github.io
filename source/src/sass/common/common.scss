@@ -254,13 +254,18 @@ div#app-tip {
                 line-height: 1.4;
                 margin-bottom: 2px;
             }
+            >ul.pics{
+                img{
+                    max-width: 300px;
+                }
+            }
             >div:nth-of-type(1) {
                 font-size: 15px;
                 line-height: 1.7;
                 color: darken(#999, 15%);
             }
             &:hover {
-                box-shadow: 0 0 15px rgba(#373277, 0.8);
+                box-shadow: 0 0 18px rgba(darken(#373277, 10%), 0.9);
             }
         }
     }
@@ -430,7 +435,7 @@ div#app-tip {
                 transform: translateX(0);
                 box-shadow: none;
                 margin-bottom: 5px;
-                background: linear-gradient(to bottom, rgb(23, 87, 157) 26%, #373277 26%);
+                background: linear-gradient(to bottom, rgb(23, 87, 157) 58%, #373277 0%);
                 >div:nth-of-type(1) {
                     height: 20%;
                 }
