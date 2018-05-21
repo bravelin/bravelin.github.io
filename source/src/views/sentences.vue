@@ -5,7 +5,11 @@
             <li v-for="item in list" :key="item.id">
                 <h4>{{ item.updatedAt | TimeFilter }}</h4>
                 <h3>{{ item.content }}</h3>
-                <ul class="pics"><li><img src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/e060fb490183f78e1a66e5046155b1dd.jpeg"/></li></ul>
+                <ul class="pics">
+                    <li><img src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/e060fb490183f78e1a66e5046155b1dd.jpeg"/></li>
+                    <li><img src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/4646f55d0756b82d3b12b82d01a96f6b.png"/></li>
+                    <li><img src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/e060fb490183f78e1a66e5046155b1dd.jpeg"/></li>
+                </ul>
                 <div>出自：{{ item.origin || 'lin' }}</div>
             </li>
         </ul>
