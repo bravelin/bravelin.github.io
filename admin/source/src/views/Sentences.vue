@@ -28,7 +28,7 @@
                             <td>{{ statusObj[item.status] }}</td>
                             <td class="ope-btns">
                                 <a v-if="item.status != 'online'" class="tool-btn-delete" @click="doDel(item)">删除</a>
-                                <a v-if="item.status != 'online'" class="tool-btn-detail" @click="doEdit(item)">修改</a>
+                                <a class="tool-btn-detail" @click="doEdit(item)">修改</a>
                                 <a v-if="item.status != 'online'" class="tool-btn-online" @click="doChangeStatus(item, 'online')">发布</a>
                                 <a v-if="item.status == 'online'" class="tool-btn-downline" @click="doChangeStatus(item, 'downline')">下线</a>
                             </td>
