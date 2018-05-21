@@ -46,6 +46,10 @@
                     <textarea type="text" placeholder="请输入内容" v-model="addForm.content" maxlength="900" ref="contentInput"></textarea>
                 </div>
                 <div class="form-item">
+                    <label>图片：</label>
+                    <textarea type="text" placeholder="请输入图片地址，分号间隔" v-model="addForm.imgs" maxlength="9000" ref="imgsInput"></textarea>
+                </div>
+                <div class="form-item">
                     <label>来源：</label>
                     <input type="text" placeholder="请输入来源" v-model="addForm.origin" maxlength="150" ref="typeInput"/>
                 </div>
@@ -95,6 +99,7 @@
                 addForm: {
                     id: '',
                     content: '',
+                    imgs: '',
                     origin: ''
                 },
                 isShowDelConfirmModal: false,
@@ -216,6 +221,7 @@
                 addForm.content = item.content
                 addForm.origin = item.origin
                 addForm.id = item.id
+                addForm.imgs = item.imgs.join(';')
                 that.isShowAddModal = true
             },
             doAdd () {
@@ -224,6 +230,7 @@
                 addForm.content = ''
                 addForm.origin = ''
                 addForm.id = ''
+                addForm.imgs = ''
                 that.isShowAddModal = true
             },
             doAddModalCommit () {
@@ -231,6 +238,7 @@
                 const addForm = that.addForm
                 addForm.content = addForm.content.trim()
                 addForm.origin = addForm.origin.trim()
+                addForm.imgs = addForm.imgs.trim()
                 loading(true)
                 if (!addForm.id) {
                     fetch({
@@ -239,6 +247,7 @@
                         data: {
                             content: addForm.content,
                             origin: addForm.origin,
+                            imgs: addForm.imgs.split(';'),
                             status: 'draft'
                         }
                     }).then((res) => {
@@ -257,7 +266,8 @@
                         method: 'PUT',
                         data: {
                             content: addForm.content,
-                            origin: addForm.origin
+                            origin: addForm.origin,
+                            imgs: addForm.imgs.split(';')
                         }
                     }).then((res) => {
                         if (res.id) {

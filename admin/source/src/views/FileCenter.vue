@@ -106,7 +106,7 @@
             const AppKey = Config.appId + 'UZ' + Config.appKey + 'UZ'
             that.$nextTick(() => {
                 that.wp = WebUploader.create({
-                    server: 'http://d.apicloud.com/mcm/api/file',
+                    server: 'https://d.apicloud.com/mcm/api/file',
                     auto: false,
                     pick: '#file-picker',
                     resize: false,

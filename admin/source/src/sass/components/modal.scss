@@ -6,22 +6,24 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, .6);
-    perspective: 900px;
     z-index: 15;
+    transition: opacity .15s linear;
     >div{
-        position: absolute;
         width: 600px;
-        height: auto;
+        margin: 0 auto;
         background-color: #fff;
         border-radius: 4px;
         overflow: hidden;
-        transform: rotateY(-90deg);
-        transition: transform 0.3s ease-out;
-        backface-visibility: hidden;
-        transform-style: preserve-3d;
+        transform: translate(0, -15%);
+        opacity: 0;
+        transition: transform 0.3s ease-out, opacity 0.15s linear;
         z-index: 3;
         &.active{
-            transform: rotateY(0deg);
+            opacity: 1;
+            transform: translate(0, 15%);
+        }
+        &.moved{
+            position: absolute !important;
         }
     }
     &.active{
@@ -122,5 +124,14 @@ a.modal-cancel-btn {
         color: #f66;
         font-weight: bold;
         margin: 0 5px;
+    }
+}
+@media screen and (max-height: 768px) {
+    .modal{
+        >div{
+            &.active{
+                transform: translate(0, 8%);
+            }
+        }
     }
 }

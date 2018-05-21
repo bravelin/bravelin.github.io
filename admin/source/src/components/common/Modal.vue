@@ -3,8 +3,8 @@
 </style>
 <template>
     <div class="modal" :class="{ active: isPop }">
-        <div ref="wrap" :class="{ active: isActive }" @transitionend="onTransitionEndOfWrap()" :style="{ left: left+'px', top: top+'px' }">
-            <h3 class="modal-header" :class="{ draging: inDraging }" @mousedown="doStartDrag" @mousemove="doDrag" @mouseup="doEndDrag">{{ title }}<span v-show="isShowCloseBtn" @click="doClickCloseBtn()"><i class="icon-close"></i></span></h3>
+        <div ref="wrap" :class="{ active: isActive, moved: moved }" @transitionend="onTransitionEndOfWrap()" :style="{ left: left+'px', top: top+'px' }">
+            <h3 class="modal-header" :class="{ draging: inDraging }" @mousedown="doStartDrag" @mouseout="doEndDrag" @mousemove="doDrag" @mouseup="doEndDrag">{{ title }}<span v-show="isShowCloseBtn" @click="doClickCloseBtn($event)"><i class="icon-close"></i></span></h3>
             <div class="modal-content"><slot></slot></div>
             <div class="modal-footer" v-show="isShowFooter">
                 <span class="modal-tip" :class="{ active: isShowTip }">{{ tipStr }}</span>
@@ -27,12 +27,13 @@
                 top: 0,
                 lastX: 0,
                 lastY: 0,
-                inDraging: false
+                inDraging: false,
+                moved: false
             }
         },
         computed: {
             tipStr () {
-                let that = this
+                const that = this
                 if (that.tip) {
                     that.doShowTip()
                 }
@@ -78,19 +79,17 @@
             }
         },
         created () {
-            // console.log('create：', this.title, this.isShow)
-            let that = this
+            const that = this
             that.doHandlerShow()
             document.body.addEventListener('keypress', that.doPresskey)
         },
         updated () {
-            // console.log('updated：', this.tip)
             this.doHandlerShow()
         },
         methods: {
             // 处理隐藏与显示
             doHandlerShow () {
-                let that = this
+                const that = this
                 if (that.isShow) {
                     that.doShow()
                 } else {
@@ -98,7 +97,10 @@
                 }
             },
             // 点击关闭按钮
-            doClickCloseBtn () {
+            doClickCloseBtn (e) {
+                if (e) {
+                    e.stopPropagation()
+                }
                 this.$emit('update:isShow', false)
                 this.$emit('close')
             },
@@ -113,35 +115,24 @@
             },
             // 窗口位置init
             doInitPosition () {
-                let that = this
+                const that = this
                 let wrap = that.$refs.wrap
-                let getComputedStyle = window.getComputedStyle
-                let w = parseInt(getComputedStyle(wrap, null).width)
-                let h = parseInt(getComputedStyle(wrap, null).height)
-                let storeState = that.$store.state
-                // 初始时居中
-                that.top = (storeState.winHeight - h) / 2
-                that.left = (storeState.winWidth - w) / 2
+                let box = wrap.getBoundingClientRect()
+                that.top = box.top - box.height * 0.15
+                that.left = box.left
             },
             // 显示逻辑
             doShow () {
-                let that = this
+                const that = this
                 if (that.isPop) {
                     return
                 }
                 that.isPop = true
-                if (that.left == 0 && that.top == 0) {
-                    setTimeout(() => {
-                        that.doInitPosition()
-                    }, 0)
-                }
-                setTimeout(() => {
-                    that.isActive = true
-                }, 50)
+                setTimeout(() => { that.isActive = true }, 50)
             },
             // 关闭逻辑
             doClose () {
-                let that = this
+                const that = this
                 if (!that.isActive) {
                     return
                 }
@@ -149,34 +140,39 @@
             },
             // 动画结束逻辑
             onTransitionEndOfWrap () {
-                let that = this
+                const that = this
                 if (!that.isActive) {
                     setTimeout(() => {
                         that.isPop = false
+                        that.moved = false
+                        that.left = 0
+                        that.top = 0
                     }, 0)
                 }
             },
             // tip show
             doShowTip () {
-                let that = this
+                const that = this
                 that.isShowTip = true
                 setTimeout(() => {
                     that.isShowTip = false
-                    setTimeout(() => {
-                        that.$emit('update:tip', '')
-                    }, 300)
+                    setTimeout(() => { that.$emit('update:tip', '') }, 300)
                 }, 1500)
             },
             // start move
             doStartDrag (e) {
-                let that = this
+                const that = this
                 that.lastX = e.clientX
                 that.lastY = e.clientY
                 that.inDraging = true
+                if (!that.moved) { // 进入拖动状态，绝对定位
+                    that.doInitPosition()
+                    that.moved = true
+                }
             },
             // 执行拖动
             doDrag (e) {
-                let that = this
+                const that = this
                 if (that.inDraging) {
                     let deltX = e.clientX - that.lastX
                     let deltY = e.clientY - that.lastY
@@ -188,20 +184,20 @@
             },
             // 结束拖动
             doEndDrag (e) {
-                let that = this
+                const that = this
                 that.lastX = 0
                 that.lastY = 0
                 that.inDraging = false
             },
             // 回车键处理
             doPresskey (e) {
-                let that = this
-                if (e.keyCode == 13 && that.isShow && that.commitBtn.isShow) {
-                    that.doClickCommitBtn()
-                }
+                // const that = this
+                // if (e.keyCode == 13 && that.isShow && that.commitBtn.isShow) {
+                //     that.doClickCommitBtn()
+                // }
             }
         },
-        destroyed () {
+        beforeDestroy () {
             document.body.removeEventListener('keypress', this.doPresskey)
         }
     }
