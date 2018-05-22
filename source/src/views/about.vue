@@ -22,7 +22,7 @@
   }
 </style>
 <template>
-  <div class="page article home-page">
+  <div class="page article list-page">
     <banner></banner>
     <h2 class="title">About Me</h2>
     <div class="content">

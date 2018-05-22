@@ -1,5 +1,5 @@
 <template>
-    <div class="page home-page">
+    <div class="page list-page">
         <banner></banner>
         <ul class="article-list">
             <router-link tag="li" v-for="article in list" :to="{ name : article.routerName }" :key="article.id">

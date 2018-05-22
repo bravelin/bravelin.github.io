@@ -5,7 +5,7 @@
     }
 </style>
 <template>
-    <div class="page home-page">
+    <div class="page list-page">
         <banner></banner>
         <ul class="article-list">
             <li v-for="(item,index) in list" :key="index" @click="doClickLink(item)">
