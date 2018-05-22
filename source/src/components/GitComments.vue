@@ -3,6 +3,12 @@
         padding: 0 20px 2px;
         border-top: 6px solid #e0e0e0;
     }
+    @media screen and (max-width:560px){
+        #git-comments-container{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
 </style>
 <template>
     <div id="git-comments-container"></div>
