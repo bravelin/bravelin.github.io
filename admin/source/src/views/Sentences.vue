@@ -221,7 +221,10 @@
                 addForm.content = item.content
                 addForm.origin = item.origin
                 addForm.id = item.id
-                addForm.imgs = item.imgs.join(';')
+                let strArr = item.imgs.map(img => {
+                    return img.src + '|' + img.w + '|' + img.h
+                })
+                addForm.imgs = strArr.join(';')
                 that.isShowAddModal = true
             },
             doAdd () {
@@ -240,6 +243,13 @@
                 addForm.origin = addForm.origin.trim()
                 addForm.imgs = addForm.imgs.trim()
                 loading(true)
+                let splitImgs = addForm.imgs.split(';')
+                let imgs = splitImgs.map(img => {
+                    let arr = img.split('|')
+                    return {
+                        src: arr[0], w: arr[1], h: arr[2]
+                    }
+                })
                 if (!addForm.id) {
                     fetch({
                         url: 'https://d.apicloud.com/mcm/api/sentences',
@@ -247,7 +257,7 @@
                         data: {
                             content: addForm.content,
                             origin: addForm.origin,
-                            imgs: addForm.imgs.split(';'),
+                            imgs: imgs,
                             status: 'draft'
                         }
                     }).then((res) => {
@@ -267,7 +277,7 @@
                         data: {
                             content: addForm.content,
                             origin: addForm.origin,
-                            imgs: addForm.imgs.split(';')
+                            imgs: imgs
                         }
                     }).then((res) => {
                         if (res.id) {
