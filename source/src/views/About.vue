@@ -40,5 +40,6 @@
       </figure>
     </div>
     <footer>2016年05月10日</footer>
+    <Comments></Comments>
   </div>
 </template>

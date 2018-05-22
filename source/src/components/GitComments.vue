@@ -1,7 +1,8 @@
 <style>
     #git-comments-container{
         padding: 0 20px 2px;
-        border-top: 6px solid #e0e0e0;
+        border-top: 10px solid #e0e0e0;
+        background: #fff;
     }
     @media screen and (max-width:560px){
         #git-comments-container{

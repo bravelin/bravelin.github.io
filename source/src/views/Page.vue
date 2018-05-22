@@ -3,7 +3,7 @@
 </template>
 <script>
     import Global from '@/libs/global'
-    import Catalog from '@/components/catalog'
+    import Catalog from '@/components/Catalog'
     export default {
         data () {
             return {

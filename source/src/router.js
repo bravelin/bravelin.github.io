@@ -8,9 +8,6 @@ let pageRouterOption = [
     { // 首页
         path: '/home', name: 'home', component (resolve) { require(['./views/Articles.vue'], resolve) }
     },
-    { // 评论页
-        path: '/comments', name: 'comments', component (resolve) { require(['./views/Comments.vue'], resolve) }
-    },
     { // 关于页
         path: '/about', name: 'about', component (resolve) { require(['./views/About.vue'], resolve) }
     },
@@ -43,13 +40,13 @@ let pageRouterOption = [
      * 工作相关总结
      **********************************************************************************************************/
     { // mpvue中使用WeCropper实现小程序中的图片裁剪
-        path: '/working/wx/weCropper', name: 'working-wx-weCropper', component (resolve) { require(['./views/working/wx/weCropper.vue'], resolve) }
+        path: '/working/wx/weCropper', name: 'working-wx-weCropper', component (resolve) { require(['./views/working/wx/WeCropper.vue'], resolve) }
     },
     { // ubuntu使用记录
         path: '/working/ubuntu/1', name: 'working-ubuntu-1', component (resolve) { require(['./views/working/ubuntu/1.vue'], resolve) }
     },
     { // git命令
-        path: '/working/project/git', name: 'working-project-git', component (resolve) { require(['./views/working/project/git.vue'], resolve) }
+        path: '/working/project/git', name: 'working-project-git', component (resolve) { require(['./views/working/project/Git.vue'], resolve) }
     },
     { // 转盘抽奖的实现
         path: '/working/canvas/turnTableDraw', name: 'working-canvas-turnTableDraw', component (resolve) { require(['./views/working/canvas/TurnTableDraw.vue'], resolve) }
@@ -196,7 +193,6 @@ router.afterEach(to => {
         window.scrollTo(0, sessionStorage.getItem(global.currPage) || 0)
     }, 250)
     if (/^(home|sentences|404|articles|collect|about)$/.test(to.name)) {
-        global.showArticleNavMenu = (to.name == 'comments')
         global.nextArticle = ''
         global.prevArticle = ''
         global.currArticleId = ''
