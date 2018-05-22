@@ -1,6 +1,7 @@
 @import "mixin.scss";
 @import 'reset.scss';
 @import 'highlight.scss';
+@import 'gitment.scss';
 div#app-tip {
     display: none;
     position: fixed;
@@ -366,14 +367,14 @@ div#app-tip {
         top: 0;
         right: 0;
         width: 240px;
-        background: #373277;
+        background: #f0f0f0;
         bottom: 0;
         padding-top: 20px;
         z-index: 5;
-        box-shadow: -8px 0 4px -4px rgba(0, 0, 0, 0.15);
+        box-shadow: -8px 0 4px -4px rgba(0, 0, 0, 0.1);
         div {
             text-align: center;
-            color: #eee;
+            color: #999;
             font-weight: bold;
             line-height: 2.0;
             margin-bottom: 10px;
@@ -386,10 +387,10 @@ div#app-tip {
             border-bottom: 1px dashed #999;
             transition: all 0.3s ease-out;
             cursor: pointer;
-            color: #eee;
+            color: #999;
             &:hover {
-                color: #fff;
-                border-bottom-color: #fff;
+                color: #6d6d6d;
+                border-bottom-color: #6d6d6d;
             }
             &.active {
                 color: #f66;

@@ -3,6 +3,4 @@
 /dist/
 /*.js
 /test/unit/coverage/
-src/libs/websdk-1.4.10.min.js
-src/libs/websdk-1.4.13.js
-src/libs/alipayjsapi.min.js
+src/libs/gitment.browser.js

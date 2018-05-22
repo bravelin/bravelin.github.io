@@ -5,7 +5,7 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import App from './App.vue'
 import router from './router'
-import Comments from './components/Comments.vue'
+import Comments from './components/GitComments.vue'
 import TimeFormatter from './filters/time-formatter'
 import Config from './libs/config'
 
