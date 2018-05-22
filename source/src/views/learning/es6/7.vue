@@ -115,12 +115,12 @@ foo::bar(...arguments) // 等同于 bar.apply(foo, arguments)</code></pre>
 let log = ::console.log // 等同于 var log = console.log.bind(console)</code></pre>
         </div>
         <footer>2017年05月07日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

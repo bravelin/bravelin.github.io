@@ -94,12 +94,12 @@ li:first-child:nth-last-child(-n+4),li:first-child:nth-last-child(-n+4) ~ li {}<
 main{ flex: 1 }</code></pre>
         </div>
         <footer>2017年01月10日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

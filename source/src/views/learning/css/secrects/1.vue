@@ -62,13 +62,13 @@
             <p><strong>合理使用预处理器。</strong></p>
         </div>
         <footer>2016年10月30日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
         <Preview :is-show.sync="showPreview" :list="previewList" :index="previewIndex"></Preview>
     </div>
 </template>
 <script>
-    import Page from '../../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page,
         methods: {

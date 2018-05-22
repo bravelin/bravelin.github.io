@@ -74,7 +74,7 @@ box-shadow: 0 0 0 1px rgba(0,0,0,0.7) inset;</code></pre>
 }</code></pre>
         </div>
         <footer>2016年12月20日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <div class="pop-modal" :class="{'active': showPop }" @click="changePop(false)">
             <div @click="doClickWrap($event)">你好！明天！</div>
         </div>

@@ -106,12 +106,12 @@ let n = { ...z } // { a: 3, b: 4 }</code></pre>
             <pre><code>let ab = { ...a, ...b }</code></pre>
         </div>
         <footer>2017年05月09日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

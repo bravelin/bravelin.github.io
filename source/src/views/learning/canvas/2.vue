@@ -325,12 +325,12 @@ drawAni (radius) {
 }</code></pre>
         </div>
         <footer>2016年06月15日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page,
         data () {

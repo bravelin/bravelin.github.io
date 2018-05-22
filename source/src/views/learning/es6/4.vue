@@ -49,12 +49,12 @@ reg.sticky // true</code></pre>
 /abc/ig.flags // flags属性返回修饰符 gi</code></pre>
         </div>
         <footer>2017年03月13日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

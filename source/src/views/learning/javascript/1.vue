@@ -6,12 +6,12 @@
             <p>用于声明变量，作用类似var，但只在let变量的代码块内有效。</p>
         </div>
         <footer>2018年05月20日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

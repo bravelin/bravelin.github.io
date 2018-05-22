@@ -101,12 +101,12 @@ for(let [key, value] of map) { console.log(key + ' is ' +value) }</code></pre>
             <pre><code>const { SourceNode } = require('source-map')</code></pre>
         </div>
         <footer>2017年03月09日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

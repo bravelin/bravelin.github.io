@@ -220,12 +220,12 @@
             <p>使用SVG也可以实现饼图，但感觉有点麻烦。而且SVG的兼容性也不是很好。</p>
         </div>
         <footer>2016年11月08日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

@@ -6,25 +6,25 @@ Vue.use(VueRouter)
 const global = Global
 let pageRouterOption = [
     { // 首页
-        path: '/home', name: 'home', component (resolve) { require(['./views/articles.vue'], resolve) }
+        path: '/home', name: 'home', component (resolve) { require(['./views/Articles.vue'], resolve) }
     },
     { // 评论页
-        path: '/comments', name: 'comments', component (resolve) { require(['./views/comments.vue'], resolve) }
+        path: '/comments', name: 'comments', component (resolve) { require(['./views/Comments.vue'], resolve) }
     },
     { // 关于页
-        path: '/about', name: 'about', component (resolve) { require(['./views/about.vue'], resolve) }
+        path: '/about', name: 'about', component (resolve) { require(['./views/About.vue'], resolve) }
     },
     { // 简历
-        path: '/resume', name: 'resume', component (resolve) { require(['./views/resume.vue'], resolve) }
+        path: '/resume', name: 'resume', component (resolve) { require(['./views/Resume.vue'], resolve) }
     },
     { // 闲言碎语
-        path: '/sentences', name: 'sentences', component (resolve) { require(['./views/sentences.vue'], resolve) }
+        path: '/sentences', name: 'sentences', component (resolve) { require(['./views/Sentences.vue'], resolve) }
     },
     { // 收藏
-        path: '/collect', name: 'collect', component (resolve) { require(['./views/collect.vue'], resolve) }
+        path: '/collect', name: 'collect', component (resolve) { require(['./views/Collect.vue'], resolve) }
     },
     { // 为翔第报考查询的分数与人数
-        path: '/score', name: 'score', component (resolve) { require(['./views/other/score.vue'], resolve) }
+        path: '/score', name: 'score', component (resolve) { require(['./views/other/Score.vue'], resolve) }
     },
     { // 404
         path: '/404', name: '404', component (resolve) { require(['./views/404.vue'], resolve) }
@@ -52,10 +52,10 @@ let pageRouterOption = [
         path: '/working/project/git', name: 'working-project-git', component (resolve) { require(['./views/working/project/git.vue'], resolve) }
     },
     { // 转盘抽奖的实现
-        path: '/working/canvas/turnTableDraw', name: 'working-canvas-turnTableDraw', component (resolve) { require(['./views/working/canvas/turnTableDraw.vue'], resolve) }
+        path: '/working/canvas/turnTableDraw', name: 'working-canvas-turnTableDraw', component (resolve) { require(['./views/working/canvas/TurnTableDraw.vue'], resolve) }
     },
     { // 环境的搭建
-        path: '/working/project/base', name: 'working-project-base', component (resolve) { require(['./views/working/project/base.vue'], resolve) }
+        path: '/working/project/base', name: 'working-project-base', component (resolve) { require(['./views/working/project/Base.vue'], resolve) }
     },
 
      /**********************************************************************************************************
@@ -160,17 +160,17 @@ let pageRouterOption = [
      * Canvas例子
      **********************************************************************************************************/
     {
-        path: '/example/canvas/clock', name: 'example-canvas-clock', meta: { shareTitle: '嘀嗒嘀嗒......', shareImg: '/static/assets/clock.png' }, component (resolve) { require(['./views/example/canvas/clock.vue'], resolve) }
+        path: '/example/canvas/clock', name: 'example-canvas-clock', meta: { shareTitle: '嘀嗒嘀嗒......', shareImg: '/static/assets/clock.png' }, component (resolve) { require(['./views/example/canvas/Clock.vue'], resolve) }
     },
     {
-        path: '/example/canvas/rose', name: 'example-canvas-rose', component (resolve) { require(['./views/example/canvas/rose.vue'], resolve) }
+        path: '/example/canvas/rose', name: 'example-canvas-rose', component (resolve) { require(['./views/example/canvas/Rose.vue'], resolve) }
     },
 
     /**********************************************************************************************************
      * 感想
      **********************************************************************************************************/
     {
-        path: '/other/tour', name: 'other-tour', component (resolve) { require(['./views/other/tour.vue'], resolve) }
+        path: '/other/tour', name: 'other-tour', component (resolve) { require(['./views/other/Tour.vue'], resolve) }
     }
 ]
 

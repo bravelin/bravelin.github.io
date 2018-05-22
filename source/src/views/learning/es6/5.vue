@@ -129,12 +129,12 @@ Math.hypot(-3) // 3</code></pre>
 b **= 3 // 27</code></pre>
         </div>
         <footer>2017年03月17日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

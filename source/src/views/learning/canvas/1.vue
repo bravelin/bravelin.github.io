@@ -51,12 +51,12 @@ uniteVector.y = vector.y / magnitude</code></pre>
             <p><strong>像素/帧 = （X * Y）/ 1000</strong>&nbsp;&nbsp;（X：用毫秒/帧表示的帧速率，Y：用像素/秒表示的速度）</p>
         </div>
         <footer>2016年06月08日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

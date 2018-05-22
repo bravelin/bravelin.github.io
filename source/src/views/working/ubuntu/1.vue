@@ -7,11 +7,11 @@
             <pre><code>sudo passwd</code></pre>
         </div>
         <footer>2016年06月02日</footer>
-        <comments></comments>
+        <Comments></Comments>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

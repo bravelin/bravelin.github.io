@@ -26,12 +26,12 @@
             <p>第一个参数可以是图像对象，也可以是一个canvas对象，或者video视频对象。</p>
         </div>
         <footer>2016年06月30日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page,
         mounted () {

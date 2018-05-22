@@ -63,12 +63,12 @@ console.log(B)</code></pre>
             <p><strong>全局对象在浏览器环境中是window对象，在node.js中是global对象。</strong></p>
         </div>
         <footer>2017年03月08日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

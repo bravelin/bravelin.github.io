@@ -51,12 +51,12 @@ Symbol.keyFor(s2) // undefined</code></pre>
             <p><strong>Symbol.for为Symbol值登记的名字是全局环境的，在不同的iframe后者service worker中可以取到相同的值。</strong></p>
         </div>
         <footer>2017年05月13日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

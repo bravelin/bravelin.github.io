@@ -185,12 +185,12 @@ export default new EventEmitter</code></pre>
 }</code></pre>
         </div>
         <footer>2017年11月05日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         components: {
             Page

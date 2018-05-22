@@ -6,21 +6,21 @@
         <transition name="fade" mode="out-in">
             <router-view></router-view>
         </transition>
-        <spinner v-show="global.loading"></spinner>
+        <Spinner v-show="global.loading"></Spinner>
         <nav class="article-nav-menu" v-show="global.showArticleNavMenu">
             <router-link class="back" title="前一篇" v-if="global.prevArticle" :to="{ name: global.prevArticle }"></router-link>
             <router-link class="next" title="后一篇" v-if="global.nextArticle" :to="{ name: global.nextArticle }"></router-link>
             <a class="note" title="留言" @click="doClickNoteBtn()"></a>
             <router-link class="home" title="主页" :to="{ name: 'home' }"></router-link>
         </nav>
-        <note></note>
+        <Note></Note>
     </div>
 </template>
 <script>
-    import Spinner from './components/spinner'
-    import Note from './components/note'
-    import Global from './libs/global'
-    import eventHub from './libs/hub.js'
+    import Spinner from '@/components/Spinner'
+    import Note from '@/components/Note'
+    import Global from '@/libs/global'
+    import eventHub from '@/libs/hub.js'
 
     export default {
         data () {
@@ -30,8 +30,7 @@
             }
         },
         components: {
-            spinner: Spinner,
-            note: Note
+            Spinner, Note
         },
         created () {
             Global.getArticles()

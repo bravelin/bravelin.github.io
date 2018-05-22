@@ -158,12 +158,12 @@ var body = document.querySelector('body')
 body.contains(node) // true</code></pre>
         </div>
         <footer>2017年10月29日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

@@ -166,12 +166,12 @@ var v2 = dv.getUint16(1) // 从第1个字节读取一个uint16</code></pre>
             <pre><code>dv.setUint32(0, 32, true)</code></pre>
         </div>
         <footer>2017年05月18日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

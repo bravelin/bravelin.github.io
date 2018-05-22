@@ -97,12 +97,12 @@ transition: 1s;
     7px 7px black, 8px 8px black;</code></pre>
         </div>
         <footer>2016年12月05日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }

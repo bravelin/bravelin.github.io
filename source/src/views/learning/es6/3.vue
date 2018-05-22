@@ -117,12 +117,12 @@ function tag (stringArr, ...values) {}
             <pre><code>String.raw `Hi\n ${ 1 + 2 }` // Hi\\n 3，实际中chrome输出Hi\n 3</code></pre>
         </div>
         <footer>2017年03月11日</footer>
-        <comments></comments>
+        <Comments></Comments>
         <Catalog :catalog="catalog"></Catalog>
     </div>
 </template>
 <script>
-    import Page from '../../page'
+    import Page from '@/views/Page'
     export default {
         extends: Page
     }
