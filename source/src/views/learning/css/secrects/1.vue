@@ -2,9 +2,10 @@
     <div class="page article">
         <h2 class="title">《CSS 揭秘》笔记之一：前言</h2>
         <div class="content">
+            <h3 class="title">概述</h3>
             <p>"十年来最重要的CSS图书，没有之一"。</p>
             <figure class="common">
-                <img style="max-width: 800px;" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/6272f33511cbafcabfc51a4d7f2a2594.png"/>
+                <img style="max-width: 500px;" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/6272f33511cbafcabfc51a4d7f2a2594.png"/>
             </figure>
             <p>这本书的作者是W3C CSS工作组特邀专家、CSS语言设计者之一：<em>Lea Verou</em>。令人惊叹的是，这本书完全由HTML5写成，布局与排版由CSS渲染。此书在<a
                     href="https://book.douban.com/subject/26745943/">豆瓣</a>上的评分高达9.3，是一本诸多前端大师倾情推荐的好书。中文版由<a
@@ -62,20 +63,14 @@
         </div>
         <footer>2016年10月30日</footer>
         <comments></comments>
+        <Catalog :catalog="catalog"></Catalog>
+        <Preview :is-show.sync="showPreview" :list="previewList" :index="previewIndex"></Preview>
     </div>
 </template>
 <script>
+    import Page from '../../../page'
     export default {
-        mounted () {
-            this.$nextTick(() => {
-                var codes = document.querySelectorAll('code')
-                if (codes.length > 0) {
-                    for (var k = 0; k < codes.length; k++) {
-                        hljs.highlightBlock(codes[k])
-                    }
-                }
-            })
-        },
+        extends: Page,
         methods: {
             testProperty (property) {
                 var root = document.documentElement

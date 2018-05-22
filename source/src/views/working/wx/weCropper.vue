@@ -212,6 +212,7 @@ var fromCharCode = String.fromCharCode;</code></pre>
         <footer>2018年05月12日</footer>
         <comments></comments>
         <Catalog :catalog="catalog"></Catalog>
+        <Preview :is-show.sync="showPreview" :list="previewList" :index="previewIndex"></Preview>
     </div>
 </template>
 <script>

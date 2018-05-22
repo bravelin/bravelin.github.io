@@ -7,7 +7,10 @@
     export default {
         data () {
             return {
-                catalog: []
+                catalog: [],
+                showPreview: false,
+                previewList: [],
+                previewIndex: 0
             }
         },
         components: {
@@ -40,9 +43,47 @@
                     }
                     // console.log('that.catalog：', that.catalog)
                 }
+                // image preview
+                const imageList = document.querySelectorAll('.content figure>img')
+                if (imageList.length > 0) {
+                    that.getImageSize(0, imageList)
+                }
             })
         },
         methods: {
+            getImageSize (index, imageList) {
+                const that = this
+                let img = new Image()
+                let el = imageList[index]
+                img.onload = function () {
+                    that.previewList.push({
+                        src: el.src,
+                        w: this.width,
+                        h: this.height
+                    })
+                    index++
+                    if (index < imageList.length) {
+                        that.getImageSize(index, imageList) // 获取下一个图片的尺寸
+                    } else {
+                        // 对img增加click监听
+                        that.$el.addEventListener('click', that.doPreview)
+                    }
+                }
+                img.src = el.src
+            },
+            doPreview (e) {
+                const that = this
+                if (/img/i.test(e.target.tagName) && !that.showPreview && !e.target.classList.contains('pswp__img')) {
+                    that.previewIndex = 0 // 获取index
+                    for (let i = 0; i < that.previewList.length; i++) {
+                        if (that.previewList[i].src == e.target.src) {
+                            that.previewIndex = i
+                            break
+                        }
+                    }
+                    that.showPreview = true
+                }
+            },
             doHandlerScroll () {
                 const that = this
                 let i = that.catalog.length - 1
@@ -62,7 +103,11 @@
             }
         },
         beforeDestroy () {
-            window.removeEventListener('scroll', this.doHandlerScroll)
+            const that = this
+            window.removeEventListener('scroll', that.doHandlerScroll)
+            if (that.previewList.length > 0) {
+                that.$el.removeEventListener('click', that.doPreview)
+            }
         }
     }
 </script>

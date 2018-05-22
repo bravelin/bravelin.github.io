@@ -35,8 +35,8 @@
                     </div>
                 </div>
     
-                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <!-- <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button> -->
     
                 <div class="pswp__caption">
                     <div class="pswp__caption__center"></div>
@@ -52,19 +52,20 @@
         name: 'preview',
         data () {
             return {
-                pswpElement: ''
+                pswpElement: '',
+                gallery: null
             }
         },
         watch: {
             isShow (newVal, oldVal) {
                 const that = this
                 if (newVal) {
-                    const gallery = new PhotoSwipe(that.pswpElement, PhotoSwipeUI, that.list, {
+                    that.gallery = new PhotoSwipe(that.pswpElement, PhotoSwipeUI, that.list, {
                         index: that.index || 0
                     })
-                    gallery.init()
-                    gallery.listen('close', () => {
-                        this.$emit('update:isShow', false)
+                    that.gallery.init()
+                    that.gallery.listen('close', () => {
+                        that.$emit('update:isShow', false)
                     })
                 }
             }
@@ -85,9 +86,6 @@
             that.$nextTick(() => {
                 that.pswpElement = document.querySelectorAll('.pswp')[0]
             })
-        },
-        methods: {
-
         }
     }
 </script>
