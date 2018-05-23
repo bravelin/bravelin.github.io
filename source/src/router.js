@@ -54,6 +54,9 @@ let pageRouterOption = [
     { // 环境的搭建
         path: '/working/project/base', name: 'working-project-base', component (resolve) { require(['./views/working/project/Base.vue'], resolve) }
     },
+    { // photoSwipe的使用
+        path: '/working/project/photoSwipe', name: 'working-project-photoSwipe', component (resolve) { require(['./views/working/project/PhotoSwipe.vue'], resolve) }
+    },
 
      /**********************************************************************************************************
      * CSS揭密笔记
@@ -173,6 +176,7 @@ let pageRouterOption = [
 
 // 路由配置
 const router = new VueRouter({
+    // mode: 'history',
     linkActiveClass: 'active',
     routes: pageRouterOption
 })

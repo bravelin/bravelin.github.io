@@ -65,8 +65,7 @@
                     if (index < imageList.length) {
                         that.getImageSize(index, imageList) // 获取下一个图片的尺寸
                     } else {
-                        // 对img增加click监听
-                        that.$el.addEventListener('click', that.doPreview)
+                        that.$el.addEventListener('click', that.doPreview) // 对img增加click监听
                     }
                 }
                 img.src = el.src

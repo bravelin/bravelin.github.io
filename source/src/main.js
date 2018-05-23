@@ -8,9 +8,6 @@ import router from './router'
 import Comments from './components/GitComments.vue'
 import TimeFormatter from './filters/time-formatter'
 import Config from './libs/config'
-
-import 'photoswipe/dist/photoswipe.css'
-import 'photoswipe/dist/default-skin/default-skin.css'
 import Preview from '@/components/Preview'
 import Banner from '@/views/Banner'
 

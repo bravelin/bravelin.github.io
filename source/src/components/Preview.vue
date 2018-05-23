@@ -51,39 +51,37 @@
     </div>
 </template>
 <script>
+    import 'photoswipe/dist/photoswipe.css'
+    import 'photoswipe/dist/default-skin/default-skin.css'
     import PhotoSwipe from 'photoswipe/dist/photoswipe'
     import PhotoSwipeUI from 'photoswipe/dist/photoswipe-ui-default'
+
     export default {
         name: 'preview',
-        data () {
-            return {
-                gallery: null
-            }
-        },
         watch: {
             isShow (newVal, oldVal) {
                 const that = this
                 if (newVal) {
-                    that.gallery = new PhotoSwipe(that.$el, PhotoSwipeUI, that.list, {
+                    let gallery = new PhotoSwipe(that.$el, PhotoSwipeUI, that.list, {
                         index: that.index || 0
                     })
-                    that.gallery.init()
-                    that.gallery.listen('close', () => {
+                    gallery.init()
+                    gallery.listen('close', () => { // 关闭的时候isShow置为false
                         that.$emit('update:isShow', false)
                     })
                 }
             }
         },
         props: {
-            list: {
+            list: { // 图片列表
                 type: Array,
                 default: []
             },
-            isShow: {
+            isShow: { // 控制显示隐藏
                 type: Boolean,
                 default: false
             },
-            index: 0
+            index: 0 // 初始显示的图片索引值
         }
     }
 </script>
