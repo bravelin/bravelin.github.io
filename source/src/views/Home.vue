@@ -7,6 +7,7 @@
                 <div>{{ article.description }}</div>
             </router-link>
         </ul>
+        <div v-show="list.length==0">数据加载中...</div>
     </div>
 </template>
 <script>

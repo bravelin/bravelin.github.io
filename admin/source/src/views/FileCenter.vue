@@ -11,14 +11,15 @@
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th style="width:6%">序号</th>
+                            <th style="width:5%">序号</th>
                             <th style="width:15%">文件名</th>
-                            <th style="width:19%">预览</th>
-                            <th style="width:13%">链接</th>
-                            <th style="width:9%">上传者</th>
-                            <th style="width:14%">创建时间</th>
+                            <th style="width:18%">预览</th>
+                            <th style="width:12%">链接</th>
+                            <th style="width:6%">上传者</th>
+                            <th style="width:12%">创建时间</th>
                             <th style="width:8%">类型</th>
                             <th style="width:8%">大小</th>
+                            <th style="width:8%">宽高</th>
                             <th style="width:8%">操作</th>
                         </tr>
                     </thead>
@@ -26,12 +27,13 @@
                         <tr v-for="(item, index) in dataList" :key="item.id">
                             <td>{{ (index + 1) + (page - 1) * pageSize }}</td>
                             <td>{{ item.name }}</td>
-                            <td><img :src="item.url" alt=""/></td>
+                            <td><img :src="item.url" alt="" @load="loadImg($event, item)"/></td>
                             <td class="link-content"><a :href="item.url" target="_blank">{{ item.url }}</a></td>
                             <td>{{ item.author }}</td>
                             <td>{{ item.createdAt | DateTimeFilter }}</td>
                             <td>{{ item.type }}</td>
                             <td>{{ item.size | FileSizeFilter }}</td>
+                            <td>{{ item.width }} {{ item.height }}</td>
                             <td class="ope-btns">
                                 <a class="tool-btn-delete" @click="doDel(item)">删除</a>
                             </td>
@@ -175,6 +177,14 @@
             })
         },
         methods: {
+            loadImg (event, imgItem) {
+                let image = new Image()
+                image.onload = function () {
+                    imgItem.width = this.width
+                    imgItem.height = this.height
+                }
+                image.src = event.target.src
+            },
             findFile (id) {
                 const that = this
                 for (let i = 0; i < that.fileList.length; i++) {
@@ -247,7 +257,12 @@
                     url: 'https://d.apicloud.com/mcm/api/file',
                     params: { filter: JSON.stringify(filter) }
                 }).then(res => {
-                    that.dataList = res || []
+                    res = res || []
+                    res.forEach(item => {
+                        item.width = 0
+                        item.height = 0
+                    })
+                    that.dataList = res
                     that.page = page
                     loading(false)
                 })

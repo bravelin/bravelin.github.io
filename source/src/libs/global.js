@@ -16,7 +16,6 @@ export default {
     shareTitle: 'Lin\'s Notes',
     shareImg: '/static/assets/header.jpg',
     hasCatalog: false, // 是否存在目录
-    showFooter: false,
     articleList: [],
     sentenceList: [],
     getSentences () {
@@ -37,6 +36,7 @@ export default {
         let filter = { where: { status: 'online' }, limit: 1000 }
         let now = (+new Date())
         let appKey = that.sha(that.appKey + now) + '.' + now
+        that.loading = true
         Vue.http.get('https://d.apicloud.com/mcm/api/articles', {
             params: { filter: JSON.stringify(filter) },
             headers: { 'X-APICloud-AppKey': appKey }
@@ -46,6 +46,7 @@ export default {
                 return a.date > b.date ? -1 : 1
             })
             that.articleList.push(...res)
+            that.loading = false
         })
     },
     setArticleNavMenu (routerName) {

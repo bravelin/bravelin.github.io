@@ -189,7 +189,9 @@ router.beforeEach((to, from, next) => {
 router.afterEach(to => {
     global.hasCatalog = false
     setTimeout(() => {
-        global.loading = false
+        if (global.articleList.length != 0) {
+            global.loading = false
+        }
         window.scrollTo(0, sessionStorage.getItem(global.currPage) || 0)
     }, 250)
     if (/^(home|sentences|404|articles|collect|about)$/.test(to.name)) {
@@ -197,10 +199,10 @@ router.afterEach(to => {
         global.prevArticle = ''
         global.currArticleId = ''
         global.currArticleName = ''
+        global.showArticleNavMenu = false
     } else {
         global.setArticleNavMenu(to.name)
     }
-    global.showFooter = !/^(home|about|sentences|collect)$/.test(to.name)
     if (to.meta && to.meta.shareTitle && to.meta.shareImg) {
         global.shareConfig('Lin\'s Notes：' + to.meta.shareTitle, to.meta.shareImg)
     } else {

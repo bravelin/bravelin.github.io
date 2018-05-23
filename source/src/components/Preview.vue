@@ -1,3 +1,8 @@
+<style>
+    .pswp__bg{
+        background: rgba(0,0,0,0.9);
+    }
+</style>
 <template>
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
