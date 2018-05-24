@@ -62,7 +62,7 @@
             <p>下面是ScrollNumberItem的实现，每个数字高度80px：</p>
             <pre><code>&lt;div class="scroll-number-item"&gt;
     &lt;ul :style="{ transform: 'translateY(' + (index * -80 + 'px') + ')', 'transition-duration': duration + 's' }"&gt;
-        &lt;li v-for="(item, index) in list" :key="index">{{ item }}&lt;/li&gt;
+        &lt;li v-for="(item, index) in list" :key="index">{ { item } }&lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
             <p>其中data定义如下：</p>
@@ -79,7 +79,48 @@
         that.duration = (Math.abs(newVal - oldVal) / 3 + 1) * 0.3
     }
 }</code></pre>
+            <p>源码：<a href="https://github.com/bravelin/bravelin.github.io/blob/master/source/src/components/ScrollNumber.vue">https://github.com/bravelin/bravelin.github.io/blob/master/source/src/components/ScrollNumber.vue</a></p>
             <h3 class="title">使用</h3>
+            <p>本文中的效果是这样实现的：</p>
+            <pre><code>&lt;div class="exp-container"&gt;{ { scrollData.title } } &lt;ScrollNumber :num = 'scrollData.num'&gt;&lt;/ScrollNumber&gt;{ { scrollData.desc } }&lt;/div&gt;</code></pre>
+            <p>data中定义如下状态：</p>
+            <pre><code>scrollData: { // 当前的scroll信息
+    title: '',
+    num: 0,
+    desc: ''
+},
+scrollTimer: null, // 定时器
+scrollCount: 0, // 每变化一次+1，用于切换
+scrollDataList: [ // 数据源
+    { title: '增加', num: 486048, desc: '人' },
+    { title: '到店率', num: 95, desc: '%' },
+    { title: '信息', num: 875395, desc: '条' }
+]</code></pre>
+            <p>启动滚动定时器：</p>
+            <pre><code>startScrollData () {
+    const that = this
+    const scrollData = that.scrollData
+    const scrollDataList = that.scrollDataList
+    // 初始为第一个
+    scrollData.title = scrollDataList[0].title
+    scrollData.num = scrollDataList[0].num
+    scrollData.desc = scrollDataList[0].desc
+    let index = 0
+    that.scrollTimer = setInterval(() => { // 定义定时器
+        index = (that.scrollCount ++) % 3 // 取一下个
+        scrollData.title = scrollDataList[index].title
+        scrollData.num = scrollDataList[index].num
+        scrollData.desc = scrollDataList[index].desc
+    }, 3000)
+}
+</code></pre>
+            <p>在页面销毁之前记得将定时器清除：</p>
+            <pre><code>beforeDestroy () {
+    const that = this
+    if (that.scrollTimer) {
+        clearInterval(that.scrollTimer)
+    }
+}</code></pre>
         </div>
         <footer>2018年04月11日</footer>
         <Comments></Comments>
