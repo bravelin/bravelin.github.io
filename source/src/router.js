@@ -57,6 +57,9 @@ let pageRouterOption = [
     { // photoSwipe的使用
         path: '/working/project/photoSwipe', name: 'working-project-photoSwipe', component (resolve) { require(['./views/working/project/PhotoSwipe.vue'], resolve) }
     },
+    { // scrollNumber
+        path: '/working/project/scrollNumber', name: 'working-project-scrollNumber', component (resolve) { require(['./views/working/project/ScrollNumber.vue'], resolve) }
+    },
 
      /**********************************************************************************************************
      * CSS揭密笔记

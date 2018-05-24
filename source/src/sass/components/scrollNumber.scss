@@ -1,0 +1,27 @@
+.scroll-num-wrap {
+    display: flex;
+    height: 80px;
+    margin:0 15px;
+    line-height: 80px;
+    text-align: center;
+    .scroll-number-item {
+        position: relative;
+        height: 100%;
+        width: 40px;
+        overflow: hidden;
+        >ul{
+            width: 100%;
+            transform: translateY(0);
+            transition: transform 0.5s ease-out;
+            >li{
+                list-style: none !important;
+                font-size: 60px;
+                color: #4d4d4d;
+                padding-left: 0 !important;
+                text-indent: 0 !important;
+                text-align: center;
+                line-height: 80px !important;
+            }
+        }
+    }
+}
