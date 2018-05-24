@@ -24,7 +24,7 @@
             <p>应用于公司官网的真实效果：<a href="https://www.xiaomodo.com">https://www.xiaomodo.com</a></p>
             <h3 class="title">实现</h3>
             <p>将隐藏的元素显示出来，可以看到数字是这样滚动的：</p>
-            <figure class="common"><img style="max-width: 820px;border:1px solid #ccc" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/5ed2510ca788d087abfbf36afe000e95.png"></figure>  
+            <figure class="common"><img style="max-width: 820px;border:1px solid #ccc" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/5ed2510ca788d087abfbf36afe000e95.png"></figure>
             <p>每一列都是0-9的数字再加一个逗号（逗号用于千位的分隔），通过translateY+transition移动到相应的位置，并通过在外层设置的overflow:hidden样式，隐藏当前不需要显示的数字。</p>
             <p>定义组件ScrollNumber，其中的每一列又可以是一个ScrollNumberItem组件（列宽度40px）：</p>
             <pre><code>&lt;div class="scroll-num-wrap" :style="{ width: cursors.length * 40 + 'px' }"&gt;
@@ -146,9 +146,9 @@ scrollDataList: [ // 数据源
                 scrollTimer: null,
                 scrollCount: 0,
                 scrollDataList: [
-                    { title: '增加', num: 486048, desc: '人' },
+                    { title: '增加', num: 4648, desc: '人' },
                     { title: '到店率', num: 95, desc: '%' },
-                    { title: '信息', num: 875395, desc: '条' }
+                    { title: '信息', num: 8795, desc: '条' }
                 ]
             }
         },
