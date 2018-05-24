@@ -57,8 +57,11 @@ let pageRouterOption = [
     { // photoSwipe的使用
         path: '/working/project/photoSwipe', name: 'working-project-photoSwipe', component (resolve) { require(['./views/working/project/PhotoSwipe.vue'], resolve) }
     },
-    { // scrollNumber
+    { // scrollNumber组件实现
         path: '/working/project/scrollNumber', name: 'working-project-scrollNumber', component (resolve) { require(['./views/working/project/ScrollNumber.vue'], resolve) }
+    },
+    { // apicloud平台的使用
+        path: '/working/project/apiCloud', name: 'working-project-apiCloud', component (resolve) { require(['./views/working/project/ApiCloud.vue'], resolve) }
     },
 
      /**********************************************************************************************************
