@@ -26,7 +26,7 @@
     <Banner></Banner>
     <h2 class="title">About Me</h2>
     <div class="content">
-      <p>一名普通的Programmer，2011届计科毕业。目前专注于Web前端开发。<p>
+      <p>一名普通的Programmer。<p>
       <p>北漂三年，2015年夏至深圳，就职于石豆软件。</p>
       <p>业余喜欢历史、音乐，看起来一副永远不成熟的样子。</p>
       <p>不善言辞。</p>
