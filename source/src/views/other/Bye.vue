@@ -35,7 +35,7 @@
             <p>忘不了在工作中，各位同事给与的鼓励与支持：</p>
             <figure class="common"><img style="max-width:800px" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/00a05376fbe82279e0588fcfcdecb455.png"/></figure>
             <figure class="common"><img style="max-width:400px" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/3656599f328b4d2668c0d78ee2271da7.png" /></figure>
-            <p>包括走了的和即将走的绵生、秋建、宏真、益峰、阳亚、叶总、明生、鹏辉、彭彬、娉妮、小丁、加灿、明佳......（名单比较长，可能忘了）</p>
+            <p>包括走了的和即将走的绵生、秋建、宏真、益峰、阳亚、建伟、叶总、张荣、明生、鹏辉、彭彬、娉妮、小丁、加灿、明佳......（名单比较长，可能忘了）</p>
             <figure class="common"><img style="max-width:400px" src="http://800cx2.com1.z0.glb.clouddn.com/apicloud/0a526b4424548f765c1bd0ef89d29672.png"></figure>
             <p><strong>最后，借用当年明月的话：“成功的方式只有一种，那就是以自己喜欢的方式度过一生”。愿大家此生都能成功！</strong></p>
         </div>
