@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">Vue使用PhotoSwipe构建图片预览组件</h2>
+        <h2 class="title">使用PhotoSwipe构建图片预览组件</h2>
         <div class="content">
             <h3 class="title">概述</h3>
             <p><a href="http://photoswipe.com/">PhotoSwipe</a>是一款用于浏览图集的不依赖于其他库的JavaScript插件。功能强大，支持移动端通过手势缩放图片，支持分享、全屏、键盘快捷键等功能。</p>

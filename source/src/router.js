@@ -177,6 +177,9 @@ let pageRouterOption = [
      **********************************************************************************************************/
     {
         path: '/other/tour', name: 'other-tour', component (resolve) { require(['./views/other/Tour.vue'], resolve) }
+    },
+    {
+        path: '/bye', name: 'bye', component (resolve) { require(['./views/other/Bye.vue'], resolve) }
     }
 ]
 

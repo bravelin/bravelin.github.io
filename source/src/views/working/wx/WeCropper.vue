@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">MpVue中使用WeCropper实现小程序中的图片裁剪</h2>
+        <h2 class="title">MpVue中使用WeCropper实现图片裁剪</h2>
         <div class="content">
             <h3 class="title">在mpvue框架中使用</h3>
             <p>we-cropper——一款灵活小巧的canvas图片裁剪器，github地址：<a target="_blank" href="https://github.com/we-plugin/we-cropper">https://github.com/we-plugin/we-cropper</a>。</p>

@@ -1,6 +1,6 @@
 <template>
   <div class="article-catalog" v-if="catalog.length>0">
-        <div>文章目录</div>
+        <div>Catalog</div>
         <ul><li v-for="(item, itemIndex) in catalog" :key="itemIndex" :class="{ active: item.active }" @click="slideTo(item.el)"><a>{{ itemIndex + 1 }}. {{ item.text }}</a></li></ul>
    </div>
 </template>
