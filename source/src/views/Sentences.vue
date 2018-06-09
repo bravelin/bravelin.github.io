@@ -6,7 +6,7 @@
                 <h4>{{ item.updatedAt | TimeFilter }}</h4>
                 <h3>{{ item.content }}</h3>
                 <ul class="pics">
-                    <li v-for="(pic, picIndex) in item.imgs" @click="doPreview(item.imgs, picIndex)"><img :src="pic.src"/></li>
+                    <li v-for="(pic, picIndex) in item.imgs" @click="doPreview(item.imgs, picIndex)" v-if="pic.src"><img :src="pic.src"/></li>
                 </ul>
                 <div>出自：{{ item.origin || 'lin' }}</div>
             </li>
