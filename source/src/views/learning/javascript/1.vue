@@ -34,7 +34,38 @@ foo = function() { console.log(2) }</code></pre>
             <p>后面的函数声明可以覆盖前面的声明。</p>
             <p><strong>闭包是基于词法作用域书写代码时所产生的自然结果。</strong></p>
             <p>函数执行完毕之后依然持有对该作用域的引用，使得作用域不被GC回收，这个引用称之为<strong>闭包</strong>。</p>
-            <h3 class="title">this和对象原型</h3>
+            <h3 class="title">this</h3>
+            <p>对于this，通常有两种误解：指向自身和指向函数的作用域。<strong>this是在运行时进行绑定的,并不是在编写时绑定,它的上下文取决于函数调用时的各种条件。this的绑定和函数声明的位置没有任何关系,只取决于函数的调用方式。</strong></p>
+            <p>在代码中插入debugger，浏览器会在那里暂停执行从而进入调试模式。</p>
+            <p><em>this的绑定规则：</em></p>
+            <p><strong>1、默认绑定</strong>：无法应用其他规则时的默认规则，非严格模式下，绑定到全局对象；严格模式下则无法使用默认绑定。</p>
+            <pre><code>function foo() {
+    console.log(this.a) // 2
+}
+var a = 2
+foo()</code></pre>
+            <p><strong>2、隐式绑定</strong>：调用位置有上下文对象，或者说被某个对象拥有。</p>
+            <p>隐式丢失的问题：</p>
+            <pre><code>function foo() { console.log(this.a) }
+var obj = { a: 2, foo: foo }
+var a = 'oop'
+setTimeout(obj.foo, 100) // oop</code></pre>
+            <p>此种情况下应用的是默认绑定，this绑定到全局对象或者undefined上面。</p>
+            <p><strong>3、显式绑定</strong>：使用call和apply方法，在第一个参数中传入要绑定this的对象。</p>
+            <pre><code>// 辅助绑定函数
+function bind (fn, obj) {
+    return function () {
+        fn.apply(obj, arguments)
+    }
+}</code></pre>
+            <p><strong>等价于Function.prototype.bind。</strong></p>
+            <p><strong>4、new绑定</strong></p>
+            <pre><code>function foo(a) {
+    this.a = a;
+}
+var bar = new foo(2);
+console.log( bar.a ); // 2</code></pre>
+            <p>使用new来调用函数,或者说发生构造函数调用时，会自动执行下面的操作：创建(或者说构造)一个全新的对象；这个新对象会被执行[[原型]]连接；这个新对象会绑定到函数调用的this；如果函数没有返回其他对象,那么new表达式中的函数调用会自动返回这个新对象。</p>
         </div>
         <footer>2018年05月20日</footer>
         <Comments></Comments>
