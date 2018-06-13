@@ -18,7 +18,23 @@
 foo("var a=2")</code></pre>
             <p>JS中还有其他一些功能效果和eval()类似，setTimeout和setInterval的第一个参数可以是字符串，字符串的内容可以被解释为一段动态生成的代码。但这种功能已过时且不应该再使用。</p>
             <p>width通常被当做重复引用同一个对象中的多个属性的快捷方式，可以不需要重复引用对象本身。</p>
-            <h3 class="title">词法作用域</h3>
+            <p>width可以将一个没有或者有多个属性的对象处理为一个完全隔离的词法作用域，因此这个对象的属性也会被处理为定义在这个作用域中的词法标识符。<strong>这个块内部正常的var声明并不会被限制在这个块的作用域中，而是被添加到width所处的函数作用域中。</strong></p>
+            <p><strong>严格模式下，width被禁止使用。</strong></p>
+            <p>try-catch结构在catch分局中具有块作用域。</p>
+            <p>for循环头部的let不仅将i绑定到了for循环的块中，实际上它将重新绑定到了循环的每一个迭代中。</p>
+            <p><strong>函数声明会被提升，而函数表达式则不会。</strong></p>
+            <pre><code>foo(); // TYpeError
+bar(); // ReferenceError
+var foo = function bar () { }</code></pre>
+            <p><strong>函数声明和变量声明都会被提升，函数会首先被提升，然后才是变量。</strong></p>
+            <pre><code>foo(); // 1
+var foo;
+function foo() { console.log(1) }
+foo = function() { console.log(2) }</code></pre>
+            <p>后面的函数声明可以覆盖前面的声明。</p>
+            <p><strong>闭包是基于词法作用域书写代码时所产生的自然结果。</strong></p>
+            <p>函数执行完毕之后依然持有对该作用域的引用，使得作用域不被GC回收，这个引用称之为<strong>闭包</strong>。</p>
+            <h3 class="title">this和对象原型</h3>
         </div>
         <footer>2018年05月20日</footer>
         <Comments></Comments>
