@@ -65,7 +65,44 @@ function bind (fn, obj) {
 }
 var bar = new foo(2);
 console.log( bar.a ); // 2</code></pre>
-            <p>使用new来调用函数,或者说发生构造函数调用时，会自动执行下面的操作：创建(或者说构造)一个全新的对象；这个新对象会被执行[[原型]]连接；这个新对象会绑定到函数调用的this；如果函数没有返回其他对象,那么new表达式中的函数调用会自动返回这个新对象。</p>
+            <p>使用new来调用函数（所有函数都可以）,或者说发生<strong>构造函数</strong>调用时，会自动执行下面的操作：创建(或者说构造)一个全新的对象；这个新对象会被执行[[原型]]连接；这个新对象会绑定到函数调用的this；如果函数没有返回其他对象,那么new表达式中的函数调用会自动返回这个新对象。</p>
+            <p><em>this绑定优先级：</em></p>
+            <p><strong>new绑定 > 显式绑定 > 隐式绑定 > 默认绑定</strong></p>
+            <p><strong>把null或者undefined作为this的绑定对象传入call、apply、bind进行显式绑定，此时应用默认绑定规则。</strong></p>
+            <p>JS中创建一个空对象的方式：<strong>Object.create(null)</strong>，一种更安全的是使用空对象进行显式绑定。</p>
+            <p><strong>间接应用函数会使用默认绑定规则：</strong></p>
+            <pre><code>function foo() { console.log(this.a) }
+var a = 2;
+var o = { a: 3, foo: foo };
+var p = { a: 4 };
+(p.foo = o.foo)() // 2，等价于调用foo()</code></pre>
+            <p><strong>箭头函数不使用以上this的四种判定规则，而是根据外层作用域来决定this。箭头函数的绑定无法被修改。</strong></p>
+            <pre><code>function foo () {
+    return (a) => { // return a function
+        console.log(this.a)
+    }
+}
+var obj1 = { a: 2 }
+var obj2 = { a: 3 }
+var bar = foo.call(obj1) // 得到绑定了obj1的箭头函数
+bar.call(obj2) // 2，箭头函数的绑定无法修改</code></pre>
+            <h3 class="title">对象</h3>
+            <p>要理解基本类型的字面量与之对应的装箱对象之间的关系。</p>
+            <p>在对象中，属性名都是字符串或者symbol。</p>
+            <p><strong>Object.getOwnPropertyDescriptor</strong>获取对象某个属性的描述符：</p>
+            <pre><code>Object.getOwnPropertyDescriptor(Math,'abs');
+// {value: ƒ abs(), writable: true, enumerable: false, configurable: true}</code></pre>
+            <p>描述符writable (决定是否可以修改属性的值)、enumerable (可枚举，控制该属性是否出现在该对象的可枚举属性中，for...in循环中是否能遍历到)和 configurable (是否可配置，是否可以使用defineProperty修改属性描述符，<strong>将configurable改成false是单向操作，不可修改，也会禁止使用delete删除这个属性</strong>)。</p>
+            <p><strong>Object.defineProperty</strong>可以为对象添加一个新属性或者修改一个已有属性，并对特性进行设置：</p>
+            <pre><code>var myObj = { b: 2 }
+Object.defineProperty(myObj, 'a'，{
+    value: 1, writable: true, enumerable: true, configurable: true
+})
+myObj.a //1</code></pre>
+            <p><strong>对象常量：writable和configureable设置为false</strong>，对象的属性将不可修改、删除、重新定义。</p>
+            <p><strong>禁止扩展：Object.preventExtensions</strong>，禁止一个对象添加新属性。</p>
+            <p><strong>密封对象：Object.seal</strong>,实际上对该对象调用Object.preventExtensions并把所有属性的configureable标记为false。</p>
+            <p><strong>冻结对象：Object.freeze</strong>，实际上对该对象调用Object.seal并把所有属性的writeable标记为false，这样无法修改他们的值。</p>
         </div>
         <footer>2018年05月20日</footer>
         <Comments></Comments>
