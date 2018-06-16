@@ -92,7 +92,7 @@ bar.call(obj2) // 2，箭头函数的绑定无法修改</code></pre>
             <p><strong>Object.getOwnPropertyDescriptor</strong>获取对象某个属性的描述符：</p>
             <pre><code>Object.getOwnPropertyDescriptor(Math,'abs');
 // {value: ƒ abs(), writable: true, enumerable: false, configurable: true}</code></pre>
-            <p>描述符writable (决定是否可以修改属性的值)、enumerable (可枚举，控制该属性是否出现在该对象的可枚举属性中，for...in循环中是否能遍历到)和 configurable (是否可配置，是否可以使用defineProperty修改属性描述符，<strong>将configurable改成false是单向操作，不可修改，也会禁止使用delete删除这个属性</strong>)。</p>
+            <p>描述符writable (决定是否可以修改属性的值)、enumerable (可枚举，控制该属性是否出现在该对象的可枚举属性中，for...in循环中是否能遍历到,in中总是可以的)和 configurable (是否可配置，是否可以使用defineProperty修改属性描述符，<strong>将configurable改成false是单向操作，不可修改，也会禁止使用delete删除这个属性</strong>)。</p>
             <p><strong>Object.defineProperty</strong>可以为对象添加一个新属性或者修改一个已有属性，并对特性进行设置：</p>
             <pre><code>var myObj = { b: 2 }
 Object.defineProperty(myObj, 'a'，{
@@ -103,6 +103,23 @@ myObj.a //1</code></pre>
             <p><strong>禁止扩展：Object.preventExtensions</strong>，禁止一个对象添加新属性。</p>
             <p><strong>密封对象：Object.seal</strong>,实际上对该对象调用Object.preventExtensions并把所有属性的configureable标记为false。</p>
             <p><strong>冻结对象：Object.freeze</strong>，实际上对该对象调用Object.seal并把所有属性的writeable标记为false，这样无法修改他们的值。</p>
+            <p><em>对象的getter与setter：</em>获取属性值调用的是对象的[[Get]]操作，相对应地设置属性值调用的是对象的[[Put]]操作。</p>
+            <p><em>[[Put]]操作</em>：如果已经存在这个属性，会进行如下检查：①属性是否是访问描述符，如果是并且存在setter就调用setter，②属性的数据描述符中writeable是否是false，如果是，非严格模式下静默失败，严格模式下抛出TypeError异常。③如果都不是，将该值设置为属性的值。</p>
+            <p><strong>对于访问描述符来说，JS会忽略它们的value和writeable特性，只关心set和get方法。</strong></p>
+            <p>定于getter的两种方法（setter亦类似）：</p>
+            <pre><code>var obj = {
+    get a() { return 2 }
+}
+
+Object.defineProperty(obj, 'b', {
+    get: function () { return 4 },
+    enumerable: false
+})
+
+obj.a // 2
+obj.b // 4</code></pre>
+                <p>hasOwnProperty会检查属性是否在对象的自有属性中，而不会检查原型链；in操作符则会检查。</p>
+                <p>propertyIsEnumerable会检查属性是否直接存在与对象中，并且满足enumerable为true；Object.keys返回一个数组，包含所有可枚举属性。</p>
         </div>
         <footer>2018年05月20日</footer>
         <Comments></Comments>
