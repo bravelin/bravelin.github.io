@@ -120,6 +120,42 @@ obj.a // 2
 obj.b // 4</code></pre>
                 <p>hasOwnProperty会检查属性是否在对象的自有属性中，而不会检查原型链；in操作符则会检查。</p>
                 <p>propertyIsEnumerable会检查属性是否直接存在与对象中，并且满足enumerable为true；Object.keys返回一个数组，包含所有可枚举属性。</p>
+                <h3 class="title">类</h3>
+                <p><strong>类/继承描述了一种代码的组织结构形式——在软件中对真实世界中问题领域的建模方法。</strong></p>
+                <p><strong>多态</strong>：父类的通用行为可以被子类更特殊的行为重写。</p>
+                <p>JS本身不提供多重继承功能，mixin有两种类型：隐式和显式。</p>
+                <pre><code>function mixin (targetObj, sourceObj) {
+    for (var key in sourceObj) {
+        if (!key in targetObj) {
+            targetObj[key] = sourceObj[key]
+        }
+    }
+    return targetObj
+}</code></pre>
+                <h3 class="title">原型</h3>
+                <p>JS中的对象有一个特殊的[[prototype]]内置属性，这个属性可以为空。</p>
+                <p>对于对象的[[GET]]操作，如果无法在对象自身中找到需要的属性，就会继续访问对象的[[prototype]]对象，如果原型对象非空并且也找不到这个属性的话，将会继续查找原型对象的原型对象，直到查找到这个属性或者整条原型链都找不到，将返回undefined。</p>
+                <p>for...in遍历以及in操作符都会查找对象的原型链。原型链的尽头为<strong>Object.prototye</strong>。</p>
+                <pre><code>myObj.foo = 'bar'</code></pre>
+                <p>如果myObj对象中包含foo普通数据访问属性，这条赋值语句就会修改已有的属性值。如果foo不直接存在与myObj对象中，将会遍历原型链，如果在原型链中找不到foo，将会在myObj中添加新属性foo，并赋值。</p>
+                <p>如果在原型链找到foo，将分以下几种情况：</p>
+                <p>1、原型链上层的foo没有被标记为只读（writeable为false），那就会直接在myObj上添加新属性foo；</p>
+                <p>2、原型链上层的foo被标记为只读（writeable为true），那么无法修改已有属性或者创建新属性foo；</p>
+                <p><strong>3、原型链上层存在foo并且是一个setter，那就一定会调用这个setter。</strong></p>
+                <p>如果想在第二三种情况下屏蔽foo，那就不能使用=来进行赋值，可以使用<strong>Object.defineProperty</strong>方法来添加属性。</p>
+                <p>new函数原型关联：</p>
+                <pre><code>function Foo () { ... }
+var a = new Foo()
+Object.getPrototypeOf(a) === Foo.prototype</code></pre>
+                <p><strong>调用new Foo()时会创建a，其中的一步就是给a一个内部的[[Prototype]]链接,关联到Foo.prototype指向的那个对象。</strong></p>
+                <p>继承意味着复制操作，JS并不会复制对象属性，JS只是在两个对象之间创建一个关联。这样一个对象就可以通过<strong>委托</strong>访问另外一个对象的属性或者函数。</p>
+                <p><em>构造函数constructor</em></p>
+                <pre><code>function Foo () { ... }
+Foo.prototype.constructor === Foo // true
+var a = new Foo()
+a.constructor === Foo // true，此处其实是a.prototype.constructor = Foo.prototype.constructor导致</code></pre>
+                <p><strong>当且仅当使用new时，函数调用会变成"构造函数调用"。</strong></p>
+                <p><strong>对象的.constructor（不可枚举，但可以被修改的属性）会默认指向一个函数，这个函数可以通过对象的.prototype引用。</strong></p>
         </div>
         <footer>2018年05月20日</footer>
         <Comments></Comments>
