@@ -156,6 +156,20 @@ var a = new Foo()
 a.constructor === Foo // true，此处其实是a.prototype.constructor = Foo.prototype.constructor导致</code></pre>
                 <p><strong>当且仅当使用new时，函数调用会变成"构造函数调用"。</strong></p>
                 <p><strong>对象的.constructor（不可枚举，但可以被修改的属性）会默认指向一个函数，这个函数可以通过对象的.prototype引用。</strong></p>
+                <p>Bar继承Foo的两种实现：</p>
+                <pre><code>function Foo () { ... }
+function Bar () { ... }
+Bar.prototype = Object.create(Foo.prototype) // 方法一
+Object.setPrototypeOf(Bar.prototype,Foo.prototype) // 方法二，ES6新增的方法</code></pre>
+                <p>Object.create的polyfill代码：</p>
+                <pre><code>if (!Object.create) {
+    Object.create = function (o) {
+        function F() {}
+        F.prototype = o
+        return new F()
+    }
+}</code></pre>
+                <p></p>
         </div>
         <footer>2018年05月20日</footer>
         <Comments></Comments>
