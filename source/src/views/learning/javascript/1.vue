@@ -169,7 +169,74 @@ Object.setPrototypeOf(Bar.prototype,Foo.prototype) // 方法二，ES6新增的�
         return new F()
     }
 }</code></pre>
-                <p></p>
+                <p><strong>对象之间的关系不是复制而是委托。</strong></p>
+                <h3 class="title">行为委托</h3>
+                <p>原型链代表的是一种不同于类的设计模式。<strong>委托意味着某些对象在找不到属性或者方法时会把请求委托给另外一个对象。</strong></p>
+                <p>实现Button组件继承Widget的三种方法</p>
+                <p>① 使用prototype实现的继承：</p>
+                <pre><code>// 父类
+function Widget(width, height){
+    this.width = width || 50
+    this.height = height || 100
+}
+Widget.prototype.render = function () { ... }
+
+// 子类
+function Button(width, height, label) {
+    // 调用父类函数
+    Widget.call(this,width,height)
+    this.label = label || 'btn'
+}
+
+// 让Button继承Widget
+Button.prototype = Object.create(Widget.prototype)
+Button.prototype.onClick = function () { ... }
+
+// 实例
+var btn1 = new Button(10,20,'btn1')
+var btn2 = new Button(10,20,'btn2')</code></pre>
+                <p>② class的写法：</p>
+                <pre><code>class Widget {
+    constructor (width, height) {
+        this.width = width || 50
+        this.height = height || 100
+    }
+    render() { ... }
+}
+
+class Button extends Widget {
+    constructor (width, height, label) {
+        super(width,height)
+        this.label = label || 'btn'
+    }
+    render () { ... }
+    onClick () { ... }
+}
+
+// 实例
+var btn1 = new BUtton(10,20,'btn1')
+var btn2 = new BUtton(10,20,'btn2')</code></pre>
+            <p>③ 委托的形式：</p>
+            <pre><code>var Widget = {
+    init: function (width,height) {
+        this.width = width
+        this.height = height
+    },
+    render: function () { ... }
+}
+
+var Button=Object.create(Widget)
+Button.setup = function (width,height,label) {
+    this.init(width,height)
+    this.label = label || 'btn'
+}
+Button.onClick = function () { ... }
+
+// 实例
+var btn1 = Object.create(Button)
+btn1.setup(10,20,'btn1')
+var btn2 = Object.create(Button)
+btn2.setup(10,20,'btn2')</code></pre>
         </div>
         <footer>2018年05月20日</footer>
         <Comments></Comments>
