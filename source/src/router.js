@@ -101,6 +101,9 @@ let pageRouterOption = [
     {
         path: '/learning/javascript/3', name: 'learning-javascript-3', component (resolve) { require(['./views/learning/javascript/3.vue'], resolve) }
     },
+    {
+        path: '/learning/javascript/2', name: 'learning-javascript-2', component (resolve) { require(['./views/learning/javascript/2.vue'], resolve) }
+    },
 
     /**********************************************************************************************************
      * ES6笔记
