@@ -35,7 +35,42 @@ console.log(a + '') // 1,2,3</code></pre>
 JSON.stringify(a) // [2,3]</code></pre>
             <p><em>2、toNumber</em></p>
             <p>true转为1；false转为0；null转为0；undefined转为NaN。</p>
+            <p>对象（包括数组）会首先被转换为相应的基本类型值，如果返回的是非数字的基本类型值，则再遵循以上规则将其强制转换为数字。会尝试调用valueOf方法，再次toString方法。</p>
+            <pre><code>var a = { valueOf: function() { return '42' }}
+Number(a) // 42
+Number('') // 0
+Number([]) // 0
+Number([1,2]) // NaN</code></pre>
             <p><em>3、toBoolean</em></p>
+            <p><strong>以下这些是假值：undefined、null、''、false、+0、-0、NaN；假值以外的值都是真值。</strong></p>
+            <p><strong>~~x能将值截除为一个32位整数，x|0也可以：</strong></p>
+            <pre><code>~~32.11 // 32
+32.11 | 0 // 32</code></pre>
+            <p>隐式强制类型转换的作用是减少冗余，让代码更简洁。</p>
+            <p><strong>||和&&返回它们其中一个操作数的值。</strong></p>
+            <p><em>抽象相等：</em></p>
+            <p>1、字符串与数字之间的相等比较：字符串会被转化成数字再进行比较。</p>
+            <pre><code>var a = 42
+var b = '42'
+a === b // false
+a == b // true</code></pre>
+            <p>2、其他类型与布尔类型的比较：布尔类型先转成数值再与对方进行比较。</p>
+            <pre><code>'42' == true // false，相当于比较：42 == 1
+'42' == false // false，相当于比较：42 == 0</code></pre>
+            <p><strong>无论什么情况下都不要使用==true和==false.</strong></p>
+            <p>3、null == undefined为true。null和undefined没有对应的封装对象：</p>
+            <pre><code>var a = 'abc'
+var b = Object(a)
+a == b // true
+
+var c = undefined
+var d = Object(c)
+c == d // false
+
+var e = null
+var f = Object(f)
+e == f // false</code></pre>
+                <p><strong>&&运算符的优先级高于||，||运算符的优先级高于? :</strong></p>
         </div>
         <footer>2018年06月05日</footer>
         <Comments></Comments>
