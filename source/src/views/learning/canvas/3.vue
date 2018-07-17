@@ -122,13 +122,20 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
     import Page from '@/views/Page'
     export default {
         extends: Page,
+        data () {
+            return {
+                textRotateTimer: null,
+                currRotateCount: 0
+            }
+        },
         mounted () {
             let that = this
             that.$nextTick(() => {
                 that.drawStrokedText()
                 that.drawFilledText()
                 that.drawStrokedFilledText()
-                that.drawCircleText()
+                that.textRotateTimer = requestAnimationFrame(that.drawCircleText)
+                // that.drawCircleText()
             })
         },
         methods: {
@@ -193,6 +200,9 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
             drawCircleText () {
                 let that = this
                 let el = that.$refs.c4
+                if (!el) {
+                    return
+                }
                 let context = el.getContext('2d')
                 let w = el.width
                 let h = el.height
@@ -204,16 +214,16 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
                 context.font = '32px 微软雅黑'
                 context.textAlign = 'center'
                 context.textBaseline = 'middle'
+                context.clearRect(0, 0, w, h)
 
                 let textStr = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ'
                 let radius = w / 2 - 22
                 let angleDelt = (2 * Math.PI) / textStr.length
                 let currAngle = 0
                 let currChar = ''
-
                 for (let k = 0; k < textStr.length; k++) {
                     currChar = textStr.charAt(k)
-                    currAngle = (0.5 - k) * angleDelt
+                    currAngle = (0.5 - k) * angleDelt + parseInt(that.currRotateCount / 20) * angleDelt
                     context.save()
                     context.beginPath()
                     context.translate(centerX + Math.cos(currAngle) * radius, centerY - Math.sin(currAngle) * radius)
@@ -222,6 +232,14 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
                     context.strokeText(currChar, 0, 0)
                     context.restore()
                 }
+                that.currRotateCount ++
+                requestAnimationFrame(that.drawCircleText)
+            }
+        },
+        beforeDestroy () {
+            const that = this
+            if (that.textRotateTimer) {
+                cancelAnimationFrame(that.textRotateTimer)
             }
         }
     }
