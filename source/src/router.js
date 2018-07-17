@@ -186,6 +186,12 @@ let pageRouterOption = [
     },
     {
         path: '/bye', name: 'bye', component (resolve) { require(['./views/other/Bye.vue'], resolve) }
+    },
+    /**********************************************************************************************************
+     * diary
+     **********************************************************************************************************/
+    {
+        path: '/diary/2018/07', name: 'diary-2018-07', component (resolve) { require(['./views/diary/2018/07.vue'], resolve) }
     }
 ]
 
