@@ -125,7 +125,9 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
         data () {
             return {
                 textRotateTimer: null,
-                currRotateCount: 0
+                currRotateAngle: 0,
+                rotateSpeed: 1, // 每秒转的度数
+                lastTime: 0
             }
         },
         mounted () {
@@ -220,10 +222,17 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
                 let radius = w / 2 - 22
                 let angleDelt = (2 * Math.PI) / textStr.length
                 let currAngle = 0
+                let currDeltAngle = 0
                 let currChar = ''
+                let thisTime = Date.now()
+                if (that.lastTime != 0) {
+                    currDeltAngle = that.currRotateAngle + that.rotateSpeed * (thisTime - that.lastTime) / 1000
+                }
+                that.lastTime = thisTime
+                that.currRotateAngle = currDeltAngle
                 for (let k = 0; k < textStr.length; k++) {
                     currChar = textStr.charAt(k)
-                    currAngle = (0.5 - k) * angleDelt + parseInt(that.currRotateCount / 20) * angleDelt
+                    currAngle = (0.5 - k) * angleDelt + currDeltAngle
                     context.save()
                     context.beginPath()
                     context.translate(centerX + Math.cos(currAngle) * radius, centerY - Math.sin(currAngle) * radius)
@@ -232,7 +241,6 @@ context.fillText('HTML5', w / 2, h / 2)</code></pre>
                     context.strokeText(currChar, 0, 0)
                     context.restore()
                 }
-                that.currRotateCount ++
                 requestAnimationFrame(that.drawCircleText)
             }
         },
