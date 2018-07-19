@@ -6,7 +6,7 @@
     }
     canvas{
         width: 300px;
-        height: 150px;
+        height: 200px;
         border: 1px solid #e0e0e0;
         border-radius: 4px;
     }
@@ -24,6 +24,84 @@
             <p><strong>drawImage(image, dx, dy, dw, dh)</strong></p>
             <p><strong>drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)</strong></p>
             <p>第一个参数可以是图像对象，也可以是一个canvas对象，或者video视频对象。</p>
+            <div class="exp">
+                <canvas ref="c1" width="300" height="200"></canvas>
+            </div>
+            <pre><code>let that = this
+let el = that.$refs.c1
+let context = el.getContext('2d')
+let w = el.width
+let h = el.height
+let img = new Image()
+img.onload = function () { // 在image的onload事件中绘制
+    context.drawImage(img, 0, 0, w, h)
+}
+img.src = './static/img/1.jpeg'</code></pre>
+            <p><strong>在使用drawImage方法时，务必保证所绘图片已经加载好了。</strong></p>
+            <h3 class="title">离屏Canvas</h3>
+            <p>离屏Canavs通常用来存放临时性的图像信息：</p>
+            <p>1、创建用做离屏Canvas的元素；</p>
+            <p>2、设置离屏Canvas的宽度与高度；</p>
+            <p>3、在离屏Canvas中进行绘制；</p>
+            <p>4、将离屏Canvas的全部或者一部分内容复制到正在显示的Canvas中。</p>
+            <div class="exp">
+                <canvas ref="c2" width="300" height="200" @mousemove="doMouseMoveForMagnifier" @touchmove="doMouseMoveForMagnifier"></canvas>
+            </div>
+            <pre><code>drawMagnifier () {
+    let that = this
+    let el = that.$refs.c2
+    let context = el.getContext('2d')
+    let w = el.width
+    let h = el.height
+    that.offScreenCanvas = document.createElement('canvas')
+    let offScreenContext = that.offScreenCanvas.getContext('2d')
+    that.offScreenCanvas.width = w
+    that.offScreenCanvas.height = h
+    let img = new Image()
+    img.onload = function () {
+        context.drawImage(img, 0, 0, w, h)
+        offScreenContext.drawImage(img, 0, 0, w, h)
+        that.addMagnifier(context, w, h, w / 2, h / 2, img)
+    }
+    img.src = './static/img/1.jpeg'
+}
+// 绘制放大镜
+addMagnifier (context, w, h, x, y, img) {
+    const that = this
+    let scale = 1.8
+    let radius = 20
+    context.save()
+    context.beginPath()
+    context.strokeStyle = '#ffffff'
+    context.lineWidth = 2
+    context.shadowColor = 'rgba(0,0,0,0.8)'
+    context.shadowOffsetX = 8
+    context.shadowOffsetY = 8
+    context.shadowBlur = 10
+    context.arc(x, y, radius, 0, 2 * Math.PI, true)
+    context.stroke()
+    context.clip()
+    context.drawImage(that.offScreenCanvas, x - radius / scale, y - radius / scale, (radius / scale) * 2, (radius / scale) * 2, x - radius, y - radius, radius * 2, radius * 2)
+    context.restore()
+}</code></pre>
+            <p>DOM结构：</p>
+            <pre><code>&lt;canvas ref="c2" width="300" height="200" @mousemove="doMouseMoveForMagnifier" @touchmove="doMouseMoveForMagnifier"&gt;&lt;/canvas&gt;</code></pre>
+            <p>mousemove事件与touchmove事件处理：</p>
+            <pre><code>doMouseMoveForMagnifier (e) {
+    const that = this
+    let el = that.$refs.c2
+    let context = el.getContext('2d')
+    let w = el.width
+    let h = el.height
+    let img = new Image()
+    let pos = that.windowToCanvas(el, e.clientX, e.clientY)
+    img.onload = function () {
+        context.clearRect(0, 0, w, h)
+        context.drawImage(img, 0, 0, w, h)
+        that.addMagnifier(context, w, h, pos.x, pos.y, that.offScreenCanvas, img)
+    }
+    img.src = './static/img/1.jpeg'
+}</code></pre>
         </div>
         <footer>2016年06月30日</footer>
         <Comments></Comments>
@@ -34,9 +112,86 @@
     import Page from '@/views/Page'
     export default {
         extends: Page,
+        data () {
+            return {
+                offScreenCanvas: null
+            }
+        },
         mounted () {
+            let that = this
+            that.$nextTick(() => {
+                that.drawImg()
+                that.drawMagnifier()
+            })
         },
         methods: {
+            drawImg () {
+                let that = this
+                let el = that.$refs.c1
+                let context = el.getContext('2d')
+                let w = el.width
+                let h = el.height
+                let img = new Image()
+                img.onload = function () {
+                    context.drawImage(img, 0, 0, w, h)
+                }
+                img.src = './static/img/1.jpeg'
+            },
+            drawMagnifier () {
+                let that = this
+                let el = that.$refs.c2
+                let context = el.getContext('2d')
+                let w = el.width
+                let h = el.height
+                that.offScreenCanvas = document.createElement('canvas')
+                let offScreenContext = that.offScreenCanvas.getContext('2d')
+                that.offScreenCanvas.width = w
+                that.offScreenCanvas.height = h
+                let img = new Image()
+                img.onload = function () {
+                    context.drawImage(img, 0, 0, w, h)
+                    offScreenContext.drawImage(img, 0, 0, w, h)
+                    that.addMagnifier(context, w, h, w / 2, h / 2, img)
+                }
+                img.src = './static/img/1.jpeg'
+            },
+            addMagnifier (context, w, h, x, y, img) {
+                const that = this
+                let scale = 1.8
+                let radius = 20
+                context.save()
+                context.beginPath()
+                context.strokeStyle = '#ffffff'
+                context.lineWidth = 2
+                context.shadowColor = 'rgba(0,0,0,0.8)'
+                context.shadowOffsetX = 8
+                context.shadowOffsetY = 8
+                context.shadowBlur = 10
+                context.arc(x, y, radius, 0, 2 * Math.PI, true)
+                context.stroke()
+                context.clip()
+                context.drawImage(that.offScreenCanvas, x - radius / scale, y - radius / scale, (radius / scale) * 2, (radius / scale) * 2, x - radius, y - radius, radius * 2, radius * 2)
+                context.restore()
+            },
+            windowToCanvas (canvas, x, y) {
+                let box = canvas.getBoundingClientRect()
+                return { x: (x - box.left) * (canvas.width / box.width), y: (y - box.top) * (canvas.height / box.height) }
+            },
+            doMouseMoveForMagnifier (e) {
+                const that = this
+                let el = that.$refs.c2
+                let context = el.getContext('2d')
+                let w = el.width
+                let h = el.height
+                let img = new Image()
+                let pos = that.windowToCanvas(el, e.clientX, e.clientY)
+                img.onload = function () {
+                    context.clearRect(0, 0, w, h)
+                    context.drawImage(img, 0, 0, w, h)
+                    that.addMagnifier(context, w, h, pos.x, pos.y, that.offScreenCanvas, img)
+                }
+                img.src = './static/img/1.jpeg'
+            }
         }
     }
 </script>

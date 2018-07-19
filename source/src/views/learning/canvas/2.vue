@@ -110,7 +110,7 @@ context.fillRect(0, 0, el.width, el.height)</code></pre>
         <div class="exp circle">
             <canvas ref="c6" width="250" height="250"></canvas>
         </div>
-        <pre><code>drawTwoCircle () {
+        <pre><code>drawRing () {
     let that = this
     let el = that.$refs.c6
     let context = el.getContext('2d')
@@ -343,7 +343,7 @@ drawAni (radius) {
             that.$nextTick(() => {
                 that.initLinearGradient() // 绘制线性渐变
                 that.initRadialGradient() // 绘制放射渐变
-                that.drawTwoCircle() // 绘制圆环
+                that.drawRing() // 绘制圆环
                 that.initGrid() // 绘制网格
                 that.drawDashedLine() // 绘制虚线
                 that.drawRoundedRect() // 绘制圆角矩形
@@ -394,7 +394,7 @@ drawAni (radius) {
             /**
             * 绘制圆环
             */
-            drawTwoCircle () {
+            drawRing () {
                 let that = this
                 let el = that.$refs.c6
                 let context = el.getContext('2d')
