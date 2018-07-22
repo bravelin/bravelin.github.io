@@ -100,8 +100,66 @@ addMagnifier (context, w, h, x, y, img) {
         context.drawImage(img, 0, 0, w, h)
         that.addMagnifier(context, w, h, pos.x, pos.y, that.offScreenCanvas, img)
     }
-    img.src = './static/img/1.jpeg'
+    img.src = './static/img/1.jpeg' // 图片地址
 }</code></pre>
+            <h3 class="title">操作像素</h3>
+            <p>两个方法：getImageData()和putImageData()。</p>
+            <p>getImageData方法所返回的ImageData对象包含下列三个属性：width、height、data。</p>
+            <p>putImageData(Image,dx,dy,dirtyX,dirtyY,dirtyWidth,dirtyHeight)，其中dx与dy表示所绘制的图像距离canvas左上角的X、Y偏移量；方法的最后4个参数代表以设备为单位的脏矩形，当浏览器将脏矩形复制到canvas时，它会将设备像素转换为CSS像素。</p>
+            <p><strong>putImageData方法不受全局设置（globalAlpha、globalCompositeOperation等）的影响。因为它是直接操作像素的。</strong></p>
+            <p><em>负片滤镜</em>：从255中减去每个RGB分量值，再将差值设置回去，相当于“反转”了该像素的颜色。</p>
+            <div class="exp">
+                <canvas ref="c3" width="300" height="200"></canvas>
+            </div>
+            <pre><code>let imgData = context.getImageData(0, 0, w, h)
+for (let i = 0; i &lt; imgData.data.length; i = i + 4) {
+    imgData.data[i] = 255 - imgData.data[i]
+    imgData.data[i + 1] = 255 - imgData.data[i + 1]
+    imgData.data[i + 2] = 255 - imgData.data[i + 2]
+}
+context.putImageData(imgData, 0, 0)</code></pre>
+            <p><em>黑白滤镜</em>：计算每个像素的RGB分量的平均值，然后将三个分量都设置为这个均值，于是图片由彩色变成了灰白了。</p>
+            <div class="exp">
+                <canvas ref="c4" width="300" height="200"></canvas>
+            </div>
+            <pre><code>let imgData = context.getImageData(0, 0, w, h)
+let v
+for (let i = 0; i &lt; imgData.data.length; i = i + 4) {
+    v = (imgData.data[i] + imgData.data[i + 1] + imgData.data[i + 2]) / 3
+    imgData.data[i] = v
+    imgData.data[i + 1] = v
+    imgData.data[i + 2] = v
+}
+context.putImageData(imgData, 0, 0)</code></pre>
+            <p><em>浮雕滤镜</em></p>
+            <div class="exp">
+                <canvas ref="c5" width="300" height="200"></canvas>
+            </div>
+            <pre><code>let imgData = context.getImageData(0, 0, w, h)
+let data = imgData.data
+let width = imgData.width
+let length = data.length
+for (let i = 0; i < length; i++) {
+    if (i <= length - width * 4) { // 最后一行像素点特殊处理
+        if ((i + 1) % 4 !== 0) { //RGB分量
+            if ((i + 4) % (width * 4) == 0) { // 每一行最后一个像素点
+                data[i] = data[i - 4]
+                data[i + 1] = data[i - 3]
+                data[i + 2] = data[i - 2]
+                data[i + 3] = data[i - 1]
+                i += 4
+            } else {
+                data[i] = 255 / 2 + 2 * data[i] - data[i + 4] - data[i + width * 4] // 关键点
+            }
+        }
+    } else {
+        if ((i + 1) % 4 !== 0) {
+            data[i] = data[i - width * 4]
+        }
+    }
+}
+context.putImageData(imgData, 0, 0)</code></pre>
+            <p><strong>如果在大一些的图片上应用复杂的处理算法，可以使用WebWorker。</strong></p>
         </div>
         <footer>2016年06月30日</footer>
         <Comments></Comments>
@@ -122,6 +180,9 @@ addMagnifier (context, w, h, x, y, img) {
             that.$nextTick(() => {
                 that.drawImg()
                 that.drawMagnifier()
+                that.negativeFilter()
+                that.greyFilter()
+                that.embossFilter()
             })
         },
         methods: {
@@ -189,6 +250,82 @@ addMagnifier (context, w, h, x, y, img) {
                     context.clearRect(0, 0, w, h)
                     context.drawImage(img, 0, 0, w, h)
                     that.addMagnifier(context, w, h, pos.x, pos.y, that.offScreenCanvas, img)
+                }
+                img.src = './static/img/1.jpeg'
+            },
+            negativeFilter () {
+                let that = this
+                let el = that.$refs.c3
+                let context = el.getContext('2d')
+                let w = el.width
+                let h = el.height
+                let img = new Image()
+                img.onload = function () {
+                    context.drawImage(img, 0, 0, w, h)
+                    let imgData = context.getImageData(0, 0, w, h)
+                    for (let i = 0; i < imgData.data.length; i = i + 4) {
+                        imgData.data[i] = 255 - imgData.data[i]
+                        imgData.data[i + 1] = 255 - imgData.data[i + 1]
+                        imgData.data[i + 2] = 255 - imgData.data[i + 2]
+                    }
+                    context.putImageData(imgData, 0, 0)
+                }
+                img.src = './static/img/1.jpeg'
+            },
+            greyFilter () {
+                let that = this
+                let el = that.$refs.c4
+                let context = el.getContext('2d')
+                let w = el.width
+                let h = el.height
+                let img = new Image()
+                img.onload = function () {
+                    context.drawImage(img, 0, 0, w, h)
+                    let imgData = context.getImageData(0, 0, w, h)
+                    let v
+                    for (let i = 0; i < imgData.data.length; i = i + 4) {
+                        v = (imgData.data[i] + imgData.data[i + 1] + imgData.data[i + 2]) / 3
+                        imgData.data[i] = v
+                        imgData.data[i + 1] = v
+                        imgData.data[i + 2] = v
+                    }
+                    context.putImageData(imgData, 0, 0)
+                }
+                img.src = './static/img/1.jpeg'
+            },
+            embossFilter () {
+                let that = this
+                let el = that.$refs.c5
+                let context = el.getContext('2d')
+                let w = el.width
+                let h = el.height
+                let img = new Image()
+                img.onload = function () {
+                    context.drawImage(img, 0, 0, w, h)
+                    let imgData = context.getImageData(0, 0, w, h)
+                    let data = imgData.data
+                    let width = imgData.width
+                    let length = data.length
+                    for (let i = 0; i < length; i++) {
+                        if (i <= length - width * 4) {
+                            if ((i + 1) % 4 !== 0) {
+                                if ((i + 4) % (width * 4) == 0) {
+                                    data[i] = data[i - 4]
+                                    data[i + 1] = data[i - 3]
+                                    data[i + 2] = data[i - 2]
+                                    data[i + 3] = data[i - 1]
+                                    i += 4
+                                } else {
+                                    data[i] = 255 / 2 + 2 * data[i] - data[i + 4] - data[i + width * 4]
+                                }
+                            }
+                        } else {
+                            if ((i + 1) % 4 !== 0) {
+                                data[i] = data[i - width * 4]
+                            }
+                        }
+                    }
+                    context.putImageData(imgData, 0, 0)
                 }
                 img.src = './static/img/1.jpeg'
             }
