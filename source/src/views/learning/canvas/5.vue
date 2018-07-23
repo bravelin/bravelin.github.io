@@ -126,6 +126,14 @@
     window.requestAnimationFrame(that.animate)
 }</code></pre>
                 <h3 class="title">帧速率的计算</h3>
+                <p>可以根据当前帧距离上一帧的时间，计算出动画每秒钟播放的帧数（frame per second，fps）。</p>
+                <pre><code>var lastTime = 0
+function calculateFps () {
+    var now = (+new Date())
+    var fps = 1000 / (now - lastTime)
+    lastTime = now
+    return fps
+}</code></pre>
         </div>
         <footer>2016年07月10日</footer>
         <Comments></Comments>
