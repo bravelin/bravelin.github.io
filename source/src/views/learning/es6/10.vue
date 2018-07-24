@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之十：Proxy和Reflect</h2>
+        <h2 class="title">ES6标准入门笔记之十：Proxy和Reflect</h2>
         <div class="content">
             <h3 class="title">Proxy概述</h3>
             <p>用于修改某些操作的默认行为，在目标对象之前架设一“拦截”层，外界对该对象的访问都必须先通过这层拦截。<strong>提供一种机制，可以对外界的访问进行过滤和拦截。</strong></p>

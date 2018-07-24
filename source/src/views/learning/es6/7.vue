@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之七：函数的扩展</h2>
+        <h2 class="title">ES6标准入门笔记之七：函数的扩展</h2>
         <div class="content">
             <h3 class="title">函数参数的默认值</h3>
             <p>ES6允许为函数参数设置默认值，直接写在参数定义的后面：</p>

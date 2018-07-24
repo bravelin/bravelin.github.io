@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之三：字符串的扩展</h2>
+        <h2 class="title">ES6标准入门笔记之三：字符串的扩展</h2>
         <div class="content">
             <h3 class="title">字符的Unicode表示法</h3>
             <p>JS中可以使用\uxxxx表示一个字符，但这个表示法仅限于\u0000-\uffff之间的字符，超出这个范围的字符，必须用2个双字节的形式表达。</p>

@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之四：正则的扩展</h2>
+        <h2 class="title">ES6标准入门笔记之四：正则的扩展</h2>
         <div class="content">
             <h3 class="title">RegExp构造函数</h3>
             <p>ES6允许RegExp构造函数接受正则表达式作为参数，而不仅仅是字符串：var reg = new RegExp(/xyz/i)。</p>

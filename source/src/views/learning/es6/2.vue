@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之二：变量的解构赋值</h2>
+        <h2 class="title">ES6标准入门笔记之二：变量的解构赋值</h2>
         <div class="content">
             <h3 class="title">数组的解构赋值</h3>
             <p><strong>Destructuring</strong>：按照一定模式，从数组和对象中提取值，对变量进行赋值，称之为解构。</p>

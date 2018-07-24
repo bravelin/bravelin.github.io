@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《CSS 揭秘》笔记之七：结构与布局</h2>
+        <h2 class="title">CSS揭秘笔记之七：结构与布局</h2>
         <div class="content">
             <h3 class="title">自适应内部元素</h3>
             <p>如果希望元素自适应其内容的宽度，可以设置 <strong>width: min-content</strong></p>

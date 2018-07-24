@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《CSS 揭秘》笔记之三：形状</h2>
+        <h2 class="title">CSS揭秘笔记之三：形状</h2>
         <div class="content">
             <h3 class="title">自适应的椭圆</h3>
             <p>border-radius可以单独指定水平和垂直半径。用斜杠分隔这两个值。</p>

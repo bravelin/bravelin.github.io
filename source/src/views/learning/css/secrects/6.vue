@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《CSS 揭秘》笔记之六：用户体验</h2>
+        <h2 class="title">CSS揭秘笔记之六：用户体验</h2>
         <div class="content" :class="{'blur': showPop }">
             <h3 class="title">选择合适的鼠标光标</h3>
             <p>CSS2.1中提供的内建光标：<em>default、crosshair、help、move、pointer、progress、text、wait、e-resize、ne-resize、nw-resize、n-resize、se-resize、sw-resize、s-resize、w-resize</em>

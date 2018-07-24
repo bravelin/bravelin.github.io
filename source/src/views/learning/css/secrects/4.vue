@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《CSS 揭秘》笔记之四：视觉效果</h2>
+        <h2 class="title">CSS揭秘笔记之四：视觉效果</h2>
         <div class="content">
             <h3 class="title">单侧投影</h3>
             <p>box-shadow的通常使用方式是指定3个长度值和一个颜色值：</p>

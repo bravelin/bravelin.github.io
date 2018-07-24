@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之一：let与const命令</h2>
+        <h2 class="title">ES6标准入门笔记之一：let与const命令</h2>
         <div class="content">
             <p>ECMAScript 6（ES6）是JavaScript语言的下一代标准，2015年6月正式发布。计划以后每年发布一次标准，ES6又称ECMAScript 2015.</p>
             <p><strong>ECMAScript和JavaScript的关系：一个是国际标准，一个是标准的实现。</strong></p>

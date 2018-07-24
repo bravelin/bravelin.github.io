@@ -1,6 +1,6 @@
 ﻿<template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之五：数值的扩展</h2>
+        <h2 class="title">ES6标准入门笔记之五：数值的扩展</h2>
         <div class="content">
             <h3 class="title">二进制和八进制数值表示法</h3>
             <p>ES6对二进制和八进制提供了新的表示方法：分别用前缀0b(0B)和0o(0O)表示：</p>

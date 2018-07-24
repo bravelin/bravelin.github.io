@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之八：对象的扩展</h2>
+        <h2 class="title">ES6标准入门笔记之八：对象的扩展</h2>
         <div class="content">
             <h3 class="title">属性的简洁表示法</h3>
             <p>ES6允许直接写入变量和函数作为对象的属性和方法：</p>

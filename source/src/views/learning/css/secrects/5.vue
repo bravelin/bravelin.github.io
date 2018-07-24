@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《CSS 揭秘》笔记之五：字体排印</h2>
+        <h2 class="title">CSS揭秘笔记之五：字体排印</h2>
         <div class="content">
             <h3 class="title">连字符断行</h3>
             <p>使用样式text-align：justify设置两端对齐时，会出行单词孤岛现象。</p>

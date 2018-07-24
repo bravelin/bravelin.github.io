@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之六：数组的扩展</h2>
+        <h2 class="title">ES6标准入门笔记之六：数组的扩展</h2>
         <div class="content">
             <h3 class="title">Array.from()</h3>
             <p>用于将两类的对象转为真正的数组：类似数组的对象（array-like object）和可遍历的对象（iterable，包括Set和Map）。</p>

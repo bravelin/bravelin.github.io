@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之九：Symbol</h2>
+        <h2 class="title">ES6标准入门笔记之九：Symbol</h2>
         <div class="content">
             <h3 class="title">概述</h3>
             <p>ES5中对象属性名都是字符串，容易造成属性名的冲突。引入Symbol的目的就是解决这个问题。它是JavaScript语言的第七种类型（Undefined、NULL、Boolean、String、Number、Object）。</p>

@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《CSS 揭秘》笔记之二：背景与边框</h2>
+        <h2 class="title">CSS揭秘笔记之二：背景与边框</h2>
         <div class="content">
             <h3 class="title">半透明边框</h3>
             <p>默认情况下，背景会延伸到边框所在区域的下层，此时即使设置边框为透明的颜色，也无法达到预期的效果。可以通过<strong>background-clip</strong>属性来调整。这个属性初始值默认为border-box，设置为padding-box可以用内边距的外沿将背景裁剪掉。

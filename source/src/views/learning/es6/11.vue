@@ -1,6 +1,6 @@
 <template>
     <div class="page article">
-        <h2 class="title">《ES6标准入门》笔记之十一：二进制数组</h2>
+        <h2 class="title">ES6标准入门笔记之十一：二进制数组</h2>
         <div class="content">
             <p>二进制数组是JS操作二进制数据的接口。其目的是方便浏览器（WebGL）与显卡之间进行大量的、实时的交换数据。类似C语言的数组，可以直接操作内存。包括以下3类对象：</p>
             <p><strong>ArrayBuffer对象</strong>：代表内存中的一段二进制数据，可以通过“视图”进行操作。</p>
