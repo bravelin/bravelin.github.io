@@ -160,6 +160,9 @@ let pageRouterOption = [
     {
         path: '/learning/canvas/5', name: 'learning-canvas-5', component (resolve) { require(['./views/learning/canvas/5.vue'], resolve) }
     },
+    {
+        path: '/learning/canvas/6', name: 'learning-canvas-6', component (resolve) { require(['./views/learning/canvas/6.vue'], resolve) }
+    },
     /**********************************************************************************************************
      * React笔记
      **********************************************************************************************************/
