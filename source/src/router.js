@@ -219,9 +219,10 @@ router.beforeEach((to, from, next) => {
 router.afterEach(to => {
     global.hasCatalog = false
     setTimeout(() => {
-        if (global.articleList.length != 0) {
-            global.loading = false
-        }
+        // if (global.articleList.length != 0) {
+        //     global.loading = false
+        // }
+        global.loading = false
         window.scrollTo(0, sessionStorage.getItem(global.currPage) || 0)
     }, 250)
     if (/^(home|sentences|404|articles|collect|about)$/.test(to.name)) {

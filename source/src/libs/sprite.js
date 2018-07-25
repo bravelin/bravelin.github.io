@@ -13,6 +13,11 @@ class Sprite {
         this.visible = options.visible || true
         this.animating = options.animating || false
         this.behaviors = options.behaviors || []
+        Object.keys(options).forEach(key => { // 精灵对象的其他属性
+            if (this[key] == undefined) {
+                this[key] = options[key]
+            }
+        })
     }
     paint (context) {
         if (this.painter && this.visible) {
