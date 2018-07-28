@@ -1,2 +1,0 @@
-# bravelin.github.io
-# zhangjialin

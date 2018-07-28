@@ -183,6 +183,9 @@ let pageRouterOption = [
         path: '/example/canvas/clock', name: 'example-canvas-clock', meta: { shareTitle: '嘀嗒嘀嗒......', shareImg: '/static/assets/clock.png' }, component (resolve) { require(['./views/example/canvas/Clock.vue'], resolve) }
     },
     {
+        path: '/example/canvas/rfidCard', name: 'example-canvas-rfid-card', component (resolve) { require(['./views/example/canvas/RfidCard.vue'], resolve) }
+    },
+    {
         path: '/example/canvas/rose', name: 'example-canvas-rose', component (resolve) { require(['./views/example/canvas/Rose.vue'], resolve) }
     },
 
