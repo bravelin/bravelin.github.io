@@ -9,6 +9,24 @@
         width: 618px;
         background: #fff;
     }
+    @media screen and (max-width: 740px) {
+        div.exp>canvas.card{
+            width: 494px;
+            height: 318px;
+        }
+    }
+    @media screen and (max-width: 580px) {
+        div.exp>canvas.card{
+            width: 370px;
+            height: 238px;
+        }
+    }
+    @media screen and (max-width: 420px) {
+        div.exp>canvas.card{
+            width: 309px;
+            height: 199px;
+        }
+    }
 </style>
 <template>
     <div class="page article">
@@ -17,6 +35,11 @@
             <div class="exp">
                 <canvas ref="card" width="618" height="398" class="card"></canvas>
             </div>
+            <p>鼠标右键，可另存为图片。</p>
+            <p>chroma-js的使用：</p>
+            <pre><code>import chroma from 'chroma-js'</code></pre>
+            <pre><code>chroma('#D40880').brighter().alpha(0.4).css() // rgba(255,86,175,0.4)
+chroma('#D40880').darken().css() // rgb(157,0,84)</code></pre>
         </div>
         <footer>2018年07月27日</footer>
         <Comments></Comments>
@@ -61,6 +84,7 @@
                 that.drawLeftLines()
                 that.drawRightLines()
                 that.drawLogo()
+                // console.log(chroma('#D40880').darken().css())
                 // console.log(chroma('#D40880'), chroma('#D40880').brighter().alpha(0.4).css())
             },
             drawLogo () {
