@@ -5,8 +5,8 @@
         justify-content: center;
     }
     div.exp>canvas.card{
-        height: 398px;
-        width: 618px;
+        width: 1125px;
+        height: 722px;
         background: #fff;
     }
     @media screen and (max-width: 740px) {
@@ -33,7 +33,7 @@
         <h2 class="title">CAMeleon Card</h2>
         <div class="content">
             <div class="exp">
-                <canvas ref="card" width="618" height="398" class="card"></canvas>
+                <canvas ref="card" width="1125" height="722" class="card"></canvas>
             </div>
             <p>鼠标右键，可另存为图片。</p>
             <p>chroma-js的使用：</p>
@@ -53,8 +53,8 @@ chroma('#D40880').darken().css() // rgb(157,0,84)</code></pre>
         data () {
             return {
                 context: null,
-                allWidth: 618,
-                allHeight: 398,
+                allWidth: 1125,
+                allHeight: 722,
                 gap: 10, // 边距
                 cardWidth: 0,
                 cardHeight: 0,
@@ -96,10 +96,11 @@ chroma('#D40880').darken().css() // rgb(157,0,84)</code></pre>
                 context.shadowColor = chroma(baseColor).alpha(0.4).css()
                 context.shadowBlur = 10
                 const img = new Image()
-                let w = 79
-                let h = 63
+                let scale = 0.72
+                let w = 512 * scale
+                let h = 396 * scale
                 img.onload = function () {
-                    context.drawImage(img, (that.allWidth - w * 2.2) / 2 + 8, 140, w * 2.2, h * 2.2)
+                    context.drawImage(img, (that.allWidth - w) / 2, 160, w, h)
                 }
                 img.src = './static/img/card.png'
             },
@@ -108,98 +109,98 @@ chroma('#D40880').darken().css() // rgb(157,0,84)</code></pre>
                 const context = that.context
                 context.save()
                 const baseColor = '#61ff42'
-                context.lineWidth = 1
+                context.lineWidth = 2
                 context.lineCap = 'round'
                 context.lineJoin = 'round'
                 context.shadowOffsetX = 1
-                context.shadowOffsetY = -1
+                context.shadowOffsetY = 1
                 context.shadowColor = chroma(baseColor).alpha(0.9).css()
                 context.shadowBlur = 4
-                context.fillStyle = context.strokeStyle = chroma(baseColor).brighter().css()
+                context.fillStyle = context.strokeStyle = chroma(baseColor).darken(1).css()
                 // 1
                 const right = that.allWidth - that.gap
                 context.beginPath()
-                context.moveTo(right, that.gap + 148)
-                context.lineTo(right - 141, that.gap + 148)
-                context.lineTo(right - 141 - 10, that.gap + 148 + 10)
-                context.lineTo(right - 141 - 10 - 54, that.gap + 148 + 10)
+                context.moveTo(right, that.gap + 150)
+                context.lineTo(right - 160, that.gap + 150)
+                context.lineTo(right - 160 - 26, that.gap + 150 + 24)
+                context.lineTo(right - 160 - 26 - 80, that.gap + 150 + 24)
                 context.stroke()
                 context.beginPath()
-                context.arc(right - 141 - 10 - 54 - 4, that.gap + 158, 4, 0, 2 * Math.PI, false)
+                context.arc(right - 160 - 26 - 80 - 4, that.gap + 150 + 24, 4, 0, 2 * Math.PI, false)
                 context.stroke()
                 // 2
                 context.beginPath()
-                context.moveTo(right, that.gap + 165)
-                context.lineTo(right - 149, that.gap + 165)
-                context.lineTo(right - 149 - 11, that.gap + 165 + 11)
-                context.lineTo(right - 149 - 11 - 35, that.gap + 165 + 11)
+                context.moveTo(right, that.gap + 172)
+                context.lineTo(right - 149, that.gap + 172)
+                context.lineTo(right - 149 - 26, that.gap + 172 + 24)
+                context.lineTo(right - 149 - 26 - 189, that.gap + 172 + 24)
                 context.stroke()
                 context.beginPath()
-                context.arc(right - 149 - 11 - 35 - 3, that.gap + 176, 3, 0, 2 * Math.PI, false)
+                context.arc(right - 149 - 26 - 189 - 5, that.gap + 172 + 24, 3, 0, 2 * Math.PI, false)
                 context.stroke()
                 // 3
                 context.beginPath()
-                context.moveTo(right, that.gap + 190)
-                context.lineTo(right - 300, that.gap + 190)
+                context.moveTo(right, that.gap + 230)
+                context.lineTo(right - 400, that.gap + 230)
                 context.stroke()
                 // 4
                 context.beginPath()
-                context.moveTo(right, that.gap + 226)
-                context.lineTo(right - 140, that.gap + 226)
-                context.lineTo(right - 140 - 12, that.gap + 226 - 12)
-                context.lineTo(right - 140 - 12 - 100, that.gap + 226 - 12)
+                context.moveTo(right, that.gap + 290)
+                context.lineTo(right - 140, that.gap + 290)
+                context.lineTo(right - 140 - 26, that.gap + 290 - 24)
+                context.lineTo(right - 140 - 26 - 300, that.gap + 290 - 24)
                 context.stroke()
                 // 5
                 context.beginPath()
-                context.moveTo(right, that.gap + 259)
-                context.lineTo(right - 149, that.gap + 259)
-                context.lineTo(right - 149 - 12, that.gap + 259 - 12)
-                context.lineTo(right - 149 - 12 - 53, that.gap + 259 - 12)
+                context.moveTo(right, that.gap + 330)
+                context.lineTo(right - 149, that.gap + 330)
+                context.lineTo(right - 149 - 26, that.gap + 330 - 24)
+                context.lineTo(right - 149 - 26 - 123, that.gap + 330 - 24)
                 context.stroke()
                 context.beginPath()
-                context.arc(right - 149 - 12 - 53 - 3, that.gap + 259 - 12, 3, 0, 2 * Math.PI, false)
+                context.arc(right - 149 - 26 - 123 - 4, that.gap + 330 - 24, 3, 0, 2 * Math.PI, false)
                 context.stroke()
                 // 1====
                 context.shadowColor = undefined
                 context.shadowBlur = 0
-                context.lineWidth = 0.5
-                context.strokeStyle = chroma(baseColor).darken(6).css()
+                context.shadowOffsetX = 0
+                context.shadowOffsetY = 0
+                context.lineWidth = 2
+                context.strokeStyle = chroma(baseColor).darken(3.2).css()
                 context.beginPath()
-                context.moveTo(right, that.gap + 120)
-                context.lineTo(right - 164, that.gap + 120)
-                context.lineTo(right - 164 - 12, that.gap + 132)
-                context.lineTo(right - 164 - 32, that.gap + 132)
+                context.moveTo(right, that.gap + 135)
+                context.lineTo(right - 164, that.gap + 135)
+                context.lineTo(right - 164 - 26, that.gap + 159)
+                context.lineTo(right - 164 - 26 - 70, that.gap + 159)
                 context.stroke()
                 // 2
                 context.beginPath()
-                context.moveTo(right, that.gap + 178)
-                context.lineTo(right - 130, that.gap + 178)
-                context.lineTo(right - 134, that.gap + 178 + 4)
-                context.lineTo(right - 134 - 38, that.gap + 178 + 4)
+                context.moveTo(right, that.gap + 189)
+                context.lineTo(right - 135, that.gap + 189)
+                context.lineTo(right - 135 - 26, that.gap + 189 + 24)
+                context.lineTo(right - 135 - 26 - 240, that.gap + 189 + 24)
                 context.stroke()
                 // 3
                 context.beginPath()
-                context.moveTo(right, that.gap + 182)
-                context.lineTo(right - 125, that.gap + 182)
+                context.moveTo(right, that.gap + 205)
+                context.lineTo(right - 129, that.gap + 205)
                 context.stroke()
                 // 4
                 context.beginPath()
-                context.moveTo(right, that.gap + 220)
-                context.lineTo(right - 155, that.gap + 220)
-                context.lineTo(right - 155 - 10, that.gap + 220 - 13)
-                context.lineTo(right - 155 - 10 - 16, that.gap + 220 - 13)
+                context.moveTo(right, that.gap + 269)
+                context.lineTo(right - 140, that.gap + 269)
+                context.lineTo(right - 140 - 26, that.gap + 269 - 24)
+                context.lineTo(right - 140 - 26 - 220, that.gap + 269 - 24)
                 context.stroke()
                 // 5
                 context.beginPath()
-                context.moveTo(right, that.gap + 245)
-                context.lineTo(right - 132, that.gap + 245)
-                context.lineTo(right - 132 - 6, that.gap + 245 + 4)
-                context.lineTo(right - 132 - 6 - 35, that.gap + 245 + 4)
+                context.moveTo(right, that.gap + 249)
+                context.lineTo(right - 143, that.gap + 249)
                 context.stroke()
                 // 6
                 context.beginPath()
-                context.moveTo(right, that.gap + 271)
-                context.lineTo(right - 125, that.gap + 271)
+                context.moveTo(right, that.gap + 318)
+                context.lineTo(right - 400, that.gap + 318)
                 context.stroke()
                 context.restore()
             },
@@ -209,105 +210,114 @@ chroma('#D40880').darken().css() // rgb(157,0,84)</code></pre>
                 context.save()
                 const baseColor = '#61ff42'
                 // 1
-                context.lineWidth = 1
+                context.lineWidth = 2
                 context.lineCap = 'round'
                 context.lineJoin = 'round'
                 context.shadowOffsetX = 1
-                context.shadowOffsetY = -1
+                context.shadowOffsetY = 1
                 context.shadowColor = chroma(baseColor).alpha(0.9).css()
                 context.shadowBlur = 4
-                context.fillStyle = context.strokeStyle = chroma(baseColor).brighter().css()
+                context.fillStyle = context.strokeStyle = chroma(baseColor).darken(1).css()
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 127)
-                context.lineTo(that.gap + 83, that.gap + 127)
-                context.lineTo(that.gap + 83 + 20, that.gap + 127 + 22)
-                context.lineTo(that.gap + 83 + 20 + 98, that.gap + 127 + 22)
+                context.moveTo(that.gap, that.gap + 150)
+                context.lineTo(that.gap + 110, that.gap + 150)
+                context.lineTo(that.gap + 110 + 24, that.gap + 150 + 26)
+                context.lineTo(that.gap + 110 + 24 + 157, that.gap + 150 + 26)
                 context.stroke()
                 // 2
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 137)
-                context.lineTo(that.gap + 73, that.gap + 137)
-                context.lineTo(that.gap + 73 + 20, that.gap + 137 + 22)
-                context.lineTo(that.gap + 73 + 20 + 128, that.gap + 137 + 22)
+                context.moveTo(that.gap, that.gap + 170)
+                context.lineTo(that.gap + 98, that.gap + 170)
+                context.lineTo(that.gap + 98 + 24, that.gap + 170 + 26)
+                context.lineTo(that.gap + 98 + 24 + 215, that.gap + 170 + 26)
                 context.stroke()
                 context.beginPath()
-                context.arc(that.gap + 73 + 20 + 128 + 5, that.gap + 137 + 22, 5, 0, 2 * Math.PI, false)
+                context.lineWidth = 2
+                context.arc(that.gap + 98 + 24 + 215 + 6, that.gap + 170 + 26, 5, 0, 2 * Math.PI, false)
                 context.stroke()
                 // 3
+                context.lineWidth = 2
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 190)
-                context.lineTo(that.gap + 126, that.gap + 190)
+                context.moveTo(that.gap, that.gap + 270)
+                context.lineTo(that.gap + 186, that.gap + 270)
                 context.stroke()
                 context.beginPath()
-                context.arc(that.gap + 126 + 4, that.gap + 190, 4, 0, 2 * Math.PI, false)
+                context.lineWidth = 1
+                context.arc(that.gap + 186 + 4, that.gap + 270, 4, 0, 2 * Math.PI, false)
                 context.fill()
                 // 4
+                context.lineWidth = 2
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 222)
-                context.lineTo(that.gap + 83, that.gap + 222)
-                context.lineTo(that.gap + 83 + 20, that.gap + 204)
-                context.lineTo(that.gap + 103 + 125, that.gap + 204)
+                context.moveTo(that.gap, that.gap + 314)
+                context.lineTo(that.gap + 120, that.gap + 314)
+                context.lineTo(that.gap + 120 + 24, that.gap + 290)
+                context.lineTo(that.gap + 133 + 220, that.gap + 290)
                 context.stroke()
                 context.beginPath()
-                context.arc(that.gap + 103 + 125 + 4, that.gap + 204, 4, 0, 2 * Math.PI, false)
+                context.lineWidth = 2
+                context.arc(that.gap + 133 + 220 + 5, that.gap + 290, 4, 0, 2 * Math.PI, false)
                 context.stroke()
                 // 5
                 context.beginPath()
-                context.moveTo(that.gap + 29, that.gap + 249)
-                context.lineTo(that.gap + 29 + 73, that.gap + 249)
-                context.lineTo(that.gap + 29 + 73 + 20, that.gap + 231)
-                context.lineTo(that.gap + 29 + 73 + 80, that.gap + 231)
+                context.lineWidth = 2
+                context.moveTo(that.gap, that.gap + 355)
+                context.lineTo(that.gap + 40 + 88, that.gap + 355)
+                context.lineTo(that.gap + 40 + 88 + 26, that.gap + 329)
+                context.lineTo(that.gap + 40 + 88 + 380, that.gap + 329)
                 context.stroke()
                 context.beginPath()
-                context.arc(that.gap + 29 + 73 + 55, that.gap + 231 - 6, 5, 0, 2 * Math.PI, false)
+                context.lineWidth = 2
+                context.arc(that.gap + 430, that.gap + 329 - 6, 5, 0, 2 * Math.PI, false)
                 context.stroke()
 
                 // 1====
                 context.shadowColor = undefined
                 context.shadowBlur = 0
-                context.lineWidth = 0.5
-                context.strokeStyle = chroma(baseColor).darken(6).css()
+                context.shadowOffsetX = 0
+                context.shadowOffsetY = 0
+                context.lineWidth = 2
+                context.strokeStyle = chroma(baseColor).darken(3.2).css()
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 150)
-                context.lineTo(that.gap + 95, that.gap + 150)
-                context.lineTo(that.gap + 95 + 16, that.gap + 150 + 17)
-                context.lineTo(that.gap + 95 + 16 + 72, that.gap + 150 + 17)
+                context.moveTo(that.gap, that.gap + 185)
+                context.lineTo(that.gap + 132, that.gap + 185)
+                context.lineTo(that.gap + 132 + 24, that.gap + 185 + 26)
+                context.lineTo(that.gap + 132 + 24 + 137, that.gap + 185 + 26)
                 context.stroke()
                 // 2
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 170)
-                context.lineTo(that.gap + 55, that.gap + 170)
+                context.moveTo(that.gap, that.gap + 223)
+                context.lineTo(that.gap + 395, that.gap + 223)
                 context.stroke()
                 // 3
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 179)
-                context.lineTo(that.gap + 58, that.gap + 179)
-                context.lineTo(that.gap + 64, that.gap + 184)
-                context.lineTo(that.gap + 64 + 295, that.gap + 184)
+                context.moveTo(that.gap, that.gap + 235)
+                context.lineTo(that.gap + 96, that.gap + 235)
+                context.lineTo(that.gap + 96 + 24, that.gap + 250)
+                context.lineTo(that.gap + 96 + 24 + 250, that.gap + 250)
                 context.stroke()
                 // 4
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 199)
-                context.lineTo(that.gap + 79, that.gap + 199)
+                context.moveTo(that.gap, that.gap + 285)
+                context.lineTo(that.gap + 80, that.gap + 285)
                 context.stroke()
                 // 5
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 204)
-                context.lineTo(that.gap + 87, that.gap + 204)
-                context.lineTo(that.gap + 93, that.gap + 198)
-                context.lineTo(that.gap + 93 + 232, that.gap + 198)
+                context.moveTo(that.gap, that.gap + 295)
+                context.lineTo(that.gap + 118, that.gap + 295)
+                context.lineTo(that.gap + 118 + 20, that.gap + 278)
+                context.lineTo(that.gap + 118 + 20 + 270, that.gap + 278)
                 context.stroke()
                 // 6
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 212)
-                context.lineTo(that.gap + 71, that.gap + 212)
+                context.moveTo(that.gap, that.gap + 208)
+                context.lineTo(that.gap + 71, that.gap + 208)
                 context.stroke()
                 // 7
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 231)
-                context.lineTo(that.gap + 87, that.gap + 231)
-                context.lineTo(that.gap + 87 + 16, that.gap + 215)
-                context.lineTo(that.gap + 87 + 16 + 97, that.gap + 215)
+                context.moveTo(that.gap, that.gap + 335)
+                context.lineTo(that.gap + 125, that.gap + 335)
+                context.lineTo(that.gap + 125 + 24, that.gap + 311)
+                context.lineTo(that.gap + 125 + 24 + 430, that.gap + 311)
                 context.stroke()
                 context.restore()
             },
@@ -317,21 +327,26 @@ chroma('#D40880').darken().css() // rgb(157,0,84)</code></pre>
                 context.save()
                 const baseColor = '#61ff42'
                 const color = chroma(baseColor).brighter()
-                let gradient = context.createLinearGradient(that.gap, that.gap + 106, that.gap, that.gap + 106 + 147)
+                let startY = that.allHeight * 0.17
+                let h = that.allHeight * 0.45
+                let gradient = context.createLinearGradient(that.gap, that.gap + startY, that.gap, that.gap + startY + h)
                 gradient.addColorStop(0, color.alpha(0.06).css())
-                gradient.addColorStop(0.5, color.alpha(0.05).css())
+                gradient.addColorStop(0.78, color.alpha(0.05).css())
                 gradient.addColorStop(1, color.alpha(0).css())
                 context.fillStyle = gradient
                 context.beginPath()
-                context.moveTo(that.gap, that.gap + 106)
-                context.lineTo(that.gap + 96, that.gap + 106)
-                context.lineTo(that.gap + 125, that.gap + 106 + 32)
-                context.lineTo(that.allWidth - that.gap - 225, that.gap + 106 + 32)
-                context.lineTo(that.allWidth - that.gap - 96 - 100, that.gap + 106)
-                context.lineTo(that.allWidth - that.gap, that.gap + 106)
-                context.lineTo(that.allWidth - that.gap, that.gap + 106 + 147)
-                context.lineTo(that.gap, that.gap + 106 + 147)
-                context.lineTo(that.gap, that.gap + 106)
+
+                let topL = that.allWidth * 0.23
+                let rectL = 40
+                context.moveTo(that.gap, that.gap + startY)
+                context.lineTo(that.gap + topL, that.gap + startY)
+                context.lineTo(that.gap + topL + rectL, that.gap + startY + 45)
+                context.lineTo(that.allWidth - that.gap - topL - rectL, that.gap + startY + 45)
+                context.lineTo(that.allWidth - that.gap - topL, that.gap + startY)
+                context.lineTo(that.allWidth - that.gap, that.gap + startY)
+                context.lineTo(that.allWidth - that.gap, that.gap + startY + h)
+                context.lineTo(that.gap, that.gap + startY + h)
+                context.lineTo(that.gap, that.gap + startY)
                 context.fill()
                 context.closePath()
                 context.restore()
@@ -340,13 +355,13 @@ chroma('#D40880').darken().css() // rgb(157,0,84)</code></pre>
                 const that = this
                 const context = that.context
                 let startX = that.centerX
-                let startY = that.cardHeight - 62
+                let startY = that.cardHeight - 110
                 context.save()
                 context.textAlign = 'center'
                 context.textBaseline = 'middle'
                 context.strokeStyle = '#00080a'
                 context.fillStyle = '#ffffff'
-                context.font = '40px Arial'
+                context.font = '98px Arial'
                 context.strokeText('CAMeleon', startX, startY)
                 context.fillText('CAMeleon', startX, startY)
                 context.restore()
@@ -369,16 +384,16 @@ chroma('#D40880').darken().css() // rgb(157,0,84)</code></pre>
             drawBackground () {
                 const that = this
                 const context = that.context
-                context.fillStyle = '#ffffff'
-                context.fillRect(0, 0, that.allWidth, that.allHeight)
+                // context.fillStyle = '#ffffff'
+                // context.fillRect(0, 0, that.allWidth, that.allHeight)
                 let startX = that.gap
                 let startY = that.gap
-                let radius = 18
+                let radius = 20
                 let endX = that.allWidth - that.gap
                 let endY = that.allHeight - that.gap
                 let gradient = context.createLinearGradient(startX, startY, startX, endY)
                 gradient.addColorStop(0, '#26333b')
-                gradient.addColorStop(0.5, '#20282b')
+                gradient.addColorStop(0.6, '#20282b')
                 gradient.addColorStop(1, '#2c2c2a')
                 context.fillStyle = gradient
                 context.strokeStyle = '#1d1918'
