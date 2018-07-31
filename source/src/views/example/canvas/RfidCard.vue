@@ -391,13 +391,13 @@ chroma('#D40880').darken().css() // rgb(157,0,84)</code></pre>
                 let radius = 20
                 let endX = that.allWidth - that.gap
                 let endY = that.allHeight - that.gap
-                let gradient = context.createLinearGradient(startX, startY, startX, endY)
-                gradient.addColorStop(0, '#26333b')
-                gradient.addColorStop(0.6, '#20282b')
-                gradient.addColorStop(1, '#2c2c2a')
-                context.fillStyle = gradient
-                context.strokeStyle = '#1d1918'
-                // context.fillStyle = 'rgba(41,40,38,1)'
+                // let gradient = context.createLinearGradient(startX, startY, startX, endY)
+                // gradient.addColorStop(0, '#26333b')
+                // gradient.addColorStop(0.6, '#20282b')
+                // gradient.addColorStop(1, '#2c2c2a')
+                // context.fillStyle = gradient
+                // context.strokeStyle = '#1d1918'
+                context.fillStyle = 'rgba(0,0,0,1)'
                 context.lineWidth = 1
                 context.beginPath()
                 context.moveTo(startX + radius, startY)
