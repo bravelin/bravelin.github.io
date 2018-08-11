@@ -148,46 +148,60 @@
                 const that = this
                 page = page || that.page
                 let searchKey = that.searchKey.trim()
-                let filter = {
-                    fields: {
-                        content: false
-                    },
-                    limit: that.pageSize,
-                    where: {},
-                    skip: (page - 1) * that.pageSize,
-                    order: 'createdAt DESC'
-                }
+                // let filter = {
+                //     fields: {
+                //         content: false
+                //     },
+                //     limit: that.pageSize,
+                //     where: {},
+                //     skip: (page - 1) * that.pageSize,
+                //     order: 'createdAt DESC'
+                // }
                 // 求总的页数的请求filter
-                let totalPageFilter = {
-                    fields: {
-                        id: true
-                    },
-                    limit: 10000,
-                    where: {}
-                }
-                if (that.activeMenuId != 'all') {
-                    filter.where.status = that.activeMenuId
-                    totalPageFilter.where.status = that.activeMenuId
-                }
-                if (searchKey) {
-                    filter.where.title = { 'like': searchKey }
-                    totalPageFilter.where.title = { 'like': searchKey }
-                }
+                // let totalPageFilter = {
+                //     fields: {
+                //         id: true
+                //     },
+                //     limit: 10000,
+                //     where: {}
+                // }
+                // if (that.activeMenuId != 'all') {
+                //     filter.where.status = that.activeMenuId
+                //     totalPageFilter.where.status = that.activeMenuId
+                // }
+                // if (searchKey) {
+                //     filter.where.title = { 'like': searchKey }
+                //     totalPageFilter.where.title = { 'like': searchKey }
+                // }
                 that.$router.replace({ name: 'articles', query: { status: that.activeMenuId, key: encodeURIComponent(that.searchKey), page: page } })
-                // 查询总页数
-                fetch({
-                    url: 'https://d.apicloud.com/mcm/api/articles',
-                    params: { filter: JSON.stringify(totalPageFilter) }
-                }).then(data => {
-                    that.totalPage = Math.ceil(data.length / that.pageSize)
-                })
+                // // 查询总页数
+                // fetch({
+                //     url: 'https://d.apicloud.com/mcm/api/articles',
+                //     params: { filter: JSON.stringify(totalPageFilter) }
+                // }).then(data => {
+                //     that.totalPage = Math.ceil(data.length / that.pageSize)
+                // })
                 // 查询当页数据
+                // fetch({
+                //     url: 'https://d.apicloud.com/mcm/api/articles',
+                //     params: { filter: JSON.stringify(filter) }
+                // }).then(res => {
+                //     that.dataList = res || []
+                //     that.page = page
+                //     loading(false)
+                // })
                 fetch({
-                    url: 'https://d.apicloud.com/mcm/api/articles',
-                    params: { filter: JSON.stringify(filter) }
+                    url: 'api/v1/articles',
+                    params: {
+                        status: that.activeMenuId != 'all' ? that.activeMenuId : '',
+                        key: searchKey,
+                        pageSize: that.pageSize,
+                        page: page
+                    }
                 }).then(res => {
-                    that.dataList = res || []
-                    that.page = page
+                    that.dataList = res.dataList || []
+                    that.page = res.page
+                    that.totalPage = res.totalPage
                     loading(false)
                 })
             },
@@ -200,8 +214,20 @@
             doCommitDel () {
                 const that = this
                 loading(true)
+                // fetch({
+                //     url: 'https://d.apicloud.com/mcm/api/articles/{id}',
+                //     method: 'DELETE',
+                //     params: {
+                //         id: that.delId
+                //     }
+                // }).then(() => {
+                //     tipShow('删除成功！')
+                //     loading(false)
+                //     that.queryDataList()
+                //     that.isShowDelConfirmModal = false
+                // })
                 fetch({
-                    url: 'https://d.apicloud.com/mcm/api/articles/{id}',
+                    url: 'api/v1/articles/{id}',
                     method: 'DELETE',
                     params: {
                         id: that.delId
@@ -216,16 +242,28 @@
             doChangeStatus (item, ope) {
                 const that = this
                 loading(true)
+                // fetch({
+                //     url: 'https://d.apicloud.com/mcm/api/articles/{id}',
+                //     method: 'put',
+                //     params: {
+                //         id: item.id
+                //     },
+                //     data: {
+                //         '$set': {
+                //             status: ope
+                //         }
+                //     }
+                // }).then(() => {
+                //     tipShow('操作成功！')
+                //     loading(false)
+                //     that.queryDataList()
+                // })
                 fetch({
-                    url: 'https://d.apicloud.com/mcm/api/articles/{id}',
+                    url: 'api/v1/articles/{id}',
                     method: 'put',
                     params: {
-                        id: item.id
-                    },
-                    data: {
-                        '$set': {
-                            status: ope
-                        }
+                        id: item.id,
+                        status: ope
                     }
                 }).then(() => {
                     tipShow('操作成功！')
@@ -269,7 +307,8 @@
                 loading(true)
                 if (!addForm.id) {
                     fetch({
-                        url: 'https://d.apicloud.com/mcm/api/articles',
+                        // url: 'https://d.apicloud.com/mcm/api/articles',
+                        url: 'api/v1/articles',
                         method: 'post',
                         data: {
                             title: addForm.title,
@@ -281,7 +320,7 @@
                             status: 'draft'
                         }
                     }).then((res) => {
-                        if (res.id) {
+                        if (res.status == 'success') {
                             that.isShowAddModal = false
                             that.queryDataList()
                             tipShow('添加成功！', true)
@@ -292,7 +331,8 @@
                     })
                 } else {
                     fetch({
-                        url: `https://d.apicloud.com/mcm/api/articles/${addForm.id}`,
+                        // url: `https://d.apicloud.com/mcm/api/articles/${addForm.id}`,
+                        url: `api/v1/articles/${addForm.id}`,
                         method: 'PUT',
                         data: {
                             title: addForm.title,
@@ -303,7 +343,7 @@
                             routerName: addForm.routerName
                         }
                     }).then((res) => {
-                        if (res.id) {
+                        if (res.status == 'success') {
                             that.isShowAddModal = false
                             that.queryDataList()
                             tipShow('修改成功！', true)

@@ -24,7 +24,7 @@
                             <td>{{ (index + 1) + (page - 1) * pageSize }}</td>
                             <td>{{ item.content }}</td>
                             <td>{{ item.origin }}</td>
-                           <td>{{ item.updatedAt | DateTimeFilter }}</td>
+                           <td>{{ item.updateAt | DateTimeFilter }}</td>
                             <td>{{ statusObj[item.status] }}</td>
                             <td class="ope-btns">
                                 <a v-if="item.status != 'online'" class="tool-btn-delete" @click="doDel(item)">删除</a>
@@ -71,6 +71,7 @@
     import SearchInput from '@/components/common/SearchInput'
     import Pagination from '@/components/common/Pagination'
     import DateTimeFilter from '@/filters/dateTimeFilter'
+    import { formatTime } from '@/utils/helper'
 
     export default {
         name: 'sentences',
@@ -131,45 +132,52 @@
                 const that = this
                 page = page || that.page
                 let searchKey = that.searchKey.trim()
-                let filter = {
-                    fields: {
-                    },
-                    limit: that.pageSize,
-                    where: {},
-                    skip: (page - 1) * that.pageSize,
-                    order: 'createdAt DESC'
-                }
+                // let filter = {
+                //     fields: {
+                //     },
+                //     limit: that.pageSize,
+                //     where: {},
+                //     skip: (page - 1) * that.pageSize,
+                //     order: 'createdAt DESC'
+                // }
                 // 求总的页数的请求filter
-                let totalPageFilter = {
-                    fields: {
-                        id: true
-                    },
-                    limit: 10000,
-                    where: {}
-                }
-                if (that.activeMenuId != 'all') {
-                    filter.where.status = that.activeMenuId
-                    totalPageFilter.where.status = that.activeMenuId
-                }
-                if (searchKey) {
-                    filter.where.content = { 'like': searchKey }
-                    totalPageFilter.where.content = { 'like': searchKey }
-                }
+                // let totalPageFilter = {
+                //     fields: {
+                //         id: true
+                //     },
+                //     limit: 10000,
+                //     where: {}
+                // }
+                // if (that.activeMenuId != 'all') {
+                //     filter.where.status = that.activeMenuId
+                //     totalPageFilter.where.status = that.activeMenuId
+                // }
+                // if (searchKey) {
+                //     filter.where.content = { 'like': searchKey }
+                //     totalPageFilter.where.content = { 'like': searchKey }
+                // }
                 that.$router.replace({ name: 'sentences', query: { status: that.activeMenuId, key: encodeURIComponent(that.searchKey), page: page } })
                 // 查询总页数
-                fetch({
-                    url: 'https://d.apicloud.com/mcm/api/sentences',
-                    params: { filter: JSON.stringify(totalPageFilter) }
-                }).then(data => {
-                    that.totalPage = Math.ceil(data.length / that.pageSize)
-                })
+                // fetch({
+                //     url: 'https://d.apicloud.com/mcm/api/sentences',
+                //     params: { filter: JSON.stringify(totalPageFilter) }
+                // }).then(data => {
+                //     that.totalPage = Math.ceil(data.length / that.pageSize)
+                // })
                 // 查询当页数据
                 fetch({
-                    url: 'https://d.apicloud.com/mcm/api/sentences',
-                    params: { filter: JSON.stringify(filter) }
+                    // url: 'https://d.apicloud.com/mcm/api/sentences',
+                    url: 'api/v1/sentences',
+                    params: {
+                        status: that.activeMenuId != 'all' ? that.activeMenuId : '',
+                        key: searchKey,
+                        pageSize: that.pageSize,
+                        page: page
+                    }
                 }).then(res => {
-                    that.dataList = res || []
-                    that.page = page
+                    that.dataList = res.dataList || []
+                    that.page = res.page
+                    that.totalPage = res.totalPage
                     loading(false)
                 })
             },
@@ -183,7 +191,8 @@
                 const that = this
                 loading(true)
                 fetch({
-                    url: 'https://d.apicloud.com/mcm/api/sentences/{id}',
+                    // url: 'https://d.apicloud.com/mcm/api/sentences/{id}',
+                    url: 'api/v1/sentences/{id}',
                     method: 'DELETE',
                     params: {
                         id: that.delId
@@ -199,16 +208,18 @@
                 const that = this
                 loading(true)
                 fetch({
-                    url: 'https://d.apicloud.com/mcm/api/sentences/{id}',
+                    // url: 'https://d.apicloud.com/mcm/api/sentences/{id}',
+                    url: 'api/v1/sentences/{id}',
                     method: 'put',
                     params: {
-                        id: item.id
-                    },
-                    data: {
-                        '$set': {
-                            status: ope
-                        }
+                        id: item.id,
+                        status: ope
                     }
+                    // data: {
+                    //     '$set': {
+                    //         status: ope
+                    //     }
+                    // }
                 }).then(() => {
                     tipShow('操作成功！')
                     loading(false)
@@ -221,6 +232,7 @@
                 addForm.content = item.content
                 addForm.origin = item.origin
                 addForm.id = item.id
+                item.imgs = item.imgs || []
                 let strArr = item.imgs.map(img => {
                     return img.src + '|' + img.w + '|' + img.h
                 })
@@ -242,6 +254,7 @@
                 addForm.content = addForm.content.trim()
                 addForm.origin = addForm.origin.trim()
                 addForm.imgs = addForm.imgs.trim()
+                const nowTime = formatTime(new Date())
                 loading(true)
                 let splitImgs = addForm.imgs.split(';')
                 let imgs = splitImgs.map(img => {
@@ -252,16 +265,19 @@
                 })
                 if (!addForm.id) {
                     fetch({
-                        url: 'https://d.apicloud.com/mcm/api/sentences',
+                        // url: 'https://d.apicloud.com/mcm/api/sentences',
+                        url: 'api/v1/sentences',
                         method: 'post',
                         data: {
                             content: addForm.content,
                             origin: addForm.origin,
                             imgs: imgs,
-                            status: 'draft'
+                            status: 'draft',
+                            createAt: nowTime,
+                            updateAt: nowTime
                         }
                     }).then((res) => {
-                        if (res.id) {
+                        if (res.status == 'success') {
                             that.isShowAddModal = false
                             that.queryDataList()
                             tipShow('添加成功！', true)
@@ -272,15 +288,17 @@
                     })
                 } else {
                     fetch({
-                        url: `https://d.apicloud.com/mcm/api/sentences/${addForm.id}`,
+                        // url: `https://d.apicloud.com/mcm/api/sentences/${addForm.id}`,
+                        url: `api/v1/sentences/${addForm.id}`,
                         method: 'PUT',
                         data: {
                             content: addForm.content,
                             origin: addForm.origin,
-                            imgs: imgs
+                            imgs: imgs,
+                            updateAt: nowTime
                         }
                     }).then((res) => {
-                        if (res.id) {
+                        if (res.status == 'success') {
                             that.isShowAddModal = false
                             that.queryDataList()
                             tipShow('修改成功！', true)

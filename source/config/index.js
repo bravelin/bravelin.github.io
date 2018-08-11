@@ -3,10 +3,11 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const distPath = '/home/zhangjialin/blog-egg/app/public'
 
 module.exports = {
   dev: {
-    
+
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -44,17 +45,26 @@ module.exports = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
+    proxyTable: {
+      '/api': {
+        target: 'http://127.0.0.1:7001',
+        changeOrigin: true,
+        // pathRewrite: {
+        //   '^/api': ''
+        // }
+      }
+    }
   },
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, distPath + '/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, distPath),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '', // =======================build之后资源的路径修正
-
+    // assetsPublicPath: '', // =======================build之后资源的路径修正
+    assetsPublicPath: 'public/',
     /**
      * Source Maps
      */

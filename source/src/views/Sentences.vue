@@ -3,7 +3,7 @@
         <Banner></Banner>
         <ul class="article-list">
             <li v-for="item in list" :key="item.id">
-                <h4>{{ item.updatedAt | TimeFilter }}</h4>
+                <h4>{{ item.updateAt | TimeFilter }}</h4>
                 <h3>{{ item.content }}</h3>
                 <ul class="pics">
                     <li v-for="(pic, picIndex) in item.imgs" @click="doPreview(item.imgs, picIndex)" v-if="pic.src"><img :src="pic.src"/></li>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import types from './types'
 import fetch from '../utils/fetch'
+import menus from './menu'
 import { camelCaseToKebab } from '../utils/helper'
 
 Vue.use(Vuex)
@@ -194,32 +195,25 @@ export default new Vuex.Store({
         },
         //  获取菜单数据
         [types.GET_MENU_DATA] (context) {
-            fetch({
-                url: './static/data/menu.json'
-            }).then((res) => {
-                let menus = res.respData || []
-                let pathData = {}
-                menus.forEach(menu => {
-                    menu.isOpened = false
-                    menu.isActive = false
-                    menu.key = camelCaseToKebab(menu.code)
-                    pathData[menu.code] = [{name: menu.name, code: menu.code}]
+            let pathData = {}
+            menus.forEach(menu => {
+                menu.isOpened = false
+                menu.isActive = false
+                menu.key = camelCaseToKebab(menu.code)
+                pathData[menu.code] = [{name: menu.name, code: menu.code}]
 
-                    if (menu.children) {
-                        menu.children.forEach(subMenu => {
-                            subMenu.isActive = false
-                            subMenu.key = camelCaseToKebab(subMenu.code)
-                            pathData[subMenu.code] = [{name: menu.name, code: menu.code, query: {}}, {name: subMenu.name, code: subMenu.code, query: {}}]
-                        })
-                    }
-                })
-                localStorage.setItem('lin-website-menu', JSON.stringify(menus))
-                localStorage.setItem('lin-website-path', JSON.stringify(pathData))
-                context.state.menuData = menus
-                context.state.pathData = pathData
-            }, (error) => {
-                console.log('error........', error)
+                if (menu.children) {
+                    menu.children.forEach(subMenu => {
+                        subMenu.isActive = false
+                        subMenu.key = camelCaseToKebab(subMenu.code)
+                        pathData[subMenu.code] = [{name: menu.name, code: menu.code, query: {}}, {name: subMenu.name, code: subMenu.code, query: {}}]
+                    })
+                }
             })
+            localStorage.setItem('lin-website-menu', JSON.stringify(menus))
+            localStorage.setItem('lin-website-path', JSON.stringify(pathData))
+            context.state.menuData = menus
+            context.state.pathData = pathData
         }
     }
 })

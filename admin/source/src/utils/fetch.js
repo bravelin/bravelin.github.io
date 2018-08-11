@@ -6,6 +6,7 @@ import VueResource from 'vue-resource'
 import sha from './sha'
 import store from '../store/index'
 import Config from './config'
+import { cookie } from './helper'
 
 Vue.config.productionTip = false
 Vue.use(VueResource)
@@ -26,6 +27,7 @@ Vue.http.interceptors.push((request, next) => { // 设置全局的请求参数
     if (store.state.userToken) {
         request.headers.set('authorization', store.state.userToken)
     }
+    request.headers.set('x-csrf-token', cookie('csrfToken'))
 })
 
 export default function fetch (options) {
