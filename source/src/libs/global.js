@@ -22,6 +22,14 @@ export default {
         Vue.http.get('api/v1/sentences', {
             params: { status: 'online' }
         }).then(res => {
+            let list = res.body.dataList
+            list.forEach(item => {
+                if (item.imgs) {
+                    item.imgs = JSON.parse(item.imgs)
+                } else {
+                    item.imgs = []
+                }
+            })
             that.sentenceList.push(...res.body.dataList)
         })
     },

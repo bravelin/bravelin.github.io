@@ -12,6 +12,6 @@
                 <router-link class="about" tag="li" :to="{ name: 'about' }"></router-link>
             </ul>
         </div>
-        <div>@ 2018 zhangjialin</div>
+        <div>©2018 zhangjialin 赣ICP备<a href="http://www.miitbeian.gov.cn/">18011067号</a></div>
     </div>
 </template>

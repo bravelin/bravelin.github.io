@@ -196,7 +196,7 @@ context.putImageData(imgData, 0, 0)</code></pre>
                 img.onload = function () {
                     context.drawImage(img, 0, 0, w, h)
                 }
-                img.src = './static/img/1.jpeg'
+                img.src = './public/static/img/1.jpeg'
             },
             drawMagnifier () {
                 let that = this
@@ -214,7 +214,7 @@ context.putImageData(imgData, 0, 0)</code></pre>
                     offScreenContext.drawImage(img, 0, 0, w, h)
                     that.addMagnifier(context, w, h, w / 2, h / 2, img)
                 }
-                img.src = './static/img/1.jpeg'
+                img.src = './public/static/img/1.jpeg'
             },
             addMagnifier (context, w, h, x, y, img) {
                 const that = this
@@ -251,7 +251,7 @@ context.putImageData(imgData, 0, 0)</code></pre>
                     context.drawImage(img, 0, 0, w, h)
                     that.addMagnifier(context, w, h, pos.x, pos.y, that.offScreenCanvas, img)
                 }
-                img.src = './static/img/1.jpeg'
+                img.src = './public/static/img/1.jpeg'
             },
             negativeFilter () {
                 let that = this
@@ -270,7 +270,7 @@ context.putImageData(imgData, 0, 0)</code></pre>
                     }
                     context.putImageData(imgData, 0, 0)
                 }
-                img.src = './static/img/1.jpeg'
+                img.src = './public/static/img/1.jpeg'
             },
             greyFilter () {
                 let that = this
@@ -291,7 +291,7 @@ context.putImageData(imgData, 0, 0)</code></pre>
                     }
                     context.putImageData(imgData, 0, 0)
                 }
-                img.src = './static/img/1.jpeg'
+                img.src = './public/static/img/1.jpeg'
             },
             embossFilter () {
                 let that = this
@@ -327,7 +327,7 @@ context.putImageData(imgData, 0, 0)</code></pre>
                     }
                     context.putImageData(imgData, 0, 0)
                 }
-                img.src = './static/img/1.jpeg'
+                img.src = './public/static/img/1.jpeg'
             }
         }
     }

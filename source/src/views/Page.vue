@@ -23,6 +23,10 @@
         mounted () {
             const that = this
             that.$nextTick(() => {
+                // insert icp&copyright info
+                const footer = document.createElement('footer')
+                footer.innerHTML = '©2018 zhangjialin 赣ICP备<a href="http://www.miitbeian.gov.cn/">18011067号</a>'
+                that.$el.appendChild(footer)
                 const codes = document.querySelectorAll('code')
                 if (codes.length > 0) {
                     codes.forEach(code => { hljs.highlightBlock(code) })

@@ -1,8 +1,8 @@
 <template>
   <div class="article-catalog" v-if="catalog.length>0">
-        <div>Catalog</div>
-        <ul><li v-for="(item, itemIndex) in catalog" :key="itemIndex" :class="{ active: item.active }" @click="slideTo(item.el)"><a>{{ itemIndex + 1 }}. {{ item.text }}</a></li></ul>
-   </div>
+    <h3>Catalog</h3>
+    <ul><li v-for="(item, itemIndex) in catalog" :key="itemIndex" :class="{ active: item.active }" @click="slideTo(item.el)"><a>{{ itemIndex + 1 }}. {{ item.text }}</a></li></ul>
+  </div>
 </template>
 <script>
     export default {

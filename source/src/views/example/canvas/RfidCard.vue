@@ -102,7 +102,7 @@ chroma('#D40880').darken().css() // rgb(157,0,84)</code></pre>
                 img.onload = function () {
                     context.drawImage(img, (that.allWidth - w) / 2, 160, w, h)
                 }
-                img.src = './static/img/card.png'
+                img.src = './public/static/img/card.png'
             },
             drawRightLines () {
                 const that = this

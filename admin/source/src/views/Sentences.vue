@@ -175,7 +175,15 @@
                         page: page
                     }
                 }).then(res => {
-                    that.dataList = res.dataList || []
+                    let list = res.dataList || []
+                    list.forEach(item => {
+                        if (item.imgs) {
+                            item.imgs = JSON.parse(item.imgs)
+                        } else {
+                            item.imgs = []
+                        }
+                    })
+                    that.dataList = list
                     that.page = res.page
                     that.totalPage = res.totalPage
                     loading(false)
@@ -271,7 +279,7 @@
                         data: {
                             content: addForm.content,
                             origin: addForm.origin,
-                            imgs: imgs,
+                            imgs: JSON.stringify(imgs),
                             status: 'draft',
                             createAt: nowTime,
                             updateAt: nowTime
@@ -294,7 +302,7 @@
                         data: {
                             content: addForm.content,
                             origin: addForm.origin,
-                            imgs: imgs,
+                            imgs: JSON.stringify(imgs),
                             updateAt: nowTime
                         }
                     }).then((res) => {
