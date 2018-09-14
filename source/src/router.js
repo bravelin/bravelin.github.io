@@ -208,7 +208,7 @@ let pageRouterOption = [
 
 // 路由配置
 const router = new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     linkActiveClass: 'active',
     routes: pageRouterOption
 })

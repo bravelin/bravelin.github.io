@@ -14,9 +14,9 @@
     <meta name=x5-fullscreen content=true>
     <meta name=x5-page-mode content=app>
     <meta name=apple-touch-fullscreen content=yes>
-    <link rel="shortcut icon" href=public/static/assets/favicon.ico>
+    <link rel="shortcut icon" href=/public/static/assets/favicon.ico>
     <script type="text/javascript">
-        if (location.protocol == 'http:') {
+        if (location.protocol == 'http:' && location.hostname == 'bravelin.top') {
             location.href = location.href.replace('http', 'https')
         }
     </script>
@@ -27,7 +27,7 @@
     <div id=app-tip>
         <div></div>
     </div>
-    <script src=public/static/lib/highlight.js></script>
+    <script src=/public/static/lib/highlight.js></script>
 </body>
 
 </html>

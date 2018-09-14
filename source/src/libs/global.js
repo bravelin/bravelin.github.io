@@ -19,7 +19,7 @@ export default {
     sentenceList: [],
     getSentences () {
         const that = this
-        Vue.http.get('api/v1/sentences', {
+        Vue.http.get('/api/v1/sentences', {
             params: { status: 'online' }
         }).then(res => {
             let list = res.body.dataList
@@ -36,7 +36,7 @@ export default {
     getArticles () {
         const that = this
         that.loading = true
-        Vue.http.get('api/v1/articles', {
+        Vue.http.get('/api/v1/articles', {
             params: {
                 status: 'online'
             }

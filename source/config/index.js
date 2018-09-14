@@ -64,7 +64,7 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, distPath),
     assetsSubDirectory: 'static',
     // assetsPublicPath: '', // =======================build之后资源的路径修正
-    assetsPublicPath: 'public/',
+    assetsPublicPath: '/public/',
     /**
      * Source Maps
      */
