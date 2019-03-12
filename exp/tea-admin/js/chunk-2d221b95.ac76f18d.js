@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d221b95"],{cc21:function(e,n,a){"use strict";a.r(n);var t=function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("div",{staticClass:"page farming-fertilizer-page"})},c=[],i={name:"farming-fertilizer-page"},r=i,l=a("17cc"),s=Object(l["a"])(r,t,c,!1,null,null,null);n["default"]=s.exports}}]);
