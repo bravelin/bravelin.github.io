@@ -33,3 +33,24 @@ html,body, #app{
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
 }
+#back-button{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 2.2%;
+    left: 2.5%;
+    z-index: -1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.12);
+}
+#back-button:before{
+    content: "";
+    display: block;
+    width: 22px;
+    height: 22px;
+    background: url('../assets/back-button.png');
+    background-size: 100% 100%;
+}

@@ -32,29 +32,20 @@ document.addEventListener('DOMContentLoaded', function () {
             initViewer(res.miniprogram)
         })
     }
+    document.getElementById('back-button').onclick = function () {
+        wx.miniProgram.navigateTo({ url: '/pages/video/video' })
+    }
 })
 
 // flag为true表明是在小程序中
 function initViewer (flag) {
-    let navBarOptions
-    if (!flag) {
-        navBarOptions = ['autorotate', 'zoom', 'download', 'markers', 'caption', 'fullscreen']
-    } else {
-        navBarOptions = ['autorotate', 'zoom', 'download', 'markers', {
-            id: 'back-button',
-            title: '返回',
-            className: 'psv-button--hover-scale back-button',
-            content: '<i class="back-icon"></i>',
-            onClick: function () {
-                wx.miniProgram.navigateBack({ delta: 2 })
-            }
-        }, 'caption', 'fullscreen']
-    }
     new PhotoSphereViewer({
         panorama: url,
         container: document.getElementById('app'),
         time_anim: false,
-        navbar: navBarOptions,
         default_fov: 90
     })
+    if (flag) {
+        document.getElementById('back-button').style.zIndex = 99999
+    }
 }
