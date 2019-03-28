@@ -1,9 +1,10 @@
 const defaultUrl = './exp/0.jpg' // 全景图地址
 
 // 从链接上获取图片的url
-let querys = location.href.split('?')[1]
+let querys = location.search
 const paramsObj = {}
 if (querys) {
+    querys = querys.slice(1)
     const queryArr = querys.split('&')
     if (queryArr) {
         queryArr.forEach(function (item) {
