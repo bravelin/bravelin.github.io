@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     document.getElementById('back-button').onclick = function () {
         alert('back...')
-        wx.miniProgram.navigateTo({ url: '/pages/video/video' })
+        wx.miniProgram.navigateTo({ url: '/pages/index/index' })
     }
 })
 
