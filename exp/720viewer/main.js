@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // flag为true表明是在小程序中
 function initViewer (flag) {
-    console.log('in miniprogram....', flag)
     let navBarOptions
     if (!flag) {
         navBarOptions = ['autorotate', 'zoom', 'download', 'markers', 'caption', 'fullscreen']
@@ -47,11 +46,11 @@ function initViewer (flag) {
             className: 'psv-button--hover-scale back-button',
             content: '<i class="back-icon"></i>',
             onClick: function () {
-                wx.miniProgram.navigateBack()
+                wx.miniProgram.navigateBack({ delta: 2 })
             }
         }, 'caption', 'fullscreen']
     }
-    const viewer = new PhotoSphereViewer({
+    new PhotoSphereViewer({
         panorama: url,
         container: document.getElementById('app'),
         time_anim: false,
