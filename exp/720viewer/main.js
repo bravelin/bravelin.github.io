@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
     document.getElementById('back-button').onclick = function () {
-        // alert('back...back.....')
+        // alert('back...back.....111111')
         wx.miniProgram.navigateTo({ url: '/pages/index/index' })
         // alert('back over....')
     }
