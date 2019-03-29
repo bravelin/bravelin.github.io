@@ -43,7 +43,8 @@ function initViewer (flag) {
         panorama: url,
         container: document.getElementById('app'),
         time_anim: false,
-        default_fov: 90
+        default_fov: 90,
+        navbar: ['autorotate', 'download', 'markers', 'caption', 'gyroscope', 'stereo', 'fullscreen']
     })
     if (flag) {
         document.getElementById('back-button').style.zIndex = 99999
