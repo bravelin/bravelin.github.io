@@ -1,7 +1,0 @@
-[
-        { "name": "南昌", "geoCoord": [115.89, 28.48], "value" : 10 },
-        { "name": "景德镇", "geoCoord": [117.28, 29.09], "value" : 10 },
-        { "name": "赣州", "geoCoord": [115.04, 25.67], "value" : 10 },
-        { "name": "宜春", "geoCoord": [114.41, 28.03], "value" : 16 }
-]
-    
