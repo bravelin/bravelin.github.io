@@ -1,0 +1,25 @@
+<template>
+    <div class="article-container">
+        <p>社会消费品零售总额同比增长5.8%，最终消费支出对经济增长贡献率达66.6%……国家统计局日前公布的一季度消费数据，彰显国内消费市场加快复苏回暖态势。</p>
+        <p>傍晚6点，位于广州市北京路的“潮发”潮汕牛肉店门口排起“长龙”。“等位的客人好几十桌，到了周末更忙，一天取号将近1000桌。”服务员小跑着上菜，直呼“最近客人好像接待不完”。</p>
+        <a class="pswp-img" href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" data-pswp-width="1669" data-pswp-height="2500" target="_blank">
+            <img class="thumbnail-img" src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" alt="" />
+        </a>
+        <p><span>社会消费品零售总额同比增长5.8%，最终消费支出对经济增长贡献率达66.6%……</span></p>
+        <div>
+            <a class="pswp-img" href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/7/img-2500.jpg" data-pswp-width="1875" data-pswp-height="2500" data-cropped="true" target="_blank">
+                <img class="thumbnail-img" src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/7/img-200.jpg" alt="" />
+            </a>
+        </div>
+        <a href="www.baidu.com">www.baidu.com</a>
+    </div>
+</template>
+
+<script>
+import { usePhotoSwipe } from '@/articles/article'
+export default {
+    setup () {
+        usePhotoSwipe()
+    }
+}
+</script>

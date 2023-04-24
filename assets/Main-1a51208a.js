@@ -1,4 +1,4 @@
-import{u as t}from"./highlight-541c081b.js";import{_ as e,b as r,c as n,i as s}from"./index-8ddf8321.js";const i={setup(){t()}},c={class:"article-container"},a=s(`<h2 class="article-title">一些可用的Canvas绘图代码片段</h2><div class="article-content"><h3 class="title">按一定间距绘制字符串</h3><p>传入以下参数：ctx是canvas上下文对象；str：String，绘制的文本；space：Number，间隔值；x,y是绘制文本的中心点位置。</p><pre><code>function drawSpaceText (ctx, str, space, x, y) {
+import{u as t}from"./highlight-09e7fb56.js";import{_ as e,b as r,c as n,i as s}from"./index-072ca140.js";const i={setup(){t()}},c={class:"article-container"},a=s(`<h2 class="article-title">一些可用的Canvas绘图代码片段</h2><div class="article-content"><h3 class="title">按一定间距绘制字符串</h3><p>传入以下参数：ctx是canvas上下文对象；str：String，绘制的文本；space：Number，间隔值；x,y是绘制文本的中心点位置。</p><pre><code>function drawSpaceText (ctx, str, space, x, y) {
     const strArr = str.split(&#39;&#39;)
     const textWidth = ctx.measureText(str).width + (strArr.length - 1) * space
     const startX = x - (textWidth / 2)
