@@ -1,1 +1,0 @@
-import{_ as a,u as c,o as _,d as o,b as r,c as p,f as t}from"./index-16aa17cf.js";const i={setup(){const e=c();_(()=>{setTimeout(()=>{e.push("/article/canvas/codeSnippets")},5e3)})}},u={class:"_page article-page"};function l(e,d,m,f,g,v){const s=o("Catalog"),n=o("RouterView");return r(),p("div",u,[t(s),t(n)])}const x=a(i,[["render",l]]);export{x as default};
