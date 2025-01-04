@@ -1,1 +1,0 @@
-import{u as c}from"./article-1b647556.js";import{o as l}from"./index-4afbb925.js";function i(){const a=c();l(()=>{const t=[],e=document.querySelector(".article-content").querySelectorAll("h3.title");e.length>0&&e.forEach((o,r)=>{t.push(o.innerText),o.classList.add("title-"+r)}),a.catalogDatas=t})}export{i as u};
