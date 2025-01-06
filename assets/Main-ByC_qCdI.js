@@ -1,4 +1,4 @@
-import{_ as r,i as s,j as i,f as a,o as c,d as t}from"./index-h-_S0RxM.js";const x={};function l(d,n){const e=a("MyArticle");return c(),s(e,{title:"一些可用的Canvas绘图代码片段",date:"2022年12月17日"},{default:i(()=>n[0]||(n[0]=[t("div",{class:"_article-content"},[t("h3",{class:"title"},"按一定间距绘制字符串"),t("p",null,"传入以下参数：ctx是canvas上下文对象；str：String，绘制的文本；space：Number，间隔值；x,y是绘制文本的中心点位置。"),t("pre",null,[t("code",null,`function drawSpaceText (ctx, str, space, x, y) {
+import{_ as r,k as s,l as i,h as a,o as c,e as t}from"./index-DxxTYns2.js";const x={};function l(d,n){const e=a("MyArticle");return c(),s(e,{title:"一些可用的Canvas绘图代码片段",date:"2022年12月17日"},{default:i(()=>n[0]||(n[0]=[t("div",{class:"_article-content"},[t("h3",{class:"title"},"按一定间距绘制字符串"),t("p",null,"传入以下参数：ctx是canvas上下文对象；str：String，绘制的文本；space：Number，间隔值；x,y是绘制文本的中心点位置。"),t("pre",null,[t("code",null,`function drawSpaceText (ctx, str, space, x, y) {
     const strArr = str.split('')
     const textWidth = ctx.measureText(str).width + (strArr.length - 1) * space
     const startX = x - (textWidth / 2)
