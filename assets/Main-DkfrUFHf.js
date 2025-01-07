@@ -1,0 +1,1 @@
+import{_ as o,m as n,p as a,h as r,o as s,e as c}from"./index-D4s4RR1C.js";const l={};function _(i,e){const t=r("MyArticle");return s(),n(t,{title:"基于西瓜播放器xgplayer封装视频直播/点播组件",date:"2024年10月24日"},{default:a(()=>e[0]||(e[0]=[c("div",{class:"_article-content"},null,-1)])),_:1})}const d=o(l,[["render",_]]);export{d as default};
