@@ -1,1 +1,0 @@
-import{_ as o,m as n,p as s,h as a,o as c,e as r}from"./index-BXYGW-PU.js";const l={};function _(i,e){const t=a("MyArticle");return c(),n(t,{title:"大华ICC平台监控对接总结",date:"2025年01月13日"},{default:s(()=>e[0]||(e[0]=[r("div",{class:"_article-content"},null,-1)])),_:1})}const f=o(l,[["render",_]]);export{f as default};
