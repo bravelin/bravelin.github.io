@@ -1,1 +1,0 @@
-import{_ as a,m as o,p as n,h as s,o as c,e as r}from"./index-DAung_sQ.js";const l={};function _(i,e){const t=s("MyArticle");return c(),o(t,{title:"Java学习笔记之四：接口、lambda表达式与内部类",date:"2024年02月24日"},{default:n(()=>e[0]||(e[0]=[r("div",{class:"_article-content"},null,-1)])),_:1})}const f=a(l,[["render",_]]);export{f as default};
